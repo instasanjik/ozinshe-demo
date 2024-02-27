@@ -5,4 +5,8 @@
 //  Created by Sanzhar Koshkarbayev on 27.02.2024.
 //
 
-import Foundation
+import UIKit
+
+class OZButton: UIButton {
+    
+}
