@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */; };
 		041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */; };
-		041CF8802B8CB33F003D2A58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87F2B8CB33F003D2A58 /* ViewController.swift */; };
-		041CF8832B8CB33F003D2A58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041CF8812B8CB33F003D2A58 /* Main.storyboard */; };
+		041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */; };
 		041CF8852B8CB340003D2A58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041CF8842B8CB340003D2A58 /* Assets.xcassets */; };
 		041CF8882B8CB340003D2A58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041CF8862B8CB340003D2A58 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,8 +18,7 @@
 		041CF8782B8CB33F003D2A58 /* ozinshe-demo-sanzhar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ozinshe-demo-sanzhar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		041CF87F2B8CB33F003D2A58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		041CF8822B8CB33F003D2A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		041CF8842B8CB340003D2A58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		041CF8872B8CB340003D2A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		041CF8892B8CB340003D2A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,15 +54,22 @@
 		041CF87A2B8CB33F003D2A58 /* ozinshe-demo-sanzhar */ = {
 			isa = PBXGroup;
 			children = (
+				041CF88F2B8CB465003D2A58 /* SignInViewControllers */,
 				041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */,
 				041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */,
-				041CF87F2B8CB33F003D2A58 /* ViewController.swift */,
-				041CF8812B8CB33F003D2A58 /* Main.storyboard */,
 				041CF8842B8CB340003D2A58 /* Assets.xcassets */,
 				041CF8862B8CB340003D2A58 /* LaunchScreen.storyboard */,
 				041CF8892B8CB340003D2A58 /* Info.plist */,
 			);
 			path = "ozinshe-demo-sanzhar";
+			sourceTree = "<group>";
+		};
+		041CF88F2B8CB465003D2A58 /* SignInViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */,
+			);
+			path = SignInViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +132,6 @@
 			files = (
 				041CF8882B8CB340003D2A58 /* LaunchScreen.storyboard in Resources */,
 				041CF8852B8CB340003D2A58 /* Assets.xcassets in Resources */,
-				041CF8832B8CB33F003D2A58 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				041CF8802B8CB33F003D2A58 /* ViewController.swift in Sources */,
+				041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */,
 				041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */,
 				041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +151,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		041CF8812B8CB33F003D2A58 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				041CF8822B8CB33F003D2A58 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		041CF8862B8CB340003D2A58 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,7 +293,6 @@
 				INFOPLIST_FILE = "ozinshe-demo-sanzhar/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,7 +320,6 @@
 				INFOPLIST_FILE = "ozinshe-demo-sanzhar/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
