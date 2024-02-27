@@ -10,6 +10,10 @@ import UIKit
 public enum DefaultStyle {
 
     public enum Colors {
+        
+        public static let white: UIColor = {
+            return .white
+        }()
 
         public static let label: UIColor = {
             return .white
@@ -33,6 +37,10 @@ public enum DefaultStyle {
         
         public static let gray600: UIColor = {
             return UIColor(hex: "4B5563")
+        }()
+        
+        public static let gray700: UIColor = {
+            return UIColor(hex: "374151")
         }()
         
         

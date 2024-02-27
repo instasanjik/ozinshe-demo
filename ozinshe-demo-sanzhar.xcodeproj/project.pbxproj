@@ -19,6 +19,8 @@
 		041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8A32B8DF7B4003D2A58 /* Screen.swift */; };
 		041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8A62B8E00F2003D2A58 /* OZButton.swift */; };
 		041CF8AB2B8E1734003D2A58 /* OZPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8AA2B8E1734003D2A58 /* OZPageControl.swift */; };
+		041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */; };
+		041CF8B02B8E433C003D2A58 /* OZTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8AF2B8E433C003D2A58 /* OZTextField.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		041CF8A32B8DF7B4003D2A58 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		041CF8A62B8E00F2003D2A58 /* OZButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZButton.swift; sourceTree = "<group>"; };
 		041CF8AA2B8E1734003D2A58 /* OZPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPageControl.swift; sourceTree = "<group>"; };
+		041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		041CF8AF2B8E433C003D2A58 /* OZTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZTextField.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				041CF8A02B8DD2BB003D2A58 /* CarouselViewController */,
+				041CF8AC2B8E2260003D2A58 /* SignInViewController */,
 			);
 			path = SignInViewControllers;
 			sourceTree = "<group>";
@@ -128,8 +133,17 @@
 			children = (
 				041CF8A62B8E00F2003D2A58 /* OZButton.swift */,
 				041CF8AA2B8E1734003D2A58 /* OZPageControl.swift */,
+				041CF8AF2B8E433C003D2A58 /* OZTextField.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		041CF8AC2B8E2260003D2A58 /* SignInViewController */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */,
+			);
+			path = SignInViewController;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
@@ -269,11 +283,13 @@
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */,
 				041CF8AB2B8E1734003D2A58 /* OZPageControl.swift in Sources */,
+				041CF8B02B8E433C003D2A58 /* OZTextField.swift in Sources */,
 				041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */,
 				041CF89A2B8DC0D1003D2A58 /* UIColor.swift in Sources */,
 				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,
 				041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */,
 				041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */,
+				041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */,
 				041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
