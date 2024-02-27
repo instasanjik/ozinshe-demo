@@ -1,6 +1,28 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "carouselContinueButtonText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "carouselEndButtonText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's start!"
+          }
+        }
+      }
+    },
     "carouselItem-1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -63,7 +85,7 @@
         },
         "kk-KZ" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "ÖZINŞE-ге қош келдің!"
           }
         }
