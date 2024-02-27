@@ -18,6 +18,16 @@ public enum DefaultStyle {
         public static let background: UIColor = {
             return UIColor(hex: "111827")
         }()
+        
+        public static let purple: UIColor = {
+            return UIColor(hex: "7E2DFC")
+        }()
+        
+        public static let gray400: UIColor = {
+            return UIColor(hex: "9CA3AF")
+        }()
+        
+        
     }
     
     
