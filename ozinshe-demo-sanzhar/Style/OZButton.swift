@@ -36,7 +36,7 @@ class OZButton: UIButton {
     func setupUI() {
         clipsToBounds = true
         layer.cornerRadius = 12
-        backgroundColor = Style.Colors.purple
+        backgroundColor = Style.Colors.purple500
         snp.makeConstraints { make in
             make.height.equalTo(56)
             make.width.equalTo(Screen.width - (24 * 2))
