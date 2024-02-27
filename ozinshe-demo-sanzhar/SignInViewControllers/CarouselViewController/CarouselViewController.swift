@@ -22,6 +22,12 @@ class CarouselViewController: UIViewController {
         return collectionView
     }()
     
+    lazy var continueButton: OZButton = {
+        let button = OZButton()
+        button.titleText = NSLocalizedString("carouselContinueButtonText", comment: "Әрі қарай")
+        return button
+    }()
+    
     let carouselData = [
         "carouselItem-1",
         "carouselItem-2",
@@ -33,6 +39,7 @@ class CarouselViewController: UIViewController {
         self.view.backgroundColor = Style.Colors.background
         
         setupCarousel()
+        setupButton()
     }
     
     
@@ -43,18 +50,27 @@ extension CarouselViewController {
     
     private func setupCarousel() {
         view.addSubview(carouselCollectionView)
+        configureCollectionView()
         
         carouselCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        configureCollectionView()
+    }
+    
+    private func setupButton() {
+        view.addSubview(continueButton)
+        
+        continueButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(38)
+        }
     }
     
     
 }
 
-// MARK: CollectionView fucntions
 
+// MARK: CollectionView functions
 extension CarouselViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     private func configureCollectionView() {
@@ -80,3 +96,5 @@ extension CarouselViewController: UICollectionViewDataSource, UICollectionViewDe
     
     
 }
+
+

@@ -26,7 +26,7 @@ class CarouselCell: UICollectionViewCell {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        label.textColor = .gray
+        label.textColor = Style.Colors.gray400
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
