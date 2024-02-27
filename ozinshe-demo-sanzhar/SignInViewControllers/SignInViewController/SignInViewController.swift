@@ -133,7 +133,7 @@ extension SignInViewController {
             make.left.right.equalToSuperview()
             make.height.equalTo(56)
         }
-        emailTextField.reloadBorder()
+        emailTextField.configureTextField(icon: "letter")
     }
     
     

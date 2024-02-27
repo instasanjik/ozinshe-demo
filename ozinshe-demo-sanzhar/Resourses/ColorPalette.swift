@@ -27,6 +27,10 @@ public enum DefaultStyle {
             return UIColor(hex: "B376F7")
         }()
         
+        public static let purple400: UIColor = {
+            return UIColor(hex: "9753F0")
+        }()
+        
         public static let purple500: UIColor = {
             return UIColor(hex: "7E2DFC")
         }()
@@ -41,6 +45,10 @@ public enum DefaultStyle {
         
         public static let gray700: UIColor = {
             return UIColor(hex: "374151")
+        }()
+        
+        public static let error: UIColor = {
+            return UIColor(hex: "FF402B")
         }()
         
         
