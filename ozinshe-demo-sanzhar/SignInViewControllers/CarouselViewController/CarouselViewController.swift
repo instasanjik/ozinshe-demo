@@ -11,13 +11,23 @@ import SnapKit
 
 class CarouselViewController: UIViewController {
     
-    let welcomeLabel: UILabel = {
+    lazy var welcomeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
         label.text = NSLocalizedString("carouselWelcomeText", comment: "ÖZINŞE-ге қош келдің!")
-        label.isExclusiveTouch = false
+        label.isUserInteractionEnabled = false
         return label
+    }()
+    
+    lazy var carouselCollectionView: UICollectionView = {
+        let collectionView = UICollectionView()
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = true
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .clear
+        return collectionView
     }()
 
     override func viewDidLoad() {
@@ -41,6 +51,19 @@ extension CarouselViewController {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(310)
         }
+    }
+    
+    
+}
+
+
+extension CarouselViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
     }
     
     
