@@ -1,5 +1,74 @@
 {
   "sourceLanguage" : "en",
-  "strings" : {},
+  "strings" : {
+    "carouselItem-1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movies, TV series, sitcoms, animation projects, TV programs and reality shows, anime and much more"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильмдер, телехикаялар, ситкомдар, анимациялық жобалар, телебағдарламалар мен реалити-шоулар, аниме және тағы басқалары"
+          }
+        }
+      }
+    },
+    "carouselItem-2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look from any device\nWatch your favorite movie from your phone, tablet, laptop without additional payment"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кез келген құрылғыдан қара \nСүйікті фильміңді  қосымша төлемсіз телефоннан, планшеттен, ноутбуктан қара"
+          }
+        }
+      }
+    },
+    "carouselItem-3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registration is easy. Register now and get the movie you want"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тіркелу оңай. Қазір тіркел де қалаған фильміңе қол жеткіз"
+          }
+        }
+      }
+    },
+    "carouselWelcomeText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to OZINŞE!"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ÖZINŞE-ге қош келдің!"
+          }
+        }
+      }
+    }
+  },
   "version" : "1.0"
 }
