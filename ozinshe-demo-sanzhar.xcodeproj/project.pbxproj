@@ -15,6 +15,9 @@
 		041CF89A2B8DC0D1003D2A58 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8992B8DC0D1003D2A58 /* UIColor.swift */; };
 		041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF89C2B8DC0D9003D2A58 /* ColorPalette.swift */; };
 		041CF89F2B8DC0E9003D2A58 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */; };
+		041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */; };
+		041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8A32B8DF7B4003D2A58 /* Screen.swift */; };
+		041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8A62B8E00F2003D2A58 /* OZButton.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		041CF8992B8DC0D1003D2A58 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		041CF89C2B8DC0D9003D2A58 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = "ozinshe-demo-sanzhar/Localizable.xcstrings"; sourceTree = SOURCE_ROOT; };
+		041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		041CF8A32B8DF7B4003D2A58 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		041CF8A62B8E00F2003D2A58 /* OZButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZButton.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +73,7 @@
 		041CF87A2B8CB33F003D2A58 /* ozinshe-demo-sanzhar */ = {
 			isa = PBXGroup;
 			children = (
+				041CF8A52B8E0093003D2A58 /* Style */,
 				041CF89B2B8DC0D9003D2A58 /* Resourses */,
 				041CF8982B8DC0D1003D2A58 /* Extentions */,
 				041CF88F2B8CB465003D2A58 /* SignInViewControllers */,
@@ -82,7 +89,7 @@
 		041CF88F2B8CB465003D2A58 /* SignInViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */,
+				041CF8A02B8DD2BB003D2A58 /* CarouselViewController */,
 			);
 			path = SignInViewControllers;
 			sourceTree = "<group>";
@@ -100,8 +107,26 @@
 			children = (
 				041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */,
 				041CF89C2B8DC0D9003D2A58 /* ColorPalette.swift */,
+				041CF8A32B8DF7B4003D2A58 /* Screen.swift */,
 			);
 			path = Resourses;
+			sourceTree = "<group>";
+		};
+		041CF8A02B8DD2BB003D2A58 /* CarouselViewController */ = {
+			isa = PBXGroup;
+			children = (
+				041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */,
+				041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */,
+			);
+			path = CarouselViewController;
+			sourceTree = "<group>";
+		};
+		041CF8A52B8E0093003D2A58 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8A62B8E00F2003D2A58 /* OZButton.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
@@ -238,10 +263,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */,
 				041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */,
 				041CF89A2B8DC0D1003D2A58 /* UIColor.swift in Sources */,
+				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,
 				041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */,
+				041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */,
 				041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
