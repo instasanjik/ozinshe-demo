@@ -58,12 +58,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Welcome to OZINŞE!"
+            "value" : "Welcome to ÖZINŞE!"
           }
         },
         "kk-KZ" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "ÖZINŞE-ге қош келдің!"
           }
         }
