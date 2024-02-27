@@ -18,6 +18,20 @@ public enum ScreenSize {
     public static let height: CGFloat = {
         return UIScreen.main.bounds.height
     }()
+    
+    
+    public static let statusBarHeight: CGFloat = {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let statusBarManager = windowScene.statusBarManager
+        else {
+            return 0
+        }
+
+        let statusBarHeight = statusBarManager.statusBarFrame.height
+        return statusBarHeight
+    }()
+    
+    
 }
 
 public let Screen = ScreenSize.self
