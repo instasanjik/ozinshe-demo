@@ -19,12 +19,20 @@ public enum DefaultStyle {
             return UIColor(hex: "111827")
         }()
         
-        public static let purple: UIColor = {
+        public static let purple300: UIColor = {
+            return UIColor(hex: "B376F7")
+        }()
+        
+        public static let purple500: UIColor = {
             return UIColor(hex: "7E2DFC")
         }()
         
         public static let gray400: UIColor = {
             return UIColor(hex: "9CA3AF")
+        }()
+        
+        public static let gray600: UIColor = {
+            return UIColor(hex: "4B5563")
         }()
         
         
