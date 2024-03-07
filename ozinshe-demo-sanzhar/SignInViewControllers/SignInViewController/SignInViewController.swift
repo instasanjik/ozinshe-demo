@@ -43,10 +43,7 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    lazy var emailTextField: OZTextField = {
-        let textField = OZTextField()
-        return textField
-    }()
+    lazy var emailTextField = OZTextField()
     
     lazy var passwordLabel: UILabel = {
         let label = UILabel()
@@ -55,6 +52,8 @@ class SignInViewController: UIViewController {
         label.textColor = Style.Colors.white
         return label
     }()
+    
+    lazy var passwordTextField = OZTextField()
     
     
     
@@ -115,6 +114,8 @@ extension SignInViewController {
         
         setupEmailLabel()
         setupEmailTextField()
+        setupPasswordLabel()
+        setupPasswordTextField()
     }
     
     private func setupEmailLabel() {
@@ -129,11 +130,29 @@ extension SignInViewController {
         formView.addSubview(emailTextField)
         
         emailTextField.snp.makeConstraints { make in
-            make.top.equalTo(emailLabel.snp.bottom).inset(-4)
+            make.top.equalTo(emailLabel.snp.bottom).inset(-8)
             make.left.right.equalToSuperview()
-            make.height.equalTo(56)
         }
         emailTextField.configureTextField(icon: "letter")
+    }
+    
+    private func setupPasswordLabel() {
+        formView.addSubview(passwordLabel)
+        
+        passwordLabel.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(emailTextField.snp.bottom).inset(-16)
+        }
+    }
+    
+    private func setupPasswordTextField() {
+        formView.addSubview(passwordTextField)
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(passwordLabel.snp.bottom).inset(-8)
+            make.left.right.equalToSuperview()
+        }
+        passwordTextField.configureTextField(icon: "password", suffixImageName: "eye")
     }
     
     
