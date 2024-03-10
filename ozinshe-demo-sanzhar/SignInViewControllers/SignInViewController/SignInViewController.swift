@@ -96,6 +96,63 @@ class SignInViewController: UIViewController {
         return label
     }()
     
+    lazy var signUpStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.addArrangedSubview(haveNoAccountLabel)
+        stackView.addArrangedSubview(signUpLabel)
+        
+        stackView.axis = .horizontal
+        stackView.spacing = 4
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(signUpTapped))
+        stackView.addGestureRecognizer(tap)
+        
+        return stackView
+    }()
+    
+    lazy var googleSignInButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        button.setTitle(NSLocalizedString("SignIn-Google", comment: "Google-мен тіркеліңіз"), for: .normal)
+        button.setImage(UIImage(named: "google-logo"), for: .normal)
+        
+        button.backgroundColor = Style.Colors.gray600
+        
+        button.layer.cornerRadius = 12
+        button.layer.masksToBounds = true
+        
+        button.centerTextAndImage(spacing: 10)
+        
+        button.addTarget(self, action: #selector(signUpWithGoogleTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var appleSignInButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        button.setTitle(NSLocalizedString("SignIn-AppleID", comment: "Apple ID-мен тіркеліңіз"), for: .normal)
+        button.setImage(UIImage(named: "apple-logo"), for: .normal)
+        
+        button.backgroundColor = Style.Colors.gray600
+        
+        button.layer.cornerRadius = 12
+        button.layer.masksToBounds = true
+        
+        button.centerTextAndImage(spacing: 10)
+        
+        button.addTarget(self, action: #selector(signUpWithAppleTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var orLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.text = NSLocalizedString("SignIn-or", comment: "Немесе")
+        label.textColor = Style.Colors.gray400
+        return label
+    }()
+    
     
     override func viewDidLoad() {
         view.backgroundColor = Style.Colors.background
@@ -106,6 +163,9 @@ class SignInViewController: UIViewController {
         setupFormView()
         setupLoginButton()
         setupSignUpLabels()
+        setupGoogleButton()
+        setupAppleButton()
+        setupOrLabel()
     }
     
     
@@ -217,19 +277,44 @@ extension SignInViewController {
     }
     
     private func setupSignUpLabels() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(signUpTapped))
-        let stackView = UIStackView()
-        stackView.addArrangedSubview(haveNoAccountLabel)
-        stackView.addArrangedSubview(signUpLabel)
-        stackView.axis = .horizontal
-        stackView.spacing = 4
-        stackView.addGestureRecognizer(tap)
+        view.addSubview(signUpStackView)
         
-        view.addSubview(stackView)
-        
-        stackView.snp.makeConstraints { make in
+        signUpStackView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(loginButton.snp.bottom).inset(-16)
+        }
+    }
+    
+    private func setupGoogleButton() {
+        view.addSubview(googleSignInButton)
+        
+        googleSignInButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(12)
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(24)
+            make.height.equalTo(52)
+        }
+    }
+    
+    private func setupAppleButton() {
+        view.addSubview(appleSignInButton)
+        
+        appleSignInButton.snp.makeConstraints { make in
+            make.bottom.equalTo(googleSignInButton.snp.top).inset(-8)
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(24)
+            make.height.equalTo(52)
+        }
+    }
+    
+    private func setupOrLabel() {
+        view.addSubview(orLabel)
+        
+        orLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(appleSignInButton.snp.top).inset(-16)
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(24)
+            make.height.equalTo(18)
         }
     }
     
@@ -256,6 +341,14 @@ extension SignInViewController {
     
     @objc func signUpTapped(sender: UIGestureRecognizer!) {
         Logger.log(.action, "Sign Up tapped")
+    }
+    
+    @objc func signUpWithAppleTapped(sender: UIButton!) {
+        Logger.log(.action, "Sign Up With Apple tapped")
+    }
+    
+    @objc func signUpWithGoogleTapped(sender: UIButton!) {
+        Logger.log(.action, "Sign Up With Google tapped")
     }
     
     
