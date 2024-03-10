@@ -17,7 +17,7 @@ class SignInViewController: UIViewController {
         return button
     }()
     
-    lazy var signUpLabel: UILabel = {
+    lazy var helloLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("SignIn-Hello", comment: "Сәлем")
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -25,7 +25,7 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    lazy var signUpBodyLabel: UILabel = {
+    lazy var helloDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("SignIn-Description", comment: "Аккаунтқа кіріңіз")
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -80,6 +80,22 @@ class SignInViewController: UIViewController {
         return button
     }()
     
+    lazy var haveNoAccountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.text = NSLocalizedString("SignIn-HaveNoAccount", comment: "Аккаунтыныз жоқ па?")
+        label.textColor = Style.Colors.white
+        return label
+    }()
+    
+    lazy var signUpLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.text = NSLocalizedString("SignIn-SignUp", comment: "Тіркелу")
+        label.textColor = Style.Colors.purple300
+        return label
+    }()
+    
     
     override func viewDidLoad() {
         view.backgroundColor = Style.Colors.background
@@ -89,6 +105,7 @@ class SignInViewController: UIViewController {
         setupSignUpBodyLabel()
         setupFormView()
         setupLoginButton()
+        setupSignUpLabels()
     }
     
     
@@ -109,20 +126,20 @@ extension SignInViewController {
     }
     
     private func setupSignUpLabel() {
-        view.addSubview(signUpLabel)
+        view.addSubview(helloLabel)
         
-        signUpLabel.snp.makeConstraints { make in
+        helloLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(24)
             make.top.equalTo(backButton.snp.bottom).inset(-24)
         }
     }
     
     private func setupSignUpBodyLabel() {
-        view.addSubview(signUpBodyLabel)
+        view.addSubview(helloDescriptionLabel)
         
-        signUpBodyLabel.snp.makeConstraints { make in
-            make.left.equalTo(signUpLabel)
-            make.top.equalTo(signUpLabel.snp.bottom)
+        helloDescriptionLabel.snp.makeConstraints { make in
+            make.left.equalTo(helloLabel)
+            make.top.equalTo(helloLabel.snp.bottom)
         }
     }
     
@@ -130,9 +147,9 @@ extension SignInViewController {
         view.addSubview(formView)
         
         formView.snp.makeConstraints { make in
-            make.left.equalTo(signUpLabel)
+            make.left.equalTo(helloLabel)
             make.right.equalToSuperview().inset(24)
-            make.top.equalTo(signUpBodyLabel.snp.bottom).inset(-32)
+            make.top.equalTo(helloDescriptionLabel.snp.bottom).inset(-32)
             make.height.equalTo(224)
         }
         
@@ -185,7 +202,7 @@ extension SignInViewController {
         formView.addSubview(forgotPasswordButton)
         
         forgotPasswordButton.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
+            make.right.equalToSuperview()
             make.top.equalTo(passwordTextField.snp.bottom).inset(-16)
         }
     }
@@ -196,6 +213,23 @@ extension SignInViewController {
         loginButton.snp.makeConstraints { make in
             make.top.equalTo(formView.snp.bottom).inset(-16)
             make.left.right.equalTo(formView)
+        }
+    }
+    
+    private func setupSignUpLabels() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(signUpTapped))
+        let stackView = UIStackView()
+        stackView.addArrangedSubview(haveNoAccountLabel)
+        stackView.addArrangedSubview(signUpLabel)
+        stackView.axis = .horizontal
+        stackView.spacing = 4
+        stackView.addGestureRecognizer(tap)
+        
+        view.addSubview(stackView)
+        
+        stackView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(loginButton.snp.bottom).inset(-16)
         }
     }
     
@@ -220,7 +254,7 @@ extension SignInViewController {
         Logger.log(.action, "Forgot password tapped")
     }
     
-    @objc func signUpTapped(sender: UIButton!) {
+    @objc func signUpTapped(sender: UIGestureRecognizer!) {
         Logger.log(.action, "Sign Up tapped")
     }
     
@@ -242,6 +276,7 @@ extension SignInViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
     
     
 }
