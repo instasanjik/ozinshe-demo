@@ -85,7 +85,7 @@
 		041CF87A2B8CB33F003D2A58 /* ozinshe-demo-sanzhar */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8A52B8E0093003D2A58 /* Style */,
+				041CF8A52B8E0093003D2A58 /* CustomElements */,
 				041CF89B2B8DC0D9003D2A58 /* Resourses */,
 				041CF8982B8DC0D1003D2A58 /* Extentions */,
 				041CF88F2B8CB465003D2A58 /* SignInViewControllers */,
@@ -136,7 +136,7 @@
 			path = CarouselViewController;
 			sourceTree = "<group>";
 		};
-		041CF8A52B8E0093003D2A58 /* Style */ = {
+		041CF8A52B8E0093003D2A58 /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
 				041CF8A62B8E00F2003D2A58 /* OZButton.swift */,
@@ -144,7 +144,7 @@
 				041CF8AF2B8E433C003D2A58 /* OZTextField.swift */,
 				041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */,
 			);
-			path = Style;
+			path = CustomElements;
 			sourceTree = "<group>";
 		};
 		041CF8AC2B8E2260003D2A58 /* SignInViewController */ = {
