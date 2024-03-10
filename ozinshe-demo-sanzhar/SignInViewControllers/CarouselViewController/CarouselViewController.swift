@@ -71,7 +71,7 @@ class CarouselViewController: UIViewController {
         self.view.backgroundColor = Style.Colors.background
         
         setupCarousel()
-        setupButton()
+        setupContinueButton()
         setupPageControl()
         setupSkipButton()
     }
@@ -91,7 +91,7 @@ extension CarouselViewController {
         }
     }
     
-    private func setupButton() {
+    private func setupContinueButton() {
         view.addSubview(continueButton)
         
         continueButton.snp.makeConstraints { make in

@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
     
     lazy var signUpLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sign Up"
+        label.text = NSLocalizedString("SignIn-Hello", comment: "Сәлем")
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.white
         return label
@@ -27,7 +27,7 @@ class SignInViewController: UIViewController {
     
     lazy var signUpBodyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Log in to your account"
+        label.text = NSLocalizedString("SignIn-Description", comment: "Аккаунтқа кіріңіз")
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = Style.Colors.gray400
         return label
@@ -43,19 +43,42 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    lazy var emailTextField = OZTextField()
+    lazy var emailTextFieldView: OZTextFieldView = {
+        let textFieldView = OZTextFieldView()
+        textFieldView.textField.placeholder = NSLocalizedString("SignIn-YourEmail", comment: "Сіздің email")
+        return textFieldView
+    }()
     
     lazy var passwordLabel: UILabel = {
         let label = UILabel()
-        label.text = "Password"
+        label.text = "Password" //localize
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.white
         return label
     }()
     
-    lazy var passwordTextField = OZTextField()
+    lazy var passwordTextField: OZTextField = {
+        let textField = OZTextField()
+        textField.placeholder = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
+        return textField
+    }()
     
+    lazy var forgotPasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(NSLocalizedString("SignIn-ForgotPassword", comment: "Құпия сөзді ұмыттыңыз ба?"), for: .normal) // localize
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        button.setTitleColor(Style.Colors.purple300, for: .normal)
+        button.contentHorizontalAlignment = .right
+        button.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
+        return button
+    }()
     
+    lazy var loginButton: OZButton = {
+        let button = OZButton()
+        button.setTitle(NSLocalizedString("SignIn-Join", comment: "Кіру"), for: .normal)
+        button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
+        return button
+    }()
     
     
     override func viewDidLoad() {
@@ -65,6 +88,7 @@ class SignInViewController: UIViewController {
         setupSignUpLabel()
         setupSignUpBodyLabel()
         setupFormView()
+        setupLoginButton()
     }
     
     
@@ -109,13 +133,14 @@ extension SignInViewController {
             make.left.equalTo(signUpLabel)
             make.right.equalToSuperview().inset(24)
             make.top.equalTo(signUpBodyLabel.snp.bottom).inset(-32)
-            make.height.equalTo(200)
+            make.height.equalTo(224)
         }
         
         setupEmailLabel()
         setupEmailTextField()
         setupPasswordLabel()
         setupPasswordTextField()
+        setupForgotPasswordButton()
     }
     
     private func setupEmailLabel() {
@@ -127,13 +152,14 @@ extension SignInViewController {
     }
     
     private func setupEmailTextField() {
-        formView.addSubview(emailTextField)
+        formView.addSubview(emailTextFieldView)
         
-        emailTextField.snp.makeConstraints { make in
+        emailTextFieldView.snp.makeConstraints { make in
             make.top.equalTo(emailLabel.snp.bottom).inset(-8)
             make.left.right.equalToSuperview()
         }
-        emailTextField.configureTextField(icon: "letter")
+        
+        emailTextFieldView.textField.configureTextField(icon: "letter")
     }
     
     private func setupPasswordLabel() {
@@ -141,7 +167,7 @@ extension SignInViewController {
         
         passwordLabel.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(emailTextField.snp.bottom).inset(-16)
+            make.top.equalTo(emailTextFieldView.snp.bottom).inset(-16)
         }
     }
     
@@ -155,9 +181,67 @@ extension SignInViewController {
         passwordTextField.configureTextField(icon: "password", suffixImageName: "eye")
     }
     
+    private func setupForgotPasswordButton() {
+        formView.addSubview(forgotPasswordButton)
+        
+        forgotPasswordButton.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(passwordTextField.snp.bottom).inset(-16)
+        }
+    }
+    
+    private func setupLoginButton() {
+        view.addSubview(loginButton)
+        
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(formView.snp.bottom).inset(-16)
+            make.left.right.equalTo(formView)
+        }
+    }
+    
     
 }
 
+
+// MARK: Targets
 extension SignInViewController {
+    
+    @objc func loginTapped(sender: UIButton!) {
+        Logger.log(.action, "Login tapped")
+        
+        if Int.random(in: 1...2) % 2 == 0 {
+            updateEmailError(text: "Lorem ipsum") // localize
+        } else {
+            updateEmailError(text: nil)
+        }
+    }
+    
+    @objc func forgotPasswordTapped(sender: UIButton!) {
+        Logger.log(.action, "Forgot password tapped")
+    }
+    
+    @objc func signUpTapped(sender: UIButton!) {
+        Logger.log(.action, "Sign Up tapped")
+    }
+    
+    
+}
+
+
+// MARK: Additional functions
+extension SignInViewController {
+    
+    private func updateEmailError(text: String?) {
+        emailTextFieldView.updateError(errorText: text)
+        
+        formView.snp.updateConstraints { make in
+            make.height.equalTo(text == nil ? 224 : 256)
+        }
+        
+        UIView.animate(withDuration: 0.1) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     
 }

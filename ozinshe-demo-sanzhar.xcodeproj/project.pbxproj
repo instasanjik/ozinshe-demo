@@ -21,6 +21,9 @@
 		041CF8AB2B8E1734003D2A58 /* OZPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8AA2B8E1734003D2A58 /* OZPageControl.swift */; };
 		041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */; };
 		041CF8B02B8E433C003D2A58 /* OZTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8AF2B8E433C003D2A58 /* OZTextField.swift */; };
+		041CF8B22B9DA043003D2A58 /* OZTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */; };
+		041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B62B9DB2BA003D2A58 /* Date.swift */; };
+		041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B82B9DB312003D2A58 /* Logger.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +44,9 @@
 		041CF8AA2B8E1734003D2A58 /* OZPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPageControl.swift; sourceTree = "<group>"; };
 		041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		041CF8AF2B8E433C003D2A58 /* OZTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZTextField.swift; sourceTree = "<group>"; };
+		041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZTextFieldView.swift; sourceTree = "<group>"; };
+		041CF8B62B9DB2BA003D2A58 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		041CF8B82B9DB312003D2A58 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +110,7 @@
 		041CF8982B8DC0D1003D2A58 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				041CF8B62B9DB2BA003D2A58 /* Date.swift */,
 				041CF8992B8DC0D1003D2A58 /* UIColor.swift */,
 			);
 			path = Extentions;
@@ -115,6 +122,7 @@
 				041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */,
 				041CF89C2B8DC0D9003D2A58 /* ColorPalette.swift */,
 				041CF8A32B8DF7B4003D2A58 /* Screen.swift */,
+				041CF8B82B9DB312003D2A58 /* Logger.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -134,6 +142,7 @@
 				041CF8A62B8E00F2003D2A58 /* OZButton.swift */,
 				041CF8AA2B8E1734003D2A58 /* OZPageControl.swift */,
 				041CF8AF2B8E433C003D2A58 /* OZTextField.swift */,
+				041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -289,7 +298,10 @@
 				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,
 				041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */,
 				041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */,
+				041CF8B22B9DA043003D2A58 /* OZTextFieldView.swift in Sources */,
 				041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */,
+				041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */,
+				041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */,
 				041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +456,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -474,6 +487,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

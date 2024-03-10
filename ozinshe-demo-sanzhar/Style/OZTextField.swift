@@ -10,9 +10,20 @@ import SnapKit
 
 class OZTextField: UITextField {
     
+    enum OZTextFieldState {
+        case normal
+        case error
+    }
+    
     let normalBorderColor = Style.Colors.gray400.cgColor
     let focusedBorderColor = Style.Colors.purple400.cgColor
     let errorBorderColor = Style.Colors.error.cgColor
+    
+    var textFieldState: OZTextFieldState = .normal {
+        didSet {
+            layer.borderColor =  textFieldState == .error ? errorBorderColor : normalBorderColor
+        }
+    }
     
     var padding = UIEdgeInsets(top: 0, left: 44, bottom: 0, right: 44)
     
@@ -48,6 +59,15 @@ class OZTextField: UITextField {
     
     convenience init() {
         self.init(frame: .zero)
+        
+        font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        
+        attributedPlaceholder = NSAttributedString(
+                string: "DEFAULT",
+                attributes: [.foregroundColor: Style.Colors.gray400,
+                             .font: UIFont.systemFont(ofSize: 16, weight: .regular)]
+        )
+        
         backgroundColor = Style.Colors.gray700
         
         layer.cornerRadius = 12
@@ -55,10 +75,10 @@ class OZTextField: UITextField {
         layer.borderColor = Style.Colors.gray400.cgColor
         
         textColor = Style.Colors.white
-        font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         
         layer.masksToBounds = true
     }
+    
     
     func configureTextField(icon imageName: String, suffixImageName: String? = nil) {
         addSubview(iconImageView)
@@ -114,10 +134,6 @@ extension OZTextField {
 
 
 extension OZTextField {
-    
-    private func updateErrorMessage() {
-        
-    }
     
     @objc func toggleHidingMode(sender: UIButton!) {
         isSecureTextEntry.toggle()
