@@ -51,7 +51,7 @@ class SignInViewController: UIViewController {
     
     lazy var passwordLabel: UILabel = {
         let label = UILabel()
-        label.text = "Password" //localize
+        label.text = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.white
         return label
@@ -65,7 +65,7 @@ class SignInViewController: UIViewController {
     
     lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
-        button.setTitle(NSLocalizedString("SignIn-ForgotPassword", comment: "Құпия сөзді ұмыттыңыз ба?"), for: .normal) // localize
+        button.setTitle(NSLocalizedString("SignIn-ForgotPassword", comment: "Құпия сөзді ұмыттыңыз ба?"), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         button.setTitleColor(Style.Colors.purple300, for: .normal)
         button.contentHorizontalAlignment = .right
@@ -76,7 +76,7 @@ class SignInViewController: UIViewController {
     lazy var loginButton: OZButton = {
         let button = OZButton()
         button.setTitle(NSLocalizedString("SignIn-Join", comment: "Кіру"), for: .normal)
-        button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
         return button
     }()
     
@@ -155,6 +155,8 @@ class SignInViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         view.backgroundColor = Style.Colors.background
         
         setupBackButton()
@@ -199,7 +201,7 @@ extension SignInViewController {
         
         helloDescriptionLabel.snp.makeConstraints { make in
             make.left.equalTo(helloLabel)
-            make.top.equalTo(helloLabel.snp.bottom)
+            make.top.equalTo(helloLabel.snp.bottom).inset(-4)
         }
     }
     

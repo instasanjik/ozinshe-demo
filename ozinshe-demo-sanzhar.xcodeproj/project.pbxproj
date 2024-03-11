@@ -25,6 +25,7 @@
 		041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B62B9DB2BA003D2A58 /* Date.swift */; };
 		041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B82B9DB312003D2A58 /* Logger.swift */; };
 		041CF8BB2B9DCD77003D2A58 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8BA2B9DCD77003D2A58 /* UIButton.swift */; };
+		041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		041CF8B62B9DB2BA003D2A58 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		041CF8B82B9DB312003D2A58 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		041CF8BA2B9DCD77003D2A58 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */,
+				041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */,
 			);
 			path = SignInViewController;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */,
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */,
 				041CF8AB2B8E1734003D2A58 /* OZPageControl.swift in Sources */,

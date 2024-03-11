@@ -14,7 +14,7 @@ class OZTextFieldView: UIView {
     
     lazy var errorLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қате формат" //localize
+        label.text = "Қате формат" // localize
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = Style.Colors.error
         return label
