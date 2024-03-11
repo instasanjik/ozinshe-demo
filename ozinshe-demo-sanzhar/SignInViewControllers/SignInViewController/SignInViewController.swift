@@ -14,6 +14,7 @@ class SignInViewController: UIViewController {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         button.tintColor = Style.Colors.white
+        button.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
         return button
     }()
     
@@ -326,6 +327,10 @@ extension SignInViewController {
 
 // MARK: Targets
 extension SignInViewController {
+    
+    @objc func backTapped(sender: UIButton!) {
+        Logger.log(.action, "Back tapped")
+    }
     
     @objc func loginTapped(sender: UIButton!) {
         Logger.log(.action, "Login tapped")
