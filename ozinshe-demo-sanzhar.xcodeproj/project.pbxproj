@@ -39,7 +39,7 @@
 		041CF8892B8CB340003D2A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		041CF8992B8DC0D1003D2A58 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		041CF89C2B8DC0D9003D2A58 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
-		041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = "ozinshe-demo-sanzhar/Localizable.xcstrings"; sourceTree = SOURCE_ROOT; };
+		041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = "ozinshe-demo-sanzhar/Common/Resourses/Localizable.xcstrings"; sourceTree = SOURCE_ROOT; };
 		041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		041CF8A32B8DF7B4003D2A58 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		041CF8A62B8E00F2003D2A58 /* OZButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZButton.swift; sourceTree = "<group>"; };
@@ -89,10 +89,10 @@
 		041CF87A2B8CB33F003D2A58 /* ozinshe-demo-sanzhar */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8A52B8E0093003D2A58 /* CustomElements */,
-				041CF89B2B8DC0D9003D2A58 /* Resourses */,
-				041CF8982B8DC0D1003D2A58 /* Extentions */,
-				041CF88F2B8CB465003D2A58 /* SignInViewControllers */,
+				041CF8C42B9EFB7F003D2A58 /* Models */,
+				041CF8BE2B9EF78E003D2A58 /* Common */,
+				041CF8A52B8E0093003D2A58 /* UI */,
+				041CF88F2B8CB465003D2A58 /* Scenes */,
 				041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */,
 				041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */,
 				041CF8842B8CB340003D2A58 /* Assets.xcassets */,
@@ -102,26 +102,63 @@
 			path = "ozinshe-demo-sanzhar";
 			sourceTree = "<group>";
 		};
-		041CF88F2B8CB465003D2A58 /* SignInViewControllers */ = {
+		041CF88F2B8CB465003D2A58 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8A02B8DD2BB003D2A58 /* CarouselViewController */,
-				041CF8AC2B8E2260003D2A58 /* SignInViewController */,
+				041CF8A02B8DD2BB003D2A58 /* CarouselScenes */,
+				041CF8AC2B8E2260003D2A58 /* SignInScenes */,
+				041CF8C52B9EFD66003D2A58 /* MainScenes */,
 			);
-			path = SignInViewControllers;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
-		041CF8982B8DC0D1003D2A58 /* Extentions */ = {
+		041CF8A02B8DD2BB003D2A58 /* CarouselScenes */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8B62B9DB2BA003D2A58 /* Date.swift */,
-				041CF8992B8DC0D1003D2A58 /* UIColor.swift */,
-				041CF8BA2B9DCD77003D2A58 /* UIButton.swift */,
+				041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */,
+				041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */,
 			);
-			path = Extentions;
+			path = CarouselScenes;
 			sourceTree = "<group>";
 		};
-		041CF89B2B8DC0D9003D2A58 /* Resourses */ = {
+		041CF8A52B8E0093003D2A58 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8A62B8E00F2003D2A58 /* OZButton.swift */,
+				041CF8AA2B8E1734003D2A58 /* OZPageControl.swift */,
+				041CF8AF2B8E433C003D2A58 /* OZTextField.swift */,
+				041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		041CF8AC2B8E2260003D2A58 /* SignInScenes */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */,
+				041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */,
+			);
+			path = SignInScenes;
+			sourceTree = "<group>";
+		};
+		041CF8BE2B9EF78E003D2A58 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8C12B9EF7A8003D2A58 /* Extensions */,
+				041CF8C02B9EF7A1003D2A58 /* Resourses */,
+				041CF8BF2B9EF799003D2A58 /* Files */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		041CF8BF2B9EF799003D2A58 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		041CF8C02B9EF7A1003D2A58 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
 				041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */,
@@ -132,33 +169,44 @@
 			path = Resourses;
 			sourceTree = "<group>";
 		};
-		041CF8A02B8DD2BB003D2A58 /* CarouselViewController */ = {
+		041CF8C12B9EF7A8003D2A58 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */,
-				041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */,
+				041CF8C32B9EF7D1003D2A58 /* UIKit */,
+				041CF8C22B9EF7C9003D2A58 /* Foundation */,
 			);
-			path = CarouselViewController;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
-		041CF8A52B8E0093003D2A58 /* CustomElements */ = {
+		041CF8C22B9EF7C9003D2A58 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8A62B8E00F2003D2A58 /* OZButton.swift */,
-				041CF8AA2B8E1734003D2A58 /* OZPageControl.swift */,
-				041CF8AF2B8E433C003D2A58 /* OZTextField.swift */,
-				041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */,
+				041CF8B62B9DB2BA003D2A58 /* Date.swift */,
 			);
-			path = CustomElements;
+			path = Foundation;
 			sourceTree = "<group>";
 		};
-		041CF8AC2B8E2260003D2A58 /* SignInViewController */ = {
+		041CF8C32B9EF7D1003D2A58 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */,
-				041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */,
+				041CF8992B8DC0D1003D2A58 /* UIColor.swift */,
+				041CF8BA2B9DCD77003D2A58 /* UIButton.swift */,
 			);
-			path = SignInViewController;
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		041CF8C42B9EFB7F003D2A58 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		041CF8C52B9EFD66003D2A58 /* MainScenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainScenes;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
