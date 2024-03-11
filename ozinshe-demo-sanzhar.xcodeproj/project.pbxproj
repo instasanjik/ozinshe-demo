@@ -26,6 +26,11 @@
 		041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B82B9DB312003D2A58 /* Logger.swift */; };
 		041CF8BB2B9DCD77003D2A58 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8BA2B9DCD77003D2A58 /* UIButton.swift */; };
 		041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */; };
+		041CF8C72B9EFDB3003D2A58 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8C62B9EFDB3003D2A58 /* MainTabBarController.swift */; };
+		041CF8CE2B9EFE50003D2A58 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8CD2B9EFE50003D2A58 /* HomeViewController.swift */; };
+		041CF8D02B9EFE5B003D2A58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8CF2B9EFE5B003D2A58 /* SearchViewController.swift */; };
+		041CF8D22B9EFE78003D2A58 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8D12B9EFE78003D2A58 /* FavoritesViewController.swift */; };
+		041CF8D42B9EFE86003D2A58 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8D32B9EFE86003D2A58 /* ProfileViewController.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +56,11 @@
 		041CF8B82B9DB312003D2A58 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		041CF8BA2B9DCD77003D2A58 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		041CF8C62B9EFDB3003D2A58 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		041CF8CD2B9EFE50003D2A58 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		041CF8CF2B9EFE5B003D2A58 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		041CF8D12B9EFE78003D2A58 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		041CF8D32B9EFE86003D2A58 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,8 +215,45 @@
 		041CF8C52B9EFD66003D2A58 /* MainScenes */ = {
 			isa = PBXGroup;
 			children = (
+				041CF8C62B9EFDB3003D2A58 /* MainTabBarController.swift */,
+				041CF8C82B9EFDF9003D2A58 /* HomeScenes */,
+				041CF8C92B9EFE0E003D2A58 /* SearchScenes */,
+				041CF8CA2B9EFE1E003D2A58 /* FavoriteScenes */,
+				041CF8CB2B9EFE27003D2A58 /* ProfileScenes */,
 			);
 			path = MainScenes;
+			sourceTree = "<group>";
+		};
+		041CF8C82B9EFDF9003D2A58 /* HomeScenes */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8CD2B9EFE50003D2A58 /* HomeViewController.swift */,
+			);
+			path = HomeScenes;
+			sourceTree = "<group>";
+		};
+		041CF8C92B9EFE0E003D2A58 /* SearchScenes */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8CF2B9EFE5B003D2A58 /* SearchViewController.swift */,
+			);
+			path = SearchScenes;
+			sourceTree = "<group>";
+		};
+		041CF8CA2B9EFE1E003D2A58 /* FavoriteScenes */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8D12B9EFE78003D2A58 /* FavoritesViewController.swift */,
+			);
+			path = FavoriteScenes;
+			sourceTree = "<group>";
+		};
+		041CF8CB2B9EFE27003D2A58 /* ProfileScenes */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8D32B9EFE86003D2A58 /* ProfileViewController.swift */,
+			);
+			path = ProfileScenes;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
@@ -346,7 +393,10 @@
 				041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */,
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */,
+				041CF8C72B9EFDB3003D2A58 /* MainTabBarController.swift in Sources */,
+				041CF8D02B9EFE5B003D2A58 /* SearchViewController.swift in Sources */,
 				041CF8AB2B8E1734003D2A58 /* OZPageControl.swift in Sources */,
+				041CF8CE2B9EFE50003D2A58 /* HomeViewController.swift in Sources */,
 				041CF8B02B8E433C003D2A58 /* OZTextField.swift in Sources */,
 				041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */,
 				041CF8BB2B9DCD77003D2A58 /* UIButton.swift in Sources */,
@@ -358,6 +408,8 @@
 				041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */,
 				041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */,
 				041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */,
+				041CF8D42B9EFE86003D2A58 /* ProfileViewController.swift in Sources */,
+				041CF8D22B9EFE78003D2A58 /* FavoritesViewController.swift in Sources */,
 				041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
