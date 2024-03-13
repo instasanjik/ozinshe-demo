@@ -11,6 +11,7 @@ public enum DefaultStyle {
 
     public enum Colors {
         
+        // MARK: Main colors
         public static let white: UIColor = {
             return .white
         }()
@@ -19,12 +20,16 @@ public enum DefaultStyle {
             return .white
         }()
         
-        
         public static let background: UIColor = {
             return UIColor(hex: "111827")
         }()
         
+        public static let error: UIColor = {
+            return UIColor(hex: "FF402B")
+        }()
         
+        
+        // MARK: Purple shades
         public static let purple300: UIColor = {
             return UIColor(hex: "B376F7")
         }()
@@ -38,6 +43,7 @@ public enum DefaultStyle {
         }()
         
         
+        // MARK: Gray shades
         public static let gray400: UIColor = {
             return UIColor(hex: "9CA3AF")
         }()
@@ -57,12 +63,21 @@ public enum DefaultStyle {
         public static let gray800: UIColor = {
             return UIColor(hex: "1C2431")
         }()
+    }
+    
+    public enum StaticColors {
         
-        
-        public static let error: UIColor = {
-            return UIColor(hex: "FF402B")
+        public static let white: UIColor = {
+            return .white
         }()
         
+        public static let label: UIColor = {
+            return .white
+        }()
+        
+        public static let purple500: UIColor = {
+            return UIColor(hex: "7E2DFC")
+        }()
         
     }
     

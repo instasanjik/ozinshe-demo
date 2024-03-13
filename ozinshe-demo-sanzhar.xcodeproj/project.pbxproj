@@ -31,6 +31,10 @@
 		041CF8D02B9EFE5B003D2A58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8CF2B9EFE5B003D2A58 /* SearchViewController.swift */; };
 		041CF8D22B9EFE78003D2A58 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8D12B9EFE78003D2A58 /* FavoritesViewController.swift */; };
 		041CF8D42B9EFE86003D2A58 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8D32B9EFE86003D2A58 /* ProfileViewController.swift */; };
+		041CF8D92BA168BF003D2A58 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8D82BA168BF003D2A58 /* HeaderTableViewCell.swift */; };
+		041CF8DD2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8DC2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift */; };
+		041CF8E02BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8DF2BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift */; };
+		041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E12BA1D210003D2A58 /* KeepWatchingTableViewCell.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +65,10 @@
 		041CF8CF2B9EFE5B003D2A58 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		041CF8D12B9EFE78003D2A58 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		041CF8D32B9EFE86003D2A58 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		041CF8D82BA168BF003D2A58 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		041CF8DC2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationCollectionViewCell.swift; sourceTree = "<group>"; };
+		041CF8DF2BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepWatchingCollectionViewCell.swift; sourceTree = "<group>"; };
+		041CF8E12BA1D210003D2A58 /* KeepWatchingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepWatchingTableViewCell.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				041CF8CD2B9EFE50003D2A58 /* HomeViewController.swift */,
+				041CF8D52B9F16E6003D2A58 /* TableViewCells */,
 			);
 			path = HomeScenes;
 			sourceTree = "<group>";
@@ -254,6 +263,33 @@
 				041CF8D32B9EFE86003D2A58 /* ProfileViewController.swift */,
 			);
 			path = ProfileScenes;
+			sourceTree = "<group>";
+		};
+		041CF8D52B9F16E6003D2A58 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8DA2BA17139003D2A58 /* HeaderScene */,
+				041CF8DE2BA1D1E6003D2A58 /* KeepWatchingScene */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		041CF8DA2BA17139003D2A58 /* HeaderScene */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8D82BA168BF003D2A58 /* HeaderTableViewCell.swift */,
+				041CF8DC2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift */,
+			);
+			path = HeaderScene;
+			sourceTree = "<group>";
+		};
+		041CF8DE2BA1D1E6003D2A58 /* KeepWatchingScene */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8E12BA1D210003D2A58 /* KeepWatchingTableViewCell.swift */,
+				041CF8DF2BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift */,
+			);
+			path = KeepWatchingScene;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
@@ -390,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041CF8DD2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift in Sources */,
 				041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */,
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */,
@@ -399,13 +436,16 @@
 				041CF8CE2B9EFE50003D2A58 /* HomeViewController.swift in Sources */,
 				041CF8B02B8E433C003D2A58 /* OZTextField.swift in Sources */,
 				041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */,
+				041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */,
 				041CF8BB2B9DCD77003D2A58 /* UIButton.swift in Sources */,
 				041CF89A2B8DC0D1003D2A58 /* UIColor.swift in Sources */,
 				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,
 				041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */,
 				041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */,
 				041CF8B22B9DA043003D2A58 /* OZTextFieldView.swift in Sources */,
+				041CF8E02BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift in Sources */,
 				041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */,
+				041CF8D92BA168BF003D2A58 /* HeaderTableViewCell.swift in Sources */,
 				041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */,
 				041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */,
 				041CF8D42B9EFE86003D2A58 /* ProfileViewController.swift in Sources */,
