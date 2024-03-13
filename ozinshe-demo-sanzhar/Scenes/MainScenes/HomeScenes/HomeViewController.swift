@@ -22,6 +22,8 @@ class HomeViewController: UIViewController {
                            forCellReuseIdentifier: HeaderTableViewCell.ID)
         tableView.register(KeepWatchingTableViewCell.self, 
                            forCellReuseIdentifier: KeepWatchingTableViewCell.ID)
+        tableView.register(GalleryListTableViewCell.self,
+                           forCellReuseIdentifier: GalleryListTableViewCell.ID)
         
         return tableView
     }()
@@ -57,7 +59,7 @@ extension HomeViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,6 +77,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: KeepWatchingTableViewCell.ID,
                                                  for: indexPath)
+        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: GalleryListTableViewCell.ID,
+                                                 for: indexPath)
         default:
             print(1)
         }
@@ -85,7 +90,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0: return 328
-        case 1: return 196
+        case 1: return 194
+        case 2: return 259
         default: return 0
         }
     }

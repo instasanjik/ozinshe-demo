@@ -1,5 +1,5 @@
 //
-//  KeepWatchingTableViewCell.swift
+//  GalleryListTableViewCell.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 13.03.2024.
@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class KeepWatchingTableViewCell: UITableViewCell {
+class GalleryListTableViewCell: UITableViewCell {
     
-    static let ID: String = "KeepWatchingTableViewCell"
+    static let ID: String = "GalleryListTableViewCell"
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
@@ -23,7 +23,7 @@ class KeepWatchingTableViewCell: UITableViewCell {
     lazy var contentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-        layout.itemSize = CGSizeMake(184, 152)
+        layout.itemSize = CGSizeMake(112, 219)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
@@ -33,8 +33,8 @@ class KeepWatchingTableViewCell: UITableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         
-        collectionView.register(KeepWatchingCollectionViewCell.self,
-                                forCellWithReuseIdentifier: KeepWatchingCollectionViewCell.ID)
+        collectionView.register(GalleryListCollectionViewCell.self,
+                                forCellWithReuseIdentifier: GalleryListCollectionViewCell.ID)
         return collectionView
     }()
 
@@ -60,7 +60,7 @@ class KeepWatchingTableViewCell: UITableViewCell {
 
 
 // MARK: UI Setups
-extension KeepWatchingTableViewCell {
+extension GalleryListTableViewCell {
     
     private func setupChapterTitleLabel() {
         self.contentView.addSubview(chapterTitleLabel)
@@ -78,6 +78,7 @@ extension KeepWatchingTableViewCell {
         contentCollectionView.snp.makeConstraints { make in
             make.top.equalTo(chapterTitleLabel.snp.bottom).inset(-16)
             make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(224)
         }
     }
     
@@ -85,14 +86,14 @@ extension KeepWatchingTableViewCell {
 }
 
 
-extension KeepWatchingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension GalleryListTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeepWatchingCollectionViewCell.ID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath)
         return cell
     }
     

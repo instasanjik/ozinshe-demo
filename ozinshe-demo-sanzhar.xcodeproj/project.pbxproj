@@ -35,6 +35,8 @@
 		041CF8DD2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8DC2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift */; };
 		041CF8E02BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8DF2BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift */; };
 		041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E12BA1D210003D2A58 /* KeepWatchingTableViewCell.swift */; };
+		041CF8E52BA1D904003D2A58 /* GalleryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E42BA1D904003D2A58 /* GalleryListTableViewCell.swift */; };
+		041CF8E72BA1D914003D2A58 /* GalleryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E62BA1D914003D2A58 /* GalleryListCollectionViewCell.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		041CF8DC2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		041CF8DF2BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepWatchingCollectionViewCell.swift; sourceTree = "<group>"; };
 		041CF8E12BA1D210003D2A58 /* KeepWatchingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepWatchingTableViewCell.swift; sourceTree = "<group>"; };
+		041CF8E42BA1D904003D2A58 /* GalleryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListTableViewCell.swift; sourceTree = "<group>"; };
+		041CF8E62BA1D914003D2A58 /* GalleryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListCollectionViewCell.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,6 +274,7 @@
 			children = (
 				041CF8DA2BA17139003D2A58 /* HeaderScene */,
 				041CF8DE2BA1D1E6003D2A58 /* KeepWatchingScene */,
+				041CF8E32BA1D8C8003D2A58 /* GalleryListScene */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -290,6 +295,15 @@
 				041CF8DF2BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift */,
 			);
 			path = KeepWatchingScene;
+			sourceTree = "<group>";
+		};
+		041CF8E32BA1D8C8003D2A58 /* GalleryListScene */ = {
+			isa = PBXGroup;
+			children = (
+				041CF8E42BA1D904003D2A58 /* GalleryListTableViewCell.swift */,
+				041CF8E62BA1D914003D2A58 /* GalleryListCollectionViewCell.swift */,
+			);
+			path = GalleryListScene;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
@@ -428,6 +442,7 @@
 			files = (
 				041CF8DD2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift in Sources */,
 				041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */,
+				041CF8E52BA1D904003D2A58 /* GalleryListTableViewCell.swift in Sources */,
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */,
 				041CF8C72B9EFDB3003D2A58 /* MainTabBarController.swift in Sources */,
@@ -448,6 +463,7 @@
 				041CF8D92BA168BF003D2A58 /* HeaderTableViewCell.swift in Sources */,
 				041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */,
 				041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */,
+				041CF8E72BA1D914003D2A58 /* GalleryListCollectionViewCell.swift in Sources */,
 				041CF8D42B9EFE86003D2A58 /* ProfileViewController.swift in Sources */,
 				041CF8D22B9EFE78003D2A58 /* FavoritesViewController.swift in Sources */,
 				041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */,

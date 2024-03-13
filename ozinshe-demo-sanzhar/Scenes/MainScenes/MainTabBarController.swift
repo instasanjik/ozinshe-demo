@@ -15,7 +15,7 @@ class MainTabBarController: UITabBarController {
         
         tabBar.isTranslucent = false
         tabBar.backgroundColor = Style.Colors.gray800
-        tabBar.barTintColor = Style.Colors.gray500
+        tabBar.barTintColor = Style.Colors.gray800
     }
     
     func setupViewControllers() {
