@@ -75,6 +75,10 @@ public enum DefaultStyle {
             return .white
         }()
         
+        public static let purple300: UIColor = {
+            return UIColor(hex: "B376F7")
+        }()
+        
         public static let purple500: UIColor = {
             return UIColor(hex: "7E2DFC")
         }()

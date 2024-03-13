@@ -1,5 +1,5 @@
 //
-//  GalleryListTableViewCell.swift
+//  MovieCardTableViewCell.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 13.03.2024.
@@ -8,16 +8,17 @@
 import UIKit
 import SnapKit
 
-class GalleryListTableViewCell: UITableViewCell {
+class MovieCardTableViewCell: UITableViewCell {
     
-    static let ID: String = "GalleryListTableViewCell"
+    static let ID: String = "MovieCardTableViewCell"
+    
+    var content: [CardContent] = []
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Тв-бағдарлама және реалити-шоу"
+        label.text = "Трендтегілер"
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
-        label.numberOfLines = 2
         return label
     }()
     
@@ -33,7 +34,7 @@ class GalleryListTableViewCell: UITableViewCell {
     lazy var contentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-        layout.itemSize = CGSizeMake(112, 219)
+        layout.itemSize = CGSizeMake(184, 112)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
@@ -43,8 +44,8 @@ class GalleryListTableViewCell: UITableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         
-        collectionView.register(GalleryListCollectionViewCell.self,
-                                forCellWithReuseIdentifier: GalleryListCollectionViewCell.ID)
+        collectionView.register(MovieCardCollectionViewCell.self,
+                                forCellWithReuseIdentifier: MovieCardCollectionViewCell.ID)
         return collectionView
     }()
 
@@ -71,15 +72,15 @@ class GalleryListTableViewCell: UITableViewCell {
 
 
 // MARK: UI Setups
-extension GalleryListTableViewCell {
+extension MovieCardTableViewCell {
     
     private func setupChapterTitleLabel() {
         self.contentView.addSubview(chapterTitleLabel)
         
         chapterTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalToSuperview().inset(24)
-            make.right.equalToSuperview().inset(112)
+            make.left.right.equalToSuperview().inset(24)
+            make.height.equalTo(24)
         }
     }
     
@@ -107,14 +108,17 @@ extension GalleryListTableViewCell {
 }
 
 
-extension GalleryListTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: Collection View Delegates
+extension MovieCardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return content.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCardCollectionViewCell.ID, for: indexPath) as! MovieCardCollectionViewCell
+        cell.nameLabel.text = content[indexPath.row].name
+        cell.previewImageView.image = content[indexPath.row].image
         return cell
     }
     
