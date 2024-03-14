@@ -5,5 +5,6 @@ target 'ozinshe-demo-sanzhar' do
   use_frameworks!
 
   pod 'SnapKit'
-
+  pod 'SkeletonView'
+  
 end

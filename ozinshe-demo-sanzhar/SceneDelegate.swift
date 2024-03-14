@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SkeletonView
+
+let DEFAULT_ANIMATION = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .topLeftBottomRight)
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,6 +25,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = MainTabBarController()
         window?.tintColor = Style.Colors.purple500
         window?.makeKeyAndVisible()
+        
+        SkeletonAppearance.default.gradient = SkeletonGradient(colors: [Style.Colors.gray800, Style.Colors.background, Style.Colors.gray800])
+//        SkeletonAppearance.
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

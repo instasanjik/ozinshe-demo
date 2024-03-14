@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class HeaderTableViewCell: UITableViewCell {
     
@@ -33,6 +34,8 @@ class HeaderTableViewCell: UITableViewCell {
         
         collectionView.register(RecomendationCollectionViewCell.self,
                                 forCellWithReuseIdentifier: RecomendationCollectionViewCell.ID)
+        
+        collectionView.isSkeletonable = true
         return collectionView
     }()
 
@@ -45,8 +48,13 @@ class HeaderTableViewCell: UITableViewCell {
         
         
         backgroundColor = .clear
+        
+        self.isSkeletonable = true
+        
         setupLogoImageView()
         setupRecomendationsCollectionView()
+        
+        
     }
     
     required init?(coder: NSCoder) {

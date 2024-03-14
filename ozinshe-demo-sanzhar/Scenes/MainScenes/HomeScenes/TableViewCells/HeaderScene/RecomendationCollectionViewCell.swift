@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class RecomendationCollectionViewCell: UICollectionViewCell {
     
@@ -17,6 +18,7 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 12
         imageView.layer.masksToBounds = true
+        imageView.isSkeletonable = true
         return imageView
     }()
     
@@ -25,6 +27,8 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
         label.text = "Қызғалдақтар мекені"
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
+        label.isSkeletonable = true
+        label.linesCornerRadius = 4
         return label
     }()
     
@@ -50,13 +54,15 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2
+        label.isSkeletonable = true
+        label.linesCornerRadius = 4
         return label
         
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        self.isSkeletonable = true
         setupPreviewImageView()
         setupNameLabel()
         setupDescriptionLabel()

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class HomeViewController: UIViewController {
     
@@ -35,6 +36,10 @@ class HomeViewController: UIViewController {
         view.backgroundColor = Style.Colors.background
         
         setupTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        mainTableView.cellForRow(at: IndexPath(row: 0, section: 0))?.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
     }
     
     
