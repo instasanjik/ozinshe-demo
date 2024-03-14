@@ -12,7 +12,7 @@
 		041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */; };
 		041CF8852B8CB340003D2A58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041CF8842B8CB340003D2A58 /* Assets.xcassets */; };
 		041CF8882B8CB340003D2A58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041CF8862B8CB340003D2A58 /* LaunchScreen.storyboard */; };
-		041CF89A2B8DC0D1003D2A58 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8992B8DC0D1003D2A58 /* UIColor.swift */; };
+		041CF89A2B8DC0D1003D2A58 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8992B8DC0D1003D2A58 /* UIColor+Extension.swift */; };
 		041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF89C2B8DC0D9003D2A58 /* ColorPalette.swift */; };
 		041CF89F2B8DC0E9003D2A58 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */; };
 		041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */; };
@@ -24,7 +24,7 @@
 		041CF8B22B9DA043003D2A58 /* OZTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */; };
 		041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B62B9DB2BA003D2A58 /* Date.swift */; };
 		041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B82B9DB312003D2A58 /* Logger.swift */; };
-		041CF8BB2B9DCD77003D2A58 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8BA2B9DCD77003D2A58 /* UIButton.swift */; };
+		041CF8BB2B9DCD77003D2A58 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8BA2B9DCD77003D2A58 /* UIButton+Extension.swift */; };
 		041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */; };
 		041CF8C72B9EFDB3003D2A58 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8C62B9EFDB3003D2A58 /* MainTabBarController.swift */; };
 		041CF8CE2B9EFE50003D2A58 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8CD2B9EFE50003D2A58 /* HomeViewController.swift */; };
@@ -51,7 +51,7 @@
 		041CF8842B8CB340003D2A58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		041CF8872B8CB340003D2A58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		041CF8892B8CB340003D2A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		041CF8992B8DC0D1003D2A58 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		041CF8992B8DC0D1003D2A58 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		041CF89C2B8DC0D9003D2A58 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = "ozinshe-demo-sanzhar/Common/Resourses/Localizable.xcstrings"; sourceTree = SOURCE_ROOT; };
 		041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZTextFieldView.swift; sourceTree = "<group>"; };
 		041CF8B62B9DB2BA003D2A58 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		041CF8B82B9DB312003D2A58 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		041CF8BA2B9DCD77003D2A58 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		041CF8BA2B9DCD77003D2A58 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		041CF8C62B9EFDB3003D2A58 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		041CF8CD2B9EFE50003D2A58 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -218,8 +218,8 @@
 		041CF8C32B9EF7D1003D2A58 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8992B8DC0D1003D2A58 /* UIColor.swift */,
-				041CF8BA2B9DCD77003D2A58 /* UIButton.swift */,
+				041CF8992B8DC0D1003D2A58 /* UIColor+Extension.swift */,
+				041CF8BA2B9DCD77003D2A58 /* UIButton+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -234,6 +234,7 @@
 		041CF8C52B9EFD66003D2A58 /* MainScenes */ = {
 			isa = PBXGroup;
 			children = (
+				041CF8F92BA30F73003D2A58 /* MovieInfoScene */,
 				041CF8C62B9EFDB3003D2A58 /* MainTabBarController.swift */,
 				041CF8C82B9EFDF9003D2A58 /* HomeScenes */,
 				041CF8C92B9EFE0E003D2A58 /* SearchScenes */,
@@ -321,6 +322,13 @@
 				041CF8E92BA1E436003D2A58 /* MovieCardCollectionViewCell.swift */,
 			);
 			path = GenresScene;
+			sourceTree = "<group>";
+		};
+		041CF8F92BA30F73003D2A58 /* MovieInfoScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MovieInfoScene;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
@@ -471,8 +479,8 @@
 				041CF8EC2BA1E447003D2A58 /* MovieCardTableViewCell.swift in Sources */,
 				041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */,
 				041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */,
-				041CF8BB2B9DCD77003D2A58 /* UIButton.swift in Sources */,
-				041CF89A2B8DC0D1003D2A58 /* UIColor.swift in Sources */,
+				041CF8BB2B9DCD77003D2A58 /* UIButton+Extension.swift in Sources */,
+				041CF89A2B8DC0D1003D2A58 /* UIColor+Extension.swift in Sources */,
 				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,
 				041CF8EA2BA1E436003D2A58 /* MovieCardCollectionViewCell.swift in Sources */,
 				041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */,
