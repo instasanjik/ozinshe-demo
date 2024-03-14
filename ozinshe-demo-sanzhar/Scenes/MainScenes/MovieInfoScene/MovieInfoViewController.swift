@@ -15,9 +15,14 @@ class MovieInfoViewController: UIViewController {
         return scrollView
     }()
     
-    lazy var contentView = UIView()
+    lazy var contentView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = -32
+        return stackView
+    }()
     
-    lazy var headerView = UIView()
+    lazy var containerView = UIView()
     
     lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
@@ -26,7 +31,7 @@ class MovieInfoViewController: UIViewController {
         return imageView
     }()
     
-    lazy var backgroundView: UIView = {
+    lazy var infoView: UIView = {
         let view = UIView()
         view.backgroundColor = Style.Colors.background
         view.clipsToBounds = true
@@ -49,8 +54,7 @@ class MovieInfoViewController: UIViewController {
         
         setupScrollView()
         setupPreviewImageView()
-        setupBackgroundView()
-        setupShadowGradientView()
+        setupInfoView()
     }
     
     
@@ -69,20 +73,27 @@ extension MovieInfoViewController {
         scrollView.addSubview(contentView)
         
         contentView.snp.makeConstraints { make in
-            make.top.equalTo(scrollView.contentLayoutGuide).inset(-ScreenSize.statusBarHeight)
-            make.left.right.bottom.equalTo(scrollView.contentLayoutGuide)
-            make.height.equalTo(scrollView.frameLayoutGuide).priority(250)
-            make.width.equalTo(scrollView.frameLayoutGuide)
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
         }
     }
     
     fileprivate func setupPreviewImageView() {
-        contentView.addSubview(previewImageView)
+        contentView.addArrangedSubview(containerView)
+        containerView.backgroundColor = .red
         
-        previewImageView.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+        containerView.snp.makeConstraints { make in
             make.height.equalTo(340)
         }
+        
+        
+        containerView.addSubview(previewImageView)
+        
+        previewImageView.snp.makeConstraints { make in
+            make.top.equalTo(view)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
         
         previewImageView.addSubview(shadowGradientView)
         
@@ -91,23 +102,11 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupBackgroundView() {
-        contentView.addSubview(backgroundView)
+    fileprivate func setupInfoView() {
+        contentView.addArrangedSubview(infoView)
         
-        backgroundView.snp.makeConstraints { make in
-            make.top.equalTo(previewImageView.snp.bottom).inset(32)
-            make.left.right.equalToSuperview()
+        infoView.snp.makeConstraints { make in
             make.height.equalTo(900)
-            make.bottom.equalToSuperview()
-        }
-    }
-    
-    fileprivate func setupShadowGradientView() {
-        previewImageView.addSubview(shadowGradientView)
-        
-        shadowGradientView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.height.equalToSuperview()
         }
     }
     
