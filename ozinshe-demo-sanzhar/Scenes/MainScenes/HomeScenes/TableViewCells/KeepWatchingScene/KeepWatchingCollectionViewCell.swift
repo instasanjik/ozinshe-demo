@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class KeepWatchingCollectionViewCell: UICollectionViewCell {
     
@@ -17,6 +18,7 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
+        imageView.isSkeletonable = true
         return imageView
     }()
     
@@ -25,6 +27,8 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         label.text = "Қызғалдақтар мекені"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.label
+        label.isSkeletonable = true
+        label.linesCornerRadius = 4
         return label
     }()
     
@@ -34,6 +38,8 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2
+        label.isSkeletonable = true
+        label.linesCornerRadius = 4
         return label
         
     }()
@@ -44,6 +50,8 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         setupPreviewImageView()
         setupNameLabel()
         setupDescriptionLabel()
+        
+        self.isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {

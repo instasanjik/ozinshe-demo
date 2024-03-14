@@ -62,11 +62,13 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.isSkeletonable = true
+        
         setupPreviewImageView()
         setupNameLabel()
         setupDescriptionLabel()
         setupTypeName()
+        
+        self.isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {

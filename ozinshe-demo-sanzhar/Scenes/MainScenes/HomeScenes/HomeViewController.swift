@@ -40,6 +40,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         mainTableView.cellForRow(at: IndexPath(row: 0, section: 0))?.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+        mainTableView.cellForRow(at: IndexPath(row: 0, section: 1))?.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
     }
     
     
