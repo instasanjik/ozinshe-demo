@@ -44,6 +44,10 @@ public enum DefaultStyle {
         
         
         // MARK: Gray shades
+        public static let gray200: UIColor = {
+            return UIColor(hex: "E5E7EB")
+        }()
+        
         public static let gray400: UIColor = {
             return UIColor(hex: "9CA3AF")
         }()
@@ -74,6 +78,12 @@ public enum DefaultStyle {
         public static let label: UIColor = {
             return .white
         }()
+        
+        
+        public static let gray400: UIColor = {
+            return UIColor(hex: "9CA3AF")
+        }()
+        
         
         public static let purple300: UIColor = {
             return UIColor(hex: "B376F7")
