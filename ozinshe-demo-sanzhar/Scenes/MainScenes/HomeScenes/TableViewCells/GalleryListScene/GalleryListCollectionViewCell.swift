@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class GalleryListCollectionViewCell: UICollectionViewCell {
     
@@ -17,6 +18,7 @@ class GalleryListCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
+        imageView.isSkeletonable = true
         return imageView
     }()
     
@@ -25,7 +27,9 @@ class GalleryListCollectionViewCell: UICollectionViewCell {
         label.text = "Қызғалдақтар мекені"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.label
-        label.numberOfLines = 2
+        label.numberOfLines = 1 // TODO: When skeleton is stop - make 2 lines
+        label.isSkeletonable = true
+        label.linesCornerRadius = 2
         return label
     }()
     
@@ -34,6 +38,8 @@ class GalleryListCollectionViewCell: UICollectionViewCell {
         label.text = "2-бөлім"
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
+        label.isSkeletonable = true
+        label.linesCornerRadius = 2
         return label
         
     }()
@@ -44,6 +50,8 @@ class GalleryListCollectionViewCell: UICollectionViewCell {
         setupPreviewImageView()
         setupNameLabel()
         setupDescriptionLabel()
+        
+        self.isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {

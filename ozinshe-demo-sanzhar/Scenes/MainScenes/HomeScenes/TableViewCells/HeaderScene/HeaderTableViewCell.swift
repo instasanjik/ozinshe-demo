@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class HeaderTableViewCell: UITableViewCell {
     
@@ -33,6 +34,8 @@ class HeaderTableViewCell: UITableViewCell {
         
         collectionView.register(RecomendationCollectionViewCell.self,
                                 forCellWithReuseIdentifier: RecomendationCollectionViewCell.ID)
+        
+        collectionView.isSkeletonable = true
         return collectionView
     }()
 
@@ -45,8 +48,13 @@ class HeaderTableViewCell: UITableViewCell {
         
         
         backgroundColor = .clear
+        
+        self.isSkeletonable = true
+        
         setupLogoImageView()
         setupRecomendationsCollectionView()
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -93,6 +101,19 @@ extension HeaderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecomendationCollectionViewCell.ID, for: indexPath)
         return cell
+    }
+    
+    
+}
+
+extension HeaderTableViewCell {
+    
+    public func showSkeletonWithAnimation() {
+        recomentationsCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+    }
+    
+    public func hideSkeletonAnimation() {
+        recomentationsCollectionView.hideSkeleton()
     }
     
     

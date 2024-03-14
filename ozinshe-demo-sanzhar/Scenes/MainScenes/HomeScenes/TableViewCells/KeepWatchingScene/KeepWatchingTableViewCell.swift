@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class KeepWatchingTableViewCell: UITableViewCell {
     
@@ -32,6 +33,7 @@ class KeepWatchingTableViewCell: UITableViewCell {
         
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
+        collectionView.isSkeletonable = true
         
         collectionView.register(KeepWatchingCollectionViewCell.self,
                                 forCellWithReuseIdentifier: KeepWatchingCollectionViewCell.ID)
@@ -49,6 +51,8 @@ class KeepWatchingTableViewCell: UITableViewCell {
         backgroundColor = .clear
         setupChapterTitleLabel()
         setupContentCollectionView()
+        
+        self.isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {
@@ -94,6 +98,19 @@ extension KeepWatchingTableViewCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeepWatchingCollectionViewCell.ID, for: indexPath)
         return cell
+    }
+    
+    
+}
+
+extension KeepWatchingTableViewCell {
+    
+    public func showSkeletonWithAnimation() {
+        contentCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+    }
+    
+    public func hideSkeletonAnimation() {
+        contentCollectionView.hideSkeleton()
     }
     
     
