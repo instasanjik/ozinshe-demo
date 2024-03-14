@@ -85,25 +85,25 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath)
             cell.selectionStyle = .none
             return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: GalleryListTableViewCell.ID,
-                                                 for: indexPath)
-            cell.selectionStyle = .none
-            return cell
+//        case 3:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: GalleryListTableViewCell.ID,
+//                                                 for: indexPath)
+//            cell.selectionStyle = .none
+//            return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: MovieCardTableViewCell.ID,
                                                      for: indexPath) as! MovieCardTableViewCell
             cell.selectionStyle = .none
             cell.content = StaticData.genres
             return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MovieCardTableViewCell.ID,
-                                                     for: indexPath) as! MovieCardTableViewCell
-            cell.selectionStyle = .none
-            cell.content = StaticData.ageCategories
-            return cell
+//        case 5:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: MovieCardTableViewCell.ID,
+//                                                     for: indexPath) as! MovieCardTableViewCell
+//            cell.selectionStyle = .none
+//            cell.content = StaticData.ageCategories
+//            return cell
         default:
-            return UITableViewCell()
+            return UITableViewCell(frame: .zero)
         }
     }
     
@@ -112,9 +112,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 0: return 328
         case 1: return 194
         case 2: return 259
-        case 3: return 259
+//        case 3: return 259
         case 4: return 150
-        case 5: return 150
+//        case 5: return 150
         default: return 0
         }
     }
