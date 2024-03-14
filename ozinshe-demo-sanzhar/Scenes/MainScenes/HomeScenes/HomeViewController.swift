@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
                            forCellReuseIdentifier: GalleryListTableViewCell.ID)
         tableView.register(MovieCardTableViewCell.self,
                            forCellReuseIdentifier: MovieCardTableViewCell.ID)
+        
         return tableView
     }()
     
@@ -39,15 +40,15 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
-            cell.showSkeletonWithAnimation()
-        }
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? KeepWatchingTableViewCell {
-            cell.showSkeletonWithAnimation()
-        }
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? GalleryListTableViewCell {
-            cell.showSkeletonWithAnimation()
-        }
+//        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
+//            cell.showSkeletonWithAnimation()
+//        }
+//        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? KeepWatchingTableViewCell {
+//            cell.showSkeletonWithAnimation()
+//        }
+//        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? GalleryListTableViewCell {
+//            cell.showSkeletonWithAnimation()
+//        }
     }
     
     

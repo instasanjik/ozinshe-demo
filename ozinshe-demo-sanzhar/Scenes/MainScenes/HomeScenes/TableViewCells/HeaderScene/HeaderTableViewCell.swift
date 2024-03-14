@@ -112,5 +112,9 @@ extension HeaderTableViewCell {
         recomentationsCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
     }
     
+    public func hideSkeletonAnimation() {
+        recomentationsCollectionView.hideSkeleton()
+    }
+    
     
 }

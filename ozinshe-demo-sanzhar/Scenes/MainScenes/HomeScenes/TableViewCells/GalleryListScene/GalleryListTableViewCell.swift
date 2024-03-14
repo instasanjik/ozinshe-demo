@@ -132,5 +132,9 @@ extension GalleryListTableViewCell {
         contentCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
     }
     
+    public func hideSkeletonAnimation() {
+        contentCollectionView.hideSkeleton()
+    }
+    
     
 }
