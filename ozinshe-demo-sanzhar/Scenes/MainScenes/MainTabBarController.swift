@@ -21,8 +21,8 @@ class MainTabBarController: UITabBarController {
     func setupViewControllers() {
         Logger.log(.action, "\(traitCollection.userInterfaceStyle.rawValue)")
         
-        let homeViewController = HomeViewController()
-        homeViewController.tabBarItem.image = UIImage(named: "Home", in: Bundle(for: MainTabBarController.self), compatibleWith: nil)
+        let homeViewController = MovieInfoViewController()
+        homeViewController.tabBarItem.image = UIImage(named: "Home", in: Bundle(for: MovieInfoViewController.self), compatibleWith: nil)
         homeViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
         
         let searchViewController = SearchViewController()

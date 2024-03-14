@@ -40,6 +40,7 @@
 		041CF8EA2BA1E436003D2A58 /* MovieCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E92BA1E436003D2A58 /* MovieCardCollectionViewCell.swift */; };
 		041CF8EC2BA1E447003D2A58 /* MovieCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8EB2BA1E447003D2A58 /* MovieCardTableViewCell.swift */; };
 		041CF8EE2BA1E84A003D2A58 /* StaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8ED2BA1E84A003D2A58 /* StaticData.swift */; };
+		041CF8FB2BA30FCA003D2A58 /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8FA2BA30FCA003D2A58 /* MovieInfoViewController.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		041CF8E92BA1E436003D2A58 /* MovieCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		041CF8EB2BA1E447003D2A58 /* MovieCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardTableViewCell.swift; sourceTree = "<group>"; };
 		041CF8ED2BA1E84A003D2A58 /* StaticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticData.swift; sourceTree = "<group>"; };
+		041CF8FA2BA30FCA003D2A58 /* MovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,12 +236,12 @@
 		041CF8C52B9EFD66003D2A58 /* MainScenes */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8F92BA30F73003D2A58 /* MovieInfoScene */,
 				041CF8C62B9EFDB3003D2A58 /* MainTabBarController.swift */,
 				041CF8C82B9EFDF9003D2A58 /* HomeScenes */,
 				041CF8C92B9EFE0E003D2A58 /* SearchScenes */,
 				041CF8CA2B9EFE1E003D2A58 /* FavoriteScenes */,
 				041CF8CB2B9EFE27003D2A58 /* ProfileScenes */,
+				041CF8F92BA30F73003D2A58 /* MovieInfoScene */,
 			);
 			path = MainScenes;
 			sourceTree = "<group>";
@@ -327,6 +329,7 @@
 		041CF8F92BA30F73003D2A58 /* MovieInfoScene */ = {
 			isa = PBXGroup;
 			children = (
+				041CF8FA2BA30FCA003D2A58 /* MovieInfoViewController.swift */,
 			);
 			path = MovieInfoScene;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				041CF8EC2BA1E447003D2A58 /* MovieCardTableViewCell.swift in Sources */,
 				041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */,
 				041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */,
+				041CF8FB2BA30FCA003D2A58 /* MovieInfoViewController.swift in Sources */,
 				041CF8BB2B9DCD77003D2A58 /* UIButton+Extension.swift in Sources */,
 				041CF89A2B8DC0D1003D2A58 /* UIColor+Extension.swift in Sources */,
 				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,
