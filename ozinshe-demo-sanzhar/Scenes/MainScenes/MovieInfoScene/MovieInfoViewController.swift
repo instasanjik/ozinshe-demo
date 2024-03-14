@@ -10,6 +10,10 @@ import SnapKit
 
 class MovieInfoViewController: UIViewController {
     
+    let desctiprionGradientLayer = CAGradientLayer()
+    
+    var isDescriptionRevealed: Bool = false
+    
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         return scrollView
@@ -113,12 +117,23 @@ class MovieInfoViewController: UIViewController {
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Шытырман оқиғалы мультсериал Елбасының «Ұлы даланың жеті қыры» бағдарламасы аясында жүзеге асырылған. Мақалада қызғалдақтардың отаны Қазақстан екені айтылады. Ал, жоба қызғалдақтардың отаны – Алатау баурайы екенін анимация тілінде дәлелдей түседі."
+        label.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray200
         label.numberOfLines = 7
         return label
     }()
+    
+    lazy var moreButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Толығырақ", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        button.setTitleColor(Style.StaticColors.purple300, for: .normal)
+        button.contentVerticalAlignment = .top
+        button.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     
     
 
@@ -133,6 +148,10 @@ class MovieInfoViewController: UIViewController {
         setupScrollView()
         setupPreviewImageView()
         setupInfoView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        setupDesctiptionConfig()
     }
     
     
@@ -252,6 +271,7 @@ extension MovieInfoViewController {
         setupShortInfoLabel()
         setupSeparator1View()
         setupDescriptionTextView()
+        setupMoreButton()
         
     }
     
@@ -286,9 +306,65 @@ extension MovieInfoViewController {
         infoView.addSubview(descriptionLabel)
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(separator1View.snp.bottom).inset(-1)
+            make.top.equalTo(separator1View.snp.bottom).inset(-24)
             make.left.right.equalToSuperview().inset(24)
         }
+        
+        desctiprionGradientLayer.colors = [Style.Colors.background.withAlphaComponent(0.0).cgColor,
+                                           Style.Colors.background.cgColor]
+        
+        desctiprionGradientLayer.startPoint = CGPoint(x: 0, y: 0.1)
+        desctiprionGradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        
+        descriptionLabel.layer.insertSublayer(desctiprionGradientLayer, at: 0)
     }
+    
+    fileprivate func setupDesctiptionConfig() {
+        if descriptionLabel.isTruncated || isDescriptionRevealed {
+            moreButton.isHidden = false
+            moreButton.snp.updateConstraints { make in
+                make.top.equalTo(descriptionLabel.snp.bottom).inset(-24)
+                make.height.equalTo(24)
+            }
+            desctiprionGradientLayer.frame = descriptionLabel.bounds
+        } else {
+            moreButton.isHidden = true
+            moreButton.snp.updateConstraints { make in
+                make.top.equalTo(descriptionLabel.snp.bottom)
+                make.height.equalTo(0)
+            }
+        }
+    }
+    
+    fileprivate func setupMoreButton() {
+        infoView.addSubview(moreButton)
+        
+        moreButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().inset(24)
+            make.height.equalTo(24)
+            make.top.equalTo(descriptionLabel.snp.bottom).inset(-16)
+        }
+    }
+    
+}
+
+extension MovieInfoViewController {
+    
+    @objc func moreButtonTapped(_ sender: UIButton!) {
+        Logger.log(.action, "More button pressed")
+        if !isDescriptionRevealed { // show full text
+            UIView.transition(with: descriptionLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                self.descriptionLabel.numberOfLines = 0
+            })
+            self.moreButton.setTitle("Жасыру", for: .normal)
+            self.desctiprionGradientLayer.isHidden = true
+        } else { // shop short
+            self.descriptionLabel.numberOfLines = 7
+            self.moreButton.setTitle("Толығырақ", for: .normal)
+            desctiprionGradientLayer.isHidden = false
+        }
+        isDescriptionRevealed.toggle()
+    }
+    
     
 }
