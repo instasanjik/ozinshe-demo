@@ -39,8 +39,15 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        mainTableView.cellForRow(at: IndexPath(row: 0, section: 0))?.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
-        mainTableView.cellForRow(at: IndexPath(row: 0, section: 1))?.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
+            cell.showSkeletonWithAnimation()
+        }
+        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? KeepWatchingTableViewCell {
+            cell.showSkeletonWithAnimation()
+        }
+        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? GalleryListTableViewCell {
+            cell.showSkeletonWithAnimation()
+        }
     }
     
     

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class GalleryListTableViewCell: UITableViewCell {
     
@@ -42,6 +43,7 @@ class GalleryListTableViewCell: UITableViewCell {
         
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
+        collectionView.isSkeletonable = true
         
         collectionView.register(GalleryListCollectionViewCell.self,
                                 forCellWithReuseIdentifier: GalleryListCollectionViewCell.ID)
@@ -60,6 +62,8 @@ class GalleryListTableViewCell: UITableViewCell {
         setupChapterTitleLabel()
         setupMoreButton()
         setupContentCollectionView()
+        
+        self.isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {
@@ -116,6 +120,16 @@ extension GalleryListTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath)
         return cell
+    }
+    
+    
+}
+
+
+extension GalleryListTableViewCell {
+    
+    public func showSkeletonWithAnimation() {
+        contentCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
     }
     
     

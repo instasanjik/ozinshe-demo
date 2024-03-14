@@ -102,3 +102,12 @@ extension KeepWatchingTableViewCell: UICollectionViewDelegate, UICollectionViewD
     
     
 }
+
+extension KeepWatchingTableViewCell {
+    
+    public func showSkeletonWithAnimation() {
+        contentCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+    }
+    
+    
+}

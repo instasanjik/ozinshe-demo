@@ -105,3 +105,12 @@ extension HeaderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     
 }
+
+extension HeaderTableViewCell {
+    
+    public func showSkeletonWithAnimation() {
+        recomentationsCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+    }
+    
+    
+}

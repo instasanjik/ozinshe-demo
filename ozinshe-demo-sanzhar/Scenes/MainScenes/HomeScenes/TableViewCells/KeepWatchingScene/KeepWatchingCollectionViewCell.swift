@@ -28,7 +28,7 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.label
         label.isSkeletonable = true
-        label.linesCornerRadius = 4
+        label.linesCornerRadius = 2
         return label
     }()
     
@@ -39,7 +39,8 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2
         label.isSkeletonable = true
-        label.linesCornerRadius = 4
+        label.linesCornerRadius = 2
+        label.skeletonTextNumberOfLines = 1
         return label
         
     }()

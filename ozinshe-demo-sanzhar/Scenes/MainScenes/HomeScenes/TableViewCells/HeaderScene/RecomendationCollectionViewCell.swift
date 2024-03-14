@@ -55,7 +55,8 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2
         label.isSkeletonable = true
-        label.linesCornerRadius = 4
+        label.linesCornerRadius = 2
+        label.skeletonTextNumberOfLines = 1
         return label
         
     }()
