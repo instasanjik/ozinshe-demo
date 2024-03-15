@@ -10,7 +10,7 @@ import SnapKit
 
 class MovieInfoViewController: UIViewController {
     
-    let desctiprionGradientLayer = CAGradientLayer()
+    let descriptionGradientLayer = CAGradientLayer()
     
     var isDescriptionRevealed: Bool = false
     
@@ -120,7 +120,7 @@ class MovieInfoViewController: UIViewController {
         label.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray200
-        label.numberOfLines = 7
+        label.numberOfLines = 5
         return label
     }()
     
@@ -136,7 +136,7 @@ class MovieInfoViewController: UIViewController {
     
     
     
-
+    
     
     /* MARK: VIEW CONTROLLER LIFECYCLE */
     
@@ -151,7 +151,7 @@ class MovieInfoViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        setupDesctiptionConfig()
+        setupDescriptionConfig()
     }
     
     
@@ -310,23 +310,23 @@ extension MovieInfoViewController {
             make.left.right.equalToSuperview().inset(24)
         }
         
-        desctiprionGradientLayer.colors = [Style.Colors.background.withAlphaComponent(0.0).cgColor,
+        descriptionGradientLayer.colors = [Style.Colors.background.withAlphaComponent(0.0).cgColor,
                                            Style.Colors.background.cgColor]
         
-        desctiprionGradientLayer.startPoint = CGPoint(x: 0, y: 0.1)
-        desctiprionGradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        descriptionGradientLayer.startPoint = CGPoint(x: 0, y: 0.1)
+        descriptionGradientLayer.endPoint = CGPoint(x: 0, y: 1)
         
-        descriptionLabel.layer.insertSublayer(desctiprionGradientLayer, at: 0)
+        descriptionLabel.layer.insertSublayer(descriptionGradientLayer, at: 0)
     }
     
-    fileprivate func setupDesctiptionConfig() {
+    fileprivate func setupDescriptionConfig() {
         if descriptionLabel.isTruncated || isDescriptionRevealed {
             moreButton.isHidden = false
             moreButton.snp.updateConstraints { make in
                 make.top.equalTo(descriptionLabel.snp.bottom).inset(-24)
                 make.height.equalTo(24)
             }
-            desctiprionGradientLayer.frame = descriptionLabel.bounds
+            descriptionGradientLayer.frame = descriptionLabel.bounds
         } else {
             moreButton.isHidden = true
             moreButton.snp.updateConstraints { make in
@@ -357,11 +357,13 @@ extension MovieInfoViewController {
                 self.descriptionLabel.numberOfLines = 0
             })
             self.moreButton.setTitle("Жасыру", for: .normal)
-            self.desctiprionGradientLayer.isHidden = true
+            self.descriptionGradientLayer.isHidden = true
         } else { // shop short
-            self.descriptionLabel.numberOfLines = 7
+            UIView.transition(with: descriptionLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                self.descriptionLabel.numberOfLines = 4
+            })
             self.moreButton.setTitle("Толығырақ", for: .normal)
-            desctiprionGradientLayer.isHidden = false
+            descriptionGradientLayer.isHidden = false
         }
         isDescriptionRevealed.toggle()
     }
