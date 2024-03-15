@@ -19,7 +19,7 @@ class MovieInfoViewController: UIViewController {
         return scrollView
     }()
     
-    lazy var contentView: UIStackView = {
+    lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = -32
@@ -27,9 +27,10 @@ class MovieInfoViewController: UIViewController {
     }()
     
     
-    /* MARK: HEADER ELEMENTS */
     
-    lazy var containerView = UIView()
+    
+    /* MARK: HEADER ELEMENTS */
+    lazy var previewImageContainerView = UIView()
     
     lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
@@ -82,9 +83,10 @@ class MovieInfoViewController: UIViewController {
     }()
     
     
-    /* MARK: BODY ELEMENTS */
     
-    lazy var infoView: UIView = {
+    
+    /* MARK: BODY ELEMENTS */
+    lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = Style.Colors.background
         view.clipsToBounds = true
@@ -261,13 +263,11 @@ class MovieInfoViewController: UIViewController {
                                 forCellWithReuseIdentifier: GalleryListCollectionViewCell.ID)
         return collectionView
     }()
-
     
     
     
     
     /* MARK: VIEW CONTROLLER LIFECYCLE */
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -275,7 +275,7 @@ class MovieInfoViewController: UIViewController {
         
         setupScrollView()
         setupPreviewImageView()
-        setupInfoView()
+        setupContentView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -296,9 +296,9 @@ extension MovieInfoViewController {
             make.edges.equalToSuperview()
         }
         
-        scrollView.addSubview(contentView)
+        scrollView.addSubview(stackView)
         
-        contentView.snp.makeConstraints { make in
+        stackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.width.equalToSuperview()
         }
@@ -308,15 +308,15 @@ extension MovieInfoViewController {
     
     /* MARK: Header setups */
     fileprivate func setupPreviewImageView() {
-        contentView.addArrangedSubview(containerView)
-        containerView.backgroundColor = .red
+        stackView.addArrangedSubview(previewImageContainerView)
+        previewImageContainerView.backgroundColor = .red
         
-        containerView.snp.makeConstraints { make in
+        previewImageContainerView.snp.makeConstraints { make in
             make.height.equalTo(340)
         }
         
         
-        containerView.addSubview(previewImageView)
+        previewImageContainerView.addSubview(previewImageView)
         
         previewImageView.snp.makeConstraints { make in
             make.top.equalTo(view)
@@ -388,10 +388,10 @@ extension MovieInfoViewController {
     
     
     /* MARK: Body setups */
-    fileprivate func setupInfoView() {
-        contentView.addArrangedSubview(infoView)
+    fileprivate func setupContentView() {
+        stackView.addArrangedSubview(contentView)
         
-        infoView.snp.makeConstraints { make in
+        contentView.snp.makeConstraints { make in
             make.height.equalTo(900)
         }
         
@@ -420,7 +420,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupMovieNameLabel() {
-        infoView.addSubview(movieNameLabel)
+        contentView.addSubview(movieNameLabel)
         
         movieNameLabel.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview().inset(24)
@@ -428,7 +428,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupShortInfoLabel() {
-        infoView.addSubview(shortInfoLabel)
+        contentView.addSubview(shortInfoLabel)
         
         shortInfoLabel.snp.makeConstraints { make in
             make.top.equalTo(movieNameLabel.snp.bottom).inset(-8)
@@ -437,7 +437,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupSeparator1View() {
-        infoView.addSubview(separator1View)
+        contentView.addSubview(separator1View)
         
         separator1View.snp.makeConstraints { make in
             make.top.equalTo(shortInfoLabel.snp.bottom).inset(-24)
@@ -447,7 +447,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupDescriptionTextView() {
-        infoView.addSubview(descriptionLabel)
+        contentView.addSubview(descriptionLabel)
         
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(separator1View.snp.bottom).inset(-24)
@@ -481,7 +481,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupMoreButton() {
-        infoView.addSubview(moreButton)
+        contentView.addSubview(moreButton)
         
         moreButton.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).inset(-16)
@@ -491,7 +491,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupDirectorLabel() {
-        infoView.addSubview(directorLabel)
+        contentView.addSubview(directorLabel)
         
         directorLabel.snp.makeConstraints { make in
             make.top.equalTo(moreButton.snp.bottom).inset(-24)
@@ -500,7 +500,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupDirectorNameLabel() {
-        infoView.addSubview(directorNameLabel)
+        contentView.addSubview(directorNameLabel)
         
         directorNameLabel.snp.makeConstraints { make in
             make.top.equalTo(moreButton.snp.bottom).inset(-24)
@@ -510,7 +510,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupProducerLabel() {
-        infoView.addSubview(producerLabel)
+        contentView.addSubview(producerLabel)
         
         producerLabel.snp.makeConstraints { make in
             make.top.equalTo(directorLabel.snp.bottom).inset(-8)
@@ -519,7 +519,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupProducerNameLabel() {
-        infoView.addSubview(producerNameLabel)
+        contentView.addSubview(producerNameLabel)
         
         producerNameLabel.snp.makeConstraints { make in
             make.top.equalTo(directorLabel.snp.bottom).inset(-8)
@@ -529,7 +529,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupSeparator2View() {
-        infoView.addSubview(separator2View)
+        contentView.addSubview(separator2View)
         
         separator2View.snp.makeConstraints { make in
             make.top.equalTo(producerLabel.snp.bottom).inset(-24)
@@ -539,7 +539,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupSectionLabel() {
-        infoView.addSubview(sectionLabel)
+        contentView.addSubview(sectionLabel)
         
         sectionLabel.snp.makeConstraints { make in
             make.top.equalTo(separator2View.snp.bottom).inset(-24)
@@ -548,12 +548,12 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupSectionButton() {
-        infoView.addSubview(sectionButton)
+        contentView.addSubview(sectionButton)
         
         sectionButton.snp.makeConstraints { make in
             make.top.equalTo(separator2View.snp.bottom).inset(-24+8)
             make.right.equalToSuperview().inset(24)
-            make.left.equalTo(infoView.snp.centerX)
+            make.left.equalTo(contentView.snp.centerX)
             make.height.equalTo(32)
         }
     }
@@ -568,7 +568,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupScreenshotsLabel() {
-        infoView.addSubview(screenshotsLabel)
+        contentView.addSubview(screenshotsLabel)
         
         screenshotsLabel.snp.makeConstraints { make in
             make.top.equalTo(sectionLabel.snp.bottom).inset(-32)
@@ -577,7 +577,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupScreenshotsCollectionView() {
-        infoView.addSubview(screenshotsCollectionView)
+        contentView.addSubview(screenshotsCollectionView)
         
         screenshotsCollectionView.snp.makeConstraints { make in
             make.top.equalTo(screenshotsLabel.snp.bottom).inset(-16)
@@ -587,7 +587,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupSimilarSeriesLabel() {
-        infoView.addSubview(similarSeriesLabel)
+        contentView.addSubview(similarSeriesLabel)
         
         similarSeriesLabel.snp.makeConstraints { make in
             make.top.equalTo(screenshotsCollectionView.snp.bottom).inset(-24)
@@ -596,7 +596,7 @@ extension MovieInfoViewController {
     }
     
     fileprivate func setupSimilarCollectionView() {
-        infoView.addSubview(similarCollectionView)
+        contentView.addSubview(similarCollectionView)
         
         similarCollectionView.snp.makeConstraints { make in
             make.top.equalTo(similarSeriesLabel.snp.bottom).inset(-16)
@@ -639,7 +639,6 @@ extension MovieInfoViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         switch collectionView {
         case screenshotsCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenshotCollectionViewCell.ID, for: indexPath)
