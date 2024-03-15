@@ -134,6 +134,77 @@ class MovieInfoViewController: UIViewController {
         return button
     }()
     
+    lazy var directorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Режиссер:"
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.textColor = Style.Colors.gray600
+        return label
+    }()
+    
+    lazy var directorNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Бақдәулет Әлімбеков"
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.textColor = Style.Colors.gray400
+        return label
+    }()
+    
+    lazy var producerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Продюсер:"
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.textColor = Style.Colors.gray600
+        return label
+    }()
+    
+    lazy var producerNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Сандуғаш Кенжебаева"
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.textColor = Style.Colors.gray400
+        return label
+    }()
+    
+    lazy var separator2View: UIView = {
+        let view = UIView()
+        view.backgroundColor = Style.Colors.gray800
+        return view
+    }()
+    
+    lazy var sectionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Бөлімдер"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = Style.Colors.label
+        return label
+    }()
+    
+    lazy var sectionButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
+        button.setTitleColor(Style.Colors.gray400, for: .normal)
+        button.tintColor = Style.Colors.purple300
+        button.contentHorizontalAlignment = .right
+        return button
+    }()
+    
+    lazy var sectionInfoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "5 сезон, 46 серия"
+        label.font = .systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = Style.Colors.gray400
+        return label
+    }()
+    
+    lazy var screenshotsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Скриншоттар"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = Style.Colors.label
+        return label
+    }()
     
     
     
@@ -270,8 +341,21 @@ extension MovieInfoViewController {
         setupMovieNameLabel()
         setupShortInfoLabel()
         setupSeparator1View()
+        
         setupDescriptionTextView()
         setupMoreButton()
+        
+        setupDirectorLabel()
+        setupDirectorNameLabel()
+        setupProducerLabel()
+        setupProducerNameLabel()
+        setupSeparator2View()
+        
+        setupSectionButton()
+        setupSectionLabel()
+        setupSectionInfoLabel()
+        
+        setupScreenshotsLabel()
         
     }
     
@@ -340,11 +424,98 @@ extension MovieInfoViewController {
         infoView.addSubview(moreButton)
         
         moreButton.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).inset(-16)
             make.left.equalToSuperview().inset(24)
             make.height.equalTo(24)
-            make.top.equalTo(descriptionLabel.snp.bottom).inset(-16)
         }
     }
+    
+    fileprivate func setupDirectorLabel() {
+        infoView.addSubview(directorLabel)
+        
+        directorLabel.snp.makeConstraints { make in
+            make.top.equalTo(moreButton.snp.bottom).inset(-24)
+            make.left.equalToSuperview().inset(24)
+        }
+    }
+    
+    fileprivate func setupDirectorNameLabel() {
+        infoView.addSubview(directorNameLabel)
+        
+        directorNameLabel.snp.makeConstraints { make in
+            make.top.equalTo(moreButton.snp.bottom).inset(-24)
+            make.left.equalTo(directorLabel.snp.right).inset(-16)
+            make.width.equalTo(200)
+        }
+    }
+    
+    fileprivate func setupProducerLabel() {
+        infoView.addSubview(producerLabel)
+        
+        producerLabel.snp.makeConstraints { make in
+            make.top.equalTo(directorLabel.snp.bottom).inset(-8)
+            make.left.equalToSuperview().inset(24)
+        }
+    }
+    
+    fileprivate func setupProducerNameLabel() {
+        infoView.addSubview(producerNameLabel)
+        
+        producerNameLabel.snp.makeConstraints { make in
+            make.top.equalTo(directorLabel.snp.bottom).inset(-8)
+            make.left.equalTo(producerLabel.snp.right).inset(-16)
+            make.width.equalTo(200)
+        }
+    }
+    
+    fileprivate func setupSeparator2View() {
+        infoView.addSubview(separator2View)
+        
+        separator2View.snp.makeConstraints { make in
+            make.top.equalTo(producerLabel.snp.bottom).inset(-24)
+            make.left.right.equalToSuperview().inset(24)
+            make.height.equalTo(1)
+        }
+    }
+    
+    fileprivate func setupSectionLabel() {
+        infoView.addSubview(sectionLabel)
+        
+        sectionLabel.snp.makeConstraints { make in
+            make.top.equalTo(separator2View.snp.bottom).inset(-24)
+            make.left.equalToSuperview().inset(24)
+        }
+    }
+    
+    fileprivate func setupSectionButton() {
+        infoView.addSubview(sectionButton)
+        
+        sectionButton.snp.makeConstraints { make in
+            make.top.equalTo(separator2View.snp.bottom).inset(-24+8)
+            make.right.equalToSuperview().inset(24)
+            make.left.equalTo(infoView.snp.centerX)
+            make.height.equalTo(32)
+        }
+    }
+    
+    fileprivate func setupSectionInfoLabel() {
+        sectionButton.addSubview(sectionInfoLabel)
+        
+        sectionInfoLabel.snp.makeConstraints { make in
+            make.right.equalToSuperview().inset(13 + 8) // 13 is a chevron.right(button's icon) width
+            make.centerY.equalToSuperview()
+        }
+    }
+    
+    fileprivate func setupScreenshotsLabel() {
+        infoView.addSubview(screenshotsLabel)
+        
+        screenshotsLabel.snp.makeConstraints { make in
+            make.top.equalTo(sectionLabel.snp.bottom).inset(-32)
+            make.left.equalToSuperview().inset(24)
+        }
+    }
+    
     
 }
 
