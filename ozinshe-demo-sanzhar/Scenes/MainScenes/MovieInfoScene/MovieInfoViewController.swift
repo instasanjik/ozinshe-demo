@@ -206,6 +206,63 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
+    lazy var screenshotsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        layout.itemSize = CGSizeMake(184, 112)
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 16
+        
+        let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
+        collectionView.isSkeletonable = true
+        
+        collectionView.register(ScreenshotCollectionViewCell.self,
+                                forCellWithReuseIdentifier: ScreenshotCollectionViewCell.ID)
+        return collectionView
+    }()
+    
+    lazy var similarSeriesLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Ұқсас телехикаялар"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = Style.Colors.label
+        return label
+    }()
+    
+    lazy var moreSimilarButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Барлыгы", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        button.setTitleColor(Style.StaticColors.purple300, for: .normal)
+        button.contentVerticalAlignment = .top
+        return button
+    }()
+    
+    lazy var similarCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        layout.itemSize = CGSizeMake(112, 219)
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
+        collectionView.isSkeletonable = true
+        
+        collectionView.register(GalleryListCollectionViewCell.self,
+                                forCellWithReuseIdentifier: GalleryListCollectionViewCell.ID)
+        return collectionView
+    }()
+
+    
     
     
     
@@ -356,7 +413,10 @@ extension MovieInfoViewController {
         setupSectionInfoLabel()
         
         setupScreenshotsLabel()
+        setupScreenshotsCollectionView()
         
+        setupSimilarSeriesLabel()
+        setupSimilarCollectionView()
     }
     
     fileprivate func setupMovieNameLabel() {
@@ -516,6 +576,35 @@ extension MovieInfoViewController {
         }
     }
     
+    fileprivate func setupScreenshotsCollectionView() {
+        infoView.addSubview(screenshotsCollectionView)
+        
+        screenshotsCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(screenshotsLabel.snp.bottom).inset(-16)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(112)
+        }
+    }
+    
+    fileprivate func setupSimilarSeriesLabel() {
+        infoView.addSubview(similarSeriesLabel)
+        
+        similarSeriesLabel.snp.makeConstraints { make in
+            make.top.equalTo(screenshotsCollectionView.snp.bottom).inset(-24)
+            make.left.equalToSuperview().inset(24)
+        }
+    }
+    
+    fileprivate func setupSimilarCollectionView() {
+        infoView.addSubview(similarCollectionView)
+        
+        similarCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(similarSeriesLabel.snp.bottom).inset(-16)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(224)
+        }
+    }
+    
     
 }
 
@@ -537,6 +626,29 @@ extension MovieInfoViewController {
             descriptionGradientLayer.isHidden = false
         }
         isDescriptionRevealed.toggle()
+    }
+    
+    
+}
+
+
+extension MovieInfoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        switch collectionView {
+        case screenshotsCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenshotCollectionViewCell.ID, for: indexPath)
+            return cell
+        case similarCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath)
+            return cell
+        default: return UICollectionViewCell()
+        }
     }
     
     
