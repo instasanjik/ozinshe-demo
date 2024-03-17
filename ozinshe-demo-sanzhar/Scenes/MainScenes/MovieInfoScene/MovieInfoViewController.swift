@@ -405,10 +405,6 @@ extension MovieInfoViewController {
     fileprivate func setupContentView() {
         stackView.addArrangedSubview(contentView)
         
-        contentView.snp.makeConstraints { make in
-            make.height.equalTo(900)
-        }
-        
         setupMovieNameLabel()
         setupShortInfoLabel()
         setupSeparator1View()
@@ -616,6 +612,7 @@ extension MovieInfoViewController {
             make.top.equalTo(similarSeriesLabel.snp.bottom).inset(-16)
             make.left.right.equalToSuperview()
             make.height.equalTo(224)
+            make.bottom.equalToSuperview().inset(24)
         }
     }
     
