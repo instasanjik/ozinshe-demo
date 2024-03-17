@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class MovieInfoViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class MovieInfoViewController: UIViewController {
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.isSkeletonable = true
         return scrollView
     }()
     
@@ -23,6 +25,7 @@ class MovieInfoViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = -32
+        stackView.isSkeletonable = true
         return stackView
     }()
     
@@ -36,6 +39,7 @@ class MovieInfoViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "previewImageView")
         imageView.contentMode = .scaleAspectFill
+        imageView.isSkeletonable = true
         return imageView
     }()
     
@@ -92,6 +96,7 @@ class MovieInfoViewController: UIViewController {
         view.clipsToBounds = true
         view.layer.cornerRadius = 32
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.isSkeletonable = true
         return view
     }()
     
@@ -100,6 +105,9 @@ class MovieInfoViewController: UIViewController {
         label.text = "Қызғалдақтар мекені"
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
+        label.isSkeletonable = true
+        label.linesCornerRadius = 2
+        label.skeletonTextLineHeight = .fixed(24)
         return label
     }()
     
@@ -108,6 +116,8 @@ class MovieInfoViewController: UIViewController {
         label.text = "2020 • Телехакия • 5 сезон, 46 серия, 7 мин."
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.gray400
+        label.linesCornerRadius = 2
+        label.isSkeletonable = true
         return label
     }()
     
@@ -123,6 +133,8 @@ class MovieInfoViewController: UIViewController {
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray200
         label.numberOfLines = 5
+        label.linesCornerRadius = 4
+        label.isSkeletonable = true
         return label
     }()
     
@@ -273,6 +285,8 @@ class MovieInfoViewController: UIViewController {
         
         view.backgroundColor = Style.Colors.background
         
+        view.isSkeletonable = true
+        
         setupScrollView()
         setupPreviewImageView()
         setupContentView()
@@ -309,7 +323,7 @@ extension MovieInfoViewController {
     /* MARK: Header setups */
     fileprivate func setupPreviewImageView() {
         stackView.addArrangedSubview(previewImageContainerView)
-        previewImageContainerView.backgroundColor = .red
+        previewImageContainerView.isSkeletonable = true
         
         previewImageContainerView.snp.makeConstraints { make in
             make.height.equalTo(340)
@@ -647,6 +661,44 @@ extension MovieInfoViewController: UICollectionViewDelegate, UICollectionViewDat
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath)
             return cell
         default: return UICollectionViewCell()
+        }
+    }
+    
+    
+}
+
+
+extension MovieInfoViewController {
+    
+    public func showSkeletonWithAnimation() {
+        view.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+        scrollView.isScrollEnabled = false
+        playButton.isHidden = true
+        
+        saveLabel.isHidden = true
+        saveButton.isHidden = true
+        
+        shareButton.isHidden = true
+        shareLabel.isHidden = true
+        
+        moreButton.snp.updateConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).inset(-self.view.frame.height)
+        }
+    }
+    
+    public func hideSkeletonAnimation() {
+        view.hideSkeleton()
+        scrollView.isScrollEnabled = true
+        playButton.isHidden = false
+        
+        saveLabel.isHidden = false
+        saveButton.isHidden = false
+        
+        shareButton.isHidden = false
+        shareLabel.isHidden = false
+        
+        moreButton.snp.updateConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).inset(-16)
         }
     }
     
