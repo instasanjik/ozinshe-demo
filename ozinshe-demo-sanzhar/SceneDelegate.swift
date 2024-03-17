@@ -22,12 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = MainTabBarController()
+        window?.rootViewController = SeriesViewController()
         window?.tintColor = Style.Colors.purple500
         window?.makeKeyAndVisible()
         
         SkeletonAppearance.default.gradient = SkeletonGradient(colors: [Style.Colors.gray800, Style.Colors.background, Style.Colors.gray800])
-//        SkeletonAppearance.
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
