@@ -39,7 +39,7 @@ class SeriesViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.backgroundColor = .clear
-//        tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0)
         
         tableView.register(SeriesTableViewCell.self,
                            forCellReuseIdentifier: SeriesTableViewCell.ID)
@@ -53,6 +53,7 @@ class SeriesViewController: UIViewController {
         view.backgroundColor = Style.Colors.background
         
         setupSeasonsCollectionView()
+        setupSeriesTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,6 +75,15 @@ extension SeriesViewController {
             make.left.right.equalToSuperview()
             make.height.equalTo(34)
             make.top.equalToSuperview().inset(100)
+        }
+    }
+    
+    fileprivate func setupSeriesTableView() {
+        view.addSubview(seriesTableView)
+        
+        seriesTableView.snp.makeConstraints { make in
+            make.top.equalTo(seasonsCollectionView.snp.bottom).inset(-24)
+            make.left.right.bottom.equalToSuperview()
         }
     }
     
@@ -123,7 +133,9 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: SeriesTableViewCell.ID,
+                                                 for: indexPath)
+        return cell
     }
     
     
