@@ -38,4 +38,17 @@ struct StaticData {
         CardContent(name: "14-16 \(NSLocalizedString("Age-yo", comment: "жас"))", imageName: "14-16"),
         CardContent(name: "16-18 \(NSLocalizedString("Age-yo", comment: "жас"))", imageName: "16-18")
     ]
+    
+    static let contentCategories: [String] = [
+        "Телехикая",
+        "Ситком",
+        "Көркем фильм",
+        "Мультфильм",
+        "Мультсериал",
+        "Аниме",
+        "Тв-бағдарлама және реалити-шоу",
+        "Деректі фильм",
+        "Музыка",
+        "Шетел фильмдері"
+    ]
 }

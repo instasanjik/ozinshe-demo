@@ -38,8 +38,8 @@ class MainTabBarController: UITabBarController {
         profileViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
         
         viewControllers = [
-            homeViewController,
             searchViewController,
+            homeViewController,
             favoritesViewController,
             profileViewController
         ]

@@ -15,9 +15,9 @@ class OZTextField: UITextField {
         case error
     }
     
-    let normalBorderColor = Style.Colors.gray400.cgColor
-    let focusedBorderColor = Style.Colors.purple400.cgColor
-    let errorBorderColor = Style.Colors.error.cgColor
+    var normalBorderColor = Style.Colors.gray400.cgColor
+    var focusedBorderColor = Style.Colors.purple400.cgColor
+    var errorBorderColor = Style.Colors.error.cgColor
     
     var textFieldState: OZTextFieldState = .normal {
         didSet {
@@ -72,7 +72,7 @@ class OZTextField: UITextField {
         
         layer.cornerRadius = 12
         layer.borderWidth = 1
-        layer.borderColor = Style.Colors.gray400.cgColor
+        layer.borderColor = normalBorderColor
         
         textColor = Style.Colors.white
         
