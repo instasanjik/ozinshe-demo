@@ -18,6 +18,12 @@ struct CardContent {
     }
 }
 
+enum CellType {
+    case labelAndChevron
+    case chevronOnly
+    case switchOnly
+}
+
 struct StaticData {
     static let genres: [CardContent] = [
         CardContent(name: NSLocalizedString("Genres-Comedy", comment: ""), imageName: "comedia"),
@@ -50,5 +56,14 @@ struct StaticData {
         "Деректі фильм",
         "Музыка",
         "Шетел фильмдері"
+    ]
+    
+    static let profileSettings: [(String, CellType)] = [
+        ("Жеке деректер", .labelAndChevron),
+        ("Құпия сөзді өзгерту", .chevronOnly),
+        ("Тіл", .labelAndChevron),
+        ("Ережелер мен шарттар", .chevronOnly),
+        ("Хабарландырулар", .switchOnly),
+        ("Қараңғы режим", .switchOnly)
     ]
 }

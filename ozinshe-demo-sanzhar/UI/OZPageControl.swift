@@ -6,7 +6,7 @@
 //
 
 import UIKit
-    
+
 class OZPageControl: UIView{
     var numberOfPage: Int
     var currentpage : Int                  = 0{didSet{reloadView()}}
@@ -24,6 +24,7 @@ class OZPageControl: UIView{
         super.init(frame: .zero)
         configView()
     }
+    
     required init?(coder: NSCoder) {fatalError("not implemented")}
     
     private func configView(){

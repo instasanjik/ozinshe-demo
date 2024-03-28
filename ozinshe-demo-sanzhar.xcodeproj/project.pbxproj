@@ -50,6 +50,8 @@
 		041CF90D2BAAA9F3003D2A58 /* ContentCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF90C2BAAA9F3003D2A58 /* ContentCategoryCollectionViewCell.swift */; };
 		041CF9112BAAB9A0003D2A58 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9102BAAB9A0003D2A58 /* SearchResultViewController.swift */; };
 		041CF9132BAABA31003D2A58 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9122BAABA31003D2A58 /* MovieTableViewCell.swift */; };
+		041CF9162BB2B988003D2A58 /* ProfileSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9152BB2B988003D2A58 /* ProfileSectionTableViewCell.swift */; };
+		041CF9182BB3FD19003D2A58 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9172BB3FD19003D2A58 /* ProfileHeaderView.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,8 @@
 		041CF90C2BAAA9F3003D2A58 /* ContentCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		041CF9102BAAB9A0003D2A58 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		041CF9122BAABA31003D2A58 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		041CF9152BB2B988003D2A58 /* ProfileSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionTableViewCell.swift; sourceTree = "<group>"; };
+		041CF9172BB3FD19003D2A58 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				041CF8D32B9EFE86003D2A58 /* ProfileViewController.swift */,
+				041CF9142BB2B96B003D2A58 /* TableViewCells */,
 			);
 			path = ProfileScenes;
 			sourceTree = "<group>";
@@ -367,6 +372,15 @@
 				041CF90A2BA7331A003D2A58 /* SeriesTableViewCell.swift */,
 			);
 			path = SeriesScene;
+			sourceTree = "<group>";
+		};
+		041CF9142BB2B96B003D2A58 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				041CF9152BB2B988003D2A58 /* ProfileSectionTableViewCell.swift */,
+				041CF9172BB3FD19003D2A58 /* ProfileHeaderView.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
@@ -510,6 +524,7 @@
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF9092BA732FC003D2A58 /* SeasonCollectionViewCell.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */,
+				041CF9162BB2B988003D2A58 /* ProfileSectionTableViewCell.swift in Sources */,
 				041CF8C72B9EFDB3003D2A58 /* MainTabBarController.swift in Sources */,
 				041CF8D02B9EFE5B003D2A58 /* SearchViewController.swift in Sources */,
 				041CF8AB2B8E1734003D2A58 /* OZPageControl.swift in Sources */,
@@ -527,6 +542,7 @@
 				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,
 				041CF8FD2BA32BB8003D2A58 /* UIView+Extension.swift in Sources */,
 				041CF8EA2BA1E436003D2A58 /* MovieCardCollectionViewCell.swift in Sources */,
+				041CF9182BB3FD19003D2A58 /* ProfileHeaderView.swift in Sources */,
 				041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */,
 				041CF9072BA72FE0003D2A58 /* SeriesViewController.swift in Sources */,
 				041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */,
