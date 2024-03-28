@@ -33,7 +33,7 @@ class MainTabBarController: UITabBarController {
         favoritesViewController.tabBarItem.image = UIImage(named: "Favorites", in: Bundle(for: MainTabBarController.self), compatibleWith: nil)
         favoritesViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
         
-        let profileViewController = ProfileViewController()
+        let profileViewController = PersonalDataViewController()
         profileViewController.tabBarItem.image = UIImage(named: "Profile", in: Bundle(for: MainTabBarController.self), compatibleWith: nil)
         profileViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
         
