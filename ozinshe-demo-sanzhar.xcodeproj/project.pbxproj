@@ -54,6 +54,10 @@
 		041CF9182BB3FD19003D2A58 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9172BB3FD19003D2A58 /* ProfileHeaderView.swift */; };
 		041CF91C2BB580F1003D2A58 /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF91B2BB580F1003D2A58 /* PersonalDataViewController.swift */; };
 		041CF9202BB581A4003D2A58 /* PersonalDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF91F2BB581A4003D2A58 /* PersonalDataTableViewCell.swift */; };
+		041CF9232BB58DB7003D2A58 /* SelectionLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9222BB58DB7003D2A58 /* SelectionLanguageViewController.swift */; };
+		041CF9252BB59059003D2A58 /* SelectionLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9242BB59059003D2A58 /* SelectionLanguageTableViewCell.swift */; };
+		041CF9272BB59FFA003D2A58 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9262BB59FFA003D2A58 /* UIViewController+Extension.swift */; };
+		041CF9292BB5D12F003D2A58 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9282BB5D12F003D2A58 /* ProfileNavigationViewController.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +111,10 @@
 		041CF9172BB3FD19003D2A58 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		041CF91B2BB580F1003D2A58 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
 		041CF91F2BB581A4003D2A58 /* PersonalDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataTableViewCell.swift; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 1; };
+		041CF9222BB58DB7003D2A58 /* SelectionLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionLanguageViewController.swift; sourceTree = "<group>"; };
+		041CF9242BB59059003D2A58 /* SelectionLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionLanguageTableViewCell.swift; sourceTree = "<group>"; };
+		041CF9262BB59FFA003D2A58 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		041CF9282BB5D12F003D2A58 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +258,7 @@
 				041CF8BA2B9DCD77003D2A58 /* UIButton+Extension.swift */,
 				041CF8FC2BA32BB8003D2A58 /* UIView+Extension.swift */,
 				041CF9002BA3793E003D2A58 /* UILabek+Extension.swift */,
+				041CF9262BB59FFA003D2A58 /* UIViewController+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -306,9 +315,11 @@
 		041CF8CB2B9EFE27003D2A58 /* ProfileScenes */ = {
 			isa = PBXGroup;
 			children = (
+				041CF9282BB5D12F003D2A58 /* ProfileNavigationViewController.swift */,
 				041CF8D32B9EFE86003D2A58 /* ProfileViewController.swift */,
-				041CF91D2BB5816E003D2A58 /* PersonalDataScene */,
 				041CF9142BB2B96B003D2A58 /* TableViewCells */,
+				041CF91D2BB5816E003D2A58 /* PersonalDataScene */,
+				041CF9212BB58D90003D2A58 /* SelectionLanguageScene */,
 			);
 			path = ProfileScenes;
 			sourceTree = "<group>";
@@ -403,6 +414,15 @@
 				041CF91F2BB581A4003D2A58 /* PersonalDataTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		041CF9212BB58D90003D2A58 /* SelectionLanguageScene */ = {
+			isa = PBXGroup;
+			children = (
+				041CF9222BB58DB7003D2A58 /* SelectionLanguageViewController.swift */,
+				041CF9242BB59059003D2A58 /* SelectionLanguageTableViewCell.swift */,
+			);
+			path = SelectionLanguageScene;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
@@ -539,12 +559,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041CF9292BB5D12F003D2A58 /* ProfileNavigationViewController.swift in Sources */,
 				041CF8DD2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift in Sources */,
 				041CF8EE2BA1E84A003D2A58 /* StaticData.swift in Sources */,
 				041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */,
 				041CF8E52BA1D904003D2A58 /* GalleryListTableViewCell.swift in Sources */,
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF9092BA732FC003D2A58 /* SeasonCollectionViewCell.swift in Sources */,
+				041CF9252BB59059003D2A58 /* SelectionLanguageTableViewCell.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */,
 				041CF9162BB2B988003D2A58 /* ProfileSectionTableViewCell.swift in Sources */,
 				041CF8C72B9EFDB3003D2A58 /* MainTabBarController.swift in Sources */,
@@ -562,11 +584,13 @@
 				041CF8FB2BA30FCA003D2A58 /* MovieInfoViewController.swift in Sources */,
 				041CF9042BA4A227003D2A58 /* ScreenshotCollectionViewCell.swift in Sources */,
 				041CF8BB2B9DCD77003D2A58 /* UIButton+Extension.swift in Sources */,
+				041CF9232BB58DB7003D2A58 /* SelectionLanguageViewController.swift in Sources */,
 				041CF89A2B8DC0D1003D2A58 /* UIColor+Extension.swift in Sources */,
 				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,
 				041CF8FD2BA32BB8003D2A58 /* UIView+Extension.swift in Sources */,
 				041CF8EA2BA1E436003D2A58 /* MovieCardCollectionViewCell.swift in Sources */,
 				041CF9182BB3FD19003D2A58 /* ProfileHeaderView.swift in Sources */,
+				041CF9272BB59FFA003D2A58 /* UIViewController+Extension.swift in Sources */,
 				041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */,
 				041CF9072BA72FE0003D2A58 /* SeriesViewController.swift in Sources */,
 				041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */,
