@@ -14,11 +14,14 @@ protocol SelectionLanguageViewControllerDelegate: AnyObject {
 
 class SelectionLanguageViewController: UIViewController {
     
-    var delegate: SelectionLanguageViewControllerDelegate?
-    var oldValueY: Double = 0
-    let SCROLL_VIEW_PADDING_Y: CGFloat = 124
+    /* MARK: private values */
+    fileprivate var delegate: SelectionLanguageViewControllerDelegate?
+    fileprivate var oldValueY: Double = 0
+    fileprivate let SCROLL_VIEW_PADDING_Y: CGFloat = 124
     
-    lazy var scrollView: UIScrollView = {
+    
+    /* MARK: UI Elements */
+    lazy var scrollView: UIScrollView = { /// scroll view for soft animation of moving the content
         let scrollView = UIScrollView()
         
         scrollView.addSubview(scrollViewContentView)
@@ -34,7 +37,7 @@ class SelectionLanguageViewController: UIViewController {
         return scrollView
     }()
     
-    lazy var invisibleView: UIView = {
+    lazy var invisibleView: UIView = { /// view for detecting tap out of content view
         let view = UIView()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -43,7 +46,7 @@ class SelectionLanguageViewController: UIViewController {
         return view
     }()
     
-    lazy var scrollViewContentView = OZExpandedView()
+    lazy var scrollViewContentView = OZExpandedView() /// view for setup scroll view correctly
     
     lazy var contentView: UIView = {
         let view = UIView()
@@ -65,9 +68,7 @@ class SelectionLanguageViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
-        
         label.text = "Тіл"
-        
         return label
     }()
 
@@ -81,18 +82,15 @@ class SelectionLanguageViewController: UIViewController {
     }()
     
     
-    
+    /* MARK: View Controller life cycle */
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupScrollView()
-        setupContentView()
+        setupUI()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom + 12)
-        scrollView.setContentOffset(bottomOffset, animated: true)
+        scrollToBottom()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,10 +100,17 @@ class SelectionLanguageViewController: UIViewController {
     
 }
 
+
+// MARK: UI Elements
 extension SelectionLanguageViewController {
     
+    fileprivate func setupUI() {
+        setupScrollView()
+        setupContentView()
+    }
+    
     fileprivate func setupScrollView() {
-        view.addSubview(scrollView)
+        self.view.addSubview(scrollView)
         
         scrollView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
@@ -113,16 +118,17 @@ extension SelectionLanguageViewController {
     }
     
     fileprivate func setupContentView() {
-        scrollViewContentView.addSubview(contentView)
         
+        scrollViewContentView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(view.frame.height-303-ScreenSize.statusBarHeight+SCROLL_VIEW_PADDING_Y)
             make.bottom.equalToSuperview().inset(304+ScreenSize.statusBarHeight-SCROLL_VIEW_PADDING_Y-view.frame.height)
             make.left.right.equalToSuperview()
             make.height.equalTo(view.frame.height)
         }
-        
-        
+        /// 303 is a original height of content view in design
+        /// top = view.height - content view height - statusbat height + 124 (scroll view padding Y)
+        /// scroll view padding Y - is a safe area for displaying a content view correctly and make it scrollable on Y axis of scroll view
         
         scrollViewContentView.addSubview(invisibleView)
         invisibleView.snp.makeConstraints { make in
@@ -168,10 +174,10 @@ extension SelectionLanguageViewController {
     
 }
 
-
+// MARK: Triggers and handlers
 extension SelectionLanguageViewController {
     
-    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) { /// detect if tap is out of content view for dismissing scene
         guard var location = sender?.location(in: self.view) else { return }
         location.y = location.y + SCROLL_VIEW_PADDING_Y
         if !contentView.frame.contains(location) {
@@ -183,7 +189,7 @@ extension SelectionLanguageViewController {
 }
 
 
-
+// MARK: Table view delegates
 extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -203,13 +209,20 @@ extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataS
     
 }
 
+// MARK: Scroll View Delegate and functions
 extension SelectionLanguageViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) { /// determine whether the user has moved the menu below the death zone for automatic closure
         if oldValueY > scrollView.contentOffset.y && scrollView.contentOffset.y < 43 {
             self.dismiss(animated: true)
         }
         oldValueY = scrollView.contentOffset.y
+    }
+    
+    fileprivate func scrollToBottom() { /// automatic scroll scrollview to bottom for displaying content
+        let bottomOffset = CGPoint(x: 0,
+                                   y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom + 12) /// 12 is a safe area zone for correct displaying content
+        scrollView.setContentOffset(bottomOffset, animated: true)
     }
     
     
