@@ -77,6 +77,18 @@ extension ProfileViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    fileprivate func showChangePasswordViewController() {
+        setTabBarHidden(true)
+        let vc = ChangePasswordViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    fileprivate func showTermsOfUseViewController() {
+        setTabBarHidden(true)
+        let vc = TermsOfUseViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }
 
@@ -132,8 +144,9 @@ extension ProfileViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: showPersonalDataViewController()
-        case 1: print(123)
+        case 1: showChangePasswordViewController()
         case 2: showSelectionLanguageView()
+        case 3: showTermsOfUseViewController()
         default: print(indexPath)
         }
     }

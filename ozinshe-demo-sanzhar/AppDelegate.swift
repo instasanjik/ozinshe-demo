@@ -22,10 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navigationBarAppearance.titleTextAttributes = [
                 NSAttributedString.Key.foregroundColor : Style.Colors.label
             ]
+            navigationBarAppearance.backButtonAppearance.normal.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor.clear
+            ]
             navigationBarAppearance.backgroundColor = Style.Colors.background
             UINavigationBar.appearance().standardAppearance = navigationBarAppearance
             UINavigationBar.appearance().compactAppearance = navigationBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+            UINavigationBar.appearance().tintColor = Style.Colors.white
             
             // MARK: Tab bar appearance
             let tabBarAppearance = UITabBarAppearance()

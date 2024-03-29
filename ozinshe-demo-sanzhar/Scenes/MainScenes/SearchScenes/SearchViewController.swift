@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
         textField.placeholder = "Поиск"
         textField.padding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         textField.normalBorderColor = UIColor.clear.cgColor
-        textField.resignFirstResponder()
+        let _ = textField.resignFirstResponder()
         textField.backgroundColor = Style.Colors.gray800
         return textField
     }()
