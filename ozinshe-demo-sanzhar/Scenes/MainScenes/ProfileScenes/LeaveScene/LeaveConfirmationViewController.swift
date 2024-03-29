@@ -8,14 +8,14 @@
 import UIKit
 import SnapKit
 
-protocol SelectionLanguageViewControllerDelegate: AnyObject {
-    func selectionLanguageViewWillDisappear()
+protocol LeaveConfirmationViewControllerDelegate: AnyObject {
+    func leaveConfirmationViewWillDisappear()
 }
 
-class SelectionLanguageViewController: UIViewController {
+class LeaveConfirmationViewController: UIViewController {
     
     /* MARK: values */
-    public var delegate: SelectionLanguageViewControllerDelegate?
+    public var delegate: LeaveConfirmationViewControllerDelegate?
     fileprivate var oldValueY: Double = 0
     fileprivate let SCROLL_VIEW_PADDING_Y: CGFloat = 124
     
@@ -64,22 +64,36 @@ class SelectionLanguageViewController: UIViewController {
         return view
     }()
     
-    lazy var languageLabel: UILabel = {
+    lazy var leaveLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = "Тіл"
+        label.text = "Шығу"
         return label
     }()
-
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(SelectionLanguageTableViewCell.self, forCellReuseIdentifier: SelectionLanguageTableViewCell.ID)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .clear
-        tableView.separatorColor = Style.Colors.gray700
-        return tableView
+    
+    lazy var leaveDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor = Style.Colors.gray400
+        label.text = "Сіз шынымен аккаунтыныздан"
+        return label
+    }()
+    
+    lazy var leaveButton: OZButton = {
+        let button = OZButton()
+        button.setTitle("Иә, шығу", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        return button
+    }()
+    
+    lazy var cancelButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        button.setTitle("Жоқ", for: .normal)
+        button.setTitleColor(Style.Colors.purple300, for: .normal)
+        button.backgroundColor = .clear
+        return button
     }()
     
     
@@ -95,7 +109,7 @@ class SelectionLanguageViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        delegate?.selectionLanguageViewWillDisappear()
+        delegate?.leaveConfirmationViewWillDisappear()
     }
     
     
@@ -103,7 +117,7 @@ class SelectionLanguageViewController: UIViewController {
 
 
 // MARK: UI Elements
-extension SelectionLanguageViewController {
+extension LeaveConfirmationViewController {
     
     fileprivate func setupUI() {
         setupScrollView()
@@ -122,8 +136,8 @@ extension SelectionLanguageViewController {
         
         scrollViewContentView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(view.frame.height-303-ScreenSize.statusBarHeight+SCROLL_VIEW_PADDING_Y)
-            make.bottom.equalToSuperview().inset(304+ScreenSize.statusBarHeight-SCROLL_VIEW_PADDING_Y-view.frame.height)
+            make.top.equalToSuperview().inset(view.frame.height-270-ScreenSize.statusBarHeight+SCROLL_VIEW_PADDING_Y)
+            make.bottom.equalToSuperview().inset(271+ScreenSize.statusBarHeight-SCROLL_VIEW_PADDING_Y-view.frame.height)
             make.left.right.equalToSuperview()
             make.height.equalTo(view.frame.height)
         }
@@ -138,8 +152,11 @@ extension SelectionLanguageViewController {
         }
         
         setupBrowView()
-        setupLanguageLabel()
-        setupTableView()
+        
+        setupLeaveLabel()
+        setupLeaveDescriptionLabel()
+        setupLeaveButton()
+        setupCancelButton()
     }
     
     fileprivate func setupBrowView() {
@@ -153,22 +170,41 @@ extension SelectionLanguageViewController {
         }
     }
     
-    fileprivate func setupLanguageLabel() {
-        contentView.addSubview(languageLabel)
+    fileprivate func setupLeaveLabel() {
+        contentView.addSubview(leaveLabel)
         
-        languageLabel.snp.makeConstraints { make in
+        leaveLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(58)
             make.left.equalToSuperview().inset(24)
         }
     }
     
-    fileprivate func setupTableView() {
-        contentView.addSubview(tableView)
+    fileprivate func setupLeaveDescriptionLabel() {
+        contentView.addSubview(leaveDescriptionLabel)
         
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(languageLabel.snp.bottom).inset(-12)
+        leaveDescriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(leaveLabel.snp.bottom).inset(-8)
             make.left.right.equalToSuperview().inset(24)
-            make.height.equalTo(367)
+        }
+    }
+    
+    fileprivate func setupLeaveButton() {
+        contentView.addSubview(leaveButton)
+        
+        leaveButton.snp.makeConstraints { make in
+            make.top.equalTo(leaveDescriptionLabel.snp.bottom).inset(-32)
+            make.left.right.equalToSuperview().inset(24)
+            make.height.equalTo(56)
+        }
+    }
+    
+    fileprivate func setupCancelButton() {
+        contentView.addSubview(cancelButton)
+        
+        cancelButton.snp.makeConstraints { make in
+            make.top.equalTo(leaveButton.snp.bottom).inset(-8)
+            make.left.right.equalToSuperview().inset(24)
+            make.height.equalTo(56)
         }
     }
     
@@ -176,7 +212,7 @@ extension SelectionLanguageViewController {
 }
 
 // MARK: Triggers and handlers
-extension SelectionLanguageViewController {
+extension LeaveConfirmationViewController {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) { /// detect if tap is out of content view for dismissing scene
         guard var location = sender?.location(in: self.view) else { return }
@@ -190,28 +226,8 @@ extension SelectionLanguageViewController {
 }
 
 
-// MARK: Table view delegates
-extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectionLanguageTableViewCell.ID, for: indexPath)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64
-    }
-    
-    
-}
-
 // MARK: Scroll View Delegate and functions
-extension SelectionLanguageViewController: UIScrollViewDelegate {
+extension LeaveConfirmationViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) { /// determine whether the user has moved the menu below the death zone for automatic closure
         if oldValueY > scrollView.contentOffset.y && scrollView.contentOffset.y < 43 {

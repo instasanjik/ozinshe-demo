@@ -65,16 +65,33 @@ extension ProfileViewController {
     fileprivate func showPersonalDataViewController() {
         setTabBarHidden(true)
         let vc = PersonalDataViewController()
-//        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    fileprivate func showLeaveConfirmationViewController() {
+        setupBlurEffectView()
+        setTabBarHidden(true)
+        let vc = LeaveConfirmationViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.delegate = self
+        self.present(vc, animated: true, completion: nil)
     }
     
     
 }
 
-extension ProfileViewController: SelectionLanguageViewControllerDelegate {
+extension ProfileViewController: SelectionLanguageViewControllerDelegate, LeaveConfirmationViewControllerDelegate {
     
     func selectionLanguageViewWillDisappear() {
+        setTabBarHidden(false)
+        UIView.animate(withDuration: 0.3) { [self] in
+            blurEffectView.alpha = 0
+        } completion: { complete in
+            self.blurEffectView.removeFromSuperview()
+        }
+    }
+    
+    func leaveConfirmationViewWillDisappear() {
         setTabBarHidden(false)
         UIView.animate(withDuration: 0.3) { [self] in
             blurEffectView.alpha = 0
@@ -127,7 +144,7 @@ extension ProfileViewController {
 extension ProfileViewController {
     
     @objc func leaveTapped() {
-        print(123)
+        showLeaveConfirmationViewController()
     }
     
     

@@ -59,6 +59,7 @@
 		041CF9272BB59FFA003D2A58 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9262BB59FFA003D2A58 /* UIViewController+Extension.swift */; };
 		041CF9292BB5D12F003D2A58 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9282BB5D12F003D2A58 /* ProfileNavigationViewController.swift */; };
 		041CF92B2BB69E33003D2A58 /* OZExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF92A2BB69E33003D2A58 /* OZExpandedView.swift */; };
+		041CF92E2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF92D2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		041CF9262BB59FFA003D2A58 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		041CF9282BB5D12F003D2A58 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
 		041CF92A2BB69E33003D2A58 /* OZExpandedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZExpandedView.swift; sourceTree = "<group>"; };
+		041CF92D2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveConfirmationViewController.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -432,6 +434,7 @@
 		041CF92C2BB6C6A2003D2A58 /* LeaveScene */ = {
 			isa = PBXGroup;
 			children = (
+				041CF92D2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift */,
 			);
 			path = LeaveScene;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				041CF9292BB5D12F003D2A58 /* ProfileNavigationViewController.swift in Sources */,
 				041CF8DD2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift in Sources */,
 				041CF8EE2BA1E84A003D2A58 /* StaticData.swift in Sources */,
+				041CF92E2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift in Sources */,
 				041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */,
 				041CF8E52BA1D904003D2A58 /* GalleryListTableViewCell.swift in Sources */,
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
