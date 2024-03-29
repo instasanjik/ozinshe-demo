@@ -20,15 +20,15 @@ class MainTabBarController: UITabBarController {
     func setupViewControllers() {
         Logger.log(.action, "\(traitCollection.userInterfaceStyle.rawValue)")
         
-        let homeViewController = MovieInfoViewController()
+        let homeViewController = HomeNavigationViewController()
         homeViewController.tabBarItem.image = UIImage(named: "Home", in: Bundle(for: MovieInfoViewController.self), compatibleWith: nil)
         homeViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
         
-        let searchViewController = SearchViewController()
+        let searchViewController = SearchNavigationViewController()
         searchViewController.tabBarItem.image = UIImage(named: "Search", in: Bundle(for: MainTabBarController.self), compatibleWith: nil)
         searchViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
         
-        let favoritesViewController = FavoritesViewController()
+        let favoritesViewController = FavoritesNavigationViewController()
         favoritesViewController.tabBarItem.image = UIImage(named: "Favorites", in: Bundle(for: MainTabBarController.self), compatibleWith: nil)
         favoritesViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
         
@@ -37,10 +37,10 @@ class MainTabBarController: UITabBarController {
         profileViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
         
         viewControllers = [
-            profileViewController,
-            searchViewController,
             homeViewController,
+            searchViewController,
             favoritesViewController,
+            profileViewController
         ]
     }
     

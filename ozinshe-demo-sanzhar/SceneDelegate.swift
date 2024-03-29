@@ -22,7 +22,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = MainTabBarController()
+        
+//        if Storage.bool(forKey: Keys.isUserOpeningAppFirstTime) {
+//            window?.rootViewController = CarouselViewController()
+//        } else if Storage.string(forKey: Keys.email) == "" {
+//            window?.rootViewController = SignInNavigationViewController()
+//        } else {
+            window?.rootViewController = MainTabBarController()
+//        }
         window?.tintColor = Style.Colors.purple500
         window?.makeKeyAndVisible()
         

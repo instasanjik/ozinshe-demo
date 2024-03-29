@@ -62,6 +62,12 @@
 		041CF92E2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF92D2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift */; };
 		041CF9312BB7014C003D2A58 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9302BB7014C003D2A58 /* ChangePasswordViewController.swift */; };
 		041CF9342BB70777003D2A58 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9332BB70777003D2A58 /* TermsOfUseViewController.swift */; };
+		041CF9362BB7196A003D2A58 /* SignInNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9352BB7196A003D2A58 /* SignInNavigationViewController.swift */; };
+		041CF9392BB71AE1003D2A58 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9382BB71AE1003D2A58 /* Storage.swift */; };
+		041CF93C2BB71D95003D2A58 /* CarouselNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF93B2BB71D95003D2A58 /* CarouselNavigationViewController.swift */; };
+		041CF93E2BB71E33003D2A58 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF93D2BB71E33003D2A58 /* HomeNavigationViewController.swift */; };
+		041CF9402BB71E4F003D2A58 /* SearchNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF93F2BB71E4F003D2A58 /* SearchNavigationViewController.swift */; };
+		041CF9442BB71E96003D2A58 /* FavoritesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9432BB71E96003D2A58 /* FavoritesNavigationViewController.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +129,12 @@
 		041CF92D2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveConfirmationViewController.swift; sourceTree = "<group>"; };
 		041CF9302BB7014C003D2A58 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		041CF9332BB70777003D2A58 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
+		041CF9352BB7196A003D2A58 /* SignInNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInNavigationViewController.swift; sourceTree = "<group>"; };
+		041CF9382BB71AE1003D2A58 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		041CF93B2BB71D95003D2A58 /* CarouselNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselNavigationViewController.swift; sourceTree = "<group>"; };
+		041CF93D2BB71E33003D2A58 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
+		041CF93F2BB71E4F003D2A58 /* SearchNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationViewController.swift; sourceTree = "<group>"; };
+		041CF9432BB71E96003D2A58 /* FavoritesNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationViewController.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +199,7 @@
 		041CF8A02B8DD2BB003D2A58 /* CarouselScenes */ = {
 			isa = PBXGroup;
 			children = (
+				041CF93B2BB71D95003D2A58 /* CarouselNavigationViewController.swift */,
 				041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */,
 				041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */,
 			);
@@ -208,6 +221,7 @@
 		041CF8AC2B8E2260003D2A58 /* SignInScenes */ = {
 			isa = PBXGroup;
 			children = (
+				041CF9352BB7196A003D2A58 /* SignInNavigationViewController.swift */,
 				041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */,
 				041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */,
 			);
@@ -228,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				041CF8ED2BA1E84A003D2A58 /* StaticData.swift */,
+				041CF9382BB71AE1003D2A58 /* Storage.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -296,6 +311,7 @@
 		041CF8C82B9EFDF9003D2A58 /* HomeScenes */ = {
 			isa = PBXGroup;
 			children = (
+				041CF93D2BB71E33003D2A58 /* HomeNavigationViewController.swift */,
 				041CF8CD2B9EFE50003D2A58 /* HomeViewController.swift */,
 				041CF8D52B9F16E6003D2A58 /* TableViewCells */,
 			);
@@ -305,10 +321,10 @@
 		041CF8C92B9EFE0E003D2A58 /* SearchScenes */ = {
 			isa = PBXGroup;
 			children = (
+				041CF93F2BB71E4F003D2A58 /* SearchNavigationViewController.swift */,
 				041CF8CF2B9EFE5B003D2A58 /* SearchViewController.swift */,
-				041CF90C2BAAA9F3003D2A58 /* ContentCategoryCollectionViewCell.swift */,
-				041CF9102BAAB9A0003D2A58 /* SearchResultViewController.swift */,
-				041CF9122BAABA31003D2A58 /* MovieTableViewCell.swift */,
+				041CF9412BB71E63003D2A58 /* Cells */,
+				041CF9422BB71E74003D2A58 /* ResultScene */,
 			);
 			path = SearchScenes;
 			sourceTree = "<group>";
@@ -316,6 +332,7 @@
 		041CF8CA2B9EFE1E003D2A58 /* FavoriteScenes */ = {
 			isa = PBXGroup;
 			children = (
+				041CF9432BB71E96003D2A58 /* FavoritesNavigationViewController.swift */,
 				041CF8D12B9EFE78003D2A58 /* FavoritesViewController.swift */,
 			);
 			path = FavoriteScenes;
@@ -328,10 +345,10 @@
 				041CF8D32B9EFE86003D2A58 /* ProfileViewController.swift */,
 				041CF9142BB2B96B003D2A58 /* TableViewCells */,
 				041CF91D2BB5816E003D2A58 /* PersonalDataScene */,
-				041CF9212BB58D90003D2A58 /* SelectionLanguageScene */,
-				041CF92C2BB6C6A2003D2A58 /* LeaveScene */,
 				041CF92F2BB70106003D2A58 /* ChangePasswordScene */,
+				041CF9212BB58D90003D2A58 /* SelectionLanguageScene */,
 				041CF9322BB70757003D2A58 /* TermsOfUseScene */,
+				041CF92C2BB6C6A2003D2A58 /* LeaveScene */,
 			);
 			path = ProfileScenes;
 			sourceTree = "<group>";
@@ -459,6 +476,23 @@
 				041CF9332BB70777003D2A58 /* TermsOfUseViewController.swift */,
 			);
 			path = TermsOfUseScene;
+			sourceTree = "<group>";
+		};
+		041CF9412BB71E63003D2A58 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				041CF90C2BAAA9F3003D2A58 /* ContentCategoryCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		041CF9422BB71E74003D2A58 /* ResultScene */ = {
+			isa = PBXGroup;
+			children = (
+				041CF9122BAABA31003D2A58 /* MovieTableViewCell.swift */,
+				041CF9102BAAB9A0003D2A58 /* SearchResultViewController.swift */,
+			);
+			path = ResultScene;
 			sourceTree = "<group>";
 		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
@@ -595,11 +629,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041CF93C2BB71D95003D2A58 /* CarouselNavigationViewController.swift in Sources */,
 				041CF9292BB5D12F003D2A58 /* ProfileNavigationViewController.swift in Sources */,
 				041CF8DD2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift in Sources */,
 				041CF8EE2BA1E84A003D2A58 /* StaticData.swift in Sources */,
 				041CF92E2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift in Sources */,
 				041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */,
+				041CF9442BB71E96003D2A58 /* FavoritesNavigationViewController.swift in Sources */,
 				041CF8E52BA1D904003D2A58 /* GalleryListTableViewCell.swift in Sources */,
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF9092BA732FC003D2A58 /* SeasonCollectionViewCell.swift in Sources */,
@@ -618,7 +654,9 @@
 				041CF8EC2BA1E447003D2A58 /* MovieCardTableViewCell.swift in Sources */,
 				041CF90B2BA7331A003D2A58 /* SeriesTableViewCell.swift in Sources */,
 				041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */,
+				041CF9402BB71E4F003D2A58 /* SearchNavigationViewController.swift in Sources */,
 				041CF91C2BB580F1003D2A58 /* PersonalDataViewController.swift in Sources */,
+				041CF9362BB7196A003D2A58 /* SignInNavigationViewController.swift in Sources */,
 				041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */,
 				041CF9202BB581A4003D2A58 /* PersonalDataTableViewCell.swift in Sources */,
 				041CF8FB2BA30FCA003D2A58 /* MovieInfoViewController.swift in Sources */,
@@ -626,6 +664,7 @@
 				041CF8BB2B9DCD77003D2A58 /* UIButton+Extension.swift in Sources */,
 				041CF9232BB58DB7003D2A58 /* SelectionLanguageViewController.swift in Sources */,
 				041CF89A2B8DC0D1003D2A58 /* UIColor+Extension.swift in Sources */,
+				041CF93E2BB71E33003D2A58 /* HomeNavigationViewController.swift in Sources */,
 				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,
 				041CF8FD2BA32BB8003D2A58 /* UIView+Extension.swift in Sources */,
 				041CF8EA2BA1E436003D2A58 /* MovieCardCollectionViewCell.swift in Sources */,
@@ -635,6 +674,7 @@
 				041CF9072BA72FE0003D2A58 /* SeriesViewController.swift in Sources */,
 				041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */,
 				041CF8B22B9DA043003D2A58 /* OZTextFieldView.swift in Sources */,
+				041CF9392BB71AE1003D2A58 /* Storage.swift in Sources */,
 				041CF8E02BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift in Sources */,
 				041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */,
 				041CF9132BAABA31003D2A58 /* MovieTableViewCell.swift in Sources */,
