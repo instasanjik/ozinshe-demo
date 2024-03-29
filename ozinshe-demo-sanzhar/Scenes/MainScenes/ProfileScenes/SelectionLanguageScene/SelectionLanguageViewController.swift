@@ -14,8 +14,8 @@ protocol SelectionLanguageViewControllerDelegate: AnyObject {
 
 class SelectionLanguageViewController: UIViewController {
     
-    /* MARK: private values */
-    fileprivate var delegate: SelectionLanguageViewControllerDelegate?
+    /* MARK: values */
+    public var delegate: SelectionLanguageViewControllerDelegate?
     fileprivate var oldValueY: Double = 0
     fileprivate let SCROLL_VIEW_PADDING_Y: CGFloat = 124
     
