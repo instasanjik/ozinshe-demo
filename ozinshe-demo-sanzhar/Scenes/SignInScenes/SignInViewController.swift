@@ -10,14 +10,6 @@ import SnapKit
 
 class SignInViewController: UIViewController {
     
-    lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        button.tintColor = Style.Colors.white
-        button.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
-        return button
-    }()
-    
     lazy var helloLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("SignIn-Hello", comment: "Сәлем")
@@ -77,7 +69,7 @@ class SignInViewController: UIViewController {
     lazy var loginButton: OZButton = {
         let button = OZButton()
         button.setTitle(NSLocalizedString("SignIn-Join", comment: "Кіру"), for: .normal)
-        button.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return button
     }()
     
@@ -160,7 +152,6 @@ class SignInViewController: UIViewController {
         
         view.backgroundColor = Style.Colors.background
         
-        setupBackButton()
         setupSignUpLabel()
         setupSignUpBodyLabel()
         setupFormView()
@@ -178,22 +169,12 @@ class SignInViewController: UIViewController {
 // MARK: UI setups
 extension SignInViewController {
     
-    private func setupBackButton() {
-        view.addSubview(backButton)
-        
-        backButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(24)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
-            make.width.height.equalTo(40)
-        }
-    }
-    
     private func setupSignUpLabel() {
         view.addSubview(helloLabel)
         
         helloLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(24)
-            make.top.equalTo(backButton.snp.bottom).inset(-24)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
     }
     
@@ -328,18 +309,13 @@ extension SignInViewController {
 // MARK: Targets
 extension SignInViewController {
     
-    @objc func backTapped(sender: UIButton!) {
-        Logger.log(.action, "Back tapped")
-    }
-    
     @objc func loginTapped(sender: UIButton!) {
-        Logger.log(.action, "Login tapped")
+        Storage.set("test", forKey: Keys.accessToken)
         
-        if Int.random(in: 1...2) % 2 == 0 {
-            updateEmailError(text: "Lorem ipsum") // localize
-        } else {
-            updateEmailError(text: nil)
-        }
+        let vc = MainTabBarController()
+        vc.modalTransitionStyle = .flipHorizontal
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     @objc func forgotPasswordTapped(sender: UIButton!) {
@@ -347,7 +323,8 @@ extension SignInViewController {
     }
     
     @objc func signUpTapped(sender: UIGestureRecognizer!) {
-        Logger.log(.action, "Sign Up tapped")
+        let vc = SignUpViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func signUpWithAppleTapped(sender: UIButton!) {

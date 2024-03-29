@@ -84,6 +84,7 @@ class LeaveConfirmationViewController: UIViewController {
         let button = OZButton()
         button.setTitle("Иә, шығу", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        button.addTarget(self, action: #selector(leaveButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -93,6 +94,7 @@ class LeaveConfirmationViewController: UIViewController {
         button.setTitle("Жоқ", for: .normal)
         button.setTitleColor(Style.Colors.purple300, for: .normal)
         button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -220,6 +222,19 @@ extension LeaveConfirmationViewController {
         if !contentView.frame.contains(location) {
             self.dismiss(animated: true)
         }
+    }
+    
+    @objc func leaveButtonTapped(_ sender: UIButton!) {
+        Storage.set("", forKey: Keys.accessToken)
+        
+        let vc = SignInNavigationViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .flipHorizontal
+        self.present(vc, animated: true)
+    }
+    
+    @objc func cancelButtonTapped(_ sender: UIButton!) {
+        self.dismiss(animated: true)
     }
     
     

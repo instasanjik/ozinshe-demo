@@ -1,5 +1,5 @@
 //
-//  ForgotPasswordViewController.swift
+//  SignUpViewController.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 10.03.2024.
@@ -9,14 +9,6 @@ import UIKit
 import SnapKit
 
 class SignUpViewController: UIViewController {
-    
-    lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        button.tintColor = Style.Colors.white
-        button.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
-        return button
-    }()
     
     lazy var signUpLabel: UILabel = {
         let label = UILabel()
@@ -130,7 +122,6 @@ class SignUpViewController: UIViewController {
         
         view.backgroundColor = Style.Colors.background
         
-        setupBackButton()
         setupSignUpLabel()
         setupSignUpBodyLabel()
         setupFormView()
@@ -147,22 +138,12 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController {
     
-    private func setupBackButton() {
-        view.addSubview(backButton)
-        
-        backButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(24)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
-            make.width.height.equalTo(40)
-        }
-    }
-    
     private func setupSignUpLabel() {
         view.addSubview(signUpLabel)
         
         signUpLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(24)
-            make.top.equalTo(backButton.snp.bottom).inset(-24)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
     }
     
@@ -287,16 +268,17 @@ extension SignUpViewController {
 // MARK: Targets
 extension SignUpViewController {
     
-    @objc func backTapped(sender: UIButton!) {
-        Logger.log(.action, "Back tapped")
-    }
-    
     @objc func loginTapped(sender: UIButton!) {
-        Logger.log(.action, "Login tapped")
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func signUpTapped(sender: UIGestureRecognizer!) {
-        Logger.log(.action, "Sign Up tapped")
+        Storage.set("test", forKey: Keys.accessToken)
+        
+        let vc = MainTabBarController()
+        vc.modalTransitionStyle = .flipHorizontal
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     
