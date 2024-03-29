@@ -22,6 +22,10 @@ class PersonalDataViewController: UITableViewController {
          
         tableView.register(PersonalDataTableViewCell.self, forCellReuseIdentifier: PersonalDataTableViewCell.ID)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setTabBarHidden(false)
+    }
 
 }
 

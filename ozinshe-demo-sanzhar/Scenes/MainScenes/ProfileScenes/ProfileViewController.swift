@@ -10,22 +10,20 @@ import SnapKit
 
 class ProfileViewController: UITableViewController {
     
+    lazy var headerView = ProfileHeaderView()
+    
     lazy var blurEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        blurEffectView.alpha = 0.5
         return blurEffectView
     }()
     
-    lazy var headerView = ProfileHeaderView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "My profile"
         
-        view.backgroundColor = Style.Colors.background
-        tableView.register(ProfileSectionTableViewCell.self, 
+        setupUI()
+        tableView.register(ProfileSectionTableViewCell.self,
                            forCellReuseIdentifier: ProfileSectionTableViewCell.ID)
     }
     
@@ -34,11 +32,18 @@ class ProfileViewController: UITableViewController {
 
 extension ProfileViewController {
     
+    fileprivate func setupUI() {
+        navigationItem.title = "My profile"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(leaveTapped))
+        navigationItem.rightBarButtonItem?.tintColor = Style.Colors.error
+
+        view.backgroundColor = Style.Colors.background
+    }
+    
     fileprivate func setupBlurEffectView() {
-        navigationController?.view.addSubview(blurEffectView)
-        
         blurEffectView.alpha = 0
         
+        navigationController?.view.addSubview(blurEffectView)
         blurEffectView.snp.makeConstraints { make in
             make.top.bottom.right.left.equalTo(view)
         }
@@ -57,12 +62,19 @@ extension ProfileViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    fileprivate func showPersonalDataViewController() {
+        setTabBarHidden(true)
+        let vc = PersonalDataViewController()
+//        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }
 
 extension ProfileViewController: SelectionLanguageViewControllerDelegate {
     
-    func viewWillDisappear() {
+    func selectionLanguageViewWillDisappear() {
         setTabBarHidden(false)
         UIView.animate(withDuration: 0.3) { [self] in
             blurEffectView.alpha = 0
@@ -102,10 +114,20 @@ extension ProfileViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 0: showPersonalDataViewController()
+        case 1: print(123)
         case 2: showSelectionLanguageView()
-        default: print(0)
+        default: print(indexPath)
         }
-        print(indexPath)
+    }
+    
+    
+}
+
+extension ProfileViewController {
+    
+    @objc func leaveTapped() {
+        print(123)
     }
     
     

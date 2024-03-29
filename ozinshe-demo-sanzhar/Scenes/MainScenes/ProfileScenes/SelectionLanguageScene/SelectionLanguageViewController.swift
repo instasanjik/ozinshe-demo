@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol SelectionLanguageViewControllerDelegate: AnyObject {
-    func viewWillDisappear()
+    func selectionLanguageViewWillDisappear()
 }
 
 class SelectionLanguageViewController: UIViewController {
@@ -94,7 +94,7 @@ class SelectionLanguageViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        delegate?.viewWillDisappear()
+        delegate?.selectionLanguageViewWillDisappear()
     }
     
     
