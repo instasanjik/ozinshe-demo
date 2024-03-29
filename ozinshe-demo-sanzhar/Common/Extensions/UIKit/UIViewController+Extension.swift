@@ -10,7 +10,6 @@ import UIKit
 extension UIViewController {
     
     func setTabBarHidden(_ hidden: Bool, animated: Bool = true, duration: TimeInterval = 0.3) {
-        self.tabBarController?.tabBar.isTranslucent = hidden
         if animated {
             if let frame = self.tabBarController?.tabBar.frame {
                 let factor: CGFloat = hidden ? 1 : -1
@@ -22,6 +21,7 @@ extension UIViewController {
             }
         }
         self.tabBarController?.tabBar.isHidden = hidden
+        self.tabBarController?.tabBar.isTranslucent = hidden
     }
 
     

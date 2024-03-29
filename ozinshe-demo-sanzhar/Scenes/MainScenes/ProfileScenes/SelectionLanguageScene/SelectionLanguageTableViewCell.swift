@@ -29,8 +29,10 @@ class SelectionLanguageTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {}
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
-        if isSelected {
+        if selected {
             setupCheckImageView()
         } else {
             checkImageView.removeFromSuperview()

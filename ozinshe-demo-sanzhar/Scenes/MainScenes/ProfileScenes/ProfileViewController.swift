@@ -11,7 +11,7 @@ import SnapKit
 class ProfileViewController: UITableViewController {
     
     lazy var blurEffectView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //        blurEffectView.alpha = 0.5
@@ -29,30 +29,29 @@ class ProfileViewController: UITableViewController {
                            forCellReuseIdentifier: ProfileSectionTableViewCell.ID)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        setupBlurEffectView()
-    }
-    
 }
 
 
 extension ProfileViewController {
     
     fileprivate func setupBlurEffectView() {
-        view.addSubview(blurEffectView)
+        navigationController?.view.addSubview(blurEffectView)
+        
+        blurEffectView.alpha = 0
         
         blurEffectView.snp.makeConstraints { make in
             make.top.bottom.right.left.equalTo(view)
         }
         
-        view.bringSubviewToFront(blurEffectView)
+        UIView.animate(withDuration: 0.3) { [self] in
+            blurEffectView.alpha = 1
+        }
     }
     
     fileprivate func showSelectionLanguageView() {
         setupBlurEffectView()
         setTabBarHidden(true)
-        let vc: SelectionLanguageViewController = SelectionLanguageViewController()
+        let vc = SelectionLanguageViewController()
         vc.modalPresentationStyle = .overCurrentContext
         vc.delegate = self
         self.present(vc, animated: true, completion: nil)
@@ -65,6 +64,11 @@ extension ProfileViewController: SelectionLanguageViewControllerDelegate {
     
     func viewWillDisappear() {
         setTabBarHidden(false)
+        UIView.animate(withDuration: 0.3) { [self] in
+            blurEffectView.alpha = 0
+        } completion: { complete in
+            self.blurEffectView.removeFromSuperview()
+        }
     }
     
     

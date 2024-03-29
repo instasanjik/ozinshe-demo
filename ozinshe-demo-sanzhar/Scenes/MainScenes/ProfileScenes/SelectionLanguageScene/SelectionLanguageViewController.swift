@@ -15,26 +15,39 @@ protocol SelectionLanguageViewControllerDelegate: AnyObject {
 class SelectionLanguageViewController: UIViewController {
     
     var delegate: SelectionLanguageViewControllerDelegate?
+    var oldValueY: Double = 0
+    let SCROLL_VIEW_PADDING_Y: CGFloat = 124
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        
         scrollView.addSubview(scrollViewContentView)
         scrollViewContentView.snp.makeConstraints { make in
-            make.top.bottom.left.right.equalTo(scrollView.contentLayoutGuide)
+            make.top.left.right.bottom.equalTo(scrollView.contentLayoutGuide)
             make.height.equalTo(scrollView.frameLayoutGuide).priority(250)
             make.width.equalToSuperview()
         }
+        
         scrollView.delegate = self
         scrollView.showsVerticalScrollIndicator = false
+        
         return scrollView
     }()
     
-    lazy var scrollViewContentView = UIView()
+    lazy var invisibleView: UIView = {
+        let view = UIView()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        view.addGestureRecognizer(tap)
+        
+        return view
+    }()
+    
+    lazy var scrollViewContentView = OZExpandedView()
     
     lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = Style.Colors.gray800
-        view.clipsToBounds = true
         view.layer.cornerRadius = 32
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return view
@@ -71,7 +84,6 @@ class SelectionLanguageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupScrollView()
         setupContentView()
     }
@@ -86,6 +98,7 @@ class SelectionLanguageViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         delegate?.viewWillDisappear()
     }
+    
     
 }
 
@@ -103,10 +116,18 @@ extension SelectionLanguageViewController {
         scrollViewContentView.addSubview(contentView)
         
         contentView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(view.frame.height-303-ScreenSize.statusBarHeight+64)
-            make.bottom.equalToSuperview().inset(304+ScreenSize.statusBarHeight-64-view.frame.height)
+            make.top.equalToSuperview().inset(view.frame.height-303-ScreenSize.statusBarHeight+SCROLL_VIEW_PADDING_Y)
+            make.bottom.equalToSuperview().inset(304+ScreenSize.statusBarHeight-SCROLL_VIEW_PADDING_Y-view.frame.height)
             make.left.right.equalToSuperview()
             make.height.equalTo(view.frame.height)
+        }
+        
+        
+        
+        scrollViewContentView.addSubview(invisibleView)
+        invisibleView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalTo(contentView.snp.top)
         }
         
         setupBrowView()
@@ -148,6 +169,21 @@ extension SelectionLanguageViewController {
 }
 
 
+extension SelectionLanguageViewController {
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        guard var location = sender?.location(in: self.view) else { return }
+        location.y = location.y + SCROLL_VIEW_PADDING_Y
+        if !contentView.frame.contains(location) {
+            self.dismiss(animated: true)
+        }
+    }
+    
+    
+}
+
+
+
 extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -157,7 +193,6 @@ extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectionLanguageTableViewCell.ID, for: indexPath)
-//        cell.selectionStyle = .none
         return cell
     }
     
@@ -171,11 +206,13 @@ extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataS
 extension SelectionLanguageViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
-        if scrollView.contentOffset.y < 0 {
+        if oldValueY > scrollView.contentOffset.y && scrollView.contentOffset.y < 43 {
             self.dismiss(animated: true)
         }
+        oldValueY = scrollView.contentOffset.y
     }
     
     
 }
+
+
