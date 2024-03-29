@@ -29,11 +29,3 @@ class SearchResultViewController: UITableViewController {
 
     
 }
-
-
-extension SearchResultViewController {
-    
-    
-    
-}
-

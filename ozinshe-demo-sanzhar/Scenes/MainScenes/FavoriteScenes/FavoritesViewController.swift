@@ -6,13 +6,26 @@
 //
 
 import UIKit
+import SnapKit
+import SkeletonView
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UITableViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = Style.Colors.purple500
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.ID, for: indexPath)
+        return cell
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = Style.Colors.background
+        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.ID)
+    }
+
     
 }
