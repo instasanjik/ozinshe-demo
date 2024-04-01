@@ -23,11 +23,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-        if Storage.string(forKey: Keys.accessToken) == "" {
-            window?.rootViewController = SignInNavigationViewController()
-        } else {
+//        if Storage.string(forKey: Keys.accessToken) == "" {
+//            window?.rootViewController = SignInNavigationViewController()
+//        } else {
             window?.rootViewController = MainTabBarController()
+//        }
+        
+        
+        
+        if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
+            Storage.sharedInstance.accessToken = accessToken
+            window?.rootViewController = MainTabBarController()
+        } else {
+            window?.rootViewController = SignInNavigationViewController()
         }
+        
+//        AuthService.login(email: "mail@mail.kz", password: "string") { success in
+//            print(success)
+//        }
+        
         window?.tintColor = Style.Colors.purple500
         window?.makeKeyAndVisible()
         

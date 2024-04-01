@@ -7,14 +7,9 @@
 
 import Foundation
 
-struct Keys {
-    static let isUserOpeningAppFirstTime = "isUserOpeningAppFirstTime"
+class Storage {
+    public var accessToken: String = ""
     
-    static let accessToken = "accessToken"
-    static let email = "email"
-    static let password = "password"
-    
-    static let id = "user_id"
+    static let sharedInstance = Storage()
 }
 
-public let Storage = UserDefaults.standard

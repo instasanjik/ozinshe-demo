@@ -310,7 +310,9 @@ extension SignInViewController {
 extension SignInViewController {
     
     @objc func loginTapped(sender: UIButton!) {
-        Storage.set("test", forKey: Keys.accessToken)
+//        Storage.set("test", forKey: Keys.accessToken)
+        
+        
         
         let vc = MainTabBarController()
         vc.modalTransitionStyle = .flipHorizontal

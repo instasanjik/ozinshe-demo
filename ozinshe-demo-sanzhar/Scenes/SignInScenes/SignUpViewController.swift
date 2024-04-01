@@ -273,7 +273,7 @@ extension SignUpViewController {
     }
     
     @objc func signUpTapped(sender: UIGestureRecognizer!) {
-        Storage.set("test", forKey: Keys.accessToken)
+//        Storage.set("test", forKey: Keys.accessToken)
         
         let vc = MainTabBarController()
         vc.modalTransitionStyle = .flipHorizontal
