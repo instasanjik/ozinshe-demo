@@ -9,6 +9,18 @@
             "state" : "translated",
             "value" : "y.o."
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "жас"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "лет"
+          }
         }
       }
     },
@@ -25,6 +37,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Келесі"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "далее"
           }
         }
       }
@@ -43,6 +61,12 @@
             "state" : "translated",
             "value" : "Әрі қарай"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начнем!"
+          }
         }
       }
     },
@@ -59,6 +83,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Фильмдер, телехикаялар, ситкомдар, анимациялық жобалар, телебағдарламалар мен реалити-шоулар, аниме және тағы басқалары"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильмы, сериалы, ситкомы, анимационные проекты, телепрограммы и реалити-шоу, аниме и многое другое"
           }
         }
       }
@@ -77,6 +107,12 @@
             "state" : "translated",
             "value" : "Кез келген құрылғыдан қара \nСүйікті фильміңді  қосымша төлемсіз телефоннан, планшеттен, ноутбуктан қара"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Смотрите с любого устройства\nСмотрите свой любимый фильм со своего телефона, планшета, ноутбука без дополнительной оплаты"
+          }
         }
       }
     },
@@ -93,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Тіркелу оңай. Қазір тіркел де қалаған фильміңе қол жеткіз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зарегистрироваться очень просто. Зарегистрируйтесь прямо сейчас и получите желаемый фильм"
           }
         }
       }
@@ -111,6 +153,12 @@
             "state" : "translated",
             "value" : "Өткізу"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пропустить"
+          }
         }
       }
     },
@@ -128,6 +176,12 @@
             "state" : "translated",
             "value" : "ÖZINŞE-ге қош келдің!"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добро пожаловать в ÖZINŞE!"
+          }
         }
       }
     },
@@ -138,6 +192,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "New password"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жаңа пароль"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новый пароль"
           }
         }
       }
@@ -150,6 +216,18 @@
             "state" : "translated",
             "value" : "Repeat new password"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жаңа құпия сөзді қайталаңыз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторите новый пароль"
+          }
         }
       }
     },
@@ -160,6 +238,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Anime"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аниме"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аниме"
           }
         }
       }
@@ -172,6 +262,18 @@
             "state" : "translated",
             "value" : "Cartoons"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мультсериал"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мультфильмы"
+          }
         }
       }
     },
@@ -182,6 +284,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CartoonSeries"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мультфильм"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мультсериалы"
           }
         }
       }
@@ -194,6 +308,18 @@
             "state" : "translated",
             "value" : "Documentary movies"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Деректі фильм"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Документальные фильмы"
+          }
         }
       }
     },
@@ -204,6 +330,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Feature Movies"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Көркем фильм"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Художественный фильмы"
           }
         }
       }
@@ -216,6 +354,18 @@
             "state" : "translated",
             "value" : "Foreign films"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шетел фильмдері"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зарубежные фильмы"
+          }
         }
       }
     },
@@ -226,6 +376,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Music"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Музыка"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Музыка"
           }
         }
       }
@@ -238,6 +400,18 @@
             "state" : "translated",
             "value" : "Series"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Телехикая"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сериалы"
+          }
         }
       }
     },
@@ -248,6 +422,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sitkom"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ситком"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ситком"
           }
         }
       }
@@ -260,6 +446,18 @@
             "state" : "translated",
             "value" : "TV program and reality show"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тв-бағдарлама және реалити-шоу"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТВ-программы и реалити-шоу"
+          }
         }
       }
     },
@@ -270,6 +468,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "TV program and reality show"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тв-бағдарлама және реалити-шоу"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТВ-программы и реалити-шоу"
           }
         }
       }
@@ -282,6 +492,18 @@
             "state" : "translated",
             "value" : "Categories"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Санаттар"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категории"
+          }
         }
       }
     },
@@ -292,6 +514,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Өңдеу"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить"
           }
         }
       }
@@ -304,6 +538,18 @@
             "state" : "translated",
             "value" : "Adventure"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шытырман оқиғалы"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приключения"
+          }
         }
       }
     },
@@ -314,6 +560,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comedy"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Комедиялар"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Комении"
           }
         }
       }
@@ -326,6 +584,18 @@
             "state" : "translated",
             "value" : "Entertainment"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ойын-сауық"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Развлечения"
+          }
         }
       }
     },
@@ -336,6 +606,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Family"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отбасымен көретіндер"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Семья"
           }
         }
       }
@@ -348,6 +630,18 @@
             "state" : "translated",
             "value" : "Fantasy"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ғылыми фантастика және фэнтези"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фэнтези"
+          }
         }
       }
     },
@@ -358,6 +652,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Musically"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Музыкалық"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Музыка"
           }
         }
       }
@@ -370,6 +676,18 @@
             "state" : "translated",
             "value" : "Science"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ғылыми-танымдық"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Научные"
+          }
         }
       }
     },
@@ -380,6 +698,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Short"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Қысқаметрлі"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Короткометражные"
           }
         }
       }
@@ -392,6 +722,18 @@
             "state" : "translated",
             "value" : "Sport"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спорттық"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спорт"
+          }
         }
       }
     },
@@ -402,6 +744,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Keep watching"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Көруді жалғастырыңыз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продолжить просмотр"
           }
         }
       }
@@ -414,6 +768,18 @@
             "state" : "translated",
             "value" : "Do you really want to log out of your account?"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сіз шынымен есептік жазбаңыздан шыққыңыз келе ме?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы действительно хотите выйти из аккаунта?"
+          }
         }
       }
     },
@@ -424,6 +790,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жоқ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
           }
         }
       }
@@ -436,6 +814,18 @@
             "state" : "translated",
             "value" : "Yes. leave"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иә, шығу"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Да, выйти"
+          }
         }
       }
     },
@@ -446,6 +836,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Director"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режиссер"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режисер"
           }
         }
       }
@@ -458,6 +860,18 @@
             "state" : "translated",
             "value" : "Hide"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жасыру"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрыть"
+          }
         }
       }
     },
@@ -468,6 +882,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "More"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Толығырақ"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Больше"
           }
         }
       }
@@ -480,6 +906,18 @@
             "state" : "translated",
             "value" : "Producer"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продюсер"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продюсер"
+          }
         }
       }
     },
@@ -490,6 +928,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сақтау"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
           }
         }
       }
@@ -502,6 +952,18 @@
             "state" : "translated",
             "value" : "Screenshots"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скриншоттар"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скриншоты"
+          }
         }
       }
     },
@@ -512,6 +974,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sections"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бөлімдер"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Секции"
           }
         }
       }
@@ -524,6 +998,18 @@
             "state" : "translated",
             "value" : "Share"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бөлісу"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поделиться"
+          }
         }
       }
     },
@@ -534,6 +1020,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Similar TV series"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ұқсас телехикаялар"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Похожие сериалы"
           }
         }
       }
@@ -546,6 +1044,18 @@
             "state" : "translated",
             "value" : "Watch"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Қарау"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Посмотреть"
+          }
         }
       }
     },
@@ -556,6 +1066,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trending ones"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Трендтер"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В тренде"
           }
         }
       }
@@ -568,6 +1090,18 @@
             "state" : "translated",
             "value" : "Change password"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Құпия сөзді өзгерту"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить пароль"
+          }
         }
       }
     },
@@ -578,6 +1112,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dark mode"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Қараңғы режим"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ночной режим"
           }
         }
       }
@@ -590,6 +1136,18 @@
             "state" : "translated",
             "value" : "Language"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тіл"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Язык"
+          }
         }
       }
     },
@@ -600,6 +1158,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Leave"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шығу"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выйти"
           }
         }
       }
@@ -612,6 +1182,18 @@
             "state" : "translated",
             "value" : "My profile"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Менің профилім"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мой профиль"
+          }
         }
       }
     },
@@ -622,6 +1204,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notifications"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хабарламалар"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уведомления"
           }
         }
       }
@@ -634,6 +1228,18 @@
             "state" : "translated",
             "value" : "Personal data"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Жеке деректер"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Персональные данные"
+          }
         }
       }
     },
@@ -644,6 +1250,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terms of Use"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ережелер мен шарттар"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Условия использования"
           }
         }
       }
@@ -656,6 +1274,18 @@
             "state" : "translated",
             "value" : "Search"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Іздеу"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск"
+          }
         }
       }
     },
@@ -666,6 +1296,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign up with your Apple ID"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple ID-мен тіркеліңіз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти с Apple ID"
           }
         }
       }
@@ -678,6 +1320,18 @@
             "state" : "translated",
             "value" : "Log in into your account"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аккаунтқа кіріңіз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войдите в ваш аккаунт"
+          }
         }
       }
     },
@@ -688,6 +1342,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Forgot your password?"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Құпия сөзді ұмыттыңыз ба?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Забыли пароль?"
           }
         }
       }
@@ -700,6 +1366,18 @@
             "state" : "translated",
             "value" : "Sign up with your Google"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google-мен тіркеліңіз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти с Google"
+          }
         }
       }
     },
@@ -710,6 +1388,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Have no account?"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аккаунтыныз жоқ па? "
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет аккаунта?"
           }
         }
       }
@@ -722,6 +1412,18 @@
             "state" : "translated",
             "value" : "Hello"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сәлем"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Привет!"
+          }
         }
       }
     },
@@ -732,6 +1434,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Join"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кіру"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти"
           }
         }
       }
@@ -744,6 +1458,18 @@
             "state" : "translated",
             "value" : "Or try it"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Немесе"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Или"
+          }
         }
       }
     },
@@ -754,6 +1480,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Password"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Құпия сөз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пароль"
           }
         }
       }
@@ -766,6 +1504,18 @@
             "state" : "translated",
             "value" : "Sign Up!"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тіркелу"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зарегистрироваться!"
+          }
         }
       }
     },
@@ -776,6 +1526,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wrong format"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Қате формат"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неверный формат"
           }
         }
       }
@@ -788,6 +1550,18 @@
             "state" : "translated",
             "value" : "Your email"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сіздің email"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш email"
+          }
         }
       }
     },
@@ -798,6 +1572,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your password"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сіздің құпия сөзіңіз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш пароль"
           }
         }
       }
@@ -810,6 +1596,18 @@
             "state" : "translated",
             "value" : "Fill in the data"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Деректерді толтырыңыз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заполните форму"
+          }
         }
       }
     },
@@ -820,6 +1618,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Already have an account?"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сізде аккаунт бар ма?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уже есть аккаунт?"
           }
         }
       }
@@ -832,6 +1642,18 @@
             "state" : "translated",
             "value" : "Login"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кіру"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти"
+          }
         }
       }
     },
@@ -843,6 +1665,18 @@
             "state" : "translated",
             "value" : "Repeat the password"
           }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Құпия сөзді қайталаңыз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторите пароль"
+          }
         }
       }
     },
@@ -853,6 +1687,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign Up"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тіркелу"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зарегистрироваться"
           }
         }
       }
