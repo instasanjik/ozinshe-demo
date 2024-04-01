@@ -225,7 +225,8 @@ extension LeaveConfirmationViewController {
     }
     
     @objc func leaveButtonTapped(_ sender: UIButton!) {
-//        Storage.set("", forKey: Keys.accessToken)
+        Storage.sharedInstance.accessToken = ""
+        UserDefaults.standard.set(nil, forKey: "accessToken")
         
         let vc = SignInNavigationViewController()
         vc.modalPresentationStyle = .fullScreen

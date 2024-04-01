@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 class SignUpViewController: UIViewController {
     
@@ -135,7 +136,6 @@ class SignUpViewController: UIViewController {
 
 
 // MARK: UI setups
-
 extension SignUpViewController {
     
     private func setupSignUpLabel() {
@@ -273,12 +273,7 @@ extension SignUpViewController {
     }
     
     @objc func signUpTapped(sender: UIGestureRecognizer!) {
-//        Storage.set("test", forKey: Keys.accessToken)
-        
-        let vc = MainTabBarController()
-        vc.modalTransitionStyle = .flipHorizontal
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        signUp()
     }
     
     
@@ -302,6 +297,39 @@ extension SignUpViewController {
         UIView.animate(withDuration: 0.1) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+    fileprivate func signUp() {
+        if passwordTextField.text != confirmPasswordTextField.text {
+            SVProgressHUD.showError(withStatus: "Passwords are not similar") // TODO: Localize errors
+            return
+        }
+        
+        if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
+            if email != "" && password != "" {
+                AuthService.Worker.signUp(email: email, password: password) { success in
+                    if success {
+                        self.openMainTabbar()
+                    } else {
+                        SVProgressHUD.showError(withStatus: "Unknown error happened!") // TODO: Localize errors
+                    }
+                }
+            } else { // MARK: email or password are empty
+                SVProgressHUD.showError(withStatus: "Email or password cannot be empty") // TODO: Localize errors
+            }
+        }
+    }
+    
+    
+}
+
+extension SignUpViewController {
+    
+    fileprivate func openMainTabbar() {
+        let vc = MainTabBarController()
+        vc.modalTransitionStyle = .flipHorizontal
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     

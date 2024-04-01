@@ -8,5 +8,6 @@ target 'ozinshe-demo-sanzhar' do
   pod 'SkeletonView'
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'SVProgressHUD'
   
 end

@@ -2,12 +2,14 @@ PODS:
   - Alamofire (5.6.2)
   - SkeletonView (1.30.2)
   - SnapKit (5.6.0)
+  - SVProgressHUD (2.2.5)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
   - SkeletonView
   - SnapKit
+  - SVProgressHUD
   - SwiftyJSON
 
 SPEC REPOS:
@@ -15,14 +17,16 @@ SPEC REPOS:
     - Alamofire
     - SkeletonView
     - SnapKit
+    - SVProgressHUD
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   SkeletonView: 2a4536db5ded1b422459a73e05e08b20c6b3a69b
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: db14d6173e17371fe32fde81aaa48a4720379074
+PODFILE CHECKSUM: 969cda939f4ff43a08503643c71aecf1e07d6e8d
 
 COCOAPODS: 1.12.1
