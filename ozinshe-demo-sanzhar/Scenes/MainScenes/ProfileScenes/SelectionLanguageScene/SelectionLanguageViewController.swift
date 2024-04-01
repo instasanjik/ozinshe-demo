@@ -207,6 +207,28 @@ extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataS
         return 64
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: NSLocalizedString("Languages-Warning", comment: "Warning"), message: NSLocalizedString("Lanuages-WarningDescription", comment: "Please restart your app to change language completely"), preferredStyle: .alert) // TODO: Make easier reloading
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Restart", comment: "Restart"), style: .destructive, handler: { _ in self.changeLanguagePressed(indexPath: indexPath)}))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Cancel", comment: "Cancel"), style: .cancel))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func changeLanguagePressed(indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0: changeLanguage(to: "kk-KZ")
+        case 1: changeLanguage(to: "ru")
+        case 2: changeLanguage(to: "en")
+        default: fatalError()
+        }
+    }
+    
+    func changeLanguage(to: String) {
+        UserDefaults.standard.set([to], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+        exit(0)
+    }
+    
     
 }
 
