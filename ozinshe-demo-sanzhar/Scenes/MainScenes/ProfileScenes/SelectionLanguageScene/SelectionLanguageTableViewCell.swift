@@ -16,9 +16,7 @@ class SelectionLanguageTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textColor = Style.Colors.label
-        
-        label.text = "English"
-        
+        label.text = "English" // TODO: Make it dynamic
         return label
     }()
     

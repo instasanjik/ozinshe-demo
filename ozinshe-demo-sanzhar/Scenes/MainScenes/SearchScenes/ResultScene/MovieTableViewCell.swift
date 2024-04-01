@@ -32,7 +32,7 @@ class MovieTableViewCell: UITableViewCell {
     
     lazy var movieNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қызғалдақтар мекені"
+        label.text = "Қызғалдақтар мекені" // TODO: link with backend
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
         return label
@@ -40,7 +40,7 @@ class MovieTableViewCell: UITableViewCell {
     
     lazy var shortInfoLabel: UILabel = {
         let label = UILabel()
-        label.text = "2020 • Телехакая • Мультфильм"
+        label.text = "2020 • Телехакая • Мультфильм" // TODO: link with backend
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         return label
@@ -52,7 +52,7 @@ class MovieTableViewCell: UITableViewCell {
         button.tintColor = Style.Colors.purple400
         button.layer.cornerRadius = 8
         
-        button.setTitle("Қарау", for: .normal)
+        button.setTitle(NSLocalizedString("Movie-Watch", comment: "Қарау"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
         button.setTitleColor(Style.Colors.purple400, for: .normal)
         

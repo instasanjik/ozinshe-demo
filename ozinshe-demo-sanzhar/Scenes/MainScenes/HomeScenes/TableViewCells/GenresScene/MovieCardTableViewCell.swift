@@ -16,7 +16,7 @@ class MovieCardTableViewCell: UITableViewCell {
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Трендтегілер"
+        label.text = NSLocalizedString("MovieInfo-Trending", comment: "Трендтегілер")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
         return label
@@ -24,7 +24,7 @@ class MovieCardTableViewCell: UITableViewCell {
     
     lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Барлыгы", for: .normal)
+        button.setTitle(NSLocalizedString("Movie-More", comment: "Барлыгы"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(Style.StaticColors.purple300, for: .normal)
         button.contentVerticalAlignment = .top

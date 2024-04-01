@@ -24,7 +24,7 @@ class GalleryListCollectionViewCell: UICollectionViewCell {
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қызғалдақтар мекені"
+        label.text = "Қызғалдақтар мекені" // TODO: Link with backend
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.label
         label.numberOfLines = 1 // TODO: When skeleton is stop - make 2 lines
@@ -35,7 +35,7 @@ class GalleryListCollectionViewCell: UICollectionViewCell {
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "2-бөлім"
+        label.text = "2-бөлім" // TODO: Link with backend
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.isSkeletonable = true

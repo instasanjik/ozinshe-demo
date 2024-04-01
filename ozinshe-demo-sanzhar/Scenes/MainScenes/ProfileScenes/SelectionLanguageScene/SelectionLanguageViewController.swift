@@ -68,7 +68,7 @@ class SelectionLanguageViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = "Тіл"
+        label.text = NSLocalizedString("Profile-Language", comment: "Тіл") 
         return label
     }()
 

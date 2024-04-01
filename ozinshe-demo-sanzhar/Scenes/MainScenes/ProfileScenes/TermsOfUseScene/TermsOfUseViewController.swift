@@ -38,7 +38,7 @@ class TermsOfUseViewController: UIViewController {
 extension TermsOfUseViewController {
     
     fileprivate func setupUI() {
-        navigationItem.title = "Ережелер мен шарттар"
+        navigationItem.title = NSLocalizedString("Profile-TermsOfUse", comment: "Ережелер мен шарттар")
         navigationItem.backButtonTitle = ""
         view.backgroundColor = Style.Colors.background
         

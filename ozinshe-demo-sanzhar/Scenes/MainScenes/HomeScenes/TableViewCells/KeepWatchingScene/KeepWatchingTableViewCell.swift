@@ -15,7 +15,7 @@ class KeepWatchingTableViewCell: UITableViewCell {
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қарауды жалғастырыңыз"
+        label.text = NSLocalizedString("KeepWatching-KeepWatching", comment: "Қарауды жалғастырыңыз")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
         return label

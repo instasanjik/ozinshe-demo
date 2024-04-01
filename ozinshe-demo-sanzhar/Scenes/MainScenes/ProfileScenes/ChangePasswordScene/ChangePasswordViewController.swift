@@ -14,7 +14,7 @@ class ChangePasswordViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = "Құпия сөз"
+        label.text = NSLocalizedString("ChangePassword-NewPassword", comment: "Құпия сөз")
         return label
     }()
     
@@ -29,7 +29,7 @@ class ChangePasswordViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = "Құпия сөз"
+        label.text = NSLocalizedString("ChangePassword-RepeatPassword", comment: "Құпия сөз") 
         return label
     }()
     
@@ -58,7 +58,7 @@ extension ChangePasswordViewController {
     fileprivate func setupUI() {
         view.backgroundColor = Style.Colors.background
         
-        navigationItem.title = "Құпия сөзді өзгерту"
+        navigationItem.title = NSLocalizedString("Profile-ChangePassword", comment: "Құпия сөзді өзгерту")
         
         setupPasswordLabel()
         setupPasswordTextField()

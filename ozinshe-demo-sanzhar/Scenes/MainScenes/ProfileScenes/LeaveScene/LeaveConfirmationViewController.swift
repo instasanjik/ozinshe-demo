@@ -68,7 +68,7 @@ class LeaveConfirmationViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = "Шығу"
+        label.text = NSLocalizedString("Profile-Leave", comment: "Шығу")
         return label
     }()
     
@@ -76,13 +76,13 @@ class LeaveConfirmationViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = Style.Colors.gray400
-        label.text = "Сіз шынымен аккаунтыныздан"
+        label.text = NSLocalizedString("LeaveAccount-Confirmation", comment: "Сіз шынымен аккаунтыныздан") 
         return label
     }()
     
     lazy var leaveButton: OZButton = {
         let button = OZButton()
-        button.setTitle("Иә, шығу", for: .normal)
+        button.setTitle(NSLocalizedString("LeaveAccount-Yes", comment: "Иә, шығу"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         button.addTarget(self, action: #selector(leaveButtonTapped(_:)), for: .touchUpInside)
         return button
@@ -91,7 +91,7 @@ class LeaveConfirmationViewController: UIViewController {
     lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
-        button.setTitle("Жоқ", for: .normal)
+        button.setTitle(NSLocalizedString("LeaveAccount-No", comment: "Жоқ"), for: .normal)
         button.setTitleColor(Style.Colors.purple300, for: .normal)
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)

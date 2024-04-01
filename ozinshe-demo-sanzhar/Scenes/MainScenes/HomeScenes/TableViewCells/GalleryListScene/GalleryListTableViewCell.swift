@@ -15,7 +15,7 @@ class GalleryListTableViewCell: UITableViewCell {
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Тв-бағдарлама және реалити-шоу"
+        label.text = NSLocalizedString("GalleryList-TVProgram", comment: "Тв-бағдарлама және реалити-шоу")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
         label.numberOfLines = 2
@@ -24,7 +24,7 @@ class GalleryListTableViewCell: UITableViewCell {
     
     lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Барлыгы", for: .normal)
+        button.setTitle(NSLocalizedString("Movie-More", comment: "Барлыгы"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(Style.StaticColors.purple300, for: .normal)
         button.contentVerticalAlignment = .top

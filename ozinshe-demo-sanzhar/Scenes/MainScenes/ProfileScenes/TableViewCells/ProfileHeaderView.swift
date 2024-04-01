@@ -22,7 +22,7 @@ class ProfileHeaderView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = "Менің профилім"
+        label.text = NSLocalizedString("Profile-MyProfile", comment: "Менің профилім")
         return label
     }()
     
@@ -30,7 +30,7 @@ class ProfileHeaderView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray400
-        label.text = "ali@gmail.com"
+        label.text = "ali@gmail.com" // TODO: Link with backend
         return label
     }()
 

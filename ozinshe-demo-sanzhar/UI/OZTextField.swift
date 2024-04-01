@@ -43,7 +43,7 @@ class OZTextField: UITextField {
     
     lazy var errorLabel: UILabel = {
         let label = UILabel()
-        label.text = "Password"
+        label.text = "Password" // TODO: localize with backend
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.error
         return label

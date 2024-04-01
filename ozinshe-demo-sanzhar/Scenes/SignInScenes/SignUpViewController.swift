@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController {
     
     lazy var errorLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem ipsum" // localize
+        label.text = "Lorem ipsum" // TODO: localize with backend
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = Style.Colors.error
         label.textAlignment = .center

@@ -12,7 +12,7 @@ class SearchViewController: UIViewController {
     
     lazy var searchTextField: OZTextField = {
         let textField = OZTextField()
-        textField.placeholder = "Поиск"
+        textField.placeholder = NSLocalizedString("Search-Search", comment: "Іздеу")
         textField.padding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         textField.normalBorderColor = UIColor.clear.cgColor
         let _ = textField.resignFirstResponder()
@@ -31,7 +31,7 @@ class SearchViewController: UIViewController {
     
     lazy var categoriesLabel: UILabel = {
         let label = UILabel()
-        label.text = "Санаттар"
+        label.text = NSLocalizedString("General-Categories", comment: "Санаттар")
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
         return label

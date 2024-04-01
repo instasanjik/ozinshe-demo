@@ -33,7 +33,7 @@ class ProfileSectionTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textColor = Style.Colors.gray200
-        label.text = "Жеке деректер"
+        label.text = NSLocalizedString("Profile-PersonalData", comment: "Жеке деректер")
         return label
     }()
     
@@ -41,7 +41,7 @@ class ProfileSectionTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.gray400
-        label.text = "Өңдеу"
+        label.text = NSLocalizedString("General-Edit", comment: "Өңдеу")
         return label
     }()
     

@@ -17,9 +17,7 @@ class PersonalDataTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.gray400
-        
-        label.text = "Сіздің атыңыз"
-        
+        label.text = "Сіздің атыңыз" // TODO: Make dynamic
         return label
     }()
     
@@ -27,9 +25,7 @@ class PersonalDataTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = Style.Colors.label
-        
-        label.text = "Айдар"
-        
+        label.text = "Айдар" // TODO: Make dynamic
         return label
     }()
     

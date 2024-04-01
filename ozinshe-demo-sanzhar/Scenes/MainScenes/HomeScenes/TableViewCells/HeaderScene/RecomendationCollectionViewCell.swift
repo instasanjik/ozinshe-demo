@@ -24,7 +24,7 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қызғалдақтар мекені"
+        label.text = "Қызғалдақтар мекені" // TODO: Link with backend data
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
         label.isSkeletonable = true
@@ -42,7 +42,7 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
     
     lazy var typeNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Телехикая"
+        label.text = "Телехикая" // TODO: Link with backend data
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = Style.StaticColors.label
         return label
@@ -50,7 +50,7 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        label.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."  // TODO: Link with backend data
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2

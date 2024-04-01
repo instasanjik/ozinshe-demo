@@ -33,7 +33,7 @@ class ProfileViewController: UITableViewController {
 extension ProfileViewController {
     
     fileprivate func setupUI() {
-        navigationItem.title = "My profile"
+        navigationItem.title = NSLocalizedString("Profile-MyProfile", comment: "Профиль")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(leaveTapped))
         navigationItem.rightBarButtonItem?.tintColor = Style.Colors.error
 
