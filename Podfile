@@ -6,5 +6,7 @@ target 'ozinshe-demo-sanzhar' do
 
   pod 'SnapKit'
   pod 'SkeletonView'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
   
 end
