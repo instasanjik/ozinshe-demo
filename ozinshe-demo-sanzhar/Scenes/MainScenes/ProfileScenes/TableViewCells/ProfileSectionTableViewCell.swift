@@ -19,7 +19,7 @@ class ProfileSectionTableViewCell: UITableViewCell {
             nameLabel.text = cellData.0
             switch cellData.1 {
             case .labelAndChevron:
-                setupUI(cellType: cellData.1, optionValue: "Өңдеу")
+                setupUI(cellType: cellData.1, optionValue: NSLocalizedString("General-Edit", comment: "Өңдеу"))
             case .chevronOnly:
                 setupUI(cellType: cellData.1)
             case .switchOnly:

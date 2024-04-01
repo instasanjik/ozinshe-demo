@@ -121,6 +121,9 @@ extension ProfileViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileSectionTableViewCell.ID, for: indexPath) as! ProfileSectionTableViewCell
         cell.cellData = StaticData.profileSettings[indexPath.row]
+        if indexPath.row == 2 {
+            cell.optionNameLabel.text = StaticData.getLanguageName()
+        }
         cell.selectionStyle = .none
         return cell
     }

@@ -67,6 +67,27 @@ struct StaticData {
         (NSLocalizedString("Profile-DarkMode", comment: "Қараңғы режим"), .switchOnly)
     ]
     
+    static let languages: [(String, String)] = [
+        ("Қазақша", "kk"),
+        ("Русский", "ru"),
+        ("English", "en")
+    ]
+    
+    static func getLanguageName() -> String {
+        for (name, code) in StaticData.languages {
+            if #available(iOS 16, *) {
+                if Locale.current.language.languageCode?.identifier == code {
+                    return name
+                }
+            } else {
+                if Locale.current.languageCode == code {
+                    return name
+                }
+            }
+        }
+        return "English"
+    }
+    
     static let termOfUse: String = """
         What is Lorem Ipsum?
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.

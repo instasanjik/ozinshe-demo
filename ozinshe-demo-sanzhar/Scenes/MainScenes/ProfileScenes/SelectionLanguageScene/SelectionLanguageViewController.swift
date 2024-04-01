@@ -17,6 +17,7 @@ class SelectionLanguageViewController: UIViewController {
     /* MARK: values */
     public var delegate: SelectionLanguageViewControllerDelegate?
     fileprivate var oldValueY: Double = 0
+    fileprivate var lastSelectedRow: IndexPath?
     fileprivate let SCROLL_VIEW_PADDING_Y: CGFloat = 124
     
     
@@ -199,8 +200,25 @@ extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataS
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectionLanguageTableViewCell.ID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SelectionLanguageTableViewCell.ID, for: indexPath) as! SelectionLanguageTableViewCell
+        cell.languageNameLabel.text = StaticData.languages[indexPath.row].0
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let code = StaticData.languages[indexPath.row].1
+        
+        if #available(iOS 16, *) {
+            if Locale.current.language.languageCode?.identifier == code {
+                cell.setSelected(true, animated: true)
+                lastSelectedRow = indexPath
+            }
+        } else {
+            if Locale.current.languageCode == code {
+                cell.setSelected(true, animated: true)
+                lastSelectedRow = indexPath
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -208,19 +226,18 @@ extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: NSLocalizedString("Languages-Warning", comment: "Warning"), message: NSLocalizedString("Lanuages-WarningDescription", comment: "Please restart your app to change language completely"), preferredStyle: .alert) // TODO: Make easier reloading
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Restart", comment: "Restart"), style: .destructive, handler: { _ in self.changeLanguagePressed(indexPath: indexPath)}))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Cancel", comment: "Cancel"), style: .cancel))
+        let alert = UIAlertController(title: NSLocalizedString("Languages-Warning", comment: "Warning"),
+                                      message: NSLocalizedString("Lanuages-WarningDescription", comment: "Please restart your app to change language completely"),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Restart", comment: "Restart"),
+                                      style: .destructive,
+                                      handler: { _ in self.changeLanguage(to: StaticData.languages[indexPath.row].1)}))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Cancel", comment: "Cancel"), 
+                                      style: .cancel,
+                                      handler: { _ in 
+            tableView.selectRow(at: self.lastSelectedRow, animated: true, scrollPosition: .middle)
+        }))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func changeLanguagePressed(indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0: changeLanguage(to: "kk-KZ")
-        case 1: changeLanguage(to: "ru")
-        case 2: changeLanguage(to: "en")
-        default: fatalError()
-        }
     }
     
     func changeLanguage(to: String) {
