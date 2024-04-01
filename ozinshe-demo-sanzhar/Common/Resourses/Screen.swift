@@ -19,7 +19,6 @@ public enum ScreenSize {
         return UIScreen.main.bounds.height
     }()
     
-    
     public static let statusBarHeight: CGFloat = {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
             let statusBarManager = windowScene.statusBarManager

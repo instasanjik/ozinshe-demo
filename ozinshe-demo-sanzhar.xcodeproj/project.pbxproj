@@ -68,6 +68,7 @@
 		041CF93E2BB71E33003D2A58 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF93D2BB71E33003D2A58 /* HomeNavigationViewController.swift */; };
 		041CF9402BB71E4F003D2A58 /* SearchNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF93F2BB71E4F003D2A58 /* SearchNavigationViewController.swift */; };
 		041CF9442BB71E96003D2A58 /* FavoritesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9432BB71E96003D2A58 /* FavoritesNavigationViewController.swift */; };
+		041CF9482BBAE305003D2A58 /* Endponts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9472BBAE305003D2A58 /* Endponts.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +136,7 @@
 		041CF93D2BB71E33003D2A58 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		041CF93F2BB71E4F003D2A58 /* SearchNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationViewController.swift; sourceTree = "<group>"; };
 		041CF9432BB71E96003D2A58 /* FavoritesNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationViewController.swift; sourceTree = "<group>"; };
+		041CF9472BBAE305003D2A58 /* Endponts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endponts.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +175,7 @@
 		041CF87A2B8CB33F003D2A58 /* ozinshe-demo-sanzhar */ = {
 			isa = PBXGroup;
 			children = (
+				041CF9452BBAE250003D2A58 /* Services */,
 				041CF8C42B9EFB7F003D2A58 /* Models */,
 				041CF8BE2B9EF78E003D2A58 /* Common */,
 				041CF8A52B8E0093003D2A58 /* UI */,
@@ -495,6 +498,22 @@
 			path = ResultScene;
 			sourceTree = "<group>";
 		};
+		041CF9452BBAE250003D2A58 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				041CF9472BBAE305003D2A58 /* Endponts.swift */,
+				041CF9462BBAE297003D2A58 /* APIService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		041CF9462BBAE297003D2A58 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,6 +681,7 @@
 				041CF8FB2BA30FCA003D2A58 /* MovieInfoViewController.swift in Sources */,
 				041CF9042BA4A227003D2A58 /* ScreenshotCollectionViewCell.swift in Sources */,
 				041CF8BB2B9DCD77003D2A58 /* UIButton+Extension.swift in Sources */,
+				041CF9482BBAE305003D2A58 /* Endponts.swift in Sources */,
 				041CF9232BB58DB7003D2A58 /* SelectionLanguageViewController.swift in Sources */,
 				041CF89A2B8DC0D1003D2A58 /* UIColor+Extension.swift in Sources */,
 				041CF93E2BB71E33003D2A58 /* HomeNavigationViewController.swift in Sources */,
