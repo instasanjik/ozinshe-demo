@@ -7,6 +7,7 @@
 
 import UIKit
 import SkeletonView
+import SVProgressHUD
 
 let DEFAULT_ANIMATION = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .topLeftBottomRight)
 
@@ -26,10 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        if Storage.string(forKey: Keys.accessToken) == "" {
 //            window?.rootViewController = SignInNavigationViewController()
 //        } else {
-            window?.rootViewController = MainTabBarController()
+//            window?.rootViewController = MainTabBarController()
 //        }
         
-        
+        SVProgressHUD.setMinimumDismissTimeInterval(0.5)
         
         if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
             Storage.sharedInstance.accessToken = accessToken

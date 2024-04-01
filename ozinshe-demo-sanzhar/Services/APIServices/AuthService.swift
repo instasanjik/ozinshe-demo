@@ -55,6 +55,7 @@ class AuthService {
                 if let token = json["accessToken"].string {
                     Storage.sharedInstance.accessToken = token
                     UserDefaults.standard.set(token, forKey: "accessToken")
+                    completionHandler(true)
                 } else {
                     completionHandler(false)
                 }

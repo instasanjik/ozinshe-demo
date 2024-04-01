@@ -352,9 +352,10 @@ extension SignInViewController {
     fileprivate func signIn() {
         if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
             if email != "" && password != "" {
+                SVProgressHUD.show()
                 AuthService.Worker.login(email: email, password: password) { success in
                     if success {
-                        self.openMainTabbar()
+                        SVProgressHUD.dismiss { self.openMainTabbar() }
                     } else {
                         SVProgressHUD.showError(withStatus: "Incorrect login or password") // TODO: Localize errors
                     }

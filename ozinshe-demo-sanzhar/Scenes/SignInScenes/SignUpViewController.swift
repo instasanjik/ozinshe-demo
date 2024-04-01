@@ -307,9 +307,10 @@ extension SignUpViewController {
         
         if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
             if email != "" && password != "" {
+                SVProgressHUD.show()
                 AuthService.Worker.signUp(email: email, password: password) { success in
                     if success {
-                        self.openMainTabbar()
+                        SVProgressHUD.dismiss { self.openMainTabbar() }
                     } else {
                         SVProgressHUD.showError(withStatus: "Unknown error happened!") // TODO: Localize errors
                     }
