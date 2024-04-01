@@ -9,6 +9,7 @@ import Foundation
 import SwiftyJSON
 
 class Category {
+    
     public var id: Int = 0
     public var name: String = ""
     public var link: String = ""
@@ -24,5 +25,7 @@ class Category {
             self.link = temp
         }
     }
+    
+    
 }
 

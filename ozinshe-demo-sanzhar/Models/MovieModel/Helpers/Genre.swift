@@ -9,6 +9,7 @@ import Foundation
 import SwiftyJSON
 
 class Genre {
+    
     public var id: Int = 0
     public var name: String = ""
     public var link: String = ""
@@ -24,4 +25,6 @@ class Genre {
             self.link = temp
         }
     }
+    
+    
 }
