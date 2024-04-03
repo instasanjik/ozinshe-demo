@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.6.2)
-  - Kingfisher (7.3.2)
+  - Kingfisher (6.3.1)
   - SkeletonView (1.30.2)
   - SnapKit (5.6.0)
   - SVProgressHUD (2.2.5)
@@ -8,7 +8,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - Kingfisher
+  - Kingfisher (= 6.3.1)
   - SkeletonView
   - SnapKit
   - SVProgressHUD
@@ -25,12 +25,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
-  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   SkeletonView: 2a4536db5ded1b422459a73e05e08b20c6b3a69b
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 0514e3bea25e8156e3606ba21826ef4896ee2455
+PODFILE CHECKSUM: 4532726ce6f8fd140636a88378891926e753cfcd
 
 COCOAPODS: 1.12.1
