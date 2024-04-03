@@ -1,5 +1,5 @@
 //
-//  MovieCardCollectionViewCell.swift
+//  GenresAndAgesCollectionViewCell.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 13.03.2024.
@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class MovieCardCollectionViewCell: UICollectionViewCell {
+class GenresAndAgesCollectionViewCell: UICollectionViewCell {
     
-    static let ID: String = "MovieCardCollectionViewCell"
+    static let ID: String = "GenresAndAgesCollectionViewCell"
     
     lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
@@ -53,7 +53,7 @@ class MovieCardCollectionViewCell: UICollectionViewCell {
 }
 
 
-extension MovieCardCollectionViewCell {
+extension GenresAndAgesCollectionViewCell {
     
     private func setupPreviewImageView() {
         self.contentView.addSubview(previewImageView)
@@ -70,6 +70,18 @@ extension MovieCardCollectionViewCell {
         nameLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+    }
+    
+    
+}
+
+
+
+extension GenresAndAgesCollectionViewCell{
+    
+    public func configureCell(card: AgeAndGenreCardContent) {
+        self.previewImageView.kf.setImage(with: URL(string: card.link))
+        self.nameLabel.text = card.name
     }
     
     

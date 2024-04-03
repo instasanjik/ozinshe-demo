@@ -36,8 +36,8 @@ class MovieWithDetails {
     public var lastModifiedDate: String = ""
     
     public var screenshots: [Screenshot] = []
-    public var categoryAges: [AgeCategory] = []
-    public var genres: [Genre] = []
+    public var categoryAges: [AgeAndGenreCardContent] = []
+    public var genres: [AgeAndGenreCardContent] = []
     
     public var categories: [Category] = []
     
@@ -87,24 +87,24 @@ class MovieWithDetails {
         
         if let array = json["categoryAges"].array {
             for item in array {
-                let temp = AgeCategory(json: item)
+                let temp = AgeAndGenreCardContent(json: item)
                 self.categoryAges.append(temp)
             }
         }
         
         if let array = json["genres"].array {
             for item in array {
-                let temp = Genre(json: item)
+                let temp = AgeAndGenreCardContent(json: item)
                 self.genres.append(temp)
             }
         }
         
-        if let array = json["categories"].array {
-            for item in array {
-                let temp = Category(json: item)
-                self.categories.append(temp)
-            }
-        }
+//        if let array = json["categories"].array {
+//            for item in array {
+//                let temp = AgeAndGenreCardContent(json: item)
+//                self.categories.append(temp)
+//            }
+//        }
     }
     
     

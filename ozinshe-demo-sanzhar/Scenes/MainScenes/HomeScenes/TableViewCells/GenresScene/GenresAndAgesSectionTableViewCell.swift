@@ -12,7 +12,13 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
     
     static let ID: String = "MovieCardTableViewCell"
     
-    var content: [CardContent] = []
+    var content: [AgeAndGenreCardContent] = [] {
+        didSet {
+            itemsCount = content.count
+            contentCollectionView.reloadData()
+        }
+    }
+    var itemsCount = 5
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
@@ -44,8 +50,8 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         
-        collectionView.register(MovieCardCollectionViewCell.self,
-                                forCellWithReuseIdentifier: MovieCardCollectionViewCell.ID)
+        collectionView.register(GenresAndAgesCollectionViewCell.self,
+                                forCellWithReuseIdentifier: GenresAndAgesCollectionViewCell.ID)
         return collectionView
     }()
 
@@ -55,12 +61,7 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        
-        backgroundColor = .clear
-        setupChapterTitleLabel()
-        setupMoreButton()
-        setupContentCollectionView()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -73,6 +74,14 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
 
 // MARK: UI Setups
 extension GenresAndAgesSectionTableViewCell {
+    
+    fileprivate func setupUI() {
+        setupChapterTitleLabel()
+        setupMoreButton()
+        setupContentCollectionView()
+        
+        backgroundColor = .clear
+    }
     
     private func setupChapterTitleLabel() {
         self.contentView.addSubview(chapterTitleLabel)
@@ -112,13 +121,14 @@ extension GenresAndAgesSectionTableViewCell {
 extension GenresAndAgesSectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return content.count
+        return itemsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCardCollectionViewCell.ID, for: indexPath) as! MovieCardCollectionViewCell
-        cell.nameLabel.text = content[indexPath.row].name
-        cell.previewImageView.image = content[indexPath.row].image
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenresAndAgesCollectionViewCell.ID, for: indexPath) as! GenresAndAgesCollectionViewCell
+        if !content.isEmpty {
+            cell.configureCell(card: content[indexPath.row])
+        }
         return cell
     }
     

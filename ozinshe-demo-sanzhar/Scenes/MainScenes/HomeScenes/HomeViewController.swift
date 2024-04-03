@@ -13,8 +13,8 @@ class HomeViewController: UIViewController {
     
     var bannersList: [MovieBanner] = []
     var keepWathingMoviesList: [MovieWithDetails] = []
-    var genresList: [Genre] = []
-    var agesList: [AgeCategory] = []
+    var genresList: [AgeAndGenreCardContent] = []
+    var agesList: [AgeAndGenreCardContent] = []
     var moviesSectionsList: [MoviesSection] = [] {
         didSet {
             if moviesSectionsList.count >= 2 {
@@ -233,13 +233,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID,
                                                      for: indexPath) as! GenresAndAgesSectionTableViewCell
             cell.selectionStyle = .none
-            cell.content = StaticData.genres
+            cell.content = genresList
             return cell
         case agesSectionPositionInTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID,
                                                      for: indexPath) as! GenresAndAgesSectionTableViewCell
             cell.selectionStyle = .none
-            cell.content = StaticData.ageCategories
+            cell.content = agesList
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID,

@@ -73,8 +73,8 @@ class CoreService {
     
     func getGenres(completionHandler: @escaping (_ success: Bool, 
                                                  _ errorMessage: String?,
-                                                 [Genre]) -> Void) {
-        var genresList: [Genre] = []
+                                                 [AgeAndGenreCardContent]) -> Void) {
+        var genresList: [AgeAndGenreCardContent] = []
         
         AF.request(Endpoints.GetGenres, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
@@ -83,7 +83,7 @@ class CoreService {
                 
                 if let array = json.array {
                     for item in array {
-                        let genre = Genre(json: item)
+                        let genre = AgeAndGenreCardContent(json: item)
                         genresList.append(genre)
                     }
                 }
@@ -99,8 +99,8 @@ class CoreService {
     
     func getAgeCategories(completionHandler: @escaping (_ success: Bool,
                                                         _ errorMessage: String?,
-                                                        [AgeCategory]) -> Void) {
-        var ageCategoriesList: [AgeCategory] = []
+                                                        [AgeAndGenreCardContent]) -> Void) {
+        var ageCategoriesList: [AgeAndGenreCardContent] = []
         
         AF.request(Endpoints.GetAges, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
@@ -109,7 +109,7 @@ class CoreService {
                 
                 if let array = json.array {
                     for item in array {
-                        let ageCategory = AgeCategory(json: item)
+                        let ageCategory = AgeAndGenreCardContent(json: item)
                         ageCategoriesList.append(ageCategory)
                     }
                 }

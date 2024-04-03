@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            window?.rootViewController = MainTabBarController()
 //        }
         
+        
         SVProgressHUD.setMinimumDismissTimeInterval(0.5)
         
         if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
