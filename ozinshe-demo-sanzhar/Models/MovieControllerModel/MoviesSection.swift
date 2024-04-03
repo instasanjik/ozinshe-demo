@@ -16,7 +16,7 @@ enum HomeTableViewCellType {
     case ageCategory
 }
 
-class MovieCell {
+class MoviesSection {
     
     var categoryId = 0
     var categoryName = ""

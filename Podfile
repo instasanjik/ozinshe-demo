@@ -9,5 +9,6 @@ target 'ozinshe-demo-sanzhar' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SVProgressHUD'
+  pod 'Kingfisher'
   
 end

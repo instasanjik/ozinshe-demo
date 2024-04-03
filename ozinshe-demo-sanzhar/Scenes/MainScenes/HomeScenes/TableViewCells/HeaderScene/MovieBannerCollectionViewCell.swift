@@ -1,5 +1,5 @@
 //
-//  RecomendationCollectionViewCell.swift
+//  MovieBannerCollectionViewCell.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 13.03.2024.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SkeletonView
 
-class RecomendationCollectionViewCell: UICollectionViewCell {
+class MovieBannerCollectionViewCell: UICollectionViewCell {
     
     static let ID: String = "RecomendationCollectionViewCell"
     
@@ -80,7 +80,7 @@ class RecomendationCollectionViewCell: UICollectionViewCell {
 }
 
 
-extension RecomendationCollectionViewCell {
+extension MovieBannerCollectionViewCell {
     
     private func setupPreviewImageView() {
         self.contentView.addSubview(previewImageView)
