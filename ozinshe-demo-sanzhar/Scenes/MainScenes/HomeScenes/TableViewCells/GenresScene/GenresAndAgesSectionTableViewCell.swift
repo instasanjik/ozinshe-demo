@@ -1,5 +1,5 @@
 //
-//  MovieCardTableViewCell.swift
+//  GenresAndAgesSectionTableViewCell.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 13.03.2024.

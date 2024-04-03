@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SkeletonView
+import Kingfisher
 
 class MovieBannerCollectionViewCell: UICollectionViewCell {
     
@@ -15,7 +16,6 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
     
     lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 12
         imageView.layer.masksToBounds = true
         imageView.isSkeletonable = true
@@ -24,7 +24,7 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қызғалдақтар мекені" // TODO: Link with backend data
+        label.text = "Қызғалдақтар мекені"
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
         label.isSkeletonable = true
@@ -42,7 +42,7 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
     
     lazy var typeNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Телехикая" // TODO: Link with backend data
+        label.text = "Телехикая"
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = Style.StaticColors.label
         return label
@@ -50,7 +50,7 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."  // TODO: Link with backend data
+        label.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2
@@ -64,12 +64,7 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupPreviewImageView()
-        setupNameLabel()
-        setupDescriptionLabel()
-        setupTypeName()
-        
-        self.isSkeletonable = true
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -81,6 +76,15 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
 
 
 extension MovieBannerCollectionViewCell {
+    
+    fileprivate func setupUI() {
+        setupPreviewImageView()
+        setupNameLabel()
+        setupDescriptionLabel()
+        setupTypeName()
+        
+        self.isSkeletonable = true
+    }
     
     private func setupPreviewImageView() {
         self.contentView.addSubview(previewImageView)
@@ -123,6 +127,17 @@ extension MovieBannerCollectionViewCell {
             make.top.bottom.equalToSuperview().inset(4)
             make.left.right.equalToSuperview().inset(8)
         }
+    }
+    
+    
+}
+
+extension MovieBannerCollectionViewCell {
+    
+    public func configureCell(movieBanner: MovieBanner) {
+        previewImageView.kf.setImage(with: URL(string: movieBanner.link))
+        nameLabel.text = movieBanner.movie.name
+        descriptionLabel.text = movieBanner.movie.description
     }
     
     

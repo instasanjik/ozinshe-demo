@@ -125,8 +125,8 @@ class CoreService {
     
     func getMoviesCells(completionHandler: @escaping (_ success: Bool,
                                                       _ errorMessage: String?,
-                                                      [MovieCell]) -> Void) {
-        var moviesCellsList: [MovieCell] = []
+                                                      [MoviesSection]) -> Void) {
+        var moviesCellsList: [MoviesSection] = []
         
         AF.request(Endpoints.GetMoviesCells, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
@@ -135,7 +135,7 @@ class CoreService {
                 
                 if let array = json.array {
                     for item in array {
-                        let moviesCell = MovieCell(json: item)
+                        let moviesCell = MoviesSection(json: item)
                         moviesCellsList.append(moviesCell)
                     }
                 }

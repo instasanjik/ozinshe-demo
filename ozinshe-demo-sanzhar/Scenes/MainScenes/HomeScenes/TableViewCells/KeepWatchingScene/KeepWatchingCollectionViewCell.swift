@@ -18,6 +18,7 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         imageView.isSkeletonable = true
         return imageView
     }()
@@ -48,11 +49,7 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupPreviewImageView()
-        setupNameLabel()
-        setupDescriptionLabel()
-        
-        self.isSkeletonable = true
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -64,6 +61,15 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
 
 
 extension KeepWatchingCollectionViewCell {
+    
+    fileprivate func setupUI() {
+        
+        setupPreviewImageView()
+        setupNameLabel()
+        setupDescriptionLabel()
+        
+        self.isSkeletonable = true
+    }
     
     private func setupPreviewImageView() {
         self.contentView.addSubview(previewImageView)
@@ -95,3 +101,14 @@ extension KeepWatchingCollectionViewCell {
     
 }
 
+
+extension KeepWatchingCollectionViewCell {
+    
+    public func configureCell(movie: MovieWithDetails) {
+        self.previewImageView.kf.setImage(with: URL(string: movie.poster_link))
+        self.nameLabel.text = movie.name
+        self.descriptionLabel.text = movie.genres.first?.name ?? ""
+    }
+    
+    
+}

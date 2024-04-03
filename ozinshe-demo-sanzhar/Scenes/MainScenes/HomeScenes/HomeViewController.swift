@@ -11,8 +11,25 @@ import SkeletonView
 
 class HomeViewController: UIViewController {
     
-    var genresSectionPositionInTableView = 4
-    var agesSectionPositionInTableView = 8
+    var bannersList: [MovieBanner] = []
+    var keepWathingMoviesList: [MovieWithDetails] = []
+    var genresList: [Genre] = []
+    var agesList: [AgeCategory] = []
+    var moviesSectionsList: [MoviesSection] = [] {
+        didSet {
+            if moviesSectionsList.count >= 2 {
+                genresSectionPositionInTableView = 4
+                agesSectionPositionInTableView = 5
+            }
+            if moviesSectionsList.count >= 5 {
+                agesSectionPositionInTableView = 8
+            }
+        }
+    }
+    
+    var numverOfSectionInTableView = 4
+    var genresSectionPositionInTableView = 2
+    var agesSectionPositionInTableView = 27
     
     
     lazy var mainTableView: UITableView = {
@@ -41,6 +58,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = Style.Colors.background
         
         setupTableView()
+        downloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,22 +71,11 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
-            cell.showSkeletonWithAnimation()
-        }
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? KeepWatchingTableViewCell {
-            cell.showSkeletonWithAnimation()
-        }
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? MoviesSectionCellTableViewCell {
-            cell.showSkeletonWithAnimation()
-        }
-    }
-    
     
 }
 
 
+// MARK: UI Setups
 extension HomeViewController {
     
     private func setupTableView() {
@@ -84,14 +91,124 @@ extension HomeViewController {
     
 }
 
+
+// MARK: Server communication
 extension HomeViewController {
+    
+    fileprivate func downloadData() {
+        showTableViewCellsSkeleton()
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        CoreService.Worker.getMoviesCells { success, errorMessage, moviesSectionsList in
+            defer {
+                dispatchGroup.leave()
+            }
+            if success {
+                self.moviesSectionsList = moviesSectionsList
+                self.numverOfSectionInTableView += moviesSectionsList.count
+            } else {
+                // Handle error
+            }
+        }
+        
+        dispatchGroup.enter()
+        CoreService.Worker.getBanners { success, errorMessage, bannersList in
+            defer {
+                dispatchGroup.leave()
+            }
+            if success {
+                self.bannersList = bannersList
+            } else {
+                // Handle error
+            }
+        }
+        
+        dispatchGroup.enter()
+        CoreService.Worker.getKeepWatchingMovies { success, errorMessage, keepWatchingMovieLists in
+            defer {
+                dispatchGroup.leave()
+            }
+            if success {
+                self.keepWathingMoviesList = keepWatchingMovieLists
+            } else {
+                // Handle error
+            }
+        }
+        
+        dispatchGroup.enter()
+        CoreService.Worker.getGenres { success, errorMessage, genresList in
+            defer {
+                dispatchGroup.leave()
+            }
+            if success {
+                self.genresList = genresList
+            } else {
+                // Handle error
+            }
+        }
+        
+        dispatchGroup.enter()
+        CoreService.Worker.getAgeCategories { success, errorMessage, ageCaregoriesList in
+            defer {
+                dispatchGroup.leave()
+            }
+            if success {
+                self.agesList = ageCaregoriesList
+            } else {
+                // Handle error
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.hideTableViewCellsSkeleton()
+            self.mainTableView.reloadData()
+        }
+    }
+
+    
     
 }
 
+
+// MARK: Triggers
+extension HomeViewController {
+    
+    fileprivate func showTableViewCellsSkeleton() {
+        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
+            cell.showSkeletonWithAnimation()
+        }
+        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? KeepWatchingTableViewCell {
+            cell.showSkeletonWithAnimation()
+        }
+        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? MoviesSectionCellTableViewCell {
+            cell.showSkeletonWithAnimation()
+        }
+        mainTableView.isScrollEnabled = false
+    }
+    
+    fileprivate func hideTableViewCellsSkeleton() {
+        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
+            cell.hideSkeletonAnimation()
+        }
+        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? KeepWatchingTableViewCell {
+            cell.hideSkeletonAnimation()
+        }
+        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? MoviesSectionCellTableViewCell {
+            cell.hideSkeletonAnimation()
+        }
+        mainTableView.isScrollEnabled = true
+    }
+    
+    
+    
+}
+
+// MARK: TableView Delegate and Datasource
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return numverOfSectionInTableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,25 +216,26 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.ID,
-                                                 for: indexPath)
+                                                 for: indexPath) as! HeaderTableViewCell
             cell.selectionStyle = .none
+            cell.bannerList = bannersList
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: KeepWatchingTableViewCell.ID,
-                                                 for: indexPath)
+                                                 for: indexPath) as! KeepWatchingTableViewCell
             cell.selectionStyle = .none
+            cell.keepWatchingMovieList = keepWathingMoviesList
             return cell
-        case 4:
+        case genresSectionPositionInTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID,
                                                      for: indexPath) as! GenresAndAgesSectionTableViewCell
             cell.selectionStyle = .none
             cell.content = StaticData.genres
             return cell
-        case 8:
+        case agesSectionPositionInTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID,
                                                      for: indexPath) as! GenresAndAgesSectionTableViewCell
             cell.selectionStyle = .none
@@ -133,10 +251,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case 0: return 328 // banners
-        case 1: return 194 // keep watching
-        case 4: return 150 // genres
-        case 8: return 150 // ages
+        case 0: 
+            return 328 // banners
+        case 1:
+            return 194 // keep watching
+        case genresSectionPositionInTableView:
+            return 150 // genres
+        case agesSectionPositionInTableView: 
+            return 150 // ages
         default: return 259
         }
     }

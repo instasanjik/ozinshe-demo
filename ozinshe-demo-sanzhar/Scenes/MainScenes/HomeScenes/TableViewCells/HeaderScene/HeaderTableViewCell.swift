@@ -13,13 +13,21 @@ class HeaderTableViewCell: UITableViewCell {
     
     static let ID: String = "HeaderTableViewCell"
     
+    var bannerList: [MovieBanner] = [] {
+        didSet {
+            itemCount = bannerList.count
+            movieBannersCollectionView.reloadData()
+        }
+    }
+    var itemCount = 5 // default value for showing skeleton
+    
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ozinshe-logo-mainpage")
         return imageView
     }()
     
-    lazy var recomentationsCollectionView: UICollectionView = {
+    lazy var movieBannersCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         layout.itemSize = CGSizeMake(300, 240)
@@ -32,8 +40,8 @@ class HeaderTableViewCell: UITableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         
-        collectionView.register(RecomendationCollectionViewCell.self,
-                                forCellWithReuseIdentifier: RecomendationCollectionViewCell.ID)
+        collectionView.register(MovieBannerCollectionViewCell.self,
+                                forCellWithReuseIdentifier: MovieBannerCollectionViewCell.ID)
         
         collectionView.isSkeletonable = true
         return collectionView
@@ -52,9 +60,7 @@ class HeaderTableViewCell: UITableViewCell {
         self.isSkeletonable = true
         
         setupLogoImageView()
-        setupRecomendationsCollectionView()
-        
-        
+        setupMovieBannerCollectionView()
     }
     
     required init?(coder: NSCoder) {
@@ -79,10 +85,10 @@ extension HeaderTableViewCell {
         }
     }
     
-    private func setupRecomendationsCollectionView() {
-        self.contentView.addSubview(recomentationsCollectionView)
+    private func setupMovieBannerCollectionView() {
+        self.contentView.addSubview(movieBannersCollectionView)
         
-        recomentationsCollectionView.snp.makeConstraints { make in
+        movieBannersCollectionView.snp.makeConstraints { make in
             make.top.equalTo(logoImageView.snp.bottom).inset(-32)
             make.left.right.bottom.equalToSuperview()
         }
@@ -95,11 +101,14 @@ extension HeaderTableViewCell {
 extension HeaderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return itemCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecomendationCollectionViewCell.ID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieBannerCollectionViewCell.ID, for: indexPath) as! MovieBannerCollectionViewCell
+        if !bannerList.isEmpty {
+            cell.configureCell(movieBanner: bannerList[indexPath.row])
+        }
         return cell
     }
     
@@ -109,11 +118,11 @@ extension HeaderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
 extension HeaderTableViewCell {
     
     public func showSkeletonWithAnimation() {
-        recomentationsCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+        movieBannersCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
     }
     
     public func hideSkeletonAnimation() {
-        recomentationsCollectionView.hideSkeleton()
+        movieBannersCollectionView.hideSkeleton()
     }
     
     

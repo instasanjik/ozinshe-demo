@@ -13,6 +13,16 @@ class KeepWatchingTableViewCell: UITableViewCell {
     
     static let ID: String = "KeepWatchingTableViewCell"
     
+    var keepWatchingMovieList: [MovieWithDetails] = [] {
+        didSet {
+            itemsCount = keepWatchingMovieList.count
+            print(itemsCount)
+            contentCollectionView.reloadData()
+        }
+    }
+    
+    var itemsCount = 5
+    
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("KeepWatching-KeepWatching", comment: "Қарауды жалғастырыңыз")
@@ -94,11 +104,14 @@ extension KeepWatchingTableViewCell {
 extension KeepWatchingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return itemsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeepWatchingCollectionViewCell.ID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeepWatchingCollectionViewCell.ID, for: indexPath) as! KeepWatchingCollectionViewCell
+        if !keepWatchingMovieList.isEmpty {
+            cell.configureCell(movie: keepWatchingMovieList[indexPath.row])
+        }
         return cell
     }
     
