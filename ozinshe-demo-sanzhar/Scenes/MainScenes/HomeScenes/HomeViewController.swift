@@ -17,12 +17,18 @@ class HomeViewController: UIViewController {
     var agesList: [AgeAndGenreCardContent] = []
     var moviesSectionsList: [MoviesSection] = [] {
         didSet {
+            moviesSectionsList.insert(MoviesSection(), at: 0) // instead of header
+            moviesSectionsList.insert(MoviesSection(), at: 1) // instead of keep watching
             if moviesSectionsList.count >= 2 {
                 genresSectionPositionInTableView = 4
                 agesSectionPositionInTableView = 5
+                moviesSectionsList.insert(MoviesSection(), at: 4) // instead of genres
+                moviesSectionsList.insert(MoviesSection(), at: 5) // instead of age categories
             }
             if moviesSectionsList.count >= 5 {
                 agesSectionPositionInTableView = 8
+                moviesSectionsList.remove(at: 5) // removing old object of age categories
+                moviesSectionsList.insert(MoviesSection(), at: 8) // instead of age categories
             }
         }
     }
@@ -243,8 +249,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID,
-                                                 for: indexPath)
+                                                 for: indexPath) as! MoviesSectionCellTableViewCell
             cell.selectionStyle = .none
+            if !moviesSectionsList.isEmpty {
+                cell.moviesSection = moviesSectionsList[indexPath.section]
+            }
             return cell
         }
     }

@@ -11,7 +11,17 @@ import SkeletonView
 
 class MoviesSectionCellTableViewCell: UITableViewCell {
     
-    static let ID: String = "GalleryListTableViewCell"
+    static let ID: String = "MoviesSectionCellTableViewCell"
+    
+    var moviesSection: MoviesSection = MoviesSection() {
+        didSet {
+            itemsCount = moviesSection.movies.count
+            chapterTitleLabel.text = moviesSection.categoryName
+            contentCollectionView.reloadData()
+        }
+    }
+    
+    var itemsCount = 5
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
@@ -117,11 +127,14 @@ extension MoviesSectionCellTableViewCell {
 extension MoviesSectionCellTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return itemsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath) as! GalleryListCollectionViewCell
+        if !moviesSection.movies.isEmpty {
+            cell.configureCell(movie: moviesSection.movies[indexPath.row])
+        }
         return cell
     }
     

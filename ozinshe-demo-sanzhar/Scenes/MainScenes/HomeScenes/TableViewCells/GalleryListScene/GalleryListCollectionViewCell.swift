@@ -94,3 +94,13 @@ extension GalleryListCollectionViewCell {
     
 }
 
+extension GalleryListCollectionViewCell {
+    
+    public func configureCell(movie: MovieWithDetails) {
+        self.previewImageView.kf.setImage(with: URL(string: movie.poster_link))
+        self.nameLabel.text = movie.name
+        self.descriptionLabel.text = movie.description
+    }
+    
+    
+}
