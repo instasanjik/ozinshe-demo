@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-class CategoryAge {
+class AgeCategory {
     
     public var id: Int = 0
     public var name: String = ""

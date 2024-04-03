@@ -16,16 +16,11 @@ enum HomeTableViewCellType {
     case ageCategory
 }
 
-class MainMovies {
+class MovieCell {
     
     var categoryId = 0
     var categoryName = ""
-    var movies: [Movie] = []
-    
-    var bannerMovie: [BannerMovie] = []
-    var cellType: HomeTableViewCellType = .mainMovie
-    var categoryAges: [CategoryAge] = []
-    var genres: [Genre] = []
+    var movies: [MovieWithDetails] = []
     
     init() {}
     
@@ -35,7 +30,7 @@ class MainMovies {
         
         if let array = json["movies"].array {
             for item in array {
-                let temp = Movie(json: item)
+                let temp = MovieWithDetails(json: item)
                 self.movies.append(temp)
             }
         }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-class Movie {
+class MovieWithDetails {
     public var id: Int = 0
     
     public var isFavorite: Bool = false
@@ -36,7 +36,7 @@ class Movie {
     public var lastModifiedDate: String = ""
     
     public var screenshots: [Screenshot] = []
-    public var categoryAges: [CategoryAge] = []
+    public var categoryAges: [AgeCategory] = []
     public var genres: [Genre] = []
     
     public var categories: [Category] = []
@@ -87,7 +87,7 @@ class Movie {
         
         if let array = json["categoryAges"].array {
             for item in array {
-                let temp = CategoryAge(json: item)
+                let temp = AgeCategory(json: item)
                 self.categoryAges.append(temp)
             }
         }

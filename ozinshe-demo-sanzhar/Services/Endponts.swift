@@ -19,6 +19,27 @@ public enum StaticEndpoints {
         return SERVER_URL + "/auth/V1/signup"
     }()
     
+    
+    public static let GetBanners: String = {
+        return SERVER_URL + "/core/V1/movies_main"
+    }()
+    
+    public static let GetGenres: String = {
+        return SERVER_URL + "/core/V1/genres"
+    }()
+    
+    public static let UserHistory: String = {
+        return SERVER_URL + "/core/V1/history/userHistory"
+    }()
+    
+    public static let GetAges: String = {
+        return SERVER_URL + "/core/V1/category-ages"
+    }()
+    
+    public static let GetMoviesCells: String = {
+        return SERVER_URL + "/core/V1/movies/main"
+    }()
+    
 }
 
 public let Endpoints = StaticEndpoints.self

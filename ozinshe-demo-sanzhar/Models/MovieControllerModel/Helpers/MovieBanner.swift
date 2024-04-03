@@ -1,5 +1,5 @@
 //
-//  MovieBanner.swift
+//  MoviePoster.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 01.04.2024.
@@ -8,11 +8,11 @@
 import Foundation
 import SwiftyJSON
 
-class BannerMovie {
+class MovieBanner {
     
     var id = 0
     var link = ""
-    var movie: Movie = Movie()
+    var movie = MovieWithDetails()
     
     init() {}
     
@@ -21,7 +21,7 @@ class BannerMovie {
         if let temp = json["link"].string   { self.link = temp }
         
         if json["movie"].exists() {
-            movie = Movie(json: json["movie"])
+            movie = MovieWithDetails(json: json["movie"])
         }
     }
     
