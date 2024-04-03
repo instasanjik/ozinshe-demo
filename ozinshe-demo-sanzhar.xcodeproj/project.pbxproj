@@ -35,10 +35,10 @@
 		041CF8DD2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8DC2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift */; };
 		041CF8E02BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8DF2BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift */; };
 		041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E12BA1D210003D2A58 /* KeepWatchingTableViewCell.swift */; };
-		041CF8E52BA1D904003D2A58 /* GalleryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E42BA1D904003D2A58 /* GalleryListTableViewCell.swift */; };
+		041CF8E52BA1D904003D2A58 /* MoviesSectionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E42BA1D904003D2A58 /* MoviesSectionCellTableViewCell.swift */; };
 		041CF8E72BA1D914003D2A58 /* GalleryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E62BA1D914003D2A58 /* GalleryListCollectionViewCell.swift */; };
 		041CF8EA2BA1E436003D2A58 /* MovieCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8E92BA1E436003D2A58 /* MovieCardCollectionViewCell.swift */; };
-		041CF8EC2BA1E447003D2A58 /* MovieCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8EB2BA1E447003D2A58 /* MovieCardTableViewCell.swift */; };
+		041CF8EC2BA1E447003D2A58 /* GenresAndAgesSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8EB2BA1E447003D2A58 /* GenresAndAgesSectionTableViewCell.swift */; };
 		041CF8EE2BA1E84A003D2A58 /* StaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8ED2BA1E84A003D2A58 /* StaticData.swift */; };
 		041CF8FB2BA30FCA003D2A58 /* MovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8FA2BA30FCA003D2A58 /* MovieInfoViewController.swift */; };
 		041CF8FD2BA32BB8003D2A58 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8FC2BA32BB8003D2A58 /* UIView+Extension.swift */; };
@@ -113,10 +113,10 @@
 		041CF8DC2BA1A698003D2A58 /* RecomendationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationCollectionViewCell.swift; sourceTree = "<group>"; };
 		041CF8DF2BA1D201003D2A58 /* KeepWatchingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepWatchingCollectionViewCell.swift; sourceTree = "<group>"; };
 		041CF8E12BA1D210003D2A58 /* KeepWatchingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepWatchingTableViewCell.swift; sourceTree = "<group>"; };
-		041CF8E42BA1D904003D2A58 /* GalleryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListTableViewCell.swift; sourceTree = "<group>"; };
+		041CF8E42BA1D904003D2A58 /* MoviesSectionCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSectionCellTableViewCell.swift; sourceTree = "<group>"; };
 		041CF8E62BA1D914003D2A58 /* GalleryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryListCollectionViewCell.swift; sourceTree = "<group>"; };
 		041CF8E92BA1E436003D2A58 /* MovieCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardCollectionViewCell.swift; sourceTree = "<group>"; };
-		041CF8EB2BA1E447003D2A58 /* MovieCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardTableViewCell.swift; sourceTree = "<group>"; };
+		041CF8EB2BA1E447003D2A58 /* GenresAndAgesSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresAndAgesSectionTableViewCell.swift; sourceTree = "<group>"; };
 		041CF8ED2BA1E84A003D2A58 /* StaticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticData.swift; sourceTree = "<group>"; };
 		041CF8FA2BA30FCA003D2A58 /* MovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewController.swift; sourceTree = "<group>"; };
 		041CF8FC2BA32BB8003D2A58 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -410,7 +410,7 @@
 		041CF8E32BA1D8C8003D2A58 /* GalleryListScene */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8E42BA1D904003D2A58 /* GalleryListTableViewCell.swift */,
+				041CF8E42BA1D904003D2A58 /* MoviesSectionCellTableViewCell.swift */,
 				041CF8E62BA1D914003D2A58 /* GalleryListCollectionViewCell.swift */,
 			);
 			path = GalleryListScene;
@@ -419,7 +419,7 @@
 		041CF8E82BA1E3D0003D2A58 /* GenresScene */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8EB2BA1E447003D2A58 /* MovieCardTableViewCell.swift */,
+				041CF8EB2BA1E447003D2A58 /* GenresAndAgesSectionTableViewCell.swift */,
 				041CF8E92BA1E436003D2A58 /* MovieCardCollectionViewCell.swift */,
 			);
 			path = GenresScene;
@@ -717,7 +717,7 @@
 				041CF92E2BB6C6EB003D2A58 /* LeaveConfirmationViewController.swift in Sources */,
 				041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */,
 				041CF9442BB71E96003D2A58 /* FavoritesNavigationViewController.swift in Sources */,
-				041CF8E52BA1D904003D2A58 /* GalleryListTableViewCell.swift in Sources */,
+				041CF8E52BA1D904003D2A58 /* MoviesSectionCellTableViewCell.swift in Sources */,
 				041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */,
 				041CF9562BBB0105003D2A58 /* Genre.swift in Sources */,
 				041CF9092BA732FC003D2A58 /* SeasonCollectionViewCell.swift in Sources */,
@@ -735,7 +735,7 @@
 				041CF94C2BBAF4E9003D2A58 /* CoreService.swift in Sources */,
 				041CF9012BA3793E003D2A58 /* UILabek+Extension.swift in Sources */,
 				041CF8B02B8E433C003D2A58 /* OZTextField.swift in Sources */,
-				041CF8EC2BA1E447003D2A58 /* MovieCardTableViewCell.swift in Sources */,
+				041CF8EC2BA1E447003D2A58 /* GenresAndAgesSectionTableViewCell.swift in Sources */,
 				041CF90B2BA7331A003D2A58 /* SeriesTableViewCell.swift in Sources */,
 				041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */,
 				041CF9402BB71E4F003D2A58 /* SearchNavigationViewController.swift in Sources */,

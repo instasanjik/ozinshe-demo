@@ -18,6 +18,8 @@ class KeepWatchingTableViewCell: UITableViewCell {
         label.text = NSLocalizedString("KeepWatching-KeepWatching", comment: "Қарауды жалғастырыңыз")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
+        label.isSkeletonable = true
+        label.skeletonCornerRadius = 6
         return label
     }()
     
@@ -106,11 +108,11 @@ extension KeepWatchingTableViewCell: UICollectionViewDelegate, UICollectionViewD
 extension KeepWatchingTableViewCell {
     
     public func showSkeletonWithAnimation() {
-        contentCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+        self.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
     }
     
     public func hideSkeletonAnimation() {
-        contentCollectionView.hideSkeleton()
+        self.hideSkeleton()
     }
     
     

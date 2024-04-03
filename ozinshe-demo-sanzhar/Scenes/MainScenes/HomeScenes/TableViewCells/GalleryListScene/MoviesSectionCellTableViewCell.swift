@@ -1,5 +1,5 @@
 //
-//  MovieCardTableViewCell.swift
+//  GalleryListTableViewCell.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 13.03.2024.
@@ -7,18 +7,19 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
-class MovieCardTableViewCell: UITableViewCell {
+class MoviesSectionCellTableViewCell: UITableViewCell {
     
-    static let ID: String = "MovieCardTableViewCell"
-    
-    var content: [CardContent] = []
+    static let ID: String = "GalleryListTableViewCell"
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("MovieInfo-Trending", comment: "Трендтегілер")
+        label.text = NSLocalizedString("GalleryList-TVProgram", comment: "Тв-бағдарлама және реалити-шоу")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
+        label.isSkeletonable = true
+        label.skeletonCornerRadius = 6
         return label
     }()
     
@@ -28,13 +29,15 @@ class MovieCardTableViewCell: UITableViewCell {
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(Style.StaticColors.purple300, for: .normal)
         button.contentVerticalAlignment = .top
+        button.isSkeletonable = true
+        button.isHiddenWhenSkeletonIsActive = true
         return button
     }()
     
     lazy var contentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-        layout.itemSize = CGSizeMake(184, 112)
+        layout.itemSize = CGSizeMake(112, 219)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
@@ -43,9 +46,10 @@ class MovieCardTableViewCell: UITableViewCell {
         
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
+        collectionView.isSkeletonable = true
         
-        collectionView.register(MovieCardCollectionViewCell.self,
-                                forCellWithReuseIdentifier: MovieCardCollectionViewCell.ID)
+        collectionView.register(GalleryListCollectionViewCell.self,
+                                forCellWithReuseIdentifier: GalleryListCollectionViewCell.ID)
         return collectionView
     }()
 
@@ -61,6 +65,8 @@ class MovieCardTableViewCell: UITableViewCell {
         setupChapterTitleLabel()
         setupMoreButton()
         setupContentCollectionView()
+        
+        self.isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {
@@ -72,15 +78,15 @@ class MovieCardTableViewCell: UITableViewCell {
 
 
 // MARK: UI Setups
-extension MovieCardTableViewCell {
+extension MoviesSectionCellTableViewCell {
     
     private func setupChapterTitleLabel() {
         self.contentView.addSubview(chapterTitleLabel)
         
         chapterTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.right.equalToSuperview().inset(24)
-            make.height.equalTo(24)
+            make.left.equalToSuperview().inset(24)
+            make.right.equalToSuperview().inset(112)
         }
     }
     
@@ -108,18 +114,29 @@ extension MovieCardTableViewCell {
 }
 
 
-// MARK: Collection View Delegates
-extension MovieCardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MoviesSectionCellTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return content.count
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCardCollectionViewCell.ID, for: indexPath) as! MovieCardCollectionViewCell
-        cell.nameLabel.text = content[indexPath.row].name
-        cell.previewImageView.image = content[indexPath.row].image
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath)
         return cell
+    }
+    
+    
+}
+
+
+extension MoviesSectionCellTableViewCell {
+    
+    public func showSkeletonWithAnimation() {
+        self.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+    }
+    
+    public func hideSkeletonAnimation() {
+        self.hideSkeleton()
     }
     
     

@@ -1,5 +1,5 @@
 //
-//  GalleryListTableViewCell.swift
+//  MovieCardTableViewCell.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 13.03.2024.
@@ -7,18 +7,18 @@
 
 import UIKit
 import SnapKit
-import SkeletonView
 
-class GalleryListTableViewCell: UITableViewCell {
+class GenresAndAgesSectionTableViewCell: UITableViewCell {
     
-    static let ID: String = "GalleryListTableViewCell"
+    static let ID: String = "MovieCardTableViewCell"
+    
+    var content: [CardContent] = []
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("GalleryList-TVProgram", comment: "Тв-бағдарлама және реалити-шоу")
+        label.text = NSLocalizedString("MovieInfo-Trending", comment: "Трендтегілер")
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
-        label.numberOfLines = 2
         return label
     }()
     
@@ -34,7 +34,7 @@ class GalleryListTableViewCell: UITableViewCell {
     lazy var contentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-        layout.itemSize = CGSizeMake(112, 219)
+        layout.itemSize = CGSizeMake(184, 112)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
@@ -43,10 +43,9 @@ class GalleryListTableViewCell: UITableViewCell {
         
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
-        collectionView.isSkeletonable = true
         
-        collectionView.register(GalleryListCollectionViewCell.self,
-                                forCellWithReuseIdentifier: GalleryListCollectionViewCell.ID)
+        collectionView.register(MovieCardCollectionViewCell.self,
+                                forCellWithReuseIdentifier: MovieCardCollectionViewCell.ID)
         return collectionView
     }()
 
@@ -62,8 +61,6 @@ class GalleryListTableViewCell: UITableViewCell {
         setupChapterTitleLabel()
         setupMoreButton()
         setupContentCollectionView()
-        
-        self.isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {
@@ -75,15 +72,15 @@ class GalleryListTableViewCell: UITableViewCell {
 
 
 // MARK: UI Setups
-extension GalleryListTableViewCell {
+extension GenresAndAgesSectionTableViewCell {
     
     private func setupChapterTitleLabel() {
         self.contentView.addSubview(chapterTitleLabel)
         
         chapterTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalToSuperview().inset(24)
-            make.right.equalToSuperview().inset(112)
+            make.left.right.equalToSuperview().inset(24)
+            make.height.equalTo(24)
         }
     }
     
@@ -111,29 +108,18 @@ extension GalleryListTableViewCell {
 }
 
 
-extension GalleryListTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: Collection View Delegates
+extension GenresAndAgesSectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return content.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCardCollectionViewCell.ID, for: indexPath) as! MovieCardCollectionViewCell
+        cell.nameLabel.text = content[indexPath.row].name
+        cell.previewImageView.image = content[indexPath.row].image
         return cell
-    }
-    
-    
-}
-
-
-extension GalleryListTableViewCell {
-    
-    public func showSkeletonWithAnimation() {
-        contentCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
-    }
-    
-    public func hideSkeletonAnimation() {
-        contentCollectionView.hideSkeleton()
     }
     
     
