@@ -271,8 +271,8 @@ class MovieInfoViewController: UIViewController {
         collectionView.backgroundColor = .clear
         collectionView.isSkeletonable = true
         
-        collectionView.register(GalleryListCollectionViewCell.self,
-                                forCellWithReuseIdentifier: GalleryListCollectionViewCell.ID)
+        collectionView.register(MoviesSectionCellCollectionViewCell.self,
+                                forCellWithReuseIdentifier: MoviesSectionCellCollectionViewCell.ID)
         return collectionView
     }()
     
@@ -655,7 +655,7 @@ extension MovieInfoViewController: UICollectionViewDelegate, UICollectionViewDat
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenshotCollectionViewCell.ID, for: indexPath)
             return cell
         case similarCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryListCollectionViewCell.ID, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviesSectionCellCollectionViewCell.ID, for: indexPath)
             return cell
         default: return UICollectionViewCell()
         }

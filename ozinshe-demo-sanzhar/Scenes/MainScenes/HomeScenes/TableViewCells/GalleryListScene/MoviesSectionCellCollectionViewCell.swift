@@ -1,5 +1,5 @@
 //
-//  GalleryListCollectionViewCell.swift
+//  MoviesSectionCellCollectionViewCell.swift
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 13.03.2024.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SkeletonView
 
-class GalleryListCollectionViewCell: UICollectionViewCell {
+class MoviesSectionCellCollectionViewCell: UICollectionViewCell {
     
     static let ID: String = "GalleryListCollectionViewCell"
     
@@ -38,6 +38,7 @@ class GalleryListCollectionViewCell: UICollectionViewCell {
         label.text = "2-бөлім" // TODO: Link with backend
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
+        label.numberOfLines = 2
         label.isSkeletonable = true
         label.linesCornerRadius = 2
         return label
@@ -62,7 +63,7 @@ class GalleryListCollectionViewCell: UICollectionViewCell {
 }
 
 
-extension GalleryListCollectionViewCell {
+extension MoviesSectionCellCollectionViewCell {
     
     private func setupPreviewImageView() {
         self.contentView.addSubview(previewImageView)
@@ -94,7 +95,7 @@ extension GalleryListCollectionViewCell {
     
 }
 
-extension GalleryListCollectionViewCell {
+extension MoviesSectionCellCollectionViewCell {
     
     public func configureCell(movie: MovieWithDetails) {
         self.previewImageView.kf.setImage(with: URL(string: movie.poster_link))

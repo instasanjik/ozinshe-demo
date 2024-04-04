@@ -21,13 +21,13 @@ class HomeViewController: UIViewController {
             moviesSectionsList.insert(MoviesSection(), at: 1) // instead of keep watching
             if moviesSectionsList.count >= 2 {
                 genresSectionPositionInTableView = 4
-                agesSectionPositionInTableView = 5
                 moviesSectionsList.insert(MoviesSection(), at: 4) // instead of genres
+                agesSectionPositionInTableView = 5
                 moviesSectionsList.insert(MoviesSection(), at: 5) // instead of age categories
             }
             if moviesSectionsList.count >= 5 {
-                agesSectionPositionInTableView = 8
                 moviesSectionsList.remove(at: 5) // removing old object of age categories
+                agesSectionPositionInTableView = 8
                 moviesSectionsList.insert(MoviesSection(), at: 8) // instead of age categories
             }
         }

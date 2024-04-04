@@ -9,37 +9,37 @@ import Foundation
 import SwiftyJSON
 
 class MovieWithDetails {
-    public var id: Int = 0
+    var id: Int = 0
     
-    public var isFavorite: Bool = false
+    var isFavorite: Bool = false
     
-    public var movieType: String = ""
-    public var name: String = ""
-    public var keyWords: String = ""
-    public var description: String = ""
+    var movieType: String = ""
+    var name: String = ""
+    var keyWords: String = ""
+    var description: String = ""
     
-    public var year: Int = 0
-    public var trend: Bool = false
-    public var timing: Int = 0
+    var year: Int = 0
+    var trend: Bool = false
+    var timing: Int = 0
     
-    public var director: String = ""
-    public var producer: String = ""
+    var director: String = ""
+    var producer: String = ""
     
-    public var poster_link: String = ""
-    public var video_link: String = ""
+    var poster_link: String = ""
+    var video_link: String = ""
     
-    public var watchCount: Int = 0
-    public var seasonCount: Int = 0
-    public var seriesCount: Int = 0
+    var watchCount: Int = 0
+    var seasonCount: Int = 0
+    var seriesCount: Int = 0
     
-    public var createdDate: String = ""
-    public var lastModifiedDate: String = ""
+    var createdDate: String = ""
+    var lastModifiedDate: String = ""
     
-    public var screenshots: [Screenshot] = []
-    public var categoryAges: [AgeAndGenreCardContent] = []
-    public var genres: [AgeAndGenreCardContent] = []
+    var screenshots: [Screenshot] = []
+    var categoryAges: [AgeAndGenreCardContent] = []
+    var genres: [AgeAndGenreCardContent] = []
     
-    public var categories: [Category] = []
+    var categories: [AgeAndGenreCardContent] = []
     
     init() {
         
@@ -99,12 +99,12 @@ class MovieWithDetails {
             }
         }
         
-//        if let array = json["categories"].array {
-//            for item in array {
-//                let temp = AgeAndGenreCardContent(json: item)
-//                self.categories.append(temp)
-//            }
-//        }
+        if let array = json["categories"].array {
+            for item in array {
+                let temp = AgeAndGenreCardContent(json: item)
+                self.categories.append(temp)
+            }
+        }
     }
     
     
