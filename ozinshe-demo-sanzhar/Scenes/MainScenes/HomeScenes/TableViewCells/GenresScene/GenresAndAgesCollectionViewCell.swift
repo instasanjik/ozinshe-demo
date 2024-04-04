@@ -22,16 +22,17 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "SPLASH_TEXT" // TODO: Link with backend
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.textColor = Style.Colors.label
-        label.numberOfLines = 2
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "SPLASH_TEXT" // TODO: Link with backend
+        label.text = "SPLASH_TEXT" 
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         return label
@@ -68,7 +69,8 @@ extension GenresAndAgesCollectionViewCell {
         self.contentView.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.left.right.equalToSuperview().inset(4)
+            make.centerY.equalToSuperview()
         }
     }
     
