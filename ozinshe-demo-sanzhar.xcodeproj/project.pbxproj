@@ -48,7 +48,7 @@
 		041CF9092BA732FC003D2A58 /* SeasonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9082BA732FC003D2A58 /* SeasonCollectionViewCell.swift */; };
 		041CF90B2BA7331A003D2A58 /* SeriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF90A2BA7331A003D2A58 /* SeriesTableViewCell.swift */; };
 		041CF90D2BAAA9F3003D2A58 /* ContentCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF90C2BAAA9F3003D2A58 /* ContentCategoryCollectionViewCell.swift */; };
-		041CF9112BAAB9A0003D2A58 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9102BAAB9A0003D2A58 /* SearchResultViewController.swift */; };
+		041CF9112BAAB9A0003D2A58 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9102BAAB9A0003D2A58 /* MovieListViewController.swift */; };
 		041CF9132BAABA31003D2A58 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9122BAABA31003D2A58 /* MovieTableViewCell.swift */; };
 		041CF9162BB2B988003D2A58 /* ProfileSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9152BB2B988003D2A58 /* ProfileSectionTableViewCell.swift */; };
 		041CF9182BB3FD19003D2A58 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9172BB3FD19003D2A58 /* ProfileHeaderView.swift */; };
@@ -124,7 +124,7 @@
 		041CF9082BA732FC003D2A58 /* SeasonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCollectionViewCell.swift; sourceTree = "<group>"; };
 		041CF90A2BA7331A003D2A58 /* SeriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesTableViewCell.swift; sourceTree = "<group>"; };
 		041CF90C2BAAA9F3003D2A58 /* ContentCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		041CF9102BAAB9A0003D2A58 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		041CF9102BAAB9A0003D2A58 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		041CF9122BAABA31003D2A58 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		041CF9152BB2B988003D2A58 /* ProfileSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionTableViewCell.swift; sourceTree = "<group>"; };
 		041CF9172BB3FD19003D2A58 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -170,6 +170,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0402B81D2BBEE21F00E1DB49 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				041CF9122BAABA31003D2A58 /* MovieTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		041CF86F2B8CB33F003D2A58 = {
 			isa = PBXGroup;
 			children = (
@@ -510,8 +518,8 @@
 		041CF9422BB71E74003D2A58 /* MovieListScene */ = {
 			isa = PBXGroup;
 			children = (
-				041CF9122BAABA31003D2A58 /* MovieTableViewCell.swift */,
-				041CF9102BAAB9A0003D2A58 /* SearchResultViewController.swift */,
+				041CF9102BAAB9A0003D2A58 /* MovieListViewController.swift */,
+				0402B81D2BBEE21F00E1DB49 /* Cells */,
 			);
 			path = MovieListScene;
 			sourceTree = "<group>";
@@ -768,7 +776,7 @@
 				041CF8E72BA1D914003D2A58 /* MoviesSectionCellCollectionViewCell.swift in Sources */,
 				041CF8D42B9EFE86003D2A58 /* ProfileViewController.swift in Sources */,
 				041CF8D22B9EFE78003D2A58 /* FavoritesViewController.swift in Sources */,
-				041CF9112BAAB9A0003D2A58 /* SearchResultViewController.swift in Sources */,
+				041CF9112BAAB9A0003D2A58 /* MovieListViewController.swift in Sources */,
 				041CF95C2BBB0464003D2A58 /* MoviesSection.swift in Sources */,
 				041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */,
 			);

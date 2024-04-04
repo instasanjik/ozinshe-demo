@@ -111,6 +111,7 @@ extension MovieTableViewCell {
         shortInfoLabel.snp.makeConstraints { make in
             make.top.equalTo(movieNameLabel.snp.bottom).inset(-8)
             make.left.equalTo(movieNameLabel)
+            make.right.equalToSuperview().inset(24) 
         }
     }
     
@@ -123,6 +124,18 @@ extension MovieTableViewCell {
             make.width.equalTo(80)
             make.height.equalTo(26)
         }
+    }
+    
+    
+}
+
+
+extension MovieTableViewCell {
+    
+    func configureCell(content movie: MovieWithDetails) {
+        self.movieNameLabel.text = movie.name
+        self.previewImageView.kf.setImage(with: URL(string: movie.poster_link))
+        self.shortInfoLabel.text = movie.shortInfo
     }
     
     

@@ -326,7 +326,9 @@ extension HomeViewController: MoviesSectionCellTableViewCellDelegate {
     }
     
     func moviesSectionCell(tappedMoreForContent moviesSection: MoviesSection) {
-        print(moviesSection.categoryName)
+        let vc = MovieListViewController()
+        vc.configureScene(moviesSection: moviesSection)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

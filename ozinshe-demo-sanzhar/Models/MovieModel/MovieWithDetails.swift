@@ -130,7 +130,7 @@ class MovieWithDetails {
         return uniqueSimilarTVSeries
     }
     
-    static func removeDuplicateElements(movies: [MovieWithDetails]) -> [MovieWithDetails] {
+    static fileprivate func removeDuplicateElements(movies: [MovieWithDetails]) -> [MovieWithDetails] {
         var uniqueMovies = [MovieWithDetails]()
         for movie in movies {
             if !uniqueMovies.contains(where: {$0.id == movie.id }) {
