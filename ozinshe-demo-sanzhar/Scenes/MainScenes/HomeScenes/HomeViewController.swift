@@ -207,7 +207,12 @@ extension HomeViewController {
     }
     
     fileprivate func openMovieViewController(with movie: MovieWithDetails) {
-        print(movie.name)
+        let vc = MovieInfoViewController()
+        
+
+        vc.configureScene(content: movie,
+                          similarTVSeries: movie.findSimilarTVSeries(moviesSectionsList: moviesSectionsList))
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     fileprivate func openMovieListViewController(with content: AgeAndGenreCardContent) {

@@ -11,6 +11,9 @@ import SkeletonView
 
 class MovieInfoViewController: UIViewController {
     
+    var screenshots: [Screenshot] = []
+    var similarTVSeries: [MovieWithDetails] = []
+    
     let descriptionGradientLayer = CAGradientLayer()
     
     var isDescriptionRevealed: Bool = false
@@ -116,6 +119,7 @@ class MovieInfoViewController: UIViewController {
         label.text = "2020 • Телехакия • 5 сезон, 46 серия, 7 мин."
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.gray400
+        label.numberOfLines = 2
         label.linesCornerRadius = 2
         label.isSkeletonable = true
         return label
@@ -161,6 +165,7 @@ class MovieInfoViewController: UIViewController {
         label.text = "Бақдәулет Әлімбеков"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray400
+        label.numberOfLines = 0
         return label
     }()
     
@@ -177,6 +182,7 @@ class MovieInfoViewController: UIViewController {
         label.text = "Сандуғаш Кенжебаева"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray400
+        label.numberOfLines = 0
         return label
     }()
     
@@ -283,13 +289,7 @@ class MovieInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Style.Colors.background
-        
-        view.isSkeletonable = true
-        
-        setupScrollView()
-        setupPreviewImageView()
-        setupContentView()
+        setupUI()
     }
     
     override func viewDidLayoutSubviews() {
@@ -302,6 +302,24 @@ class MovieInfoViewController: UIViewController {
 
 // MARK: UI Setups
 extension MovieInfoViewController {
+    
+    func setupUI() {
+        view.backgroundColor = Style.Colors.background
+        view.isSkeletonable = true
+        
+        if #available(iOS 15.0, *) {
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithTransparentBackground()
+            navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+            navigationController?.navigationBar.compactAppearance = navigationBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        }
+        
+        
+        setupScrollView()
+        setupPreviewImageView()
+        setupContentView()
+    }
     
     fileprivate func setupScrollView() {
         view.addSubview(scrollView)
@@ -523,7 +541,7 @@ extension MovieInfoViewController {
         contentView.addSubview(producerLabel)
         
         producerLabel.snp.makeConstraints { make in
-            make.top.equalTo(directorLabel.snp.bottom).inset(-8)
+            make.top.equalTo(directorNameLabel.snp.bottom).inset(-8)
             make.left.equalToSuperview().inset(24)
         }
     }
@@ -532,7 +550,7 @@ extension MovieInfoViewController {
         contentView.addSubview(producerNameLabel)
         
         producerNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(directorLabel.snp.bottom).inset(-8)
+            make.top.equalTo(directorNameLabel.snp.bottom).inset(-8)
             make.left.equalTo(producerLabel.snp.right).inset(-16)
             make.width.equalTo(200)
         }
@@ -646,16 +664,25 @@ extension MovieInfoViewController {
 extension MovieInfoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        switch collectionView {
+        case screenshotsCollectionView:
+            return screenshots.count
+        case similarCollectionView:
+            return similarTVSeries.count
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
         case screenshotsCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenshotCollectionViewCell.ID, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenshotCollectionViewCell.ID, for: indexPath) as! ScreenshotCollectionViewCell
+            cell.configureCell(screenshot: screenshots[indexPath.row])
             return cell
         case similarCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviesSectionCellCollectionViewCell.ID, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviesSectionCellCollectionViewCell.ID, for: indexPath) as! MoviesSectionCellCollectionViewCell
+            cell.configureCell(movie: similarTVSeries[indexPath.row])
             return cell
         default: return UICollectionViewCell()
         }
@@ -697,6 +724,31 @@ extension MovieInfoViewController {
         moreButton.snp.updateConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).inset(-16)
         }
+    }
+    
+    public func configureScene(content movie: MovieWithDetails, similarTVSeries: [MovieWithDetails]) {
+        previewImageView.kf.setImage(with: URL(string: movie.poster_link))
+        
+        movieNameLabel.text = movie.name
+        shortInfoLabel.text = movie.shortInfo
+        descriptionLabel.text = movie.description
+        
+        directorNameLabel.text = movie.director
+        producerNameLabel.text = movie.producer
+        
+        if movie.seasonCount != 0 {
+            sectionInfoLabel.text = "\(movie.seasonCount) season, \(movie.seriesCount) series"
+        } else if (movie.seriesCount != 0) {
+            sectionInfoLabel.text = "\(movie.seriesCount) series"
+        } else {
+            sectionInfoLabel.text = ""
+        }
+        
+        screenshots = movie.screenshots
+        screenshotsCollectionView.reloadData()
+        
+        self.similarTVSeries = similarTVSeries
+        self.similarCollectionView.reloadData()
     }
     
     

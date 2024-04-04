@@ -16,6 +16,7 @@ class MovieWithDetails {
     var movieType: String = ""
     var name: String = ""
     var keyWords: String = ""
+    var shortInfo: String = ""
     var description: String = ""
     
     var year: Int = 0
@@ -105,7 +106,41 @@ class MovieWithDetails {
                 self.categories.append(temp)
             }
         }
+        
+        self.shortInfo = "\(year)"
+        self.genres.forEach { self.shortInfo = self.shortInfo + " • " + $0.name }
+    }
+    
+    func findSimilarTVSeries(moviesSectionsList: [MoviesSection]) -> [MovieWithDetails] {
+        let movie = self
+        var similarTVSeries: [MovieWithDetails] = []
+        movie.categories.forEach { category in
+            moviesSectionsList.forEach { cell in
+                if cell.categoryName == category.name {
+                    cell.movies.forEach { similarMovie in
+                        if similarMovie.name != movie.name {
+                            similarTVSeries.append(similarMovie)
+                        }
+                    }
+                }
+            }
+        }
+        
+        let uniqueSimilarTVSeries = MovieWithDetails.removeDuplicateElements(movies: similarTVSeries)
+        return uniqueSimilarTVSeries
+    }
+    
+    static func removeDuplicateElements(movies: [MovieWithDetails]) -> [MovieWithDetails] {
+        var uniqueMovies = [MovieWithDetails]()
+        for movie in movies {
+            if !uniqueMovies.contains(where: {$0.id == movie.id }) {
+                uniqueMovies.append(movie)
+            }
+        }
+        return uniqueMovies
     }
     
     
+    
 }
+
