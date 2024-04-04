@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0402B81F2BBF36CF00E1DB49 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B81E2BBF36CF00E1DB49 /* Int+Extension.swift */; };
 		0402B8222BBF430100E1DB49 /* MoviePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B8212BBF430100E1DB49 /* MoviePlayerViewController.swift */; };
+		0402B8252BBF4FC300E1DB49 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B8242BBF4FC300E1DB49 /* UIImage+Extension.swift */; };
 		041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */; };
 		041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */; };
 		041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */; };
@@ -85,6 +86,7 @@
 /* Begin PBXFileReference section */
 		0402B81E2BBF36CF00E1DB49 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		0402B8212BBF430100E1DB49 /* MoviePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePlayerViewController.swift; sourceTree = "<group>"; };
+		0402B8242BBF4FC300E1DB49 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		041CF8782B8CB33F003D2A58 /* ozinshe-demo-sanzhar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ozinshe-demo-sanzhar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				041CF8FC2BA32BB8003D2A58 /* UIView+Extension.swift */,
 				041CF9002BA3793E003D2A58 /* UILabek+Extension.swift */,
 				041CF9262BB59FFA003D2A58 /* UIViewController+Extension.swift */,
+				0402B8242BBF4FC300E1DB49 /* UIImage+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -783,6 +786,7 @@
 				041CF94E2BBB0099003D2A58 /* MovieWithDetails.swift in Sources */,
 				041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */,
 				041CF9132BAABA31003D2A58 /* MovieTableViewCell.swift in Sources */,
+				0402B8252BBF4FC300E1DB49 /* UIImage+Extension.swift in Sources */,
 				041CF8D92BA168BF003D2A58 /* HeaderTableViewCell.swift in Sources */,
 				041CF9542BBB00E7003D2A58 /* AgeAndGenreCardContent.swift in Sources */,
 				041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */,
