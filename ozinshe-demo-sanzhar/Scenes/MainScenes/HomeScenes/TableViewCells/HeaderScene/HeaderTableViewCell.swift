@@ -10,7 +10,7 @@ import SnapKit
 import SkeletonView
 
 protocol HeaderTableViewCellDelegate: AnyObject {
-    func movieCellWasTapped(content: MovieWithDetails)
+    func headerCell(didTapMovie movie: MovieWithDetails)
 }
 
 class HeaderTableViewCell: UITableViewCell {

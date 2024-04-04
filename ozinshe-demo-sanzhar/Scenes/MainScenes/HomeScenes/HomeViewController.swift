@@ -239,6 +239,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath) as! KeepWatchingTableViewCell
             cell.selectionStyle = .none
             cell.keepWatchingMovieList = keepWathingMoviesList
+            cell.delegate = self
             return cell
         case genresSectionPositionInTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID,
@@ -290,9 +291,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: HeaderTableViewCellDelegate {
     
-    func movieCellWasTapped(content: MovieWithDetails) {
-        self.openMovieViewController(with: content)
+    func headerCell(didTapMovie movie: MovieWithDetails) {
+        self.openMovieViewController(with: movie)
     }
     
     
 }
+
+//extension HomeViewController: KeepWatchingTableViewCellDelegate {
+//    
+//    func keepWatching(didTapMovie movie: MovieWithDetails) {
+//        self.openMovieViewController(with: movie)
+//    }
+//    
+//    
+//}
