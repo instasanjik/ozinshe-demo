@@ -279,7 +279,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0: 
-            return 328 // banners
+            return 328-20 // banners
         case 1:
             return 194 // keep watching
         case genresSectionPositionInTableView:

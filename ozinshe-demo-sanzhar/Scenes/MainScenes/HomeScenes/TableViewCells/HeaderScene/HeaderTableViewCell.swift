@@ -35,7 +35,7 @@ class HeaderTableViewCell: UITableViewCell {
     lazy var movieBannersCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-        layout.itemSize = CGSizeMake(300, 240)
+        layout.itemSize = CGSizeMake(300, 220)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
