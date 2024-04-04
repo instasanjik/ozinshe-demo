@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import SkeletonView
 
+protocol KeepWatchingTableViewCellDelegate: AnyObject {
+    func keepWatching(didTapMovie movie: MovieWithDetails)
+}
+
 class KeepWatchingTableViewCell: UITableViewCell {
     
     static let ID: String = "KeepWatchingTableViewCell"
@@ -22,6 +26,8 @@ class KeepWatchingTableViewCell: UITableViewCell {
     }
     
     var itemsCount = 5
+    
+    var delegate: KeepWatchingTableViewCellDelegate?
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
@@ -113,6 +119,12 @@ extension KeepWatchingTableViewCell: UICollectionViewDelegate, UICollectionViewD
             cell.configureCell(movie: keepWatchingMovieList[indexPath.row])
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? KeepWatchingCollectionViewCell {
+            delegate?.movieCellWasTapped(content: keepWatchingMovieList[indexPath.row])
+        }
     }
     
     

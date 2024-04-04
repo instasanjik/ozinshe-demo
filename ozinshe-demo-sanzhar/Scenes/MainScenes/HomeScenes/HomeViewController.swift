@@ -298,11 +298,11 @@ extension HomeViewController: HeaderTableViewCellDelegate {
     
 }
 
-//extension HomeViewController: KeepWatchingTableViewCellDelegate {
-//    
-//    func keepWatching(didTapMovie movie: MovieWithDetails) {
-//        self.openMovieViewController(with: movie)
-//    }
-//    
-//    
-//}
+extension HomeViewController: KeepWatchingTableViewCellDelegate {
+    
+    func keepWatching(didTapMovie movie: MovieWithDetails) {
+        self.openMovieViewController(with: movie)
+    }
+    
+    
+}
