@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import SkeletonView
 
+protocol HeaderTableViewCellDelegate: AnyObject {
+    func movieCellWasTapped(content: MovieWithDetails)
+}
+
 class HeaderTableViewCell: UITableViewCell {
     
     static let ID: String = "HeaderTableViewCell"
@@ -20,6 +24,7 @@ class HeaderTableViewCell: UITableViewCell {
         }
     }
     var itemCount = 5 // default value for showing skeleton
+    var delegate: HeaderTableViewCellDelegate?
     
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -110,6 +115,12 @@ extension HeaderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
             cell.configureCell(movieBanner: bannerList[indexPath.row])
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? MovieBannerCollectionViewCell {
+            delegate?.movieCellWasTapped(content: bannerList[indexPath.row].movie)
+        }
     }
     
     

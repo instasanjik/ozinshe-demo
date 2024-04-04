@@ -139,6 +139,7 @@ extension MovieBannerCollectionViewCell {
         nameLabel.text = movieBanner.movie.name
         descriptionLabel.text = movieBanner.movie.description
     }
+
     
     
 }

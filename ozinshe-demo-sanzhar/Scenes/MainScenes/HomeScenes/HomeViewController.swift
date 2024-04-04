@@ -206,6 +206,10 @@ extension HomeViewController {
         mainTableView.isScrollEnabled = true
     }
     
+    fileprivate func openMovieViewController(with movie: MovieWithDetails) {
+        
+    }
+    
     
     
 }
@@ -228,6 +232,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath) as! HeaderTableViewCell
             cell.selectionStyle = .none
             cell.bannerList = bannersList
+            cell.delegate = self
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: KeepWatchingTableViewCell.ID,
@@ -283,3 +288,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+extension HomeViewController: HeaderTableViewCellDelegate {
+    
+    func movieCellWasTapped(content: MovieWithDetails) {
+        self.openMovieViewController(with: content)
+    }
+    
+    
+}
