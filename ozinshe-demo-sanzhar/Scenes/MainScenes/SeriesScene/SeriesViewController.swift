@@ -66,6 +66,14 @@ class SeriesViewController: UIViewController {
         setupSeriesTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setTabBarHidden(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        setTabBarHidden(false)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
