@@ -210,6 +210,10 @@ extension HomeViewController {
         print(movie.name)
     }
     
+    fileprivate func openMovieListViewController(with content: AgeAndGenreCardContent) {
+        print(content.name)
+    }
+    
     
     
 }
@@ -246,12 +250,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                                                      for: indexPath) as! GenresAndAgesSectionTableViewCell
             cell.selectionStyle = .none
             cell.content = genresList
+            cell.delegate = self
             return cell
         case agesSectionPositionInTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID,
                                                      for: indexPath) as! GenresAndAgesSectionTableViewCell
             cell.selectionStyle = .none
             cell.content = agesList
+            cell.delegate = self
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID,
@@ -312,6 +318,15 @@ extension HomeViewController: MoviesSectionCellTableViewCellDelegate {
     
     func moviesSectionCell(didTapMovie movie: MovieWithDetails) {
         self.openMovieViewController(with: movie)
+    }
+    
+    
+}
+
+extension HomeViewController: GenresAndAgesSectionTableViewCellDelegate {
+    
+    func genresAndAgesSection(didTapSection section: AgeAndGenreCardContent) {
+        self.openMovieListViewController(with: section)
     }
     
     

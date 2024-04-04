@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol GenresAndAgesSectionTableViewCellDelegate {
+    func genresAndAgesSection(didTapSection section: AgeAndGenreCardContent)
+}
+
 class GenresAndAgesSectionTableViewCell: UITableViewCell {
     
     static let ID: String = "MovieCardTableViewCell"
@@ -19,6 +23,8 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
         }
     }
     var itemsCount = 5
+    
+    var delegate: GenresAndAgesSectionTableViewCellDelegate?
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
@@ -130,6 +136,12 @@ extension GenresAndAgesSectionTableViewCell: UICollectionViewDelegate, UICollect
             cell.configureCell(card: content[indexPath.row])
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? GenresAndAgesCollectionViewCell {
+            delegate?.genresAndAgesSection(didTapSection: content[indexPath.row])
+        }
     }
     
     
