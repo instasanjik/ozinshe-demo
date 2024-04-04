@@ -34,15 +34,6 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var moreButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(NSLocalizedString("Movie-More", comment: "Барлыгы"), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
-        button.setTitleColor(Style.StaticColors.purple300, for: .normal)
-        button.contentVerticalAlignment = .top
-        return button
-    }()
-    
     lazy var contentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
@@ -83,7 +74,6 @@ extension GenresAndAgesSectionTableViewCell {
     
     fileprivate func setupUI() {
         setupChapterTitleLabel()
-        setupMoreButton()
         setupContentCollectionView()
         
         backgroundColor = .clear
@@ -96,16 +86,6 @@ extension GenresAndAgesSectionTableViewCell {
             make.top.equalToSuperview()
             make.left.right.equalToSuperview().inset(24)
             make.height.equalTo(24)
-        }
-    }
-    
-    private func setupMoreButton() {
-        self.contentView.addSubview(moreButton)
-        
-        moreButton.snp.makeConstraints { make in
-            make.top.right.equalToSuperview()
-            make.width.equalTo(112) // 112 is a specific width for aligning button title label to 24px from right side of superview
-            make.bottom.equalTo(chapterTitleLabel)
         }
     }
     
