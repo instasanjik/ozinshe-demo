@@ -17,6 +17,7 @@ class MovieInfoViewController: UIViewController {
     let descriptionGradientLayer = CAGradientLayer()
     
     var isDescriptionRevealed: Bool = false
+    var isSectionsNeeded: Bool = true
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -313,8 +314,10 @@ extension MovieInfoViewController {
             navigationController?.navigationBar.standardAppearance = navigationBarAppearance
             navigationController?.navigationBar.compactAppearance = navigationBarAppearance
             navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+            let backButton = UIBarButtonItem()
+            backButton.title = ""
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         }
-        
         
         setupScrollView()
         setupPreviewImageView()
@@ -436,9 +439,11 @@ extension MovieInfoViewController {
         setupProducerNameLabel()
         setupSeparator2View()
         
-        setupSectionButton()
-        setupSectionLabel()
-        setupSectionInfoLabel()
+        if isSectionsNeeded {
+            setupSectionButton()
+            setupSectionLabel()
+            setupSectionInfoLabel()
+        }
         
         setupScreenshotsLabel()
         setupScreenshotsCollectionView()
@@ -599,7 +604,11 @@ extension MovieInfoViewController {
         contentView.addSubview(screenshotsLabel)
         
         screenshotsLabel.snp.makeConstraints { make in
-            make.top.equalTo(sectionLabel.snp.bottom).inset(-32)
+            if isSectionsNeeded {
+                make.top.equalTo(sectionLabel.snp.bottom).inset(-32)
+            } else {
+                make.top.equalTo(separator2View.snp.bottom).inset(-24)
+            }
             make.left.equalToSuperview().inset(24)
         }
     }
@@ -741,7 +750,7 @@ extension MovieInfoViewController {
         } else if (movie.seriesCount != 0) {
             sectionInfoLabel.text = "\(movie.seriesCount) series"
         } else {
-            sectionInfoLabel.text = ""
+            isSectionsNeeded = false
         }
         
         screenshots = movie.screenshots
