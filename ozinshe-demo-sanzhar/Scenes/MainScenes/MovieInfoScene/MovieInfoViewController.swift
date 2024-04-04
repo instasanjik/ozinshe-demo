@@ -208,6 +208,7 @@ class MovieInfoViewController: UIViewController {
         button.setTitleColor(Style.Colors.gray400, for: .normal)
         button.tintColor = Style.Colors.purple300
         button.contentHorizontalAlignment = .right
+        button.addTarget(self, action: #selector(sectionsButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -649,7 +650,6 @@ extension MovieInfoViewController {
 extension MovieInfoViewController {
     
     @objc func moreButtonTapped(_ sender: UIButton!) {
-        Logger.log(.action, "More button pressed")
         if !isDescriptionRevealed { // show full text
             UIView.transition(with: descriptionLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
                 self.descriptionLabel.numberOfLines = 0
@@ -664,6 +664,11 @@ extension MovieInfoViewController {
             descriptionGradientLayer.isHidden = false
         }
         isDescriptionRevealed.toggle()
+    }
+    
+    @objc func sectionsButtonTapped(_ sender: UIButton!) {
+        let vc = SeriesViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
