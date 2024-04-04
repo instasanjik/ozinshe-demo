@@ -45,6 +45,7 @@ class MovieInfoViewController: UIViewController {
         imageView.image = UIImage(named: "previewImageView")
         imageView.contentMode = .scaleAspectFill
         imageView.isSkeletonable = true
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -58,6 +59,8 @@ class MovieInfoViewController: UIViewController {
     lazy var playButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "playButton"), for: .normal)
+        button.addTarget(self, action: #selector(watchTapped(_:)), for: .touchUpInside)
+        button.backgroundColor = .clear
         return button
     }()
     
@@ -209,7 +212,7 @@ class MovieInfoViewController: UIViewController {
         button.setTitleColor(Style.Colors.gray400, for: .normal)
         button.tintColor = Style.Colors.purple300
         button.contentHorizontalAlignment = .right
-        button.addTarget(self, action: #selector(sectionsButtonTapped(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(watchTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -675,7 +678,7 @@ extension MovieInfoViewController {
         isDescriptionRevealed.toggle()
     }
     
-    @objc func sectionsButtonTapped(_ sender: UIButton!) {
+    @objc func watchTapped(_ sender: UIButton!) {
         let vc = SeriesViewController()
         if let movie = movie {
             vc.configureScene(movie: movie)
