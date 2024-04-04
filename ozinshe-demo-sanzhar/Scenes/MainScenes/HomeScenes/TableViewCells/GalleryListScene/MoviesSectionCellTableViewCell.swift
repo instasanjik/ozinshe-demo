@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import SkeletonView
 
+protocol MoviesSectionCellTableViewCellDelegate {
+    func moviesSectionCell(didTapMovie movie: MovieWithDetails)
+}
+
 class MoviesSectionCellTableViewCell: UITableViewCell {
     
     static let ID: String = "MoviesSectionCellTableViewCell"
@@ -22,6 +26,8 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
     }
     
     var itemsCount = 5
+    
+    var delegate: MoviesSectionCellTableViewCellDelegate?
     
     lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
@@ -136,6 +142,12 @@ extension MoviesSectionCellTableViewCell: UICollectionViewDelegate, UICollection
             cell.configureCell(movie: moviesSection.movies[indexPath.row])
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? MoviesSectionCellCollectionViewCell {
+            delegate?.moviesSectionCell(didTapMovie: moviesSection.movies[indexPath.row])
+        }
     }
     
     

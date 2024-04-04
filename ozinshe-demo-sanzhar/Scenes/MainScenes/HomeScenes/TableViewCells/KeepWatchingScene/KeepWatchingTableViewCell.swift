@@ -123,7 +123,7 @@ extension KeepWatchingTableViewCell: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? KeepWatchingCollectionViewCell {
-            delegate?.movieCellWasTapped(content: keepWatchingMovieList[indexPath.row])
+            delegate?.keepWatching(didTapMovie: keepWatchingMovieList[indexPath.row])
         }
     }
     

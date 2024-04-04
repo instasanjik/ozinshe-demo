@@ -119,7 +119,7 @@ extension HeaderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? MovieBannerCollectionViewCell {
-            delegate?.movieCellWasTapped(content: bannerList[indexPath.row].movie)
+            delegate?.headerCell(didTapMovie: bannerList[indexPath.row].movie)
         }
     }
     

@@ -207,7 +207,7 @@ extension HomeViewController {
     }
     
     fileprivate func openMovieViewController(with movie: MovieWithDetails) {
-        
+        print(movie.name)
     }
     
     
@@ -257,6 +257,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID,
                                                  for: indexPath) as! MoviesSectionCellTableViewCell
             cell.selectionStyle = .none
+            cell.delegate = self
             if !moviesSectionsList.isEmpty {
                 cell.moviesSection = moviesSectionsList[indexPath.section]
             }
@@ -301,6 +302,15 @@ extension HomeViewController: HeaderTableViewCellDelegate {
 extension HomeViewController: KeepWatchingTableViewCellDelegate {
     
     func keepWatching(didTapMovie movie: MovieWithDetails) {
+        self.openMovieViewController(with: movie)
+    }
+    
+    
+}
+
+extension HomeViewController: MoviesSectionCellTableViewCellDelegate {
+    
+    func moviesSectionCell(didTapMovie movie: MovieWithDetails) {
         self.openMovieViewController(with: movie)
     }
     
