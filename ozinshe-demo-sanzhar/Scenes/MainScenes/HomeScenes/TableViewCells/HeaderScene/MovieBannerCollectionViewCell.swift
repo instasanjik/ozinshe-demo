@@ -138,6 +138,11 @@ extension MovieBannerCollectionViewCell {
         previewImageView.kf.setImage(with: URL(string: movieBanner.link))
         nameLabel.text = movieBanner.movie.name
         descriptionLabel.text = movieBanner.movie.description
+        if let type = movieBanner.movie.categories.first?.name {
+            self.typeNameLabel.text = type
+        } else {
+            self.typeBaseView.isHidden = true
+        }
     }
 
     
