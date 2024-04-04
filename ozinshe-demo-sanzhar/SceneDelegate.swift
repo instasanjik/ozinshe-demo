@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
             Storage.sharedInstance.accessToken = accessToken
-            window?.rootViewController = MainTabBarController()
+            window?.rootViewController = MoviePlayerViewController()
         } else {
             window?.rootViewController = SignInNavigationViewController()
         }
