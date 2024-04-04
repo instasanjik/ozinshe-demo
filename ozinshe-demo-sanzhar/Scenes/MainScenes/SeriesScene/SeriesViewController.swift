@@ -11,6 +11,15 @@ import SkeletonView
 
 class SeriesViewController: UIViewController {
     
+    var seasons: [Season] = [] {
+        didSet {
+            seasonsCollectionView.reloadData()
+            seriesTableView.reloadData()
+        }
+    }
+    
+    var seasonsCount = 0
+    var seriesCount = 10
     var selectedSeasonIndexPath: IndexPath = IndexPath(item: 0, section: 0)
     
     lazy var seasonsCollectionView: UICollectionView = {
@@ -51,6 +60,7 @@ class SeriesViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = Style.Colors.background
+        view.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
         
         setupSeasonsCollectionView()
         setupSeriesTableView()
@@ -94,23 +104,34 @@ extension SeriesViewController {
 extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if seasons.isEmpty {
+            return 5
+        } else {
+            return seasons.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeasonCollectionViewCell.ID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeasonCollectionViewCell.ID, for: indexPath) as! SeasonCollectionViewCell
         if indexPath == selectedSeasonIndexPath {
             cell.isSelected = true
             Logger.log(.success, "\(indexPath)")
         } else {
             cell.isSelected = false
         }
+        if !seasons.isEmpty {
+            cell.configureCell(seasonNumber: seasons[indexPath.row].number)
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel(frame: CGRect.zero)
-        label.text = "1 сезон"
+        if !seasons.isEmpty {
+            label.text = "\(seasons[indexPath.row].number.ordinalString()) \(NSLocalizedString("Seasons-Seasons", comment: "Seasons"))"
+        } else {
+            label.text = "1 \(NSLocalizedString("Seasons-Seasons", comment: "Seasons"))"
+        }
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.sizeToFit()
         return CGSize(width: label.frame.width + (16 * 2), height: 34)
@@ -129,13 +150,37 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if seasons.isEmpty {
+            return 10
+        } else {
+            return seasons[selectedSeasonIndexPath.row].videos.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SeriesTableViewCell.ID,
-                                                 for: indexPath)
+                                                 for: indexPath) as! SeriesTableViewCell
+        if !seasons.isEmpty {
+            cell.configureCell(series: seasons[selectedSeasonIndexPath.row].videos[indexPath.row])
+        }
         return cell
+    }
+    
+    
+}
+
+extension SeriesViewController {
+    
+    func configureScene(movie: MovieWithDetails) {
+        CoreService.Worker.getMovieSeasons(movieID: movie.id) { success, errorMessage, content in
+            if success {
+                self.seasons = content
+                self.view.hideSkeleton()
+            } else {
+                Logger.log(.warning, "\(errorMessage ?? "Error nil")")
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
     }
     
     

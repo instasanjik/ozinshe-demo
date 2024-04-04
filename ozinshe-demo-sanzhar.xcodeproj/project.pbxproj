@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0402B81F2BBF36CF00E1DB49 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B81E2BBF36CF00E1DB49 /* Int+Extension.swift */; };
 		041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */; };
 		041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */; };
 		041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0402B81E2BBF36CF00E1DB49 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		041CF8782B8CB33F003D2A58 /* ozinshe-demo-sanzhar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ozinshe-demo-sanzhar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				041CF8B62B9DB2BA003D2A58 /* Date.swift */,
+				0402B81E2BBF36CF00E1DB49 /* Int+Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				041CF9042BA4A227003D2A58 /* ScreenshotCollectionViewCell.swift in Sources */,
 				041CF8BB2B9DCD77003D2A58 /* UIButton+Extension.swift in Sources */,
 				041CF9482BBAE305003D2A58 /* Endponts.swift in Sources */,
+				0402B81F2BBF36CF00E1DB49 /* Int+Extension.swift in Sources */,
 				041CF9232BB58DB7003D2A58 /* SelectionLanguageViewController.swift in Sources */,
 				041CF89A2B8DC0D1003D2A58 /* UIColor+Extension.swift in Sources */,
 				041CF93E2BB71E33003D2A58 /* HomeNavigationViewController.swift in Sources */,

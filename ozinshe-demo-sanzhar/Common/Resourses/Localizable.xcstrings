@@ -1404,6 +1404,28 @@
         }
       }
     },
+    "Seasons-episode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "episode"
+          }
+        }
+      }
+    },
+    "Seasons-Seasons" : {
+      "comment" : "Seasons",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "season"
+          }
+        }
+      }
+    },
     "SignIn-AppleID" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -18,7 +18,7 @@ class Series {
     init(json: JSON) {
         if let temp = json["id"].int        { self.id = temp }
         if let temp = json["number"].int    { self.number = temp }
-        if let temp = json["link"].string   { self.link = temp }
+        if let temp = json["link"].string   { self.link = "https://img.youtube.com/vi/\(temp)/hqdefault.jpg" }
     }
     
     

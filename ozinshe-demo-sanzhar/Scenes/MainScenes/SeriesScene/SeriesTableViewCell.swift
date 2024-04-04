@@ -44,6 +44,7 @@ class SeriesTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         backgroundColor = .clear
         
         setupPreviewImageView()
@@ -95,6 +96,16 @@ extension SeriesTableViewCell {
             make.bottom.equalToSuperview().inset(16)
             make.height.equalTo(1)
         }
+    }
+    
+    
+}
+
+extension SeriesTableViewCell {
+    
+    func configureCell(series: Series) {
+        self.previewImageView.kf.setImage(with: URL(string: series.link))
+        self.seriesLabel.text = "\(series.number.ordinalString()) \(NSLocalizedString("Seasons-episode", comment: ""))"
     }
     
     

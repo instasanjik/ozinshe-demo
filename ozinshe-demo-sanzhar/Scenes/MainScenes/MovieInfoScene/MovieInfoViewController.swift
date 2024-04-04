@@ -11,6 +11,7 @@ import SkeletonView
 
 class MovieInfoViewController: UIViewController {
     
+    var movie: MovieWithDetails?
     var screenshots: [Screenshot] = []
     var similarTVSeries: [MovieWithDetails] = []
     
@@ -668,6 +669,12 @@ extension MovieInfoViewController {
     
     @objc func sectionsButtonTapped(_ sender: UIButton!) {
         let vc = SeriesViewController()
+        if let movie = movie {
+            vc.configureScene(movie: movie)
+        } else {
+           return
+        }
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -741,6 +748,8 @@ extension MovieInfoViewController {
     }
     
     public func configureScene(content movie: MovieWithDetails, similarTVSeries: [MovieWithDetails]) {
+        self.movie = movie
+        
         previewImageView.kf.setImage(with: URL(string: movie.poster_link))
         
         movieNameLabel.text = movie.name

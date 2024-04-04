@@ -57,3 +57,12 @@ extension SeasonCollectionViewCell {
     
     
 }
+
+extension SeasonCollectionViewCell {
+    
+    func configureCell(seasonNumber: Int) {
+        self.seasonLabel.text = "\(seasonNumber.ordinalString()) \(NSLocalizedString("Seasons-Seasons", comment: "Seasons"))"
+    }
+    
+    
+}
