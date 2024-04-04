@@ -325,6 +325,10 @@ extension HomeViewController: MoviesSectionCellTableViewCellDelegate {
         self.openMovieViewController(with: movie)
     }
     
+    func moviesSectionCell(tappedMoreForContent moviesSection: MoviesSection) {
+        print(moviesSection.categoryName)
+    }
+    
     
 }
 

@@ -11,6 +11,7 @@ import SkeletonView
 
 protocol MoviesSectionCellTableViewCellDelegate {
     func moviesSectionCell(didTapMovie movie: MovieWithDetails)
+    func moviesSectionCell(tappedMoreForContent moviesSection: MoviesSection)
 }
 
 class MoviesSectionCellTableViewCell: UITableViewCell {
@@ -45,6 +46,7 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(Style.StaticColors.purple300, for: .normal)
         button.contentVerticalAlignment = .top
+        button.addTarget(self, action: #selector(moreTapped(_:)), for: .touchUpInside)
         button.isSkeletonable = true
         button.isHiddenWhenSkeletonIsActive = true
         return button
@@ -148,6 +150,15 @@ extension MoviesSectionCellTableViewCell: UICollectionViewDelegate, UICollection
         if let cell = collectionView.cellForItem(at: indexPath) as? MoviesSectionCellCollectionViewCell {
             delegate?.moviesSectionCell(didTapMovie: moviesSection.movies[indexPath.row])
         }
+    }
+    
+    
+}
+
+extension MoviesSectionCellTableViewCell {
+    
+    @objc func moreTapped(_ sender: UIButton) {
+        delegate?.moviesSectionCell(tappedMoreForContent: moviesSection)
     }
     
     
