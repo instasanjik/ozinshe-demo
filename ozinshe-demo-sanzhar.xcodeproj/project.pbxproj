@@ -323,8 +323,9 @@
 				041CF8C92B9EFE0E003D2A58 /* SearchScenes */,
 				041CF8CA2B9EFE1E003D2A58 /* FavoriteScenes */,
 				041CF8CB2B9EFE27003D2A58 /* ProfileScenes */,
-				041CF8F92BA30F73003D2A58 /* MovieInfoScene */,
+				041CF9422BB71E74003D2A58 /* MovieListScene */,
 				041CF9052BA72F8F003D2A58 /* SeriesScene */,
+				041CF8F92BA30F73003D2A58 /* MovieInfoScene */,
 			);
 			path = MainScenes;
 			sourceTree = "<group>";
@@ -345,7 +346,6 @@
 				041CF93F2BB71E4F003D2A58 /* SearchNavigationViewController.swift */,
 				041CF8CF2B9EFE5B003D2A58 /* SearchViewController.swift */,
 				041CF9412BB71E63003D2A58 /* Cells */,
-				041CF9422BB71E74003D2A58 /* ResultScene */,
 			);
 			path = SearchScenes;
 			sourceTree = "<group>";
@@ -507,13 +507,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		041CF9422BB71E74003D2A58 /* ResultScene */ = {
+		041CF9422BB71E74003D2A58 /* MovieListScene */ = {
 			isa = PBXGroup;
 			children = (
 				041CF9122BAABA31003D2A58 /* MovieTableViewCell.swift */,
 				041CF9102BAAB9A0003D2A58 /* SearchResultViewController.swift */,
 			);
-			path = ResultScene;
+			path = MovieListScene;
 			sourceTree = "<group>";
 		};
 		041CF9452BBAE250003D2A58 /* Services */ = {
