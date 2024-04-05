@@ -6,32 +6,70 @@
 //
 
 import UIKit
+import YoutubePlayerView
 
 class MoviePlayerViewController: UIViewController {
     
-    var movieDuration: Float = 100
-    var isPause: Bool = false {
+    var videoID: String = "GC5V67k0TAA"
+    
+    var videoDuration: TimeInterval = 0 {
         didSet {
-            let imageName = isPause ? "pause.fill" : "play.fill"
-            playButton.setImage(UIImage(systemName: imageName), for: .normal)
+            self.totalTimeCodeLabel.text = Float(videoDuration).timeCodeValue
+            self.movieTimelineSlider.maximumValue = Float(videoDuration)
+        }
+    }
+    var currentTime: Float = 0 {
+        didSet {
+            self.currentTimeCodeLabel.text = currentTime.timeCodeValue
+            self.movieTimelineSlider.value = currentTime
         }
     }
     
-    private lazy var playerView: UIImageView = {
+    var isPause: Bool = false {
+        didSet {
+            let imageName = isPause ? "play.fill" : "pause.fill"
+            playButton.setImage(UIImage(systemName: imageName), for: .normal)
+            if isPause {
+                pauseImageView.alpha = 1
+                playerView.pause()
+            } else {
+                playerView.play()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.pauseImageView.alpha = 0
+                }
+            }
+        }
+    }
+    
+    private lazy var playerView: YoutubePlayerView = {
+        let view = YoutubePlayerView()
+        let playerVars: [String: Any] = [
+            "controls": 0,
+            "modestbranding": 1,
+            "playsinline": 1,
+            "rel": 0,
+            "showinfo": 0,
+            "autoplay": 1,
+            "disablekb": 1,
+        ]
+        view.delegate = self
+        view.loadWithVideoId(videoID, with: playerVars)
+//        downloadDataForPlayer()
+        return view
+    }()
+    
+    private lazy var pauseImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "previewImageView")
-        imageView.layer.cornerRadius = 8
-        imageView.layer.masksToBounds = true
+        imageView.backgroundColor = .black
+        imageView.alpha = 0
         imageView.contentMode = .scaleAspectFill
-        imageView.isSkeletonable = true
-        imageView.isUserInteractionEnabled = true // Enable user interaction
         return imageView
     }()
     
     private lazy var overlayLayerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(hex: "111827").withAlphaComponent(0.72)
-        view.alpha = 0 // Initially transparent
+        view.alpha = 0
         return view
     }()
     
@@ -62,8 +100,9 @@ class MoviePlayerViewController: UIViewController {
     private lazy var playButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        button.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         button.tintColor = .white
+        button.imageView?.layer.transform = CATransform3DMakeScale(1.8, 1.8, 1.8)
         button.addTarget(self, action: #selector(playButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
@@ -89,7 +128,7 @@ class MoviePlayerViewController: UIViewController {
     private lazy var movieTimelineSlider: UISlider = {
         let slider = UISlider()
         slider.minimumValue = 0
-        slider.maximumValue = Float(movieDuration)
+        slider.maximumValue = Float(videoDuration)
         slider.thumbTintColor = .black
         slider.minimumTrackTintColor = UIColor.black.withAlphaComponent(0.4)
         slider.maximumTrackTintColor = UIColor.white.withAlphaComponent(0.4)
@@ -101,7 +140,7 @@ class MoviePlayerViewController: UIViewController {
         slider.setThumbImage(UIImage.circle(diameter: thumbSize, color: .black), for: .normal)
         slider.setThumbImage(UIImage.circle(diameter: thumbSizeExpanded, color: .black), for: .highlighted)
         
-        slider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        slider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .allTouchEvents)
         
         return slider
     }()
@@ -118,7 +157,7 @@ class MoviePlayerViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.StaticColors.white
-        label.text = "01:00:00"
+        label.text = "00:00"
         return label
     }()
     
@@ -160,9 +199,10 @@ class MoviePlayerViewController: UIViewController {
 private extension MoviePlayerViewController {
     
     func setupUI() {
-        view.backgroundColor = Style.Colors.label
+        view.backgroundColor = Style.StaticColors.darkBackground
         
         setupPlayerView()
+        setupPauseImageView()
         
         setupOverlayLayerView()
         setupCloseButton()
@@ -184,8 +224,16 @@ private extension MoviePlayerViewController {
         }
     }
     
+    func setupPauseImageView() {
+        playerView.addSubview(pauseImageView)
+        
+        pauseImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     func setupOverlayLayerView() {
-        view.addSubview(overlayLayerView)
+        playerView.addSubview(overlayLayerView)
         
         overlayLayerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -297,7 +345,8 @@ private extension MoviePlayerViewController {
     
     @objc private func sliderValueChanged(_ sender: UISlider) {
         let currentValue = sender.value
-        print(currentValue)
+        currentTimeCodeLabel.text = currentValue.timeCodeValue
+        playerView.seek(to: currentValue, allowSeekAhead: true)
         resetOverlayTimer()
     }
     
@@ -312,6 +361,7 @@ private extension MoviePlayerViewController {
     
     func setupGestureRecognizers() {
         playerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playerViewTapped)))
+        pauseImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playerViewTapped)))
         overlayLayerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playerViewTapped)))
     }
     
@@ -320,6 +370,13 @@ private extension MoviePlayerViewController {
             showOverlayView()
         } else {
             hideOverlayView()
+        }
+    }
+    
+    // MARK: Player data downlading
+    func downloadDataForPlayer() {
+        playerView.fetchDuration { duration in
+            self.videoDuration = (duration ?? 2) - 4
         }
     }
     
@@ -362,4 +419,33 @@ private extension MoviePlayerViewController {
 // MARK: - Public functions
 extension MoviePlayerViewController {
     
+}
+
+
+extension MoviePlayerViewController: YoutubePlayerViewDelegate {
+    func playerViewDidBecomeReady(_ playerView: YoutubePlayerView) {
+        print("Ready")
+        playerView.play()
+        downloadDataForPlayer()
+        
+    }
+
+    func playerView(_ playerView: YoutubePlayerView, receivedError error: Error) {
+        Logger.log(.warning, "Error: \(error)")
+    }
+
+    func playerView(_ playerView: YoutubePlayerView, didPlayTime time: Float) {
+        if !self.movieTimelineSlider.isFocused {
+            currentTime = time
+        }
+        if Int(currentTime) == Int(videoDuration) {
+            isPause = true
+            showOverlayView()
+        }
+    }
+    
+    func playerViewDidPause(pauseImage: UIImage) {
+        pauseImageView.image = pauseImage
+        Logger.log(.success, "Screenshot settes")
+    }
 }

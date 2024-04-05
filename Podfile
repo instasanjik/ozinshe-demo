@@ -10,5 +10,6 @@ target 'ozinshe-demo-sanzhar' do
   pod 'SwiftyJSON'
   pod 'SVProgressHUD'
   pod 'Kingfisher', '6.3.1'
+  pod 'YoutubePlayerView'
   
 end

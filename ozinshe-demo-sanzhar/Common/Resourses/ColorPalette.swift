@@ -71,6 +71,10 @@ public enum DefaultStyle {
     
     public enum StaticColors {
         
+        public static let darkBackground: UIColor = {
+            return UIColor(hex: "111827")
+        }()
+        
         public static let white: UIColor = {
             return .white
         }()
