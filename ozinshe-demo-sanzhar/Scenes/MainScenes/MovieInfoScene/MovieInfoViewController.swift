@@ -683,7 +683,8 @@ extension MovieInfoViewController {
         
         if movie.movieType == "MOVIE" {
             let vc = MoviePlayerViewController()
-            vc.configureScene(movieName: movie.name, movieLink: movie.video_link)
+            vc.configureScene(movieName: movie.name, movieType: movie.movieType, movieLink: movie.video_link)
+            print("🌟 \(movie.video_link)")
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)

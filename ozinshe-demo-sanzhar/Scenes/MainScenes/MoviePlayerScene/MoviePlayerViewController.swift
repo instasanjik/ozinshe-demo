@@ -12,7 +12,7 @@ import YoutubePlayerView
 class MoviePlayerViewController: UIViewController {
     
     var movieName: String = ""
-    var movieType: String = "MOVIE"
+    var movieType: String = "SERIES"
     
     var movieLink: String = ""
     var seasons: [Season] = []
@@ -70,8 +70,10 @@ class MoviePlayerViewController: UIViewController {
         ]
         view.delegate = self
         if movieType == "MOVIE" {
+            print("MOVIE: Trying to play video from youtube. \(movieLink)🔎")
             view.loadWithVideoId(movieLink, with: playerVars)
         } else {
+            print("SERIES: Trying to play video from youtube. VideoID: \(currentEpisode.youtubeID)")
             view.loadWithVideoId(currentEpisode.youtubeID, with: playerVars)
         }
         return view
@@ -519,6 +521,7 @@ extension MoviePlayerViewController {
         
         self.movieType = movieType
         self.movieLink = movieLink
+        print("🇺🇦 \(self.movieLink)")
         
         self.seasons = seasons
         self.seasonIndex = selectedSeason
