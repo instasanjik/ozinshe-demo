@@ -11,6 +11,7 @@ import SkeletonView
 
 class SeriesViewController: UIViewController {
     
+    var movieName: String = ""
     var seasons: [Season] = [] {
         didSet {
             seasonsCollectionView.reloadData()
@@ -174,12 +175,17 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.openMoviePlayerViewController(selectedSeries: indexPath.row)
+    }
+    
     
 }
 
 extension SeriesViewController {
     
     func configureScene(movie: MovieWithDetails) {
+        self.movieName = movie.name
         CoreService.Worker.getMovieSeasons(movieID: movie.id) { success, errorMessage, content in
             if success {
                 self.seasons = content
@@ -189,6 +195,19 @@ extension SeriesViewController {
                 self.navigationController?.popToRootViewController(animated: true)
             }
         }
+    }
+    
+    
+}
+
+extension SeriesViewController {
+    
+    func openMoviePlayerViewController(selectedSeries: Int) {
+        let vc = MoviePlayerViewController()
+        vc.configureScene(seasons: self.seasons, movieName: self.movieName, selectedSeason: selectedSeasonIndexPath.row, selectedSeries: selectedSeries)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     

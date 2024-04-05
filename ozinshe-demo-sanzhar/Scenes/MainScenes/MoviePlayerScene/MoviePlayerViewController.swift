@@ -6,11 +6,21 @@
 //
 
 import UIKit
+import SnapKit
 import YoutubePlayerView
 
 class MoviePlayerViewController: UIViewController {
     
-    var videoID: String = "GC5V67k0TAA"
+    var movieName: String = ""
+    var movieType: String = "MOVIE"
+    
+    var movieLink: String = ""
+    var seasons: [Season] = []
+    
+    var seasonIndex = 0
+    var episodeIndex = 0
+    
+    private var isButtonVisible = false
     
     var videoDuration: TimeInterval = 0 {
         didSet {
@@ -24,6 +34,12 @@ class MoviePlayerViewController: UIViewController {
             self.movieTimelineSlider.value = currentTime
         }
     }
+    var timeLeft: Int { return Int(videoDuration) - Int(currentTime) }
+    var currentEpisode: Series {
+        guard !seasons.isEmpty else { return Series() }
+        return seasons[seasonIndex].videos[episodeIndex]
+    }
+    
     
     var isPause: Bool = false {
         didSet {
@@ -53,8 +69,11 @@ class MoviePlayerViewController: UIViewController {
             "disablekb": 1,
         ]
         view.delegate = self
-        view.loadWithVideoId(videoID, with: playerVars)
-//        downloadDataForPlayer()
+        if movieType == "MOVIE" {
+            view.loadWithVideoId(movieLink, with: playerVars)
+        } else {
+            view.loadWithVideoId(currentEpisode.youtubeID, with: playerVars)
+        }
         return view
     }()
     
@@ -78,6 +97,7 @@ class MoviePlayerViewController: UIViewController {
         button.backgroundColor = .clear
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .white
+        button.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         return button
     }()
     
@@ -85,7 +105,7 @@ class MoviePlayerViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.StaticColors.white
-        label.text = "Қызғалдақтар мекені"
+        label.text = movieName
         return label
     }()
     
@@ -93,7 +113,8 @@ class MoviePlayerViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.StaticColors.gray400
-        label.text = "1 серия"
+        label.text = "\(currentEpisode.number.ordinalString()) \(NSLocalizedString("Series-series", comment: ""))"
+        label.isHidden = movieType != "MOVIE"
         return label
     }()
     
@@ -129,16 +150,16 @@ class MoviePlayerViewController: UIViewController {
         let slider = UISlider()
         slider.minimumValue = 0
         slider.maximumValue = Float(videoDuration)
-        slider.thumbTintColor = .black
-        slider.minimumTrackTintColor = UIColor.black.withAlphaComponent(0.4)
-        slider.maximumTrackTintColor = UIColor.white.withAlphaComponent(0.4)
+        slider.thumbTintColor = Style.StaticColors.purple500
+        slider.minimumTrackTintColor = Style.StaticColors.purple500.withAlphaComponent(0.4)
+        slider.maximumTrackTintColor = Style.StaticColors.white.withAlphaComponent(0.4)
         slider.setValue(0, animated: true)
         
         let thumbSize: CGFloat = 16
         let thumbSizeExpanded: CGFloat = 32
         
-        slider.setThumbImage(UIImage.circle(diameter: thumbSize, color: .black), for: .normal)
-        slider.setThumbImage(UIImage.circle(diameter: thumbSizeExpanded, color: .black), for: .highlighted)
+        slider.setThumbImage(UIImage.circle(diameter: thumbSize, color: Style.StaticColors.purple500), for: .normal)
+        slider.setThumbImage(UIImage.circle(diameter: thumbSizeExpanded, color: Style.StaticColors.purple500), for: .highlighted)
         
         slider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .allTouchEvents)
         
@@ -159,6 +180,18 @@ class MoviePlayerViewController: UIViewController {
         label.textColor = Style.StaticColors.white
         label.text = "00:00"
         return label
+    }()
+    
+    private lazy var nextEpisodeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Next Episode", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .black.withAlphaComponent(0.5)
+        button.layer.cornerRadius = 12
+        button.addTarget(self, action: #selector(nextEpisodeButtonTapped), for: .touchUpInside)
+        button.alpha = 0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     private var overlayTimer: Timer?
@@ -214,6 +247,8 @@ private extension MoviePlayerViewController {
         setupMovieTimelineSlider()
         setupCurrentTimeCodeLabel()
         setupTotalTimeCodeLabel()
+        
+        setupNextEpisodeButton()
     }
     
     func setupPlayerView() {
@@ -318,10 +353,19 @@ private extension MoviePlayerViewController {
     
     func setupTotalTimeCodeLabel() {
         overlayLayerView.addSubview(totalTimeCodeLabel)
-        
         totalTimeCodeLabel.snp.makeConstraints { make in
             make.right.equalTo(movieTimelineSlider)
             make.bottom.equalTo(movieTimelineSlider.snp.top).inset(-4)
+        }
+    }
+    
+    func setupNextEpisodeButton() {
+        view.addSubview(nextEpisodeButton)
+        nextEpisodeButton.snp.makeConstraints { make in
+            make.height.equalTo(56)
+            make.width.equalTo(160)
+            make.bottom.equalToSuperview().inset(64)
+            make.right.equalToSuperview().inset(48)
         }
     }
     
@@ -336,10 +380,20 @@ private extension MoviePlayerViewController {
     }
     
     @objc func forwardButtonTapped(_ sender: UIButton!) {
+        if timeLeft > 10 {
+            playerView.seek(to: currentTime + 10, allowSeekAhead: true)
+        } else {
+            playerView.seek(to: Float(videoDuration), allowSeekAhead: true)
+        }
         resetOverlayTimer()
     }
     
     @objc func backwardButtonTapped(_ sender: UIButton!) {
+        if currentTime > 10 {
+            playerView.seek(to: currentTime - 10, allowSeekAhead: true)
+        } else {
+            playerView.seek(to: 0, allowSeekAhead: true)
+        }
         resetOverlayTimer()
     }
     
@@ -350,6 +404,27 @@ private extension MoviePlayerViewController {
         resetOverlayTimer()
     }
     
+    @objc func nextEpisodeButtonTapped() {
+        if episodeIndex == seasons[seasonIndex].videos.count - 1 { // if episode is last in season
+            if seasonIndex == seasons.count - 1 { // if season is last
+                self.dismiss(animated: true)
+                return
+            } else {
+                seasonIndex += 1
+                episodeIndex = 0
+                playerView.loadWithVideoId(currentEpisode.youtubeID)
+            }
+        } else {
+            episodeIndex += 1
+            playerView.loadWithVideoId(currentEpisode.youtubeID)
+        }
+        downloadDataForPlayer()
+        hideNextEpisodeButton()
+    }
+    
+    @objc func closeTapped() {
+        self.dismiss(animated: true)
+    }
     
     
 }
@@ -358,7 +433,6 @@ private extension MoviePlayerViewController {
 private extension MoviePlayerViewController {
     
     // MARK: Gesture Recognizers
-    
     func setupGestureRecognizers() {
         playerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playerViewTapped)))
         pauseImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playerViewTapped)))
@@ -376,12 +450,11 @@ private extension MoviePlayerViewController {
     // MARK: Player data downlading
     func downloadDataForPlayer() {
         playerView.fetchDuration { duration in
-            self.videoDuration = (duration ?? 2) - 4
+            self.videoDuration = (duration ?? 3) - 3
         }
     }
     
     // MARK: Overlay Actions
-    
     func showOverlayView() {
         UIView.animate(withDuration: 0.3) {
             self.overlayLayerView.alpha = 1
@@ -395,8 +468,8 @@ private extension MoviePlayerViewController {
         }
     }
     
-    // MARK: Overlay Timer
     
+    // MARK: Overlay Timer
     func startOverlayTimer() {
         resetOverlayTimer()
     }
@@ -413,39 +486,83 @@ private extension MoviePlayerViewController {
         overlayTimer = nil
     }
     
+    // MARK: Next episode button settings
+    func showNextEpisodeButton() {
+        if !isButtonVisible {
+            UIView.animate(withDuration: 0.3) {
+                self.nextEpisodeButton.alpha = 1
+            }
+            nextEpisodeButton.changeBackgroundWithAnimation(animationDuration: 10, toColor: Style.StaticColors.purple500)
+            isButtonVisible = true
+        }
+    }
+    
+    func hideNextEpisodeButton() {
+        if isButtonVisible {
+            UIView.animate(withDuration: 0.3) {
+                self.nextEpisodeButton.alpha = 0
+            }
+            nextEpisodeButton.stopBackgroundAnimation(backgroundColor: .black.withAlphaComponent(0.5))
+            isButtonVisible = false
+        }
+    }
+    
     
 }
+
 
 // MARK: - Public functions
 extension MoviePlayerViewController {
     
+    func configureScene(seasons: [Season] = [], movieName: String, selectedSeason: Int = 0, selectedSeries: Int = 0, movieType: String = "", movieLink: String = "") {
+        self.movieName = movieName
+        
+        self.movieType = movieType
+        self.movieLink = movieLink
+        
+        self.seasons = seasons
+        self.seasonIndex = selectedSeason
+        self.episodeIndex = selectedSeries
+    }
+    
+    
 }
 
 
+// MARK: - Youtube Player Delegate
 extension MoviePlayerViewController: YoutubePlayerViewDelegate {
+    
     func playerViewDidBecomeReady(_ playerView: YoutubePlayerView) {
-        print("Ready")
         playerView.play()
         downloadDataForPlayer()
-        
     }
-
+    
     func playerView(_ playerView: YoutubePlayerView, receivedError error: Error) {
         Logger.log(.warning, "Error: \(error)")
     }
-
+    
     func playerView(_ playerView: YoutubePlayerView, didPlayTime time: Float) {
         if !self.movieTimelineSlider.isFocused {
             currentTime = time
         }
-        if Int(currentTime) == Int(videoDuration) {
+        
+        if timeLeft < 1 && movieType != "MOVIE" {
+            nextEpisodeButtonTapped()
             isPause = true
             showOverlayView()
+        }
+        
+        if timeLeft < 10 && movieType != "MOVIE"  {
+            showNextEpisodeButton()
+            nextEpisodeButton.setTitle("Next episode (\(timeLeft))", for: .normal)
+        } else {
+            hideNextEpisodeButton()
         }
     }
     
     func playerViewDidPause(pauseImage: UIImage) {
         pauseImageView.image = pauseImage
-        Logger.log(.success, "Screenshot settes")
     }
+    
+    
 }

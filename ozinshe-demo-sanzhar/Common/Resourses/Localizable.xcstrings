@@ -1426,6 +1426,9 @@
         }
       }
     },
+    "Series-series" : {
+
+    },
     "SignIn-AppleID" : {
       "extractionState" : "manual",
       "localizations" : {

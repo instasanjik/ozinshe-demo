@@ -104,7 +104,7 @@ extension SeriesTableViewCell {
 extension SeriesTableViewCell {
     
     func configureCell(series: Series) {
-        self.previewImageView.kf.setImage(with: URL(string: series.link))
+        self.previewImageView.kf.setImage(with: URL(string: series.previewLink))
         self.seriesLabel.text = "\(series.number.ordinalString()) \(NSLocalizedString("Seasons-episode", comment: ""))"
     }
     
