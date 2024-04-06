@@ -11,18 +11,11 @@ import SkeletonView
 
 class FavoritesViewController: UITableViewController {
     
-    var movieList: [MovieWithDetails] = []
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieList.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.ID, for: indexPath) as! MovieTableViewCell
-        cell.configureCell(content: movieList[indexPath.row])
-        return cell
-    }
+    // MARK: Variables
+    private var movieList: [MovieWithDetails] = []
 
+    
+    // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +24,9 @@ class FavoritesViewController: UITableViewController {
     }
     
 }
+
+
+// MARK: - UI Setups
 
 private extension FavoritesViewController {
     
@@ -45,6 +41,8 @@ private extension FavoritesViewController {
 }
 
 
+// MARK: - Internal functions
+
 private extension FavoritesViewController {
     
     func downloadFavoritesList() {
@@ -52,6 +50,45 @@ private extension FavoritesViewController {
             self.movieList = favoritesList
             self.tableView.reloadData()
         }
+    }
+    
+    func openMovieViewController(with movie: MovieWithDetails) {
+        let vc = MovieInfoViewController()
+        
+
+        vc.configureScene(content: movie)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+}
+
+
+// MARK: - Delegates
+// MARK: TableViewDataSource
+
+extension FavoritesViewController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movieList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.ID, for: indexPath) as! MovieTableViewCell
+        cell.configureCell(content: movieList[indexPath.row])
+        return cell
+    }
+    
+    
+}
+
+// MARK: TableViewDelegate
+
+extension FavoritesViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.openMovieViewController(with: movieList[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

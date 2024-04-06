@@ -794,5 +794,33 @@ extension MovieInfoViewController {
     }
     
     
+    
+    public func configureScene(content movie: MovieWithDetails) {
+        self.movie = movie
+        
+        previewImageView.kf.setImage(with: URL(string: movie.poster_link))
+        
+        movieNameLabel.text = movie.name
+        shortInfoLabel.text = movie.shortInfo
+        descriptionLabel.text = movie.description
+        
+        directorNameLabel.text = movie.director
+        producerNameLabel.text = movie.producer
+        
+        if movie.seasonCount != 0 {
+            sectionInfoLabel.text = "\(movie.seasonCount) season, \(movie.seriesCount) series"
+        } else if (movie.seriesCount != 0) {
+            sectionInfoLabel.text = "\(movie.seriesCount) series"
+        } else {
+            isSectionsNeeded = false
+        }
+        
+        screenshots = movie.screenshots
+        screenshotsCollectionView.reloadData()
+        
+        // TODO: Find similar TV series
+    }
+    
+    
 }
 
