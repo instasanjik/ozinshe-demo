@@ -83,8 +83,9 @@ class MovieWithDetails {
         
         if let array = json["screenshots"].array {
             for item in array {
-                let temp = Screenshot(json: item)
-                self.screenshots.append(temp)
+                if let temp = Screenshot(json: item) {
+                    self.screenshots.append(temp)
+                }
             }
         }
         

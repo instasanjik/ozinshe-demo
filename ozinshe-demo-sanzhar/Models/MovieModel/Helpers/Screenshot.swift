@@ -10,16 +10,20 @@ import SwiftyJSON
 
 class Screenshot {
     
-    public var id: Int = 0
-    public var link: String = ""
+    var id: Int
+    var imageURL: URL?
     
-    init(json: JSON) {
-        if let temp = json["id"].int {
-            self.id = temp
+    init(id: Int, imageURL: URL?) {
+        self.id = id
+        self.imageURL = imageURL
+    }
+    
+    convenience init?(json: JSON) {
+        guard let id = json["id"].int,
+              let url = json["link"].string else {
+            return nil
         }
-        if let temp = json["link"].string {
-            self.link = temp
-        }
+        self.init(id: id, imageURL: URL(string: url))
     }
     
     

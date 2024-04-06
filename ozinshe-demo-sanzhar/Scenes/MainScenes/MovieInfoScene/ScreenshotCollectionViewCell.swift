@@ -51,7 +51,7 @@ extension ScreenshotCollectionViewCell {
 extension ScreenshotCollectionViewCell {
     
     public func configureCell(screenshot: Screenshot) {
-        self.screenshotImageView.kf.setImage(with: URL(string: screenshot.link))
+        self.screenshotImageView.kf.setImage(with: screenshot.imageURL)
     }
     
     
