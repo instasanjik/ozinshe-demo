@@ -81,8 +81,8 @@ extension GenresAndAgesCollectionViewCell {
 
 extension GenresAndAgesCollectionViewCell{
     
-    public func configureCell(card: AgeAndGenreCardContent) {
-        self.previewImageView.kf.setImage(with: URL(string: card.link))
+    public func configureCell(card: ContentCategory) {
+        self.previewImageView.kf.setImage(with: card.previewURL)
         self.nameLabel.text = card.name
     }
     

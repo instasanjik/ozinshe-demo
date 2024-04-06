@@ -13,8 +13,8 @@ class HomeViewController: UIViewController {
     
     var bannersList: [MovieBanner] = []
     var keepWathingMoviesList: [MovieWithDetails] = []
-    var genresList: [AgeAndGenreCardContent] = []
-    var agesList: [AgeAndGenreCardContent] = []
+    var genresList: [ContentCategory] = []
+    var agesList: [ContentCategory] = []
     var moviesSectionsList: [MoviesSection] = [] {
         didSet {
             moviesSectionsList.insert(MoviesSection(), at: 0) // instead of header
@@ -215,7 +215,7 @@ extension HomeViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    fileprivate func openMovieListViewController(with content: AgeAndGenreCardContent) {
+    fileprivate func openMovieListViewController(with content: ContentCategory) {
         print(content.name)
     }
     
@@ -336,7 +336,7 @@ extension HomeViewController: MoviesSectionCellTableViewCellDelegate {
 
 extension HomeViewController: GenresAndAgesSectionTableViewCellDelegate {
     
-    func genresAndAgesSection(didTapSection section: AgeAndGenreCardContent) {
+    func genresAndAgesSection(didTapSection section: ContentCategory) {
         self.openMovieListViewController(with: section)
     }
     

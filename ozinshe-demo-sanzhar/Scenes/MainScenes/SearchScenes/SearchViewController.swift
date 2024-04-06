@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
     // MARK: - Variables
     
     /// Array to hold movie categories.
-    private var categories: [MovieCategory] = [] {
+    private var categories: [ContentCategory] = [] {
         didSet {
             self.categoriesCount = categories.count
             self.categoriesCollectionView.reloadData()

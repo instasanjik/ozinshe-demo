@@ -9,14 +9,14 @@ import UIKit
 import SnapKit
 
 protocol GenresAndAgesSectionTableViewCellDelegate {
-    func genresAndAgesSection(didTapSection section: AgeAndGenreCardContent)
+    func genresAndAgesSection(didTapSection section: ContentCategory)
 }
 
 class GenresAndAgesSectionTableViewCell: UITableViewCell {
     
     static let ID: String = "MovieCardTableViewCell"
     
-    var content: [AgeAndGenreCardContent] = [] {
+    var content: [ContentCategory] = [] {
         didSet {
             itemsCount = content.count
             contentCollectionView.reloadData()
