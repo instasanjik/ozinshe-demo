@@ -147,7 +147,7 @@ extension MoviesSectionCellTableViewCell: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? MoviesSectionCellCollectionViewCell {
+        if collectionView.cellForItem(at: indexPath) is MoviesSectionCellCollectionViewCell {
             delegate?.moviesSectionCell(didTapMovie: moviesSection.movies[indexPath.row])
         }
     }

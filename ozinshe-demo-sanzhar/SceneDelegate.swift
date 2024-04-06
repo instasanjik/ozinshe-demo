@@ -24,18 +24,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-//        if Storage.string(forKey: Keys.accessToken) == "" {
-//            window?.rootViewController = SignInNavigationViewController()
-//        } else {
-//            window?.rootViewController = MainTabBarController()
-//        }
-        
         
         SVProgressHUD.setMinimumDismissTimeInterval(0.5)
         
         if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
             Storage.sharedInstance.accessToken = accessToken
-            window?.rootViewController = MoviePlayerViewController()
+            window?.rootViewController = MainTabBarController()
         } else {
             window?.rootViewController = SignInNavigationViewController()
         }

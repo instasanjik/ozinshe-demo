@@ -679,14 +679,22 @@ extension MovieInfoViewController {
     }
     
     @objc func watchTapped(_ sender: UIButton!) {
-        let vc = SeriesViewController()
-        if let movie = movie {
-            vc.configureScene(movie: movie)
-        } else {
-           return
-        }
+        guard let movie = movie else { return }
         
-        self.navigationController?.pushViewController(vc, animated: true)
+        if movie.movieType == "MOVIE" {
+            let vc = MoviePlayerViewController()
+            vc.configureScene(movieName: movie.name, movieType: movie.movieType, movieLink: movie.video_link)
+            print("🌟 \(movie.video_link)")
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true) {
+                self.setTabBarHidden(true, animated: false)
+            }
+        } else {
+            let vc = SeriesViewController()
+            vc.configureScene(movie: movie)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     
@@ -787,3 +795,4 @@ extension MovieInfoViewController {
     
     
 }
+
