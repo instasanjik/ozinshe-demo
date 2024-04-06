@@ -18,8 +18,6 @@ class MainTabBarController: UITabBarController {
     }
     
     func setupViewControllers() {
-        Logger.log(.action, "\(traitCollection.userInterfaceStyle.rawValue)")
-        
         let homeViewController = HomeNavigationViewController()
         homeViewController.tabBarItem.image = UIImage(named: "Home", in: Bundle(for: MovieInfoViewController.self), compatibleWith: nil)
         homeViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);

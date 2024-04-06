@@ -461,6 +461,17 @@
         }
       }
     },
+    "Favorites-Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
+          }
+        }
+      }
+    },
     "GalleryList-TVProgram" : {
       "extractionState" : "manual",
       "localizations" : {

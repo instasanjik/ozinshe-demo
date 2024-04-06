@@ -52,6 +52,10 @@ public enum StaticEndpoints {
         return SERVER_URL + "/core/V1/movies/page"
     }()
     
+    public static let GetFavorites: String = {
+        return SERVER_URL + "/core/V1/favorite"
+    }()
+    
 }
 
 public let Endpoints = StaticEndpoints.self

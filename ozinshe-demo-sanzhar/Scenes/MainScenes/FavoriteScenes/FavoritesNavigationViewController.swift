@@ -14,6 +14,9 @@ class FavoritesNavigationViewController: UINavigationController {
         
         self.viewControllers = [FavoritesViewController()]
         self.topViewController?.extendedLayoutIncludesOpaqueBars = false
+        self.navigationBar.barTintColor = .clear
+        self.navigationBar.backgroundColor = .clear
+        self.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
 
