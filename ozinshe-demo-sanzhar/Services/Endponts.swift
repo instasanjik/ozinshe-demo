@@ -53,7 +53,7 @@ public enum StaticEndpoints {
     }()
     
     public static let GetFavorites: String = {
-        return SERVER_URL + "/core/V1/favorite"
+        return SERVER_URL + "/core/V1/favorite/"
     }()
     
 }
