@@ -16,19 +16,6 @@ enum CellType {
 
 struct StaticData {
     
-    static let contentCategories: [String] = [
-        NSLocalizedString("ContentCategories-Series", comment: "Телехикая"),
-        NSLocalizedString("ContentCategories-Sitkom", comment: "Ситком"),
-        NSLocalizedString("ContentCategories-FeatureMovies", comment: "Көркем фильм"),
-        NSLocalizedString("ContentCategories-Cartoons", comment: "Мультфильм"),
-        NSLocalizedString("ContentCategories-CartoonSeries", comment: "Мультсериал"),
-        NSLocalizedString("ContentCategories-Anime", comment: "Аниме"),
-        NSLocalizedString("ContentCategories-TVShow", comment: "Тв-бағдарлама және реалити-шоу"),
-        NSLocalizedString("ContentCategories-Documentary", comment: "Деректі фильм"),
-        NSLocalizedString("ContentCategories-Music", comment: "Музыка"),
-        NSLocalizedString("ContentCategories-Foreign", comment: "Шетел фильмдері")
-    ]
-    
     static let profileSettings: [(String, CellType)] = [
         (NSLocalizedString("Profile-PersonalData", comment: "Жеке деректер"), .labelAndChevron),
         (NSLocalizedString("Profile-ChangePassword", comment: "Құпия сөзді өзгерту"), .chevronOnly),

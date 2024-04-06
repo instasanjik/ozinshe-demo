@@ -11,6 +11,8 @@
 		0402B8222BBF430100E1DB49 /* MoviePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B8212BBF430100E1DB49 /* MoviePlayerViewController.swift */; };
 		0402B8252BBF4FC300E1DB49 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B8242BBF4FC300E1DB49 /* UIImage+Extension.swift */; };
 		0402B82C2BC0065700E1DB49 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B82B2BC0065700E1DB49 /* Float+Extension.swift */; };
+		0402B82E2BC1985500E1DB49 /* MovieCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B82D2BC1985500E1DB49 /* MovieCategory.swift */; };
+		0402B8302BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B82F2BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */; };
 		041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */; };
 		041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */; };
@@ -89,6 +91,8 @@
 		0402B8212BBF430100E1DB49 /* MoviePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePlayerViewController.swift; sourceTree = "<group>"; };
 		0402B8242BBF4FC300E1DB49 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		0402B82B2BC0065700E1DB49 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		0402B82D2BC1985500E1DB49 /* MovieCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategory.swift; sourceTree = "<group>"; };
+		0402B82F2BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		041CF8782B8CB33F003D2A58 /* ozinshe-demo-sanzhar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ozinshe-demo-sanzhar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				041CF8AF2B8E433C003D2A58 /* OZTextField.swift */,
 				041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */,
 				041CF92A2BB69E33003D2A58 /* OZExpandedView.swift */,
+				0402B82F2BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -576,6 +581,7 @@
 			children = (
 				041CF9512BBB00CF003D2A58 /* Screenshot.swift */,
 				041CF9532BBB00E7003D2A58 /* AgeAndGenreCardContent.swift */,
+				0402B82D2BC1985500E1DB49 /* MovieCategory.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -744,6 +750,7 @@
 				041CF9092BA732FC003D2A58 /* SeasonCollectionViewCell.swift in Sources */,
 				041CF92B2BB69E33003D2A58 /* OZExpandedView.swift in Sources */,
 				041CF9252BB59059003D2A58 /* SelectionLanguageTableViewCell.swift in Sources */,
+				0402B82E2BC1985500E1DB49 /* MovieCategory.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* ColorPalette.swift in Sources */,
 				041CF9162BB2B988003D2A58 /* ProfileSectionTableViewCell.swift in Sources */,
 				041CF9312BB7014C003D2A58 /* ChangePasswordViewController.swift in Sources */,
@@ -798,6 +805,7 @@
 				041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */,
 				041CF9622BBB049A003D2A58 /* Season.swift in Sources */,
 				041CF8E72BA1D914003D2A58 /* MoviesSectionCellCollectionViewCell.swift in Sources */,
+				0402B8302BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				041CF8D42B9EFE86003D2A58 /* ProfileViewController.swift in Sources */,
 				041CF8D22B9EFE78003D2A58 /* FavoritesViewController.swift in Sources */,
 				041CF9112BAAB9A0003D2A58 /* MovieListViewController.swift in Sources */,

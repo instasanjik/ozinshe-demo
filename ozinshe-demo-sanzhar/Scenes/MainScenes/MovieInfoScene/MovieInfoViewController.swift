@@ -688,7 +688,7 @@ extension MovieInfoViewController {
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true) {
-                self.setTabBarHidden(true, animated: false)
+                self.setTabBarHidden(true)
             }
         } else {
             let vc = SeriesViewController()

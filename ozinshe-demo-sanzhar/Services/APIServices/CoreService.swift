@@ -150,9 +150,9 @@ class CoreService {
     }
     
     func getMovieSeasons(movieID: Int,
-                   completionHandler: @escaping (_ success: Bool,
-                                                 _ errorMessage: String?,
-                                                 [Season]) -> Void) {
+                         completionHandler: @escaping (_ success: Bool,
+                                                       _ errorMessage: String?,
+                                                       [Season]) -> Void) {
         var moviesSeasons: [Season] = []
         
         AF.request(Endpoints.GetSeasons + "\(movieID)", method: .get, headers: headers).responseData { response in
@@ -172,6 +172,33 @@ class CoreService {
             }
             
             completionHandler(false, self.decodeError(response), moviesSeasons)
+            return
+        }
+    }
+    
+    func getCategories(completionHandler: @escaping (_ success: Bool,
+                                                     _ errorMessage: String?,
+                                                     [MovieCategory]) -> Void) {
+        var categories: [MovieCategory] = []
+        
+        AF.request(Endpoints.GetCategories, method: .get, headers: headers).responseData { response in
+            if response.response?.statusCode == 200 {
+                let json = JSON(response.data!)
+                print("getAgeCategories JSON: \(json)")
+                
+                if let array = json.array {
+                    for item in array {
+                        if let category = MovieCategory(json: item) {
+                            categories.append(category)
+                        }
+                    }
+                }
+                
+                completionHandler(true, nil, categories)
+                return
+            }
+            
+            completionHandler(false, self.decodeError(response), categories)
             return
         }
     }

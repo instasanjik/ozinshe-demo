@@ -8,9 +8,27 @@
 import UIKit
 import SnapKit
 
+/// View controller responsible for searching and displaying movie categories.
 class SearchViewController: UIViewController {
     
-    lazy var searchTextField: OZTextField = {
+    // MARK: - Variables
+    
+    /// Array to hold movie categories.
+    private var categories: [MovieCategory] = [] {
+        didSet {
+            self.categoriesCount = categories.count
+            self.categoriesCollectionView.reloadData()
+        }
+    }
+    
+    /// Count of categories initially set to 10.
+    private var categoriesCount = 10
+    
+    
+    // MARK: - UI Elements
+    
+    /// Text field for searching movies.
+    private lazy var searchTextField: OZTextField = {
         let textField = OZTextField()
         textField.placeholder = NSLocalizedString("Search-Search", comment: "Іздеу")
         textField.padding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
@@ -20,7 +38,8 @@ class SearchViewController: UIViewController {
         return textField
     }()
     
-    lazy var searchButton: UIButton = {
+    /// Button to trigger the search action.
+    private lazy var searchButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = Style.Colors.gray700
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
@@ -29,7 +48,8 @@ class SearchViewController: UIViewController {
         return button
     }()
     
-    lazy var categoriesLabel: UILabel = {
+    /// Label displaying general categories.
+    private lazy var categoriesLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("General-Categories", comment: "Санаттар")
         label.font = .systemFont(ofSize: 24, weight: .bold)
@@ -37,7 +57,8 @@ class SearchViewController: UIViewController {
         return label
     }()
     
-    lazy var categoriesCollectionView: UICollectionView = {
+    /// Collection view to display movie categories.
+    private lazy var categoriesCollectionView: UICollectionView = {
         let layout = LeftAlignedCollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24.0, bottom: 0, right: 24.0)
         layout.minimumInteritemSpacing = 8
@@ -47,7 +68,6 @@ class SearchViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
-//        coll
         
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
@@ -57,15 +77,14 @@ class SearchViewController: UIViewController {
         return collectionView
     }()
     
+    
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Style.Colors.background
-        
-        setupSearchTextField()
-        setupSearchButton()
-        setupCategoriesLabel()
-        setupCategoriesCollectionView()
+        setupUI()
+        downloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,9 +101,22 @@ class SearchViewController: UIViewController {
 }
 
 
-extension SearchViewController {
+// MARK: - UI Setups
+
+fileprivate extension SearchViewController {
     
-    fileprivate func setupSearchTextField() {
+    /// Sets up the initial UI components.
+    func setupUI() {
+        view.backgroundColor = Style.Colors.background
+        
+        setupSearchTextField()
+        setupSearchButton()
+        setupCategoriesLabel()
+        setupCategoriesCollectionView()
+    }
+    
+    /// Configures search text field.
+    func setupSearchTextField() {
         view.addSubview(searchTextField)
         
         searchTextField.snp.makeConstraints { make in
@@ -93,18 +125,20 @@ extension SearchViewController {
         }
     }
     
-    fileprivate func setupSearchButton() {
+    /// Configures search button.
+    func setupSearchButton() {
         view.addSubview(searchButton)
         
         searchButton.snp.makeConstraints { make in
             make.top.equalTo(searchTextField)
-            make.right.equalToSuperview().inset(24)
             make.left.equalTo(searchTextField.snp.right).inset(-16)
+            make.right.equalToSuperview().inset(24)
             make.height.width.equalTo(searchTextField.snp.height)
         }
     }
     
-    fileprivate func setupCategoriesLabel() {
+    /// Configures categories label.
+    func setupCategoriesLabel() {
         view.addSubview(categoriesLabel)
         
         categoriesLabel.snp.makeConstraints { make in
@@ -113,7 +147,8 @@ extension SearchViewController {
         }
     }
     
-    fileprivate func setupCategoriesCollectionView() {
+    /// Configures categories collection view.
+    func setupCategoriesCollectionView() {
         view.addSubview(categoriesCollectionView)
         
         categoriesCollectionView.snp.makeConstraints { make in
@@ -123,55 +158,71 @@ extension SearchViewController {
         }
     }
     
+}
+
+
+// MARK: - Internal functions
+
+fileprivate extension SearchViewController {
+    
+    /// Downloads categories data from the server.
+    func downloadData() {
+        CoreService.Worker.getCategories { success, errorMessage, categories in
+            self.categories = categories
+        }
+    }
+    
     
 }
 
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
+// MARK: - Delegates
+
+// MARK: CollectionViewDelegate
+
+extension SearchViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print()
+    }
+    
+    
+}
+
+// MARK: CollecitonViewData Source
+
+extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return StaticData.contentCategories.count
+        return categoriesCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCategoryCollectionViewCell.ID, for: indexPath) as! ContentCategoryCollectionViewCell
-        cell.contentCategoryLabel.text = StaticData.contentCategories[indexPath.row]
+        if !categories.isEmpty {
+            cell.configureCell(categoryName: categories[indexPath.row].name)
+        }
         return cell
     }
     
+    
+}
+
+// MARK: CollectionViewDelegateFlowLayout
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel(frame: CGRect.zero)
-        label.text = StaticData.contentCategories[indexPath.row]
+        if categories.isEmpty {
+            label.text = "SPLASH_TEXT"
+        } else {
+            label.text = categories[indexPath.row].name
+        }
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.sizeToFit()
         return CGSize(width: label.frame.width + (16 * 2), height: 34)
     }
     
     
-}
-    
-
-class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
-
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        let attributes = super.layoutAttributesForElements(in: rect)
-
-        var leftMargin = sectionInset.left
-        var maxY: CGFloat = -1.0
-        attributes?.forEach { layoutAttribute in
-            guard layoutAttribute.representedElementCategory == .cell else {
-                return
-            }
-            if layoutAttribute.frame.origin.y >= maxY {
-                leftMargin = sectionInset.left
-            }
-
-            layoutAttribute.frame.origin.x = leftMargin
-
-            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
-            maxY = max(layoutAttribute.frame.maxY , maxY)
-        }
-
-        return attributes
-    }
 }

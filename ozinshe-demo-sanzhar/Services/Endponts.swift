@@ -44,6 +44,10 @@ public enum StaticEndpoints {
         return SERVER_URL + "/core/V1/seasons/"
     }()
     
+    public static let GetCategories: String = {
+        return SERVER_URL + "/core/V1/categories"
+    }()
+    
 }
 
 public let Endpoints = StaticEndpoints.self

@@ -57,3 +57,13 @@ extension ContentCategoryCollectionViewCell {
     
     
 }
+
+
+extension ContentCategoryCollectionViewCell {
+    
+    func configureCell(categoryName: String) {
+        self.contentCategoryLabel.text = categoryName
+    }
+    
+    
+}
