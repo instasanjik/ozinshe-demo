@@ -190,6 +190,7 @@ extension SearchViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         openCategorieMovieListViewController(category: categories[indexPath.row])
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     
