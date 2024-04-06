@@ -71,10 +71,6 @@ class SeriesViewController: UIViewController {
         setTabBarHidden(true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        setTabBarHidden(false)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -207,7 +203,9 @@ extension SeriesViewController {
         vc.configureScene(seasons: self.seasons, movieName: self.movieName, selectedSeason: selectedSeasonIndexPath.row, selectedSeries: selectedSeries)
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        self.present(vc, animated: true) {
+            self.setTabBarHidden(true, animated: false)
+        }
     }
     
     

@@ -687,7 +687,9 @@ extension MovieInfoViewController {
             print("🌟 \(movie.video_link)")
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            self.present(vc, animated: true) {
+                self.setTabBarHidden(true, animated: false)
+            }
         } else {
             let vc = SeriesViewController()
             vc.configureScene(movie: movie)

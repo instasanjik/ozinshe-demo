@@ -222,7 +222,6 @@ class MoviePlayerViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        setTabBarHidden(false)
         stopOverlayTimer()
     }
     
@@ -409,6 +408,7 @@ private extension MoviePlayerViewController {
     @objc func nextEpisodeButtonTapped() {
         if episodeIndex == seasons[seasonIndex].videos.count - 1 { // if episode is last in season
             if seasonIndex == seasons.count - 1 { // if season is last
+                setTabBarHidden(true)
                 self.dismiss(animated: true)
                 return
             } else {
@@ -425,6 +425,7 @@ private extension MoviePlayerViewController {
     }
     
     @objc func closeTapped() {
+        setTabBarHidden(true)
         self.dismiss(animated: true)
     }
     
