@@ -180,8 +180,8 @@ class CoreService {
     
     func getCategories(completionHandler: @escaping (_ success: Bool,
                                                      _ errorMessage: String?,
-                                                     [ContentCategory]) -> Void) {
-        var categories: [ContentCategory] = []
+                                                     [MovieCategory]) -> Void) {
+        var categories: [MovieCategory] = []
         
         AF.request(Endpoints.GetCategories, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
@@ -190,7 +190,7 @@ class CoreService {
                 
                 if let array = json.array {
                     for item in array {
-                        if let category = ContentCategory(json: item) {
+                        if let category = MovieCategory(json: item) {
                             categories.append(category)
                         }
                     }
@@ -201,6 +201,35 @@ class CoreService {
             }
             
             completionHandler(false, self.decodeError(response), categories)
+            return
+        }
+    }
+    
+    func getMovieListFromCategory(categoryID: Int,
+                                  completionHandler: @escaping (_ success: Bool,
+                                                                _ errorMessage: String?,
+                                                                [MovieWithDetails]) -> Void) {
+        var movieList: [MovieWithDetails] = []
+        
+        let parameters = [
+            "categoryId" : categoryID
+        ]
+        
+        AF.request(Endpoints.GetMovieList, method: .get, parameters: parameters, headers: headers).responseData { response in
+            if response.response?.statusCode == 200 {
+                let json = JSON(response.data!)
+                if let array = json["content"].array {
+                    for item in array {
+                        let movie = MovieWithDetails(json: item)
+                        movieList.append(movie)
+                    }
+                }
+                
+                completionHandler(true, nil, movieList)
+                return
+            }
+            
+            completionHandler(false, self.decodeError(response), movieList)
             return
         }
     }

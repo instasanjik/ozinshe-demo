@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
     // MARK: - Variables
     
     /// Array to hold movie categories.
-    private var categories: [ContentCategory] = [] {
+    private var categories: [MovieCategory] = [] {
         didSet {
             self.categoriesCount = categories.count
             self.categoriesCollectionView.reloadData()
@@ -172,6 +172,12 @@ fileprivate extension SearchViewController {
         }
     }
     
+    func openCategorieMovieListViewController(category: MovieCategory) {
+        let vc = MovieListViewController()
+        vc.configureScene(category: category)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }
 
@@ -183,7 +189,7 @@ fileprivate extension SearchViewController {
 extension SearchViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print()
+        openCategorieMovieListViewController(category: categories[indexPath.row])
     }
     
     

@@ -48,6 +48,10 @@ public enum StaticEndpoints {
         return SERVER_URL + "/core/V1/categories"
     }()
     
+    public static let GetMovieList: String = {
+        return SERVER_URL + "/core/V1/movies/page"
+    }()
+    
 }
 
 public let Endpoints = StaticEndpoints.self
