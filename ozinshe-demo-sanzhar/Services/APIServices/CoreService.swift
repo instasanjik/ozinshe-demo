@@ -287,6 +287,23 @@ class CoreService {
         }
     }
     
+    func setMovieFavorite(movieId: Int,
+                          completionHandler: @escaping (_ success: Bool,
+                                                        _ errorMessage: String?) -> Void) {
+        let parameters = [
+            "movieId" : movieId
+        ]
+        
+        AF.request(Endpoints.SetMovieFavorite, method: .post, parameters: parameters, headers: headers).responseData { response in
+            if response.response?.statusCode == 201 {
+                completionHandler(true, nil)
+                return
+            }
+            completionHandler(false, self.decodeError(response))
+            return
+        }
+    }
+    
     
     
 }

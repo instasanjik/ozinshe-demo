@@ -10,7 +10,7 @@ import Foundation
 public enum StaticEndpoints {
     
     static let SERVER_URL = "http://api.ozinshe.com"
-        
+    
     public static let Login: String = {
         return SERVER_URL + "/auth/V1/signin"
     }()
@@ -58,6 +58,10 @@ public enum StaticEndpoints {
     
     public static let SearchByMovieName: String = {
         return SERVER_URL + "/core/V1/movies/search"
+    }()
+    
+    public static let SetMovieFavorite: String = {
+        return SERVER_URL + "/core/V1/favorite"
     }()
     
 }
