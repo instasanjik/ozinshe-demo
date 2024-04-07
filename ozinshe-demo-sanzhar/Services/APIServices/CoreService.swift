@@ -291,10 +291,12 @@ class CoreService {
                           makeFavorite: Bool,
                           completionHandler: @escaping (_ success: Bool,
                                                         _ errorMessage: String?) -> Void) {
+        let method: HTTPMethod = makeFavorite ? .post : .delete
+        
         let parameters = [
             "movieId" : movieId
         ]
-        let method: HTTPMethod = makeFavorite ? .post : .delete
+        
         AF.request(Endpoints.SetMovieFavorite, method: method, parameters: parameters, headers: headers).responseData { response in
             if response.response?.statusCode == 201 {
                 completionHandler(true, nil)
