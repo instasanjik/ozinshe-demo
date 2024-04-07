@@ -71,6 +71,7 @@ class FavoritesViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        downloadFavoritesList()
     }
     
 }

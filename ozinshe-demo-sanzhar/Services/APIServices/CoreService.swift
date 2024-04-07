@@ -297,11 +297,12 @@ class CoreService {
             "movieId" : movieId
         ]
         
-        AF.request(Endpoints.SetMovieFavorite, method: method, parameters: parameters, headers: headers).responseData { response in
-            if response.response?.statusCode == 201 {
+        AF.request(Endpoints.SetMovieFavorite, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
+            if response.response?.statusCode == 200 || response.response?.statusCode == 201 {
                 completionHandler(true, nil)
                 return
             }
+            print(response.response?.statusCode)
             completionHandler(false, self.decodeError(response))
             return
         }

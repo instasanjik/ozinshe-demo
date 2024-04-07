@@ -61,7 +61,7 @@ public enum StaticEndpoints {
     }()
     
     public static let SetMovieFavorite: String = {
-        return SERVER_URL + "/core/V1/favorite"
+        return SERVER_URL + "/core/V1/favorite/"
     }()
     
 }
