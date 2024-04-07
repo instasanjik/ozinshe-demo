@@ -3,6 +3,7 @@
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 07.04.2024.
+//  Title and Description ShareSheet - https://forums.developer.apple.com/forums/thread/687916?answerId=684540022#684540022
 //
 
 import LinkPresentation
