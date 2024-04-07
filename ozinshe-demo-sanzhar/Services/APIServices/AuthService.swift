@@ -19,7 +19,7 @@ class AuthService {
         let parameters = ["email": email,
                           "password": password]
         
-        AF.request(Endpoints.Login,
+        AF.request(Endpoints.login,
                    method: .post,
                    parameters: parameters,
                    encoding: JSONEncoding.default).responseData { response in
@@ -44,7 +44,7 @@ class AuthService {
         let parameters = ["email": email,
                           "password": password]
         
-        AF.request(Endpoints.SignUp,
+        AF.request(Endpoints.signUp,
                    method: .post,
                    parameters: parameters,
                    encoding: JSONEncoding.default).responseData { response in

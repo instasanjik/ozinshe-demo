@@ -7,67 +7,28 @@
 
 import Foundation
 
-public enum StaticEndpoints {
-    
-    static let SERVER_URL = "http://api.ozinshe.com"
-    
-    public static let Login: String = {
-        return SERVER_URL + "/auth/V1/signin"
-    }()
-    
-    public static let SignUp: String = {
-        return SERVER_URL + "/auth/V1/signup"
-    }()
-    
-    
-    public static let GetBanners: String = {
-        return SERVER_URL + "/core/V1/movies_main"
-    }()
-    
-    public static let GetGenres: String = {
-        return SERVER_URL + "/core/V1/genres"
-    }()
-    
-    public static let UserHistory: String = {
-        return SERVER_URL + "/core/V1/history/userHistory"
-    }()
-    
-    public static let GetAges: String = {
-        return SERVER_URL + "/core/V1/category-ages"
-    }()
-    
-    public static let GetMoviesCells: String = {
-        return SERVER_URL + "/core/V1/movies/main"
-    }()
-    
-    public static let GetSeasons: String = {
-        return SERVER_URL + "/core/V1/seasons/"
-    }()
-    
-    public static let GetCategories: String = {
-        return SERVER_URL + "/core/V1/categories"
-    }()
-    
-    public static let GetMovieList: String = {
-        return SERVER_URL + "/core/V1/movies/page"
-    }()
-    
-    public static let GetFavorites: String = {
-        return SERVER_URL + "/core/V1/favorite/"
-    }()
-    
-    public static let SearchByMovieName: String = {
-        return SERVER_URL + "/core/V1/movies/search"
-    }()
-    
-    public static let SetMovieFavorite: String = {
-        return SERVER_URL + "/core/V1/favorite/"
-    }()
-    
-    public static let GetProfile: String = {
-        return SERVER_URL + "/core/V1/user/profile"
-    }()
-    
+/// Defines the base URL for server requests.
+public enum ServerURL {
+    static let baseURL = "http://api.ozinshe.com"
 }
 
-public let Endpoints = StaticEndpoints.self
+/// Defines endpoints for various API requests.
+public enum Endpoints {
+    // Authentication Endpoints
+    public static let login = ServerURL.baseURL + "/auth/V1/signin"
+    public static let signUp = ServerURL.baseURL + "/auth/V1/signup"
+    
+    // Core Endpoints
+    public static let getBanners = ServerURL.baseURL + "/core/V1/movies_main"
+    public static let getGenres = ServerURL.baseURL + "/core/V1/genres"
+    public static let userHistory = ServerURL.baseURL + "/core/V1/history/userHistory"
+    public static let getAges = ServerURL.baseURL + "/core/V1/category-ages"
+    public static let getMoviesCells = ServerURL.baseURL + "/core/V1/movies/main"
+    public static let getSeasons = ServerURL.baseURL + "/core/V1/seasons/"
+    public static let getCategories = ServerURL.baseURL + "/core/V1/categories"
+    public static let getMovieList = ServerURL.baseURL + "/core/V1/movies/page"
+    public static let getFavorites = ServerURL.baseURL + "/core/V1/favorite/"
+    public static let searchByMovieName = ServerURL.baseURL + "/core/V1/movies/search"
+    public static let setMovieFavorite = ServerURL.baseURL + "/core/V1/favorite/"
+    public static let getProfile = ServerURL.baseURL + "/core/V1/user/profile"
+}

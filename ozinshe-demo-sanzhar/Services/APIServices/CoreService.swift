@@ -24,7 +24,7 @@ class CoreService {
                                                   [MovieBanner]) -> Void) {
         var bannersList: [MovieBanner] = []
         
-        AF.request(Endpoints.GetBanners, method: .get, headers: headers).responseData { response in
+        AF.request(Endpoints.getBanners, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 print("getBanners JSON: \(json)")
@@ -50,7 +50,7 @@ class CoreService {
                                                              [MovieWithDetails]) -> Void) {
         var keepWatchingMoviesList: [MovieWithDetails] = []
         
-        AF.request(Endpoints.UserHistory, method: .get, headers: headers).responseData { response in
+        AF.request(Endpoints.userHistory, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 print("getKeepWatchingMovies JSON: \(json)")
@@ -76,7 +76,7 @@ class CoreService {
                                                  [ContentCategory]) -> Void) {
         var genresList: [ContentCategory] = []
         
-        AF.request(Endpoints.GetGenres, method: .get, headers: headers).responseData { response in
+        AF.request(Endpoints.getGenres, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 print("getGenres JSON: \(json)")
@@ -103,7 +103,7 @@ class CoreService {
                                                         [ContentCategory]) -> Void) {
         var ageCategoriesList: [ContentCategory] = []
         
-        AF.request(Endpoints.GetAges, method: .get, headers: headers).responseData { response in
+        AF.request(Endpoints.getAges, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 print("getAgeCategories JSON: \(json)")
@@ -130,7 +130,7 @@ class CoreService {
                                                       [MoviesSection]) -> Void) {
         var moviesCellsList: [MoviesSection] = []
         
-        AF.request(Endpoints.GetMoviesCells, method: .get, headers: headers).responseData { response in
+        AF.request(Endpoints.getMoviesCells, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 print("getMoviesCells JSON: \(json)")
@@ -157,7 +157,7 @@ class CoreService {
                                                        [Season]) -> Void) {
         var moviesSeasons: [Season] = []
         
-        AF.request(Endpoints.GetSeasons + "\(movieID)", method: .get, headers: headers).responseData { response in
+        AF.request(Endpoints.getSeasons + "\(movieID)", method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 print("getMovieSeasons JSON: \(json)")
@@ -183,7 +183,7 @@ class CoreService {
                                                      [MovieCategory]) -> Void) {
         var categories: [MovieCategory] = []
         
-        AF.request(Endpoints.GetCategories, method: .get, headers: headers).responseData { response in
+        AF.request(Endpoints.getCategories, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 print("getAgeCategories JSON: \(json)")
@@ -215,7 +215,7 @@ class CoreService {
             "categoryId" : categoryID
         ]
         
-        AF.request(Endpoints.GetMovieList, method: .get, parameters: parameters, headers: headers).responseData { response in
+        AF.request(Endpoints.getMovieList, method: .get, parameters: parameters, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 if let array = json["content"].array {
@@ -239,7 +239,7 @@ class CoreService {
                                                     [MovieWithDetails]) -> Void) {
         var movieList: [MovieWithDetails] = []
         
-        AF.request(Endpoints.GetFavorites, method: .get, headers: headers).responseData { response in
+        AF.request(Endpoints.getFavorites, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 if let array = json.array {
@@ -268,7 +268,7 @@ class CoreService {
             "search" : movieName
         ]
         
-        AF.request(Endpoints.SearchByMovieName, method: .get, parameters: parameters, headers: headers).responseData { response in
+        AF.request(Endpoints.searchByMovieName, method: .get, parameters: parameters, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 if let array = json.array {
@@ -297,7 +297,7 @@ class CoreService {
             "movieId" : movieId
         ]
         
-        AF.request(Endpoints.SetMovieFavorite, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
+        AF.request(Endpoints.setMovieFavorite, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
             if response.response?.statusCode == 200 || response.response?.statusCode == 201 {
                 completionHandler(true, nil)
                 return
@@ -311,7 +311,7 @@ class CoreService {
     func getProfileData(completionHandler: @escaping (_ success: Bool,
                                                     _ errorMessage: String?,
                                                     UserProfile?) -> Void) {
-        AF.request(Endpoints.GetProfile, method: .get, headers: headers).responseData { response in
+        AF.request(Endpoints.getProfile, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
                 let user = UserProfile(json: json)
