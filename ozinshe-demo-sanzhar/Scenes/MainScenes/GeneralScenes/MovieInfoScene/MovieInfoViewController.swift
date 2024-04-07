@@ -90,7 +90,7 @@ class MovieInfoViewController: UIViewController {
     
     lazy var saveButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "saveButton"), for: .normal)
+        button.addTarget(self, action: #selector(saveButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -697,6 +697,16 @@ extension MovieInfoViewController {
         }
     }
     
+    @objc func saveButtonTapped(_ sender: UIButton) {
+        guard let movie = movie else { return }
+        
+        CoreService.Worker.setMovieFavorite(movieId: movie.id, makeFavorite: !movie.isFavorite) { success, errorMessage in
+            movie.isFavorite.toggle()
+            let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
+            self.saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
+        }
+    }
+    
     
 }
 
@@ -791,6 +801,9 @@ extension MovieInfoViewController {
         
         self.similarTVSeries = similarTVSeries
         self.similarCollectionView.reloadData()
+        
+        let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
+        saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
     }
     
     
@@ -817,6 +830,9 @@ extension MovieInfoViewController {
         
         screenshots = movie.screenshots
         screenshotsCollectionView.reloadData()
+        
+        let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
+        saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
         
         // TODO: Find similar TV series
     }
