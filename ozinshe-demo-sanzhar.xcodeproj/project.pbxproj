@@ -14,6 +14,7 @@
 		0402B82E2BC1985500E1DB49 /* MovieCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B82D2BC1985500E1DB49 /* MovieCategory.swift */; };
 		0402B8302BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B82F2BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		0402B8352BC2E2C800E1DB49 /* ActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B8342BC2E2C800E1DB49 /* ActivityItemSource.swift */; };
+		0402B8372BC2F9F500E1DB49 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402B8362BC2F9F500E1DB49 /* UserProfile.swift */; };
 		041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */; };
 		041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */; };
 		041CF8802B8CB33F003D2A58 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */; };
@@ -95,6 +96,7 @@
 		0402B82D2BC1985500E1DB49 /* MovieCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategory.swift; sourceTree = "<group>"; };
 		0402B82F2BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		0402B8342BC2E2C800E1DB49 /* ActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityItemSource.swift; sourceTree = "<group>"; };
+		0402B8362BC2F9F500E1DB49 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		041CF8782B8CB33F003D2A58 /* ozinshe-demo-sanzhar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ozinshe-demo-sanzhar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		041CF87B2B8CB33F003D2A58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041CF87D2B8CB33F003D2A58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,14 @@
 				0402B8202BBF42E700E1DB49 /* MoviePlayerScene */,
 			);
 			path = GeneralScenes;
+			sourceTree = "<group>";
+		};
+		0402B8382BC2FA9800E1DB49 /* UserModels */ = {
+			isa = PBXGroup;
+			children = (
+				0402B8362BC2F9F500E1DB49 /* UserProfile.swift */,
+			);
+			path = UserModels;
 			sourceTree = "<group>";
 		};
 		041CF86F2B8CB33F003D2A58 = {
@@ -355,6 +365,7 @@
 		041CF8C42B9EFB7F003D2A58 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0402B8382BC2FA9800E1DB49 /* UserModels */,
 				041CF95A2BBB0439003D2A58 /* MovieControllerModel */,
 				041CF94F2BBB00A7003D2A58 /* MovieModel */,
 			);
@@ -796,6 +807,7 @@
 				0402B8352BC2E2C800E1DB49 /* ActivityItemSource.swift in Sources */,
 				041CF8FD2BA32BB8003D2A58 /* UIView+Extension.swift in Sources */,
 				041CF8EA2BA1E436003D2A58 /* GenresAndAgesCollectionViewCell.swift in Sources */,
+				0402B8372BC2F9F500E1DB49 /* UserProfile.swift in Sources */,
 				041CF9182BB3FD19003D2A58 /* ProfileHeaderView.swift in Sources */,
 				041CF9272BB59FFA003D2A58 /* UIViewController+Extension.swift in Sources */,
 				041CF87C2B8CB33F003D2A58 /* AppDelegate.swift in Sources */,

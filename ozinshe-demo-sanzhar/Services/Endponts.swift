@@ -64,6 +64,10 @@ public enum StaticEndpoints {
         return SERVER_URL + "/core/V1/favorite/"
     }()
     
+    public static let GetProfile: String = {
+        return SERVER_URL + "/core/V1/user/profile"
+    }()
+    
 }
 
 public let Endpoints = StaticEndpoints.self

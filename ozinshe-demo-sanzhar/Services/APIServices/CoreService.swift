@@ -302,8 +302,23 @@ class CoreService {
                 completionHandler(true, nil)
                 return
             }
-            print(response.response?.statusCode)
+            
             completionHandler(false, self.decodeError(response))
+            return
+        }
+    }
+    
+    func getProfileData(completionHandler: @escaping (_ success: Bool,
+                                                    _ errorMessage: String?,
+                                                    UserProfile?) -> Void) {
+        AF.request(Endpoints.GetProfile, method: .get, headers: headers).responseData { response in
+            if response.response?.statusCode == 200 {
+                let json = JSON(response.data!)
+                let user = UserProfile(json: json)
+                completionHandler(true, nil, user)
+                return
+            }
+            completionHandler(false, self.decodeError(response), nil)
             return
         }
     }

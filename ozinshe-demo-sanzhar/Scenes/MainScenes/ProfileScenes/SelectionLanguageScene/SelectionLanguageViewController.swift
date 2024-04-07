@@ -18,7 +18,7 @@ class SelectionLanguageViewController: UIViewController {
     public var delegate: SelectionLanguageViewControllerDelegate?
     fileprivate var oldValueY: Double = 0
     fileprivate var lastSelectedRow: IndexPath?
-    fileprivate let SCROLL_VIEW_PADDING_Y: CGFloat = 124
+    fileprivate let SCROLL_VIEW_PADDING_Y: CGFloat = 86
     
     
     /* MARK: UI Elements */

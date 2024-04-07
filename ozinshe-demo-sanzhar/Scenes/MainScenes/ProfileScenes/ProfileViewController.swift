@@ -10,6 +10,12 @@ import SnapKit
 
 class ProfileViewController: UITableViewController {
     
+    var userProfile: UserProfile? {
+        didSet {
+            headerView.emailLabel.text = userProfile?.email ?? ""
+        }
+    }
+    
     lazy var headerView = ProfileHeaderView()
     
     lazy var blurEffectView: UIVisualEffectView = {
@@ -22,25 +28,30 @@ class ProfileViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        downloadData()
         setupUI()
-        tableView.register(ProfileSectionTableViewCell.self,
-                           forCellReuseIdentifier: ProfileSectionTableViewCell.ID)
     }
     
 }
 
+// MARK: - UI Setups
 
-extension ProfileViewController {
+private extension ProfileViewController {
     
-    fileprivate func setupUI() {
+    func setupUI() {
+        view.backgroundColor = Style.Colors.background
+        settingNavigationBar()
+        tableView.register(ProfileSectionTableViewCell.self,
+                           forCellReuseIdentifier: ProfileSectionTableViewCell.ID)
+    }
+    
+    func settingNavigationBar() {
         navigationItem.title = NSLocalizedString("Profile-Profile", comment: "Профиль")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(leaveTapped))
         navigationItem.rightBarButtonItem?.tintColor = Style.Colors.error
-
-        view.backgroundColor = Style.Colors.background
     }
     
-    fileprivate func setupBlurEffectView() {
+    func setupBlurEffectView() {
         blurEffectView.alpha = 0
         
         navigationController?.view.addSubview(blurEffectView)
@@ -53,7 +64,7 @@ extension ProfileViewController {
         }
     }
     
-    fileprivate func showSelectionLanguageView() {
+    func showSelectionLanguageView() {
         setupBlurEffectView()
         setTabBarHidden(true)
         let vc = SelectionLanguageViewController()
@@ -62,13 +73,13 @@ extension ProfileViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    fileprivate func showPersonalDataViewController() {
+    func showPersonalDataViewController() {
         setTabBarHidden(true)
         let vc = PersonalDataViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    fileprivate func showLeaveConfirmationViewController() {
+    func showLeaveConfirmationViewController() {
         setupBlurEffectView()
         setTabBarHidden(true)
         let vc = LeaveConfirmationViewController()
@@ -77,13 +88,13 @@ extension ProfileViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    fileprivate func showChangePasswordViewController() {
+    func showChangePasswordViewController() {
         setTabBarHidden(true)
         let vc = ChangePasswordViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    fileprivate func showTermsOfUseViewController() {
+    func showTermsOfUseViewController() {
         setTabBarHidden(true)
         let vc = TermsOfUseViewController()
         navigationController?.pushViewController(vc, animated: true)
@@ -91,6 +102,23 @@ extension ProfileViewController {
     
     
 }
+
+
+// MARK: - Internal functions
+
+private extension ProfileViewController {
+    
+    func downloadData() {
+        CoreService.Worker.getProfileData { success, errorMessage, profile in
+            self.userProfile = profile
+        }
+    }
+    
+    
+}
+
+
+// MARK: - Delegates
 
 extension ProfileViewController: SelectionLanguageViewControllerDelegate, LeaveConfirmationViewControllerDelegate {
     
@@ -115,6 +143,8 @@ extension ProfileViewController: SelectionLanguageViewControllerDelegate, LeaveC
     
 }
 
+
+// MARK: - TableViewDelegate, TableiViewDataSource
 
 extension ProfileViewController {
     
@@ -157,7 +187,10 @@ extension ProfileViewController {
     
 }
 
-extension ProfileViewController {
+
+// MARK: - Targets
+
+private extension ProfileViewController {
     
     @objc func leaveTapped() {
         showLeaveConfirmationViewController()
