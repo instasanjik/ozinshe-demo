@@ -67,6 +67,7 @@ class MovieInfoViewController: UIViewController {
     lazy var shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "shareButton"), for: .normal)
+        button.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -705,6 +706,11 @@ extension MovieInfoViewController {
             let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
             self.saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
         }
+    }
+    
+    @objc func shareButtonTapped() {
+        guard let movie = movie else { return }
+        presentSharePopup(title: movie.name, message: movie.description, image: previewImageView.image)
     }
     
     

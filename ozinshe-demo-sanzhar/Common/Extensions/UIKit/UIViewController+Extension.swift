@@ -28,6 +28,30 @@ extension UIViewController {
             self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         }
     }
-
+    
+    func presentSharePopup(title: String, message: String, image: UIImage? = nil) {
+        var itemsToShare: [Any] = [ActivityItemSource(title: title, text: message)]
+        
+        if let image = image {
+            itemsToShare.append(image)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+        
+        // Customize the excluded activity types if needed
+        activityViewController.excludedActivityTypes = [
+            .assignToContact,
+            .print,
+            .addToReadingList,
+            .saveToCameraRoll,
+            .openInIBooks,
+            UIActivity.ActivityType(rawValue: "com.apple.reminders.RemindersEditorExtension"),
+            UIActivity.ActivityType(rawValue: "com.apple.mobilenotes.SharingExtension")
+        ]
+        
+        // Present the share pop-up
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
     
 }
