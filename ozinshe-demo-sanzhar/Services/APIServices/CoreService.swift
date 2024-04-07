@@ -258,6 +258,36 @@ class CoreService {
         }
     }
     
+    func searchByMovieName(movieName: String,
+                           completionHandler: @escaping (_ success: Bool,
+                                                         _ errorMessage: String?,
+                                                         [MovieWithDetails]) -> Void) {
+        var movieList: [MovieWithDetails] = []
+        
+        let parameters = [
+            "search" : movieName
+        ]
+        
+        AF.request(Endpoints.SearchByMovieName, method: .get, parameters: parameters, headers: headers).responseData { response in
+            if response.response?.statusCode == 200 {
+                let json = JSON(response.data!)
+                if let array = json.array {
+                    for item in array {
+                        let movie = MovieWithDetails(json: item)
+                        movieList.append(movie)
+                    }
+                }
+                
+                completionHandler(true, nil, movieList)
+                return
+            }
+            
+            completionHandler(false, self.decodeError(response), movieList)
+            return
+        }
+    }
+    
+    
     
 }
 

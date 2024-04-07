@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 /// View controller responsible for searching and displaying movie categories.
 class SearchViewController: UIViewController {
@@ -20,6 +21,24 @@ class SearchViewController: UIViewController {
             self.categoriesCollectionView.reloadData()
         }
     }
+    private var searchResultMovieList: [MovieWithDetails] = [] {
+        didSet {
+            searchResultMovieCount = searchResultMovieList.count
+        }
+    }
+    private var searchResultMovieCount = 0
+    private var searchTimer: Timer?
+    private let searchDelay: TimeInterval = 1.0
+    private var isLoading = false {
+        didSet {
+            if isLoading {
+                activityIndicator.startAnimating()
+            } else {
+                activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
     
     /// Count of categories initially set to 10.
     private var categoriesCount = 10
@@ -35,6 +54,7 @@ class SearchViewController: UIViewController {
         textField.normalBorderColor = UIColor.clear.cgColor
         let _ = textField.resignFirstResponder()
         textField.backgroundColor = Style.Colors.gray800
+        textField.addTarget(self, action: #selector(searchTextFieldValueChanged(_:)), for: .editingChanged)
         return textField
     }()
     
@@ -77,6 +97,33 @@ class SearchViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var searchResultTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.ID)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .clear
+        tableView.isSkeletonable = true
+        return tableView
+    }()
+    
+    private lazy var noDataLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = Style.Colors.label
+        label.text = "📭 Your search returned no results" // TODO: Localize
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.color = .gray
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
     
     // MARK: - View Life Cycle
     
@@ -91,7 +138,7 @@ class SearchViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -113,6 +160,10 @@ fileprivate extension SearchViewController {
         setupSearchButton()
         setupCategoriesLabel()
         setupCategoriesCollectionView()
+        setupSearchResultTableView()
+        updateSearchState()
+        setupNoResultsLabel()
+        setupActivityIndicatorView()
     }
     
     /// Configures search text field.
@@ -158,6 +209,34 @@ fileprivate extension SearchViewController {
         }
     }
     
+    func setupSearchResultTableView() {
+        view.addSubview(searchResultTableView)
+        
+        searchResultTableView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).inset(-24)
+            make.left.right.bottom.equalToSuperview()
+        }
+    }
+    
+    func setupNoResultsLabel() {
+        view.addSubview(noDataLabel)
+        
+        noDataLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.left.right.equalToSuperview().inset(48)
+        }
+    }
+    
+    func setupActivityIndicatorView() {
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
+    
+    
 }
 
 
@@ -176,6 +255,56 @@ fileprivate extension SearchViewController {
         let vc = MovieListViewController()
         vc.configureScene(category: category)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func openMovieViewController(with movie: MovieWithDetails) {
+        let vc = MovieInfoViewController()
+        vc.configureScene(content: movie)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func sendSearchRequest(_ timer: Timer) {
+        guard let searchText = searchTextField.text, !searchText.isEmpty else {
+            resetSearchResults()
+            return
+        }
+        
+        CoreService.Worker.searchByMovieName(movieName: searchText) { [self] success, errorMessage, resultList in
+            self.searchResultMovieList = resultList
+            self.noDataLabel.isHidden = searchTextField.text?.isEmpty ?? true || !searchResultMovieList.isEmpty
+            
+            self.searchResultTableView.reloadData()
+            self.isLoading = false
+        }
+    }
+    
+    func updateSearchState() {
+        let requestIsEmpty = searchTextField.text?.isEmpty ?? true
+        noDataLabel.isHidden = true
+        searchResultTableView.isHidden = requestIsEmpty
+        isLoading = !requestIsEmpty
+        categoriesLabel.isHidden = !requestIsEmpty
+        categoriesCollectionView.isHidden = !requestIsEmpty
+    }
+    
+    func resetSearchResults() {
+        searchResultMovieList = []
+        searchResultTableView.reloadData()
+    }
+    
+    
+}
+
+// MARK: - Targets
+private extension SearchViewController {
+    
+    @objc func searchTextFieldValueChanged(_ sender: UITextField!) {
+        
+        
+        updateSearchState()
+        searchTimer?.invalidate()
+        
+        searchTimer = Timer.scheduledTimer(timeInterval: searchDelay, target: self, selector: #selector(sendSearchRequest(_:)), userInfo: nil, repeats: false)
     }
     
     
@@ -229,6 +358,37 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.sizeToFit()
         return CGSize(width: label.frame.width + (16 * 2), height: 34)
+    }
+    
+    
+}
+
+// MARK: UITableViewDelegate
+
+extension SearchViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.openMovieViewController(with: searchResultMovieList[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+}
+
+// MARK: UITableViewDataSource
+
+extension SearchViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResultMovieCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.ID, for: indexPath) as! MovieTableViewCell
+        if !searchResultMovieList.isEmpty {
+            cell.configureCell(content: searchResultMovieList[indexPath.row])
+        }
+        return cell
     }
     
     
