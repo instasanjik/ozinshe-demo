@@ -11,11 +11,12 @@ import SkeletonView
 
 class HomeViewController: UIViewController {
     
-    var bannersList: [MovieBanner] = []
-    var keepWathingMoviesList: [MovieWithDetails] = []
-    var genresList: [ContentCategory] = []
-    var agesList: [ContentCategory] = []
-    var moviesSectionsList: [MoviesSection] = [] {
+    // MARK: Internal variables
+    private var bannersList: [MovieBanner] = []
+    private var keepWatchingMoviesList: [MovieWithDetails] = []
+    private var genresList: [ContentCategory] = []
+    private var agesList: [ContentCategory] = []
+    private var moviesSectionsList: [MoviesSection] = [] {
         didSet {
             moviesSectionsList.insert(MoviesSection(), at: 0) // instead of header
             moviesSectionsList.insert(MoviesSection(), at: 1) // instead of keep watching
@@ -32,13 +33,12 @@ class HomeViewController: UIViewController {
             }
         }
     }
+    private var numberOfSectionsInTableView = 4
+    private var genresSectionPositionInTableView = 2
+    private var agesSectionPositionInTableView = 27
     
-    var numverOfSectionInTableView = 4
-    var genresSectionPositionInTableView = 2
-    var agesSectionPositionInTableView = 27
-    
-    
-    lazy var mainTableView: UITableView = {
+    // MARK: UI Elements
+    private lazy var mainTableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -58,12 +58,12 @@ class HomeViewController: UIViewController {
         return tableView
     }()
     
+    
+    // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Style.Colors.background
-        
-        setupTableView()
+        setupUI()
         downloadData()
     }
     
@@ -81,10 +81,17 @@ class HomeViewController: UIViewController {
 }
 
 
-// MARK: UI Setups
-extension HomeViewController {
+// MARK: - UI Setups
+
+private extension HomeViewController {
     
-    private func setupTableView() {
+    func setupUI() {
+        view.backgroundColor = Style.Colors.background
+        
+        setupTableView()
+    }
+    
+    func setupTableView() {
         view.addSubview(mainTableView)
         
         mainTableView.snp.makeConstraints { make in
@@ -98,10 +105,11 @@ extension HomeViewController {
 }
 
 
-// MARK: Server communication
-extension HomeViewController {
+// MARK: - Internal functions
+
+private extension HomeViewController {
     
-    fileprivate func downloadData() {
+    func downloadData() {
         showTableViewCellsSkeleton()
         let dispatchGroup = DispatchGroup()
         
@@ -112,7 +120,7 @@ extension HomeViewController {
             }
             if success {
                 self.moviesSectionsList = moviesSectionsList
-                self.numverOfSectionInTableView += moviesSectionsList.count
+                self.numberOfSectionsInTableView += moviesSectionsList.count
             } else {
                 // Handle error
             }
@@ -136,7 +144,7 @@ extension HomeViewController {
                 dispatchGroup.leave()
             }
             if success {
-                self.keepWathingMoviesList = keepWatchingMovieLists
+                self.keepWatchingMoviesList = keepWatchingMovieLists
             } else {
                 // Handle error
             }
@@ -171,16 +179,8 @@ extension HomeViewController {
             self.mainTableView.reloadData()
         }
     }
-
     
-    
-}
-
-
-// MARK: Triggers
-extension HomeViewController {
-    
-    fileprivate func showTableViewCellsSkeleton() {
+    func showTableViewCellsSkeleton() {
         if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
             cell.showSkeletonWithAnimation()
         }
@@ -193,7 +193,7 @@ extension HomeViewController {
         mainTableView.isScrollEnabled = false
     }
     
-    fileprivate func hideTableViewCellsSkeleton() {
+    func hideTableViewCellsSkeleton() {
         if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
             cell.hideSkeletonAnimation()
         }
@@ -206,7 +206,7 @@ extension HomeViewController {
         mainTableView.isScrollEnabled = true
     }
     
-    fileprivate func openMovieViewController(with movie: MovieWithDetails) {
+    func openMovieViewController(with movie: MovieWithDetails) {
         let vc = MovieInfoViewController()
         
 
@@ -215,7 +215,7 @@ extension HomeViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    fileprivate func openMovieListViewController(with content: ContentCategory) {
+    func openMovieListViewController(with content: ContentCategory) {
         print(content.name)
     }
     
@@ -223,70 +223,21 @@ extension HomeViewController {
     
 }
 
-// MARK: TableView Delegate and Datasource
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return numverOfSectionInTableView
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.ID,
-                                                 for: indexPath) as! HeaderTableViewCell
-            cell.selectionStyle = .none
-            cell.bannerList = bannersList
-            cell.delegate = self
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: KeepWatchingTableViewCell.ID,
-                                                 for: indexPath) as! KeepWatchingTableViewCell
-            cell.selectionStyle = .none
-            cell.keepWatchingMovieList = keepWathingMoviesList
-            cell.delegate = self
-            return cell
-        case genresSectionPositionInTableView:
-            let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID,
-                                                     for: indexPath) as! GenresAndAgesSectionTableViewCell
-            cell.selectionStyle = .none
-            cell.content = genresList
-            cell.delegate = self
-            return cell
-        case agesSectionPositionInTableView:
-            let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID,
-                                                     for: indexPath) as! GenresAndAgesSectionTableViewCell
-            cell.selectionStyle = .none
-            cell.content = agesList
-            cell.delegate = self
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID,
-                                                 for: indexPath) as! MoviesSectionCellTableViewCell
-            cell.selectionStyle = .none
-            cell.delegate = self
-            if !moviesSectionsList.isEmpty {
-                cell.moviesSection = moviesSectionsList[indexPath.section]
-            }
-            return cell
-        }
-    }
+
+// MARK: - TableViewDelegate
+
+extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case 0: 
-            return 328-20 // banners
+        case 0:
+            return 308
         case 1:
-            return 194 // keep watching
-        case genresSectionPositionInTableView:
-            return 150 // genres
-        case agesSectionPositionInTableView: 
-            return 150 // ages
-        default: return 259
+            return 194
+        case genresSectionPositionInTableView, agesSectionPositionInTableView:
+            return 150
+        default:
+            return 259
         }
     }
     
@@ -297,10 +248,68 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
+}
+
+
+// MARK: - TableViewDataSource
+
+extension HomeViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return numberOfSectionsInTableView
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.ID, for: indexPath) as! HeaderTableViewCell
+            cell.selectionStyle = .none
+            cell.bannerList = bannersList
+            cell.delegate = self
+            return cell
+            
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: KeepWatchingTableViewCell.ID, for: indexPath) as! KeepWatchingTableViewCell
+            cell.selectionStyle = .none
+            cell.keepWatchingMovieList = keepWatchingMoviesList
+            cell.delegate = self
+            return cell
+            
+        case genresSectionPositionInTableView:
+            return genresAndAgesSectionCell(for: tableView, indexPath: indexPath, content: genresList)
+            
+        case agesSectionPositionInTableView:
+            return genresAndAgesSectionCell(for: tableView, indexPath: indexPath, content: agesList)
+            
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID, for: indexPath) as! MoviesSectionCellTableViewCell
+            cell.selectionStyle = .none
+            if !moviesSectionsList.isEmpty {
+                cell.moviesSection = moviesSectionsList[indexPath.section]
+                cell.delegate = self
+            }
+            return cell
+        }
+    }
+    
+    private func genresAndAgesSectionCell(for tableView: UITableView, indexPath: IndexPath, content: [ContentCategory]) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID, for: indexPath) as! GenresAndAgesSectionTableViewCell
+        cell.selectionStyle = .none
+        cell.content = content
+        cell.delegate = self
+        return cell
+    }
     
     
 }
 
+
+// - MARK: Content Cells Delegates
+// MARK: HeaderTableViewCellDelegate
 extension HomeViewController: HeaderTableViewCellDelegate {
     
     func headerCell(didTapMovie movie: MovieWithDetails) {
@@ -310,6 +319,8 @@ extension HomeViewController: HeaderTableViewCellDelegate {
     
 }
 
+
+// MARK: KeepWatchingTableViewCellDelegate
 extension HomeViewController: KeepWatchingTableViewCellDelegate {
     
     func keepWatching(didTapMovie movie: MovieWithDetails) {
@@ -319,6 +330,8 @@ extension HomeViewController: KeepWatchingTableViewCellDelegate {
     
 }
 
+
+// MARK: MoviesSectionCellTableViewCellDelegate
 extension HomeViewController: MoviesSectionCellTableViewCellDelegate {
     
     func moviesSectionCell(didTapMovie movie: MovieWithDetails) {
@@ -334,6 +347,8 @@ extension HomeViewController: MoviesSectionCellTableViewCellDelegate {
     
 }
 
+
+// MARK: GenresAndAgesSectionTableViewCellDelegate
 extension HomeViewController: GenresAndAgesSectionTableViewCellDelegate {
     
     func genresAndAgesSection(didTapSection section: ContentCategory) {
