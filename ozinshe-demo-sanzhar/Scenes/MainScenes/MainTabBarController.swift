@@ -9,30 +9,32 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewControllers()
-        
+        setupTabBarAppearance()
+    }
+    
+    
+}
+
+// MARK: - Internal functions
+
+private extension MainTabBarController {
+    
+    
+    private func setupTabBarAppearance() {
         tabBar.backgroundColor = Style.Colors.gray800
         tabBar.barTintColor = Style.Colors.gray800
     }
     
     func setupViewControllers() {
-        let homeViewController = HomeNavigationViewController()
-        homeViewController.tabBarItem.image = UIImage(named: "Home", in: Bundle(for: MovieInfoViewController.self), compatibleWith: nil)
-        homeViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
-        
-        let searchViewController = SearchNavigationViewController()
-        searchViewController.tabBarItem.image = UIImage(named: "Search", in: Bundle(for: MainTabBarController.self), compatibleWith: nil)
-        searchViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
-        
-        let favoritesViewController = FavoritesNavigationViewController()
-        favoritesViewController.tabBarItem.image = UIImage(named: "Favorites", in: Bundle(for: MainTabBarController.self), compatibleWith: nil)
-        favoritesViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
-        
-        let profileViewController = ProfileNavigationViewController()
-        profileViewController.tabBarItem.image = UIImage(named: "Profile", in: Bundle(for: MainTabBarController.self), compatibleWith: nil)
-        profileViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0);
+        let homeViewController = makeViewController(controller: HomeNavigationViewController(), image: "Home")
+        let searchViewController = makeViewController(controller: SearchNavigationViewController(), image: "Search")
+        let favoritesViewController = makeViewController(controller: FavoritesNavigationViewController(), image: "Favorites")
+        let profileViewController = makeViewController(controller: ProfileNavigationViewController(), image: "Profile")
         
         viewControllers = [
             homeViewController,
@@ -41,6 +43,20 @@ class MainTabBarController: UITabBarController {
             profileViewController
         ]
     }
+    
+    func makeViewController(controller: UINavigationController, image: String) -> UINavigationController {
+        let viewController = controller
+        viewController.tabBarItem.image = UIImage(named: image)
+        viewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0)
+        return viewController
+    }
+    
+    
+}
+
+// MARK: External functions
+
+extension MainTabBarController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         Logger.log(.warning, "theme changed to \(traitCollection.userInterfaceStyle.rawValue)")
