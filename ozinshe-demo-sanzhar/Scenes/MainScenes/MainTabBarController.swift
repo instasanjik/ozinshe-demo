@@ -9,7 +9,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    // MARK: View Life Cycle
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,17 +24,20 @@ class MainTabBarController: UITabBarController {
 
 private extension MainTabBarController {
     
-    
-    private func setupTabBarAppearance() {
+    func setupTabBarAppearance() {
         tabBar.backgroundColor = Style.Colors.gray800
         tabBar.barTintColor = Style.Colors.gray800
     }
     
     func setupViewControllers() {
-        let homeViewController = makeViewController(controller: HomeNavigationViewController(), image: "Home")
-        let searchViewController = makeViewController(controller: SearchNavigationViewController(), image: "Search")
-        let favoritesViewController = makeViewController(controller: FavoritesNavigationViewController(), image: "Favorites")
-        let profileViewController = makeViewController(controller: ProfileNavigationViewController(), image: "Profile")
+        let homeViewController      = makeViewController(controller: HomeNavigationViewController(),
+                                                         image: "Home")
+        let searchViewController    = makeViewController(controller: SearchNavigationViewController(),
+                                                         image: "Search")
+        let favoritesViewController = makeViewController(controller: FavoritesNavigationViewController(),
+                                                         image: "Favorites")
+        let profileViewController   = makeViewController(controller: ProfileNavigationViewController(),
+                                                         image: "Profile")
         
         viewControllers = [
             homeViewController,
@@ -49,17 +52,6 @@ private extension MainTabBarController {
         viewController.tabBarItem.image = UIImage(named: image)
         viewController.tabBarItem.imageInsets = UIEdgeInsets(top: 8, left: 0, bottom: -8, right: 0)
         return viewController
-    }
-    
-    
-}
-
-// MARK: External functions
-
-extension MainTabBarController {
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        Logger.log(.warning, "theme changed to \(traitCollection.userInterfaceStyle.rawValue)")
     }
     
     
