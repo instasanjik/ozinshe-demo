@@ -11,7 +11,9 @@ import SVProgressHUD
 
 class SignInViewController: UIViewController {
     
-    lazy var helloLabel: UILabel = {
+    // - MARK: UI Elemets
+    
+    private lazy var helloLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("SignIn-Hello", comment: "Сәлем")
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -19,7 +21,7 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    lazy var helloDescriptionLabel: UILabel = {
+    private lazy var helloDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("SignIn-Description", comment: "Аккаунтқа кіріңіз")
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -27,9 +29,9 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    lazy var formView = UIView()
+    private lazy var formView = UIView()
     
-    lazy var emailLabel: UILabel = {
+    private lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.text = "Email"
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -37,13 +39,13 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    lazy var emailTextFieldView: OZTextFieldView = {
+    private lazy var emailTextFieldView: OZTextFieldView = {
         let textFieldView = OZTextFieldView()
         textFieldView.textField.placeholder = NSLocalizedString("SignIn-YourEmail", comment: "Сіздің email")
         return textFieldView
     }()
     
-    lazy var passwordLabel: UILabel = {
+    private lazy var passwordLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -51,13 +53,13 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    lazy var passwordTextField: OZTextField = {
+    private lazy var passwordTextField: OZTextField = {
         let textField = OZTextField()
         textField.placeholder = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
         return textField
     }()
     
-    lazy var forgotPasswordButton: UIButton = {
+    private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
         button.setTitle(NSLocalizedString("SignIn-ForgotPassword", comment: "Құпия сөзді ұмыттыңыз ба?"), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -67,14 +69,14 @@ class SignInViewController: UIViewController {
         return button
     }()
     
-    lazy var loginButton: OZButton = {
+    private lazy var loginButton: OZButton = {
         let button = OZButton()
         button.setTitle(NSLocalizedString("SignIn-Join", comment: "Кіру"), for: .normal)
         button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return button
     }()
     
-    lazy var haveNoAccountLabel: UILabel = {
+    private lazy var haveNoAccountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.text = NSLocalizedString("SignIn-HaveNoAccount", comment: "Аккаунтыныз жоқ па?")
@@ -82,7 +84,7 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    lazy var signUpLabel: UILabel = {
+    private lazy var signUpLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.text = NSLocalizedString("SignIn-SignUp", comment: "Тіркелу")
@@ -90,7 +92,7 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    lazy var signUpStackView: UIStackView = {
+    private lazy var signUpStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.addArrangedSubview(haveNoAccountLabel)
         stackView.addArrangedSubview(signUpLabel)
@@ -104,7 +106,7 @@ class SignInViewController: UIViewController {
         return stackView
     }()
     
-    lazy var googleSignInButton: UIButton = {
+    private lazy var googleSignInButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitle(NSLocalizedString("SignIn-Google", comment: "Google-мен тіркеліңіз"), for: .normal)
@@ -121,7 +123,7 @@ class SignInViewController: UIViewController {
         return button
     }()
     
-    lazy var appleSignInButton: UIButton = {
+    private lazy var appleSignInButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitle(NSLocalizedString("SignIn-AppleID", comment: "Apple ID-мен тіркеліңіз"), for: .normal)
@@ -138,7 +140,7 @@ class SignInViewController: UIViewController {
         return button
     }()
     
-    lazy var orLabel: UILabel = {
+    private lazy var orLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -147,6 +149,8 @@ class SignInViewController: UIViewController {
         return label
     }()
     
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -167,10 +171,11 @@ class SignInViewController: UIViewController {
 }
 
 
-// MARK: UI setups
-extension SignInViewController {
+// MARK: - UI setups
+
+private extension SignInViewController {
     
-    private func setupSignUpLabel() {
+    func setupSignUpLabel() {
         view.addSubview(helloLabel)
         
         helloLabel.snp.makeConstraints { make in
@@ -179,7 +184,7 @@ extension SignInViewController {
         }
     }
     
-    private func setupSignUpBodyLabel() {
+    func setupSignUpBodyLabel() {
         view.addSubview(helloDescriptionLabel)
         
         helloDescriptionLabel.snp.makeConstraints { make in
@@ -188,7 +193,7 @@ extension SignInViewController {
         }
     }
     
-    private func setupFormView() {
+    func setupFormView() {
         view.addSubview(formView)
         
         formView.snp.makeConstraints { make in
@@ -205,7 +210,7 @@ extension SignInViewController {
         setupForgotPasswordButton()
     }
     
-    private func setupEmailLabel() {
+    func setupEmailLabel() {
         formView.addSubview(emailLabel)
         
         emailLabel.snp.makeConstraints { make in
@@ -213,7 +218,7 @@ extension SignInViewController {
         }
     }
     
-    private func setupEmailTextField() {
+    func setupEmailTextField() {
         formView.addSubview(emailTextFieldView)
         
         emailTextFieldView.snp.makeConstraints { make in
@@ -224,7 +229,7 @@ extension SignInViewController {
         emailTextFieldView.textField.configureTextField(icon: "letter")
     }
     
-    private func setupPasswordLabel() {
+    func setupPasswordLabel() {
         formView.addSubview(passwordLabel)
         
         passwordLabel.snp.makeConstraints { make in
@@ -233,7 +238,7 @@ extension SignInViewController {
         }
     }
     
-    private func setupPasswordTextField() {
+    func setupPasswordTextField() {
         formView.addSubview(passwordTextField)
         
         passwordTextField.snp.makeConstraints { make in
@@ -243,7 +248,7 @@ extension SignInViewController {
         passwordTextField.configureTextField(icon: "password", suffixImageName: "eye")
     }
     
-    private func setupForgotPasswordButton() {
+    func setupForgotPasswordButton() {
         formView.addSubview(forgotPasswordButton)
         
         forgotPasswordButton.snp.makeConstraints { make in
@@ -252,7 +257,7 @@ extension SignInViewController {
         }
     }
     
-    private func setupLoginButton() {
+    func setupLoginButton() {
         view.addSubview(loginButton)
         
         loginButton.snp.makeConstraints { make in
@@ -261,7 +266,7 @@ extension SignInViewController {
         }
     }
     
-    private func setupSignUpLabels() {
+    func setupSignUpLabels() {
         view.addSubview(signUpStackView)
         
         signUpStackView.snp.makeConstraints { make in
@@ -270,7 +275,7 @@ extension SignInViewController {
         }
     }
     
-    private func setupGoogleButton() {
+    func setupGoogleButton() {
         view.addSubview(googleSignInButton)
         
         googleSignInButton.snp.makeConstraints { make in
@@ -281,7 +286,7 @@ extension SignInViewController {
         }
     }
     
-    private func setupAppleButton() {
+    func setupAppleButton() {
         view.addSubview(appleSignInButton)
         
         appleSignInButton.snp.makeConstraints { make in
@@ -292,7 +297,7 @@ extension SignInViewController {
         }
     }
     
-    private func setupOrLabel() {
+    func setupOrLabel() {
         view.addSubview(orLabel)
         
         orLabel.snp.makeConstraints { make in
@@ -307,8 +312,9 @@ extension SignInViewController {
 }
 
 
-// MARK: Targets
-extension SignInViewController {
+// MARK: - Targets
+
+private extension SignInViewController {
     
     @objc func loginTapped(sender: UIButton!) {
         signIn()
@@ -334,10 +340,11 @@ extension SignInViewController {
 }
 
 
-// MARK: Additional functions
-extension SignInViewController {
+// MARK: - Internal functions
+
+private extension SignInViewController {
     
-    private func updateEmailError(text: String?) {
+    func updateEmailError(text: String?) {
         emailTextFieldView.updateError(errorText: text)
         
         formView.snp.updateConstraints { make in
@@ -349,7 +356,7 @@ extension SignInViewController {
         }
     }
     
-    fileprivate func signIn() {
+    func signIn() {
         if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
             if email != "" && password != "" {
                 SVProgressHUD.show()
@@ -366,23 +373,18 @@ extension SignInViewController {
         }
     }
     
-    
-}
-
-extension SignInViewController {
-    
-    fileprivate func openMainTabbar() {
+    func openMainTabbar() {
         let vc = MainTabBarController()
         vc.modalTransitionStyle = .flipHorizontal
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
     
-    fileprivate func openForgotPassword() {
-        
+    func openForgotPassword() {
+        SVProgressHUD.showError(withStatus: "This page doesn't exists! We are sorry")
     }
     
-    fileprivate func openSignUp() {
+    func openSignUp() {
         let vc = SignUpViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
