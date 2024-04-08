@@ -12,9 +12,14 @@ import Kingfisher
 
 class MovieBannerCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "RecomendationCollectionViewCell"
     
-    lazy var previewImageView: UIImageView = {
+    
+    // MARK: - UI Elements
+    
+    private lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 12
         imageView.layer.masksToBounds = true
@@ -22,7 +27,7 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Қызғалдақтар мекені"
         label.font = .systemFont(ofSize: 14, weight: .bold)
@@ -32,7 +37,7 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var typeBaseView: UIView = {
+    private lazy var typeBaseView: UIView = {
         let view = UIView()
         view.backgroundColor = Style.StaticColors.purple500
         view.layer.cornerRadius = 8
@@ -40,7 +45,7 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var typeNameLabel: UILabel = {
+    private lazy var typeNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Телехикая"
         label.font = .systemFont(ofSize: 12, weight: .medium)
@@ -48,7 +53,7 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         label.font = .systemFont(ofSize: 12, weight: .regular)
@@ -61,9 +66,11 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
         
     }()
     
+    
+    // MARK: - View Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupUI()
     }
     
@@ -75,9 +82,11 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
 }
 
 
-extension MovieBannerCollectionViewCell {
+// MARK: - UI Setups
+
+private extension MovieBannerCollectionViewCell {
     
-    fileprivate func setupUI() {
+    func setupUI() {
         setupPreviewImageView()
         setupNameLabel()
         setupDescriptionLabel()
@@ -86,7 +95,7 @@ extension MovieBannerCollectionViewCell {
         self.isSkeletonable = true
     }
     
-    private func setupPreviewImageView() {
+    func setupPreviewImageView() {
         self.contentView.addSubview(previewImageView)
         
         previewImageView.snp.makeConstraints { make in
@@ -95,7 +104,7 @@ extension MovieBannerCollectionViewCell {
         }
     }
     
-    private func setupNameLabel() {
+    func setupNameLabel() {
         self.contentView.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
@@ -104,7 +113,7 @@ extension MovieBannerCollectionViewCell {
         }
     }
     
-    private func setupDescriptionLabel() {
+    func setupDescriptionLabel() {
         self.contentView.addSubview(descriptionLabel)
         
         descriptionLabel.snp.makeConstraints { make in
@@ -113,7 +122,7 @@ extension MovieBannerCollectionViewCell {
         }
     }
     
-    private func setupTypeName() {
+    func setupTypeName() {
         self.previewImageView.addSubview(typeBaseView)
         
         typeBaseView.snp.makeConstraints { make in
@@ -132,9 +141,12 @@ extension MovieBannerCollectionViewCell {
     
 }
 
+
+// MARK: - External functions
+
 extension MovieBannerCollectionViewCell {
     
-    public func configureCell(movieBanner: MovieBanner) {
+    func configureCell(movieBanner: MovieBanner) {
         previewImageView.kf.setImage(with: URL(string: movieBanner.link))
         nameLabel.text = movieBanner.movie.name
         descriptionLabel.text = movieBanner.movie.description

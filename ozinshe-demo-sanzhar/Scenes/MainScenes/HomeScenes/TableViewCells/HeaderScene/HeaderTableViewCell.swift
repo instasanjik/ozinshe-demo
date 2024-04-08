@@ -9,30 +9,40 @@ import UIKit
 import SnapKit
 import SkeletonView
 
+
+// MARK: - Protocol: HeaderTableViewCellDelegate
 protocol HeaderTableViewCellDelegate: AnyObject {
     func headerCell(didTapMovie movie: MovieWithDetails)
 }
 
 class HeaderTableViewCell: UITableViewCell {
     
-    static let ID: String = "HeaderTableViewCell"
+    // MARK: - Public variables
     
-    var bannerList: [MovieBanner] = [] {
+    static let ID: String = "HeaderTableViewCell"
+    public var delegate: HeaderTableViewCellDelegate?
+    
+    
+    // MARK: - Internal variables
+    
+    private var bannerList: [MovieBanner] = [] {
         didSet {
             itemCount = bannerList.count
             movieBannersCollectionView.reloadData()
         }
     }
-    var itemCount = 5 // default value for showing skeleton
-    var delegate: HeaderTableViewCellDelegate?
+    private var itemCount = 5 // default value for showing skeleton
     
-    lazy var logoImageView: UIImageView = {
+    
+    // MARK: - UI Elements
+    
+    private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ozinshe-logo-mainpage")
         return imageView
     }()
     
-    lazy var movieBannersCollectionView: UICollectionView = {
+    private lazy var movieBannersCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         layout.itemSize = CGSizeMake(300, 220)
@@ -52,20 +62,10 @@ class HeaderTableViewCell: UITableViewCell {
         return collectionView
     }()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
+    // MARK: View Life Cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        
-        backgroundColor = .clear
-        
-        self.isSkeletonable = true
-        
-        setupLogoImageView()
-        setupMovieBannerCollectionView()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -76,10 +76,19 @@ class HeaderTableViewCell: UITableViewCell {
 }
 
 
-// MARK: UI Setups
-extension HeaderTableViewCell {
+// MARK: - UI Setups
+
+private extension HeaderTableViewCell {
     
-    private func setupLogoImageView() {
+    func setupUI() {
+        self.backgroundColor = .clear
+        self.isSkeletonable = true
+        
+        setupLogoImageView()
+        setupMovieBannerCollectionView()
+    }
+    
+    func setupLogoImageView() {
         self.contentView.addSubview(logoImageView)
         
         logoImageView.snp.makeConstraints { make in
@@ -90,7 +99,7 @@ extension HeaderTableViewCell {
         }
     }
     
-    private func setupMovieBannerCollectionView() {
+    func setupMovieBannerCollectionView() {
         self.contentView.addSubview(movieBannersCollectionView)
         
         movieBannersCollectionView.snp.makeConstraints { make in
@@ -103,7 +112,29 @@ extension HeaderTableViewCell {
 }
 
 
-extension HeaderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - External functions
+
+extension HeaderTableViewCell {
+    
+    func configureCell(_ bannersList: [MovieBanner]) {
+        self.bannerList = bannersList
+    }
+    
+    public func showSkeletonWithAnimation() {
+        movieBannersCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+    }
+    
+    public func hideSkeletonAnimation() {
+        movieBannersCollectionView.hideSkeleton()
+    }
+    
+    
+}
+
+
+// MARK: - CollectionViewDataSource
+
+extension HeaderTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemCount
@@ -117,23 +148,18 @@ extension HeaderTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? MovieBannerCollectionViewCell {
-            delegate?.headerCell(didTapMovie: bannerList[indexPath.row].movie)
-        }
-    }
-    
     
 }
 
-extension HeaderTableViewCell {
+
+// MARK: - CollectionViewDelegate
+
+extension HeaderTableViewCell: UICollectionViewDelegate {
     
-    public func showSkeletonWithAnimation() {
-        movieBannersCollectionView.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
-    }
-    
-    public func hideSkeletonAnimation() {
-        movieBannersCollectionView.hideSkeleton()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.cellForItem(at: indexPath) is MovieBannerCollectionViewCell {
+            delegate?.headerCell(didTapMovie: bannerList[indexPath.row].movie)
+        }
     }
     
     

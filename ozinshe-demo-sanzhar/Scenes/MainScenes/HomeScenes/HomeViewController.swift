@@ -277,7 +277,7 @@ extension HomeViewController: UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.ID, for: indexPath) as! HeaderTableViewCell
             cell.selectionStyle = .none
-            cell.bannerList = bannersList
+            cell.configureCell(bannersList)
             cell.delegate = self
             return cell
             
