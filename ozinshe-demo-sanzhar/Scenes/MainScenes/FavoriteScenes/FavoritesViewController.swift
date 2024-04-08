@@ -131,7 +131,7 @@ private extension FavoritesViewController {
 private extension FavoritesViewController {
     
     func downloadFavoritesList() {
-        CoreService.Worker.getFavorites { success, errorMessage, favoritesList in
+        CoreService.shared.getFavorites { success, errorMessage, favoritesList in
             self.movieList = favoritesList
             self.tableView.reloadData()
         }

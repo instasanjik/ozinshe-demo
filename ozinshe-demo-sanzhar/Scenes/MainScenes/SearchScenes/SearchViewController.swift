@@ -246,7 +246,7 @@ fileprivate extension SearchViewController {
     
     /// Downloads categories data from the server.
     func downloadData() {
-        CoreService.Worker.getCategories { success, errorMessage, categories in
+        CoreService.shared.getCategories { success, errorMessage, categories in
             self.categories = categories
         }
     }
@@ -269,7 +269,7 @@ fileprivate extension SearchViewController {
             return
         }
         
-        CoreService.Worker.searchByMovieName(movieName: searchText) { [self] success, errorMessage, resultList in
+        CoreService.shared.searchByMovieName(movieName: searchText) { [self] success, errorMessage, resultList in
             self.searchResultMovieList = resultList
             self.noDataLabel.isHidden = searchTextField.text?.isEmpty ?? true || !searchResultMovieList.isEmpty
             

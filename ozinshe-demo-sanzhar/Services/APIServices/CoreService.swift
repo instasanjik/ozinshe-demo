@@ -10,7 +10,8 @@ import Alamofire
 import SwiftyJSON
 
 class CoreService {
-    static let Worker = CoreService()
+    
+    static let shared = CoreService()
     
     typealias CompletionHandler = (_ success: Bool) -> Void
     

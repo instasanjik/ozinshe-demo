@@ -182,7 +182,7 @@ extension SeriesViewController {
     
     func configureScene(movie: MovieWithDetails) {
         self.movieName = movie.name
-        CoreService.Worker.getMovieSeasons(movieID: movie.id) { success, errorMessage, content in
+        CoreService.shared.getMovieSeasons(movieID: movie.id) { success, errorMessage, content in
             if success {
                 self.seasons = content
                 self.view.hideSkeleton()

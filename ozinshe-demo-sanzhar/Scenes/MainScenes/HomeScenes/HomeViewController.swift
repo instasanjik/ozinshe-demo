@@ -114,7 +114,7 @@ private extension HomeViewController {
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        CoreService.Worker.getMoviesCells { success, errorMessage, moviesSectionsList in
+        CoreService.shared.getMoviesCells { success, errorMessage, moviesSectionsList in
             defer {
                 dispatchGroup.leave()
             }
@@ -127,7 +127,7 @@ private extension HomeViewController {
         }
         
         dispatchGroup.enter()
-        CoreService.Worker.getBanners { success, errorMessage, bannersList in
+        CoreService.shared.getBanners { success, errorMessage, bannersList in
             defer {
                 dispatchGroup.leave()
             }
@@ -139,7 +139,7 @@ private extension HomeViewController {
         }
         
         dispatchGroup.enter()
-        CoreService.Worker.getKeepWatchingMovies { success, errorMessage, keepWatchingMovieLists in
+        CoreService.shared.getKeepWatchingMovies { success, errorMessage, keepWatchingMovieLists in
             defer {
                 dispatchGroup.leave()
             }
@@ -151,7 +151,7 @@ private extension HomeViewController {
         }
         
         dispatchGroup.enter()
-        CoreService.Worker.getGenres { success, errorMessage, genresList in
+        CoreService.shared.getGenres { success, errorMessage, genresList in
             defer {
                 dispatchGroup.leave()
             }
@@ -163,7 +163,7 @@ private extension HomeViewController {
         }
         
         dispatchGroup.enter()
-        CoreService.Worker.getAgeCategories { success, errorMessage, ageCaregoriesList in
+        CoreService.shared.getAgeCategories { success, errorMessage, ageCaregoriesList in
             defer {
                 dispatchGroup.leave()
             }

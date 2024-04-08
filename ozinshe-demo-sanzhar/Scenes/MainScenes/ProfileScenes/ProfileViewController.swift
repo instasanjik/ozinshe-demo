@@ -109,7 +109,7 @@ private extension ProfileViewController {
 private extension ProfileViewController {
     
     func downloadData() {
-        CoreService.Worker.getProfileData { success, errorMessage, profile in
+        CoreService.shared.getProfileData { success, errorMessage, profile in
             self.userProfile = profile
         }
     }

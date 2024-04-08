@@ -701,7 +701,7 @@ extension MovieInfoViewController {
     @objc func saveButtonTapped(_ sender: UIButton) {
         guard let movie = movie else { return }
         
-        CoreService.Worker.setMovieFavorite(movieId: movie.id, makeFavorite: !movie.isFavorite) { success, errorMessage in
+        CoreService.shared.setMovieFavorite(movieId: movie.id, makeFavorite: !movie.isFavorite) { success, errorMessage in
             movie.isFavorite.toggle()
             let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
             self.saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)

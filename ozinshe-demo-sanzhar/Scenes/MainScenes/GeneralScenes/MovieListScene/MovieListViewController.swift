@@ -60,7 +60,7 @@ private extension MovieListViewController {
     
     func downloadMovieList() {
         guard let category = category else { return }
-        CoreService.Worker.getMovieListFromCategory(categoryID: category.id) { success, errorMessage, movieList in
+        CoreService.shared.getMovieListFromCategory(categoryID: category.id) { success, errorMessage, movieList in
             self.movieList = movieList
             self.tableView.reloadData()
         }
