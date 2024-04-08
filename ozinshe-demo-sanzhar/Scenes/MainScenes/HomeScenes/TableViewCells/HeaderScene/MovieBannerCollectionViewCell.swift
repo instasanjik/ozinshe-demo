@@ -142,7 +142,7 @@ private extension MovieBannerCollectionViewCell {
 
 // MARK: - External functions
 
-extension MovieBannerCollectionViewCell {
+extension MovieBannerCollectionViewCell {    
     
     func configureCell(movieBanner: MovieBanner) {
         previewImageView.kf.setImage(with: URL(string: movieBanner.link))
@@ -155,6 +155,5 @@ extension MovieBannerCollectionViewCell {
         }
     }
 
-    
     
 }
