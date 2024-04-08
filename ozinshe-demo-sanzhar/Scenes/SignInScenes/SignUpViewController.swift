@@ -308,7 +308,7 @@ extension SignUpViewController {
         if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
             if email != "" && password != "" {
                 SVProgressHUD.show()
-                AuthService.Worker.signUp(email: email, password: password) { success in
+                AuthService.shared.signUp(email: email, password: password) { success in
                     if success {
                         SVProgressHUD.dismiss { self.openMainTabbar() }
                     } else {

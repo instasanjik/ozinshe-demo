@@ -353,7 +353,7 @@ extension SignInViewController {
         if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
             if email != "" && password != "" {
                 SVProgressHUD.show()
-                AuthService.Worker.login(email: email, password: password) { success in
+                AuthService.shared.login(email: email, password: password) { success in
                     if success {
                         SVProgressHUD.dismiss { self.openMainTabbar() }
                     } else {
