@@ -283,8 +283,7 @@ extension HomeViewController: UITableViewDataSource {
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: KeepWatchingTableViewCell.ID, for: indexPath) as! KeepWatchingTableViewCell
-            cell.selectionStyle = .none
-            cell.keepWatchingMovieList = keepWatchingMoviesList
+            cell.configureCell(keepWatchingMoviesList)
             cell.delegate = self
             return cell
             

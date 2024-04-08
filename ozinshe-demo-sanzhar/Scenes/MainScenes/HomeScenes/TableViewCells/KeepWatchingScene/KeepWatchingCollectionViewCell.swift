@@ -11,9 +11,14 @@ import SkeletonView
 
 class KeepWatchingCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "KeepWatchingCollectionViewCell"
     
-    lazy var previewImageView: UIImageView = {
+    
+    // MARK: - UI Elements
+    
+    private lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 8
@@ -23,7 +28,7 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Қызғалдақтар мекені" // TODO: Link with backend
         label.font = .systemFont(ofSize: 12, weight: .semibold)
@@ -33,7 +38,7 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "2-бөлім" // TODO: Link with backend
         label.font = .systemFont(ofSize: 12, weight: .regular)
@@ -43,12 +48,13 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         label.linesCornerRadius = 2
         label.skeletonTextNumberOfLines = 1
         return label
-        
     }()
+    
+    
+    // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupUI()
     }
     
@@ -60,9 +66,11 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
 }
 
 
+// MARK: - UI Setups
+
 extension KeepWatchingCollectionViewCell {
     
-    fileprivate func setupUI() {
+    func setupUI() {
         
         setupPreviewImageView()
         setupNameLabel()
@@ -71,7 +79,7 @@ extension KeepWatchingCollectionViewCell {
         self.isSkeletonable = true
     }
     
-    private func setupPreviewImageView() {
+    func setupPreviewImageView() {
         self.contentView.addSubview(previewImageView)
         
         previewImageView.snp.makeConstraints { make in
@@ -80,7 +88,7 @@ extension KeepWatchingCollectionViewCell {
         }
     }
     
-    private func setupNameLabel() {
+    func setupNameLabel() {
         self.contentView.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
@@ -89,7 +97,7 @@ extension KeepWatchingCollectionViewCell {
         }
     }
     
-    private func setupDescriptionLabel() {
+    func setupDescriptionLabel() {
         self.contentView.addSubview(descriptionLabel)
         
         descriptionLabel.snp.makeConstraints { make in
@@ -102,9 +110,11 @@ extension KeepWatchingCollectionViewCell {
 }
 
 
+// MARK: - External functions
+
 extension KeepWatchingCollectionViewCell {
     
-    public func configureCell(movie: MovieWithDetails) {
+    func configureCell(movie: MovieWithDetails) {
         self.previewImageView.kf.setImage(with: URL(string: movie.poster_link))
         self.nameLabel.text = movie.name
         self.descriptionLabel.text = movie.genres.first?.name ?? ""
@@ -112,3 +122,4 @@ extension KeepWatchingCollectionViewCell {
     
     
 }
+

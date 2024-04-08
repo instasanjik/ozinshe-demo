@@ -15,6 +15,7 @@ protocol HeaderTableViewCellDelegate: AnyObject {
     func headerCell(didTapMovie movie: MovieWithDetails)
 }
 
+
 class HeaderTableViewCell: UITableViewCell {
     
     // MARK: - Public variables
@@ -62,7 +63,9 @@ class HeaderTableViewCell: UITableViewCell {
         return collectionView
     }()
 
-    // MARK: View Life Cycle
+    
+    // MARK: - View Life Cycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()

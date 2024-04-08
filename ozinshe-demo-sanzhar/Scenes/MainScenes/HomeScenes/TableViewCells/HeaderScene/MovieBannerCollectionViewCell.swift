@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import SkeletonView
-import Kingfisher
 
 class MovieBannerCollectionViewCell: UICollectionViewCell {
     
@@ -63,7 +62,6 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
         label.linesCornerRadius = 2
         label.skeletonTextNumberOfLines = 1
         return label
-        
     }()
     
     

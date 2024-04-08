@@ -9,27 +9,37 @@ import UIKit
 import SnapKit
 import SkeletonView
 
+
+// MARK: - Protocol: KeepWatchingTableViewCellDelegate
+
 protocol KeepWatchingTableViewCellDelegate: AnyObject {
     func keepWatching(didTapMovie movie: MovieWithDetails)
 }
 
+
 class KeepWatchingTableViewCell: UITableViewCell {
     
-    static let ID: String = "KeepWatchingTableViewCell"
+    // MARK: - Public variables
     
-    var keepWatchingMovieList: [MovieWithDetails] = [] {
+    static let ID: String = "KeepWatchingTableViewCell"
+    var delegate: KeepWatchingTableViewCellDelegate?
+    
+    
+    // MARK: - Internal variables
+    
+    private var keepWatchingMovieList: [MovieWithDetails] = [] {
         didSet {
             itemsCount = keepWatchingMovieList.count
             print(itemsCount)
             contentCollectionView.reloadData()
         }
     }
+    private var itemsCount = 5 // default value for showing skeleton
     
-    var itemsCount = 5
     
-    var delegate: KeepWatchingTableViewCellDelegate?
+    // MARK: - UI Elements
     
-    lazy var chapterTitleLabel: UILabel = {
+    private lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("KeepWatching-KeepWatching", comment: "Қарауды жалғастырыңыз")
         label.font = .systemFont(ofSize: 16, weight: .bold)
@@ -39,7 +49,7 @@ class KeepWatchingTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var contentCollectionView: UICollectionView = {
+    private lazy var contentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         layout.itemSize = CGSizeMake(184, 152)
@@ -57,20 +67,13 @@ class KeepWatchingTableViewCell: UITableViewCell {
                                 forCellWithReuseIdentifier: KeepWatchingCollectionViewCell.ID)
         return collectionView
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    
+    
+    // MARK: - View Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        
-        backgroundColor = .clear
-        setupChapterTitleLabel()
-        setupContentCollectionView()
-        
-        self.isSkeletonable = true
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -81,10 +84,20 @@ class KeepWatchingTableViewCell: UITableViewCell {
 }
 
 
-// MARK: UI Setups
-extension KeepWatchingTableViewCell {
+// MARK: - UI Setups
+
+private extension KeepWatchingTableViewCell {
     
-    private func setupChapterTitleLabel() {
+    func setupUI() {
+        self.backgroundColor = .clear
+        self.isSkeletonable = true
+        self.selectionStyle = .none
+        
+        setupChapterTitleLabel()
+        setupContentCollectionView()
+    }
+    
+    func setupChapterTitleLabel() {
         self.contentView.addSubview(chapterTitleLabel)
         
         chapterTitleLabel.snp.makeConstraints { make in
@@ -94,7 +107,7 @@ extension KeepWatchingTableViewCell {
         }
     }
     
-    private func setupContentCollectionView() {
+    func setupContentCollectionView() {
         self.contentView.addSubview(contentCollectionView)
         
         contentCollectionView.snp.makeConstraints { make in
@@ -107,7 +120,30 @@ extension KeepWatchingTableViewCell {
 }
 
 
-extension KeepWatchingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - External functions
+
+extension KeepWatchingTableViewCell {
+    
+    func configureCell(_ keepWatchingMovieList: [MovieWithDetails]) {
+        self.keepWatchingMovieList = keepWatchingMovieList
+    }
+    
+    func showSkeletonWithAnimation() {
+        self.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+    }
+    
+    func hideSkeletonAnimation() {
+        self.hideSkeleton()
+    }
+    
+    
+}
+
+
+
+// MARK: - CollectionViewDataSource
+
+extension KeepWatchingTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsCount
@@ -121,23 +157,18 @@ extension KeepWatchingTableViewCell: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
+    
+}
+
+
+// MARK: - CollectionViewDelegate
+
+extension KeepWatchingTableViewCell: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? KeepWatchingCollectionViewCell {
             delegate?.keepWatching(didTapMovie: keepWatchingMovieList[indexPath.row])
         }
-    }
-    
-    
-}
-
-extension KeepWatchingTableViewCell {
-    
-    public func showSkeletonWithAnimation() {
-        self.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
-    }
-    
-    public func hideSkeletonAnimation() {
-        self.hideSkeleton()
     }
     
     
