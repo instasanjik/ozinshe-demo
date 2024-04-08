@@ -11,7 +11,7 @@ import SkeletonView
 
 class HomeViewController: UIViewController {
     
-    // MARK: Internal variables
+    // MARK: - Internal variables
     private var bannersList: [MovieBanner] = []
     private var keepWatchingMoviesList: [MovieWithDetails] = []
     private var genresList: [ContentCategory] = []
@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
     private var genresSectionPositionInTableView = 2
     private var agesSectionPositionInTableView = 27
     
-    // MARK: UI Elements
+    // MARK: - UI Elements
     private lazy var mainTableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -59,7 +59,7 @@ class HomeViewController: UIViewController {
     }()
     
     
-    // MARK: View Life Cycle
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -220,6 +220,15 @@ private extension HomeViewController {
     }
     
     
+    func genresAndAgesSectionCell(for tableView: UITableView, indexPath: IndexPath, content: [ContentCategory]) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID, for: indexPath) as! GenresAndAgesSectionTableViewCell
+        cell.selectionStyle = .none
+        cell.content = content
+        cell.delegate = self
+        return cell
+    }
+    
+    
     
 }
 
@@ -296,19 +305,11 @@ extension HomeViewController: UITableViewDataSource {
         }
     }
     
-    private func genresAndAgesSectionCell(for tableView: UITableView, indexPath: IndexPath, content: [ContentCategory]) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID, for: indexPath) as! GenresAndAgesSectionTableViewCell
-        cell.selectionStyle = .none
-        cell.content = content
-        cell.delegate = self
-        return cell
-    }
-    
     
 }
 
 
-// - MARK: Content Cells Delegates
+// MARK: - Content Cells Delegates
 // MARK: HeaderTableViewCellDelegate
 extension HomeViewController: HeaderTableViewCellDelegate {
     

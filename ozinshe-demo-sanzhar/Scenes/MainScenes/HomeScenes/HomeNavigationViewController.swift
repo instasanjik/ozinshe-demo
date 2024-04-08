@@ -9,12 +9,22 @@ import UIKit
 
 class HomeNavigationViewController: UINavigationController {
     
+    // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupController()
+    }
+    
+
+}
+
+private extension HomeNavigationViewController {
+    
+    func setupController() {
         self.viewControllers = [HomeViewController()]
         self.topViewController?.extendedLayoutIncludesOpaqueBars = false
     }
     
-
+    
 }
