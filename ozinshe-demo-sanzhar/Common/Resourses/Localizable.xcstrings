@@ -1437,8 +1437,28 @@
         }
       }
     },
-    "Series-series" : {
-
+    "Series-episode" : {
+        "extractionState" : "manual",
+        "localizations" : {
+          "en" : {
+            "stringUnit" : {
+              "state" : "translated",
+              "value" : "episode"
+            }
+          },
+          "kk-KZ" : {
+            "stringUnit" : {
+              "state" : "translated",
+              "value" : "серия"
+            }
+          },
+          "ru" : {
+            "stringUnit" : {
+              "state" : "translated",
+              "value" : "серия"
+            }
+          }
+        }
     },
     "SignIn-AppleID" : {
       "extractionState" : "manual",
