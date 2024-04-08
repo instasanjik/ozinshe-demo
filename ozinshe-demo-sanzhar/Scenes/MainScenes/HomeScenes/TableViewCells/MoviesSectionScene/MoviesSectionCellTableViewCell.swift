@@ -9,28 +9,38 @@ import UIKit
 import SnapKit
 import SkeletonView
 
+
+// MARK: - Protocol: MoviesSectionCellTableViewCellDelegate
+
 protocol MoviesSectionCellTableViewCellDelegate {
     func moviesSectionCell(didTapMovie movie: MovieWithDetails)
     func moviesSectionCell(tappedMoreForContent moviesSection: MoviesSection)
 }
 
+
 class MoviesSectionCellTableViewCell: UITableViewCell {
     
-    static let ID: String = "MoviesSectionCellTableViewCell"
+    // MARK: - Public variables
     
-    var moviesSection: MoviesSection = MoviesSection() {
+    static let ID: String = "MoviesSectionCellTableViewCell"
+    var delegate: MoviesSectionCellTableViewCellDelegate?
+    
+    
+    // MARK: - Internal variables
+    
+    private var moviesSection: MoviesSection = MoviesSection() {
         didSet {
             itemsCount = moviesSection.movies.count
             chapterTitleLabel.text = moviesSection.categoryName
             contentCollectionView.reloadData()
         }
     }
+    private var itemsCount = 5
     
-    var itemsCount = 5
     
-    var delegate: MoviesSectionCellTableViewCellDelegate?
+    // MARK: - UI Elements
     
-    lazy var chapterTitleLabel: UILabel = {
+    private lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("GalleryList-TVProgram", comment: "Тв-бағдарлама және реалити-шоу")
         label.font = .systemFont(ofSize: 16, weight: .bold)
@@ -40,7 +50,7 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var moreButton: UIButton = {
+    private lazy var moreButton: UIButton = {
         let button = UIButton()
         button.setTitle(NSLocalizedString("Movie-More", comment: "Барлыгы"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
@@ -52,7 +62,7 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
         return button
     }()
     
-    lazy var contentCollectionView: UICollectionView = {
+    private lazy var contentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         layout.itemSize = CGSizeMake(112, 219)
@@ -70,21 +80,13 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
                                 forCellWithReuseIdentifier: MoviesSectionCellCollectionViewCell.ID)
         return collectionView
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    
+    
+    // MARK: - View Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        
-        backgroundColor = .clear
-        setupChapterTitleLabel()
-        setupMoreButton()
-        setupContentCollectionView()
-        
-        self.isSkeletonable = true
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -95,10 +97,21 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
 }
 
 
-// MARK: UI Setups
-extension MoviesSectionCellTableViewCell {
+// MARK: - UI Setups
+
+private extension MoviesSectionCellTableViewCell {
     
-    private func setupChapterTitleLabel() {
+    func setupUI() {
+        self.backgroundColor = .clear
+        self.isSkeletonable = true
+        self.selectionStyle = .none
+        
+        setupChapterTitleLabel()
+        setupMoreButton()
+        setupContentCollectionView()
+    }
+    
+    func setupChapterTitleLabel() {
         self.contentView.addSubview(chapterTitleLabel)
         
         chapterTitleLabel.snp.makeConstraints { make in
@@ -108,7 +121,7 @@ extension MoviesSectionCellTableViewCell {
         }
     }
     
-    private func setupMoreButton() {
+    func setupMoreButton() {
         self.contentView.addSubview(moreButton)
         
         moreButton.snp.makeConstraints { make in
@@ -118,7 +131,7 @@ extension MoviesSectionCellTableViewCell {
         }
     }
     
-    private func setupContentCollectionView() {
+    func setupContentCollectionView() {
         self.contentView.addSubview(contentCollectionView)
         
         contentCollectionView.snp.makeConstraints { make in
@@ -132,7 +145,41 @@ extension MoviesSectionCellTableViewCell {
 }
 
 
-extension MoviesSectionCellTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - Targets
+
+private extension MoviesSectionCellTableViewCell {
+    
+    @objc func moreTapped(_ sender: UIButton) {
+        delegate?.moviesSectionCell(tappedMoreForContent: moviesSection)
+    }
+    
+    
+}
+
+
+// MARK: - External functions
+
+extension MoviesSectionCellTableViewCell {
+    
+    func configureCell(_ moviesSection: MoviesSection) {
+        self.moviesSection = moviesSection
+    }
+    
+    func showSkeletonWithAnimation() {
+        self.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+    }
+    
+    func hideSkeletonAnimation() {
+        self.hideSkeleton()
+    }
+    
+    
+}
+
+
+// MARK: - CollectionViewDataSource
+
+extension MoviesSectionCellTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsCount
@@ -146,6 +193,14 @@ extension MoviesSectionCellTableViewCell: UICollectionViewDelegate, UICollection
         return cell
     }
     
+    
+}
+
+
+// MARK: - CollectionViewDelegate
+
+extension MoviesSectionCellTableViewCell: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is MoviesSectionCellCollectionViewCell {
             delegate?.moviesSectionCell(didTapMovie: moviesSection.movies[indexPath.row])
@@ -155,25 +210,3 @@ extension MoviesSectionCellTableViewCell: UICollectionViewDelegate, UICollection
     
 }
 
-extension MoviesSectionCellTableViewCell {
-    
-    @objc func moreTapped(_ sender: UIButton) {
-        delegate?.moviesSectionCell(tappedMoreForContent: moviesSection)
-    }
-    
-    
-}
-
-
-extension MoviesSectionCellTableViewCell {
-    
-    public func showSkeletonWithAnimation() {
-        self.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
-    }
-    
-    public func hideSkeletonAnimation() {
-        self.hideSkeleton()
-    }
-    
-    
-}

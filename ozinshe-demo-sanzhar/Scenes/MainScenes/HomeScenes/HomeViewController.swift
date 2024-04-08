@@ -295,9 +295,8 @@ extension HomeViewController: UITableViewDataSource {
             
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID, for: indexPath) as! MoviesSectionCellTableViewCell
-            cell.selectionStyle = .none
             if !moviesSectionsList.isEmpty {
-                cell.moviesSection = moviesSectionsList[indexPath.section]
+                cell.configureCell(moviesSectionsList[indexPath.section])
                 cell.delegate = self
             }
             return cell

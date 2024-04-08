@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SkeletonView
+import Kingfisher
 
 class KeepWatchingCollectionViewCell: UICollectionViewCell {
     

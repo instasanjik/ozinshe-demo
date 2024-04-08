@@ -8,12 +8,18 @@
 import UIKit
 import SnapKit
 import SkeletonView
+import Kingfisher
 
 class MoviesSectionCellCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "GalleryListCollectionViewCell"
     
-    lazy var previewImageView: UIImageView = {
+    
+    // MARK: - UI Elements
+    
+    private lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 8
@@ -22,7 +28,7 @@ class MoviesSectionCellCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Қызғалдақтар мекені" // TODO: Link with backend
         label.font = .systemFont(ofSize: 12, weight: .semibold)
@@ -33,7 +39,7 @@ class MoviesSectionCellCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "2-бөлім" // TODO: Link with backend
         label.font = .systemFont(ofSize: 12, weight: .regular)
@@ -45,14 +51,12 @@ class MoviesSectionCellCollectionViewCell: UICollectionViewCell {
         
     }()
     
+    
+    // MARK: - View Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupPreviewImageView()
-        setupNameLabel()
-        setupDescriptionLabel()
-        
-        self.isSkeletonable = true
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -63,9 +67,19 @@ class MoviesSectionCellCollectionViewCell: UICollectionViewCell {
 }
 
 
-extension MoviesSectionCellCollectionViewCell {
+// MARK: - UI Setups
+
+private extension MoviesSectionCellCollectionViewCell {
     
-    private func setupPreviewImageView() {
+    func setupUI() {
+        self.isSkeletonable = true
+        
+        setupPreviewImageView()
+        setupNameLabel()
+        setupDescriptionLabel()
+    }
+    
+    func setupPreviewImageView() {
         self.contentView.addSubview(previewImageView)
         
         previewImageView.snp.makeConstraints { make in
@@ -74,7 +88,7 @@ extension MoviesSectionCellCollectionViewCell {
         }
     }
     
-    private func setupNameLabel() {
+    func setupNameLabel() {
         self.contentView.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
@@ -83,7 +97,7 @@ extension MoviesSectionCellCollectionViewCell {
         }
     }
     
-    private func setupDescriptionLabel() {
+    func setupDescriptionLabel() {
         self.contentView.addSubview(descriptionLabel)
         
         descriptionLabel.snp.makeConstraints { make in
@@ -94,6 +108,9 @@ extension MoviesSectionCellCollectionViewCell {
     
     
 }
+
+
+// MARK: - External functions
 
 extension MoviesSectionCellCollectionViewCell {
     

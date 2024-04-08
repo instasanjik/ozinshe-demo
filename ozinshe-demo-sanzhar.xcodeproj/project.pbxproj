@@ -437,7 +437,7 @@
 			children = (
 				041CF8DA2BA17139003D2A58 /* HeaderScene */,
 				041CF8DE2BA1D1E6003D2A58 /* KeepWatchingScene */,
-				041CF8E32BA1D8C8003D2A58 /* GalleryListScene */,
+				041CF8E32BA1D8C8003D2A58 /* MoviesSectionScene */,
 				041CF8E82BA1E3D0003D2A58 /* GenresScene */,
 			);
 			path = TableViewCells;
@@ -461,13 +461,13 @@
 			path = KeepWatchingScene;
 			sourceTree = "<group>";
 		};
-		041CF8E32BA1D8C8003D2A58 /* GalleryListScene */ = {
+		041CF8E32BA1D8C8003D2A58 /* MoviesSectionScene */ = {
 			isa = PBXGroup;
 			children = (
 				041CF8E42BA1D904003D2A58 /* MoviesSectionCellTableViewCell.swift */,
 				041CF8E62BA1D914003D2A58 /* MoviesSectionCellCollectionViewCell.swift */,
 			);
-			path = GalleryListScene;
+			path = MoviesSectionScene;
 			sourceTree = "<group>";
 		};
 		041CF8E82BA1E3D0003D2A58 /* GenresScene */ = {
