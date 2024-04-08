@@ -8,25 +8,36 @@
 import UIKit
 import SnapKit
 
+
+// MARK: - Protocol: GenresAndAgesSectionTableViewCellDelegate
+
 protocol GenresAndAgesSectionTableViewCellDelegate {
     func genresAndAgesSection(didTapSection section: ContentCategory)
 }
 
+
 class GenresAndAgesSectionTableViewCell: UITableViewCell {
     
-    static let ID: String = "MovieCardTableViewCell"
+    // MARK: - Public variables
     
-    var content: [ContentCategory] = [] {
+    static let ID: String = "MovieCardTableViewCell"
+    var delegate: GenresAndAgesSectionTableViewCellDelegate?
+    
+    
+    // MARK: - Internal variables
+    
+    private var content: [ContentCategory] = [] {
         didSet {
             itemsCount = content.count
             contentCollectionView.reloadData()
         }
     }
-    var itemsCount = 5
+    private var itemsCount = 5
     
-    var delegate: GenresAndAgesSectionTableViewCellDelegate?
     
-    lazy var chapterTitleLabel: UILabel = {
+    // MARK: - UI Elements
+    
+    private lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("MovieInfo-Trending", comment: "Трендтегілер")
         label.font = .systemFont(ofSize: 16, weight: .bold)
@@ -34,7 +45,7 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var contentCollectionView: UICollectionView = {
+    private lazy var contentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         layout.itemSize = CGSizeMake(184, 112)
@@ -51,10 +62,9 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
                                 forCellWithReuseIdentifier: GenresAndAgesCollectionViewCell.ID)
         return collectionView
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    
+    
+    // MARK: - View Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -69,17 +79,18 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
 }
 
 
-// MARK: UI Setups
-extension GenresAndAgesSectionTableViewCell {
+// MARK: - UI Setups
+
+private extension GenresAndAgesSectionTableViewCell {
     
-    fileprivate func setupUI() {
+    func setupUI() {
         setupChapterTitleLabel()
         setupContentCollectionView()
         
         backgroundColor = .clear
     }
     
-    private func setupChapterTitleLabel() {
+    func setupChapterTitleLabel() {
         self.contentView.addSubview(chapterTitleLabel)
         
         chapterTitleLabel.snp.makeConstraints { make in
@@ -89,7 +100,7 @@ extension GenresAndAgesSectionTableViewCell {
         }
     }
     
-    private func setupContentCollectionView() {
+    func setupContentCollectionView() {
         self.contentView.addSubview(contentCollectionView)
         
         contentCollectionView.snp.makeConstraints { make in
@@ -103,8 +114,8 @@ extension GenresAndAgesSectionTableViewCell {
 }
 
 
-// MARK: Collection View Delegates
-extension GenresAndAgesSectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - CollectionViewDdataSource
+extension GenresAndAgesSectionTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsCount
@@ -118,11 +129,21 @@ extension GenresAndAgesSectionTableViewCell: UICollectionViewDelegate, UICollect
         return cell
     }
     
+    
+}
+
+
+
+// MARK: - CollectionViewDelegate
+
+extension GenresAndAgesSectionTableViewCell: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? GenresAndAgesCollectionViewCell {
+        if collectionView.cellForItem(at: indexPath) is GenresAndAgesCollectionViewCell {
             delegate?.genresAndAgesSection(didTapSection: content[indexPath.row])
         }
     }
     
     
 }
+

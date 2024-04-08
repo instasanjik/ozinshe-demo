@@ -7,12 +7,18 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class GenresAndAgesCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "GenresAndAgesCollectionViewCell"
     
-    lazy var previewImageView: UIImageView = {
+    
+    // MARK: - UI Elements
+    
+    private lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 8
@@ -20,7 +26,7 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 14, weight: .semibold)
@@ -30,7 +36,7 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "SPLASH_TEXT" 
         label.font = .systemFont(ofSize: 12, weight: .regular)
@@ -39,11 +45,12 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
         
     }()
     
+    
+    // MARK: - View Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupPreviewImageView()
-        setupNameLabel()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -54,9 +61,16 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
 }
 
 
+// MARK: - UI Setups
+
 extension GenresAndAgesCollectionViewCell {
     
-    private func setupPreviewImageView() {
+    func setupUI() {
+        setupPreviewImageView()
+        setupNameLabel()
+    }
+    
+    func setupPreviewImageView() {
         self.contentView.addSubview(previewImageView)
         
         previewImageView.snp.makeConstraints { make in
@@ -65,7 +79,7 @@ extension GenresAndAgesCollectionViewCell {
         }
     }
     
-    private func setupNameLabel() {
+    func setupNameLabel() {
         self.contentView.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
@@ -78,10 +92,11 @@ extension GenresAndAgesCollectionViewCell {
 }
 
 
+// MARK: - External functions
 
 extension GenresAndAgesCollectionViewCell{
     
-    public func configureCell(card: ContentCategory) {
+    func configureCell(card: ContentCategory) {
         self.previewImageView.kf.setImage(with: card.previewURL)
         self.nameLabel.text = card.name
     }
