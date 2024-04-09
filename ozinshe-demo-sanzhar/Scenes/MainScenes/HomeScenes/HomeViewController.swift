@@ -225,8 +225,7 @@ private extension HomeViewController {
     
     func genresAndAgesSectionCell(for tableView: UITableView, indexPath: IndexPath, content: [ContentCategory]) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID, for: indexPath) as! GenresAndAgesSectionTableViewCell
-        cell.selectionStyle = .none
-        cell.content = content
+        cell.configureCell(content: content)
         cell.delegate = self
         return cell
     }

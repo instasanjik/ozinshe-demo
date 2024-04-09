@@ -84,10 +84,11 @@ class GenresAndAgesSectionTableViewCell: UITableViewCell {
 private extension GenresAndAgesSectionTableViewCell {
     
     func setupUI() {
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
+        
         setupChapterTitleLabel()
         setupContentCollectionView()
-        
-        backgroundColor = .clear
     }
     
     func setupChapterTitleLabel() {
@@ -114,7 +115,20 @@ private extension GenresAndAgesSectionTableViewCell {
 }
 
 
-// MARK: - CollectionViewDdataSource
+// MARK: - External functions
+
+extension GenresAndAgesSectionTableViewCell {
+    
+    func configureCell(content: [ContentCategory]) {
+        self.content = content
+    }
+    
+    
+}
+
+
+// MARK: - CollectionViewDataSource
+
 extension GenresAndAgesSectionTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
