@@ -9,9 +9,22 @@ import UIKit
 
 class FavoritesNavigationViewController: UINavigationController {
     
+    // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupController()
+    }
+    
+
+}
+
+
+// MARK: - UI Setups
+
+private extension FavoritesNavigationViewController {
+    
+    func setupController() {
         self.viewControllers = [FavoritesViewController()]
         self.topViewController?.extendedLayoutIncludesOpaqueBars = false
         self.navigationBar.barTintColor = .clear
@@ -19,5 +32,5 @@ class FavoritesNavigationViewController: UINavigationController {
         self.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
-
+    
 }

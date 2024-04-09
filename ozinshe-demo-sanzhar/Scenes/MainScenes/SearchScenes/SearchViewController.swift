@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 import SkeletonView
 
-/// View controller responsible for searching and displaying movie categories.
 class SearchViewController: UIViewController {
     
     // MARK: - Internal variables
@@ -329,6 +328,7 @@ extension SearchViewController: UICollectionViewDelegate {
     
 }
 
+
 // MARK: CollectionViewDelegateFlowLayout
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
@@ -346,6 +346,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     
 }
+
 
 // MARK: UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {

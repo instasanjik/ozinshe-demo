@@ -11,7 +11,8 @@ import SkeletonView
 
 class FavoritesViewController: UITableViewController {
     
-    // MARK: Variables
+    // MARK: - UI Elements
+    
     private var movieList: [MovieWithDetails] = [] {
         didSet {
             let shouldShow = !movieList.isEmpty
@@ -59,9 +60,9 @@ class FavoritesViewController: UITableViewController {
         return button
     }()
 
-
     
-    // MARK: View Life Cycle
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +72,6 @@ class FavoritesViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        downloadFavoritesList()
     }
     
 }
@@ -150,7 +150,9 @@ private extension FavoritesViewController {
     
 }
 
+
 // MARK: - Targers
+
 extension FavoritesViewController {
     
     @objc func lookOutButtonTapped() {
@@ -162,8 +164,8 @@ extension FavoritesViewController {
 
 
 // MARK: - Delegates
-// MARK: TableViewDataSource
 
+// MARK: TableViewDataSource
 extension FavoritesViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -179,8 +181,8 @@ extension FavoritesViewController {
     
 }
 
-// MARK: TableViewDelegate
 
+// MARK: TableViewDelegate
 extension FavoritesViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -14,7 +14,6 @@ class SearchNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
-        setupController()
     }
     
 
