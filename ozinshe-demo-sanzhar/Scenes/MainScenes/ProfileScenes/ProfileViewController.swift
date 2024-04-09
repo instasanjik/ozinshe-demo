@@ -10,20 +10,28 @@ import SnapKit
 
 class ProfileViewController: UITableViewController {
     
+    // MARK: - UI Elements
+    
     var userProfile: UserProfile? {
         didSet {
             headerView.emailLabel.text = userProfile?.email ?? ""
         }
     }
     
-    lazy var headerView = ProfileHeaderView()
     
-    lazy var blurEffectView: UIVisualEffectView = {
+    // MARK: - UI Elements
+    
+    private lazy var headerView = ProfileHeaderView()
+    
+    private lazy var blurEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return blurEffectView
     }()
+    
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +42,15 @@ class ProfileViewController: UITableViewController {
     
 }
 
+
 // MARK: - UI Setups
 
 private extension ProfileViewController {
     
     func setupUI() {
-        view.backgroundColor = Style.Colors.background
+        self.view.backgroundColor = Style.Colors.background
         settingNavigationBar()
+        
         tableView.register(ProfileSectionTableViewCell.self,
                            forCellReuseIdentifier: ProfileSectionTableViewCell.ID)
     }
@@ -104,6 +114,18 @@ private extension ProfileViewController {
 }
 
 
+// MARK: - Targets
+
+private extension ProfileViewController {
+    
+    @objc func leaveTapped() {
+        showLeaveConfirmationViewController()
+    }
+    
+    
+}
+
+
 // MARK: - Internal functions
 
 private extension ProfileViewController {
@@ -120,7 +142,8 @@ private extension ProfileViewController {
 
 // MARK: - Delegates
 
-extension ProfileViewController: SelectionLanguageViewControllerDelegate, LeaveConfirmationViewControllerDelegate {
+// MARK: SelectionLanguageViewControllerDelegate
+extension ProfileViewController: SelectionLanguageViewControllerDelegate {
     
     func selectionLanguageViewWillDisappear() {
         setTabBarHidden(false)
@@ -130,6 +153,13 @@ extension ProfileViewController: SelectionLanguageViewControllerDelegate, LeaveC
             self.blurEffectView.removeFromSuperview()
         }
     }
+    
+    
+}
+
+
+// MARK: LeaveConfirmationViewControllerDelegate
+extension ProfileViewController: LeaveConfirmationViewControllerDelegate {
     
     func leaveConfirmationViewWillDisappear() {
         setTabBarHidden(false)
@@ -144,8 +174,7 @@ extension ProfileViewController: SelectionLanguageViewControllerDelegate, LeaveC
 }
 
 
-// MARK: - TableViewDelegate, TableiViewDataSource
-
+// MARK: TableViewDataSource
 extension ProfileViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -157,6 +186,15 @@ extension ProfileViewController {
         cell.selectionStyle = .none
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return StaticData.profileSettings.count
+    }
+}
+
+
+// MARK: TableViewDelegate
+extension ProfileViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return headerView
@@ -170,10 +208,6 @@ extension ProfileViewController {
         return 64
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StaticData.profileSettings.count
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: showPersonalDataViewController()
@@ -183,18 +217,4 @@ extension ProfileViewController {
         default: print(indexPath)
         }
     }
-    
-    
-}
-
-
-// MARK: - Targets
-
-private extension ProfileViewController {
-    
-    @objc func leaveTapped() {
-        showLeaveConfirmationViewController()
-    }
-    
-    
 }

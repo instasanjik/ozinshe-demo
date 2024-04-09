@@ -8,10 +8,22 @@
 import UIKit
 
 class ProfileNavigationViewController: UINavigationController {
+    
+    // MARK: View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
 
+}
+
+
+// MARK: - UI Setups
+
+private extension ProfileNavigationViewController {
+    
+    func setupController() {
         self.viewControllers = [ProfileViewController()]
         self.topViewController?.extendedLayoutIncludesOpaqueBars = false
         self.navigationBar.barTintColor = .clear
@@ -19,5 +31,5 @@ class ProfileNavigationViewController: UINavigationController {
         self.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
-
+    
 }
