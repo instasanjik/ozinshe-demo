@@ -31,4 +31,6 @@ public enum Endpoints {
     public static let searchByMovieName = ServerURL.baseURL + "/core/V1/movies/search"
     public static let setMovieFavorite = ServerURL.baseURL + "/core/V1/favorite/"
     public static let getProfile = ServerURL.baseURL + "/core/V1/user/profile"
+    public static let updateProfile = ServerURL.baseURL + "/core/V1/user/profile/"
+    
 }

@@ -310,8 +310,8 @@ class CoreService {
     }
     
     func getProfileData(completionHandler: @escaping (_ success: Bool,
-                                                    _ errorMessage: String?,
-                                                    UserProfile?) -> Void) {
+                                                      _ errorMessage: String?,
+                                                      UserProfile?) -> Void) {
         AF.request(Endpoints.getProfile, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
@@ -320,6 +320,28 @@ class CoreService {
                 return
             }
             completionHandler(false, self.decodeError(response), nil)
+            return
+        }
+    }
+    
+    func updateProfileData(userProfile: UserProfile,
+                           completionHandler: @escaping (_ success: Bool,
+                                                         _ errorMessage: String?) -> Void) {
+        let parameters = [
+            "id" : userProfile.id,
+            "name" : userProfile.name,
+            "birthDate" : userProfile.birthDate,
+            "phoneNumber" : userProfile.phoneNumber,
+            "language" : userProfile.language
+        ] as [String : Any]
+        
+        AF.request(Endpoints.updateProfile, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
+            if response.response?.statusCode == 200 {
+                completionHandler(true, nil)
+                return
+            }
+            
+            completionHandler(false, self.decodeError(response))
             return
         }
     }
