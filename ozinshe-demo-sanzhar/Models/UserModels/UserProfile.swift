@@ -17,6 +17,13 @@ class UserProfile {
     var birthDate: String = ""
     var language: String = ""
     
+    init(id: Int, name: String, phoneNumber: String, birtdayDate: String) {
+        self.id = id
+        self.name = name
+        self.phoneNumber = phoneNumber
+        self.birthDate = birtdayDate
+    }
+    
     init(json: JSON) {
         if let temp = json["id"].int                    { self.id = temp }
         if let temp = json["user"]["email"].string      { self.email = temp }
