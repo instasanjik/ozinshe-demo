@@ -13,6 +13,7 @@ class ProfileNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupController()
     }
     
 

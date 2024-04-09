@@ -14,7 +14,7 @@ class ProfileViewController: UITableViewController {
     
     var userProfile: UserProfile? {
         didSet {
-            headerView.emailLabel.text = userProfile?.email ?? ""
+            headerView.updateEmail(with: userProfile?.email)
         }
     }
     
@@ -179,11 +179,10 @@ extension ProfileViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileSectionTableViewCell.ID, for: indexPath) as! ProfileSectionTableViewCell
-        cell.cellData = StaticData.profileSettings[indexPath.row]
+        cell.setupCellData(cellData: StaticData.profileSettings[indexPath.row])
         if indexPath.row == 2 {
-            cell.optionNameLabel.text = StaticData.getLanguageName()
+            cell.setupCellOptionText()
         }
-        cell.selectionStyle = .none
         return cell
     }
     

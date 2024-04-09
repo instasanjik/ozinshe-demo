@@ -10,7 +10,9 @@ import SnapKit
 
 class ProfileHeaderView: UIView {
     
-    lazy var avatarImageView: UIImageView = {
+    // MARK: - UI Elements
+    
+    private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "avatarImage")
         imageView.layer.cornerRadius = 52
@@ -18,7 +20,7 @@ class ProfileHeaderView: UIView {
         return imageView
     }()
     
-    lazy var myProfileLabel: UILabel = {
+    private lazy var myProfileLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
@@ -26,17 +28,35 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
-    lazy var emailLabel: UILabel = {
+    private lazy var emailLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray400
-        label.text = "ali@gmail.com" // TODO: Link with backend
+        label.text = "ali@gmail.com"
         return label
     }()
+    
+    
+    // MARK: - View Life Cycle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+}
+
+
+// MARK: - UI Setups
+
+private extension ProfileHeaderView {
+    
+    func setupUI() {
         self.backgroundColor = Style.Colors.gray800
         
         setupAvatarImageView()
@@ -44,15 +64,7 @@ class ProfileHeaderView: UIView {
         setupEmailLabel()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-extension ProfileHeaderView {
-    
-    fileprivate func setupAvatarImageView() {
+    func setupAvatarImageView() {
         self.addSubview(avatarImageView)
         
         avatarImageView.snp.makeConstraints { make in
@@ -62,7 +74,7 @@ extension ProfileHeaderView {
         }
     }
     
-    fileprivate func setupMyProfileLabel() {
+    func setupMyProfileLabel() {
         self.addSubview(myProfileLabel)
         
         myProfileLabel.snp.makeConstraints { make in
@@ -71,13 +83,25 @@ extension ProfileHeaderView {
         }
     }
     
-    fileprivate func setupEmailLabel() {
+    func setupEmailLabel() {
         self.addSubview(emailLabel)
         
         emailLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(myProfileLabel.snp.bottom).inset(-8)
         }
+    }
+    
+    
+}
+
+
+// MARK: External functions
+
+extension ProfileHeaderView {
+    
+    func updateEmail(with email: String?) {
+        emailLabel.text = email ?? ""
     }
     
     
