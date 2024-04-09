@@ -20,6 +20,9 @@ class SearchNavigationViewController: UINavigationController {
 
 }
 
+
+// MARK: - UI Setups
+
 private extension SearchNavigationViewController {
     
     func setupController() {

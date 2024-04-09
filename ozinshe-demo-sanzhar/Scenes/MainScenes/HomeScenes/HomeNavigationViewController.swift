@@ -19,6 +19,9 @@ class HomeNavigationViewController: UINavigationController {
 
 }
 
+
+// MARK: - UI Setups
+
 private extension HomeNavigationViewController {
     
     func setupController() {
