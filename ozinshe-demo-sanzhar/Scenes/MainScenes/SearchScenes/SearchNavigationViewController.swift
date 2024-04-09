@@ -9,12 +9,23 @@ import UIKit
 
 class SearchNavigationViewController: UINavigationController {
     
+    // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupController()
+        setupController()
+    }
+    
+
+}
+
+private extension SearchNavigationViewController {
+    
+    func setupController() {
         self.viewControllers = [SearchViewController()]
         self.topViewController?.extendedLayoutIncludesOpaqueBars = false
     }
     
-
+    
 }

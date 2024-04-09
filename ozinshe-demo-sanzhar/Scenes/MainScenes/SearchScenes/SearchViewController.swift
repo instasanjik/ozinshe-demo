@@ -12,9 +12,8 @@ import SkeletonView
 /// View controller responsible for searching and displaying movie categories.
 class SearchViewController: UIViewController {
     
-    // MARK: - Variables
+    // MARK: - Internal variables
     
-    /// Array to hold movie categories.
     private var categories: [MovieCategory] = [] {
         didSet {
             self.categoriesCount = categories.count
@@ -38,15 +37,11 @@ class SearchViewController: UIViewController {
             }
         }
     }
-    
-    
-    /// Count of categories initially set to 10.
     private var categoriesCount = 10
     
     
     // MARK: - UI Elements
     
-    /// Text field for searching movies.
     private lazy var searchTextField: OZTextField = {
         let textField = OZTextField()
         textField.placeholder = NSLocalizedString("Search-Search", comment: "Іздеу")
@@ -58,7 +53,6 @@ class SearchViewController: UIViewController {
         return textField
     }()
     
-    /// Button to trigger the search action.
     private lazy var searchButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = Style.Colors.gray700
@@ -68,7 +62,6 @@ class SearchViewController: UIViewController {
         return button
     }()
     
-    /// Label displaying general categories.
     private lazy var categoriesLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("General-Categories", comment: "Санаттар")
@@ -77,7 +70,6 @@ class SearchViewController: UIViewController {
         return label
     }()
     
-    /// Collection view to display movie categories.
     private lazy var categoriesCollectionView: UICollectionView = {
         let layout = LeftAlignedCollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24.0, bottom: 0, right: 24.0)
@@ -150,9 +142,8 @@ class SearchViewController: UIViewController {
 
 // MARK: - UI Setups
 
-fileprivate extension SearchViewController {
+private extension SearchViewController {
     
-    /// Sets up the initial UI components.
     func setupUI() {
         view.backgroundColor = Style.Colors.background
         
@@ -166,7 +157,6 @@ fileprivate extension SearchViewController {
         setupActivityIndicatorView()
     }
     
-    /// Configures search text field.
     func setupSearchTextField() {
         view.addSubview(searchTextField)
         
@@ -176,7 +166,6 @@ fileprivate extension SearchViewController {
         }
     }
     
-    /// Configures search button.
     func setupSearchButton() {
         view.addSubview(searchButton)
         
@@ -188,7 +177,6 @@ fileprivate extension SearchViewController {
         }
     }
     
-    /// Configures categories label.
     func setupCategoriesLabel() {
         view.addSubview(categoriesLabel)
         
@@ -198,7 +186,6 @@ fileprivate extension SearchViewController {
         }
     }
     
-    /// Configures categories collection view.
     func setupCategoriesCollectionView() {
         view.addSubview(categoriesCollectionView)
         
@@ -242,9 +229,8 @@ fileprivate extension SearchViewController {
 
 // MARK: - Internal functions
 
-fileprivate extension SearchViewController {
+private extension SearchViewController {
     
-    /// Downloads categories data from the server.
     func downloadData() {
         CoreService.shared.getCategories { success, errorMessage, categories in
             self.categories = categories
@@ -295,12 +281,12 @@ fileprivate extension SearchViewController {
     
 }
 
+
 // MARK: - Targets
+
 private extension SearchViewController {
     
     @objc func searchTextFieldValueChanged(_ sender: UITextField!) {
-        
-        
         updateSearchState()
         searchTimer?.invalidate()
         
@@ -313,20 +299,7 @@ private extension SearchViewController {
 
 // MARK: - Delegates
 
-// MARK: CollectionViewDelegate
-
-extension SearchViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        openCategorieMovieListViewController(category: categories[indexPath.row])
-        collectionView.deselectItem(at: indexPath, animated: true)
-    }
-    
-    
-}
-
 // MARK: CollecitonViewData Source
-
 extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -344,8 +317,19 @@ extension SearchViewController: UICollectionViewDataSource {
     
 }
 
-// MARK: CollectionViewDelegateFlowLayout
 
+// MARK: CollectionViewDelegate
+extension SearchViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        openCategorieMovieListViewController(category: categories[indexPath.row])
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    
+}
+
+// MARK: CollectionViewDelegateFlowLayout
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -363,20 +347,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-// MARK: UITableViewDelegate
-
-extension SearchViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.openMovieViewController(with: searchResultMovieList[indexPath.row])
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    
-}
-
 // MARK: UITableViewDataSource
-
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -389,6 +360,18 @@ extension SearchViewController: UITableViewDataSource {
             cell.configureCell(content: searchResultMovieList[indexPath.row])
         }
         return cell
+    }
+    
+    
+}
+
+
+// MARK: UITableViewDelegate
+extension SearchViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.openMovieViewController(with: searchResultMovieList[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

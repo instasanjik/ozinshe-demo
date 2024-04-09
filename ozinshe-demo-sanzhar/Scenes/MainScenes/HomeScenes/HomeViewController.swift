@@ -37,7 +37,9 @@ class HomeViewController: UIViewController {
     private var genresSectionPositionInTableView = 2
     private var agesSectionPositionInTableView = 27
     
+    
     // MARK: - UI Elements
+    
     private lazy var mainTableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -60,6 +62,7 @@ class HomeViewController: UIViewController {
     
     
     // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
