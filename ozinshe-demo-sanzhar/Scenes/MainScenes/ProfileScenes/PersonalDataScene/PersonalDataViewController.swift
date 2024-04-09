@@ -44,6 +44,7 @@ private extension PersonalDataViewController {
     @objc func editTapped() {
         if isDataEditing {
             // send data to the server
+//            CoreService.shared.updateProfileData(userProfile: UserProfile, completionHandler: <#T##(Bool, String?) -> Void##(Bool, String?) -> Void##(_ success: Bool, _ errorMessage: String?) -> Void#>)
             updatePageState()
         } else {
             updatePageState()
@@ -63,7 +64,9 @@ extension PersonalDataViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PersonalDataTableViewCell.ID, for: indexPath) as! PersonalDataTableViewCell
-//        cell.setupCell(sectionName: <#T##String#>, isDataEditing: <#T##Bool#>)
+        cell.setupCell(sectionName: NSLocalizedString(StaticData.personalDataCell[indexPath.row], 
+                                                      comment: ""),
+                       isDataEditing: isDataEditing)
         return cell
     }
     
