@@ -10,21 +10,31 @@ import SnapKit
 
 class ContentCategoryCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "ContentCategoryCollectionViewCell"
     
     
-    lazy var contentCategoryLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = Style.StaticColors.label
-        return label
-    }()
+    // MARK: - Internal variables
     
     override var isSelected: Bool {
         didSet {
             self.backgroundColor = isSelected ? Style.Colors.gray800 : Style.Colors.gray700
         }
     }
+    
+    
+    // MARK: - UI Elements
+    
+    private lazy var contentCategoryLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = Style.StaticColors.label
+        return label
+    }()
+    
+    
+    // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,15 +48,18 @@ class ContentCategoryCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     
 }
 
-extension ContentCategoryCollectionViewCell {
+
+// MARK: - UI Setups
+
+private extension ContentCategoryCollectionViewCell {
     
-    fileprivate func setupContentCategoryLabel() {
+    func setupContentCategoryLabel() {
         self.addSubview(contentCategoryLabel)
         
         contentCategoryLabel.snp.makeConstraints { make in
@@ -58,6 +71,8 @@ extension ContentCategoryCollectionViewCell {
     
 }
 
+
+// MARK: - External functions
 
 extension ContentCategoryCollectionViewCell {
     
