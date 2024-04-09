@@ -17,7 +17,6 @@ class PersonalDataTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.gray400
-        label.text = "Сіздің атыңыз" // TODO: Make dynamic
         return label
     }()
     
@@ -25,61 +24,48 @@ class PersonalDataTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = Style.Colors.label
-        label.text = "Айдар" // TODO: Make dynamic
         return label
     }()
     
     lazy var valueTextField: OZTextField = {
         let textField = OZTextField()
-        
-        textField.placeholder = "Поиск"
+        textField.placeholder = optionNameLabel.text
         textField.padding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        
         return textField
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        backgroundColor = .clear
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    public func setupUI(isDataEditing: Bool) {
-        setupOptionNameLabel()
-        if isDataEditing {
-            setupValueTextField()
-        } else {
-            setupValueLabel()
-        }
-    }
-
 }
 
-extension PersonalDataTableViewCell {
+private extension PersonalDataTableViewCell {
     
-    fileprivate func setupOptionNameLabel() {
-        addSubview(optionNameLabel)
+    func setupUI() {
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
+    }
+    
+    func setupOptionNameLabel() {
+        self.addSubview(optionNameLabel)
         
         optionNameLabel.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview().inset(24)
         }
     }
     
-    fileprivate func setupValueLabel() {
-        addSubview(valueLabel)
+    func setupValueLabel() {
+        self.addSubview(valueLabel)
         
         valueLabel.snp.makeConstraints { make in
             make.top.equalTo(optionNameLabel.snp.bottom).inset(-8)
@@ -87,13 +73,36 @@ extension PersonalDataTableViewCell {
         }
     }
     
-    fileprivate func setupValueTextField() {
-        addSubview(valueTextField)
+    func setupValueTextField() {
+        self.addSubview(valueTextField)
         
         valueTextField.snp.makeConstraints { make in
             make.top.equalTo(optionNameLabel.snp.bottom).inset(-8)
             make.left.right.equalToSuperview().inset(24)
             make.height.equalTo(56)
+        }
+    }
+    
+    
+}
+
+
+extension PersonalDataTableViewCell {
+    
+    func setupCell(sectionName: String, isDataEditing: Bool) {
+        setupOptionNameLabel()
+        updateCellState(to: isDataEditing)
+    }
+    
+    private func updateCellState(to isEditing: Bool) {
+        if isEditing {
+            valueTextField.text = valueLabel.text
+            valueLabel.removeFromSuperview()
+            setupValueTextField()
+        } else {
+            valueLabel.text = valueTextField.text
+            valueTextField.removeFromSuperview()
+            setupValueLabel()
         }
     }
     

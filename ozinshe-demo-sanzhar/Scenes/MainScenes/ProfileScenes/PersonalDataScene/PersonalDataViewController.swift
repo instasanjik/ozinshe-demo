@@ -6,20 +6,30 @@
 //
 
 import UIKit
+import SVProgressHUD
+import SkeletonView
 
 class PersonalDataViewController: UITableViewController {
     
-    var isDataEditing: Bool = true {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    // MARK: - Internal variables
+    
+    private let DEFAULT_HEIGHT_CELL: CGFloat = 88
+    private let EDITING_CELL_HEIGHT: CGFloat = 133
+    
+    private var isDataEditing: Bool = true
+    
+    
+    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Personal data"
+        
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+        navigationItem.rightBarButtonItems = [editButton]
+        
         view.backgroundColor = Style.Colors.background
-         
         tableView.register(PersonalDataTableViewCell.self, forCellReuseIdentifier: PersonalDataTableViewCell.ID)
     }
     
@@ -29,12 +39,31 @@ class PersonalDataViewController: UITableViewController {
 
 }
 
+private extension PersonalDataViewController {
+    
+    @objc func editTapped() {
+        if isDataEditing {
+            // send data to the server
+            updatePageState()
+        } else {
+            updatePageState()
+        }
+    }
+    
+    func updatePageState() {
+        isDataEditing.toggle()
+        tableView.reloadData()
+        navigationItem.rightBarButtonItems?.first?.title = isDataEditing ? "Save" : "Edit"
+    }
+    
+    
+}
+
 extension PersonalDataViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PersonalDataTableViewCell.ID, for: indexPath) as! PersonalDataTableViewCell
-        cell.selectionStyle = .none
-        cell.setupUI(isDataEditing: isDataEditing)
+//        cell.setupCell(sectionName: <#T##String#>, isDataEditing: <#T##Bool#>)
         return cell
     }
     
@@ -44,7 +73,7 @@ extension PersonalDataViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return isDataEditing ? 21+8+24+24+56 : 88
+        return isDataEditing ? EDITING_CELL_HEIGHT : DEFAULT_HEIGHT_CELL
     }
     
     
