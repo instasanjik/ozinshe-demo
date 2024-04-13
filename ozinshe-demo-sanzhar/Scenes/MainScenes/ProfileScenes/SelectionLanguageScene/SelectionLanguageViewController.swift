@@ -8,21 +8,28 @@
 import UIKit
 import SnapKit
 
+// MARK: - SelectionLanguageViewControllerDelegate
 protocol SelectionLanguageViewControllerDelegate: AnyObject {
     func selectionLanguageViewWillDisappear()
 }
 
 class SelectionLanguageViewController: UIViewController {
     
-    /* MARK: values */
-    public var delegate: SelectionLanguageViewControllerDelegate?
-    fileprivate var oldValueY: Double = 0
-    fileprivate var lastSelectedRow: IndexPath?
-    fileprivate let SCROLL_VIEW_PADDING_Y: CGFloat = 86
+    // MARK: - Internal variables
+    private var oldValueY: Double = 0
+    private var lastSelectedRow: IndexPath?
+    private var selectedLanguageIndexPath: IndexPath?
+    private let SCROLL_VIEW_PADDING_Y: CGFloat = 86
     
     
-    /* MARK: UI Elements */
-    lazy var scrollView: UIScrollView = { /// scroll view for soft animation of moving the content
+    // MARK: - External variables
+    
+    var delegate: SelectionLanguageViewControllerDelegate?
+    
+    
+    // MARK: - UI Elements
+    
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
         scrollView.addSubview(scrollViewContentView)
@@ -38,7 +45,7 @@ class SelectionLanguageViewController: UIViewController {
         return scrollView
     }()
     
-    lazy var invisibleView: UIView = { /// view for detecting tap out of content view
+    private lazy var invisibleView: UIView = {
         let view = UIView()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -47,9 +54,9 @@ class SelectionLanguageViewController: UIViewController {
         return view
     }()
     
-    lazy var scrollViewContentView = OZExpandedView() /// view for setup scroll view correctly
+    private lazy var scrollViewContentView = OZExpandedView()
     
-    lazy var contentView: UIView = {
+    private lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = Style.Colors.gray800
         view.layer.cornerRadius = 32
@@ -57,7 +64,7 @@ class SelectionLanguageViewController: UIViewController {
         return view
     }()
     
-    lazy var browView: UIView = {
+    private lazy var browView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 2.5
         view.clipsToBounds = true
@@ -65,7 +72,7 @@ class SelectionLanguageViewController: UIViewController {
         return view
     }()
     
-    lazy var languageLabel: UILabel = {
+    private lazy var languageLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
@@ -73,7 +80,7 @@ class SelectionLanguageViewController: UIViewController {
         return label
     }()
 
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(SelectionLanguageTableViewCell.self, forCellReuseIdentifier: SelectionLanguageTableViewCell.ID)
         tableView.delegate = self
@@ -83,8 +90,24 @@ class SelectionLanguageViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var warningAlert: UIAlertController = {
+        let alert = UIAlertController(title: NSLocalizedString("Languages-Warning", comment: "Warning"),
+                                      message: NSLocalizedString("Lanuages-WarningDescription", comment: "Please restart your app to change language completely"),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Restart", comment: "Restart"),
+                                      style: .destructive,
+                                      handler: { _ in self.changeLanguage(to: StaticData.languages[self.selectedLanguageIndexPath?.row ?? 0].1)}))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Cancel", comment: "Cancel"),
+                                      style: .cancel,
+                                      handler: { _ in
+            self.tableView.selectRow(at: self.lastSelectedRow, animated: true, scrollPosition: .middle)
+        }))
+        return alert
+    }()
     
-    /* MARK: View Controller life cycle */
+    
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -103,15 +126,16 @@ class SelectionLanguageViewController: UIViewController {
 }
 
 
-// MARK: UI Elements
-extension SelectionLanguageViewController {
+// MARK: - UI Setups
+
+private extension SelectionLanguageViewController {
     
-    fileprivate func setupUI() {
+    func setupUI() {
         setupScrollView()
         setupContentView()
     }
     
-    fileprivate func setupScrollView() {
+    func setupScrollView() {
         self.view.addSubview(scrollView)
         
         scrollView.snp.makeConstraints { make in
@@ -119,7 +143,7 @@ extension SelectionLanguageViewController {
         }
     }
     
-    fileprivate func setupContentView() {
+    func setupContentView() {
         
         scrollViewContentView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
@@ -143,7 +167,7 @@ extension SelectionLanguageViewController {
         setupTableView()
     }
     
-    fileprivate func setupBrowView() {
+    func setupBrowView() {
         contentView.addSubview(browView)
         
         browView.snp.makeConstraints { make in
@@ -154,7 +178,7 @@ extension SelectionLanguageViewController {
         }
     }
     
-    fileprivate func setupLanguageLabel() {
+    func setupLanguageLabel() {
         contentView.addSubview(languageLabel)
         
         languageLabel.snp.makeConstraints { make in
@@ -163,7 +187,7 @@ extension SelectionLanguageViewController {
         }
     }
     
-    fileprivate func setupTableView() {
+    func setupTableView() {
         contentView.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
@@ -176,8 +200,22 @@ extension SelectionLanguageViewController {
     
 }
 
-// MARK: Triggers and handlers
-extension SelectionLanguageViewController {
+
+// MARK: - Internal functions
+
+private extension SelectionLanguageViewController {
+    
+    func changeLanguage(to: String) {
+        UserDefaults.standard.set([to], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+        exit(0)
+    }
+    
+    
+}
+
+// MARK: - Targets and handlers
+private extension SelectionLanguageViewController {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) { /// detect if tap is out of content view for dismissing scene
         guard var location = sender?.location(in: self.view) else { return }
@@ -191,19 +229,9 @@ extension SelectionLanguageViewController {
 }
 
 
-// MARK: Table view delegates
-extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelectionLanguageTableViewCell.ID, for: indexPath) as! SelectionLanguageTableViewCell
-        cell.languageNameLabel.text = StaticData.languages[indexPath.row].0
-        return cell
-    }
+// MARK: - Delegates
+// MARK: UITableViewDelegate
+extension SelectionLanguageViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let code = StaticData.languages[indexPath.row].1
@@ -226,40 +254,42 @@ extension SelectionLanguageViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: NSLocalizedString("Languages-Warning", comment: "Warning"),
-                                      message: NSLocalizedString("Lanuages-WarningDescription", comment: "Please restart your app to change language completely"),
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Restart", comment: "Restart"),
-                                      style: .destructive,
-                                      handler: { _ in self.changeLanguage(to: StaticData.languages[indexPath.row].1)}))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Cancel", comment: "Cancel"), 
-                                      style: .cancel,
-                                      handler: { _ in 
-            tableView.selectRow(at: self.lastSelectedRow, animated: true, scrollPosition: .middle)
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func changeLanguage(to: String) {
-        UserDefaults.standard.set([to], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
-        exit(0)
+        selectedLanguageIndexPath = indexPath
+        self.present(warningAlert, animated: true, completion: nil)
     }
     
     
 }
 
-// MARK: Scroll View Delegate and functions
+
+// MARK: UITableViewDataSource
+extension SelectionLanguageViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SelectionLanguageTableViewCell.ID, for: indexPath) as! SelectionLanguageTableViewCell
+        cell.languageNameLabel.text = StaticData.languages[indexPath.row].0
+        return cell
+    }
+    
+    
+}
+
+
+// MARK: UIScrollViewDelegate
 extension SelectionLanguageViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) { /// determine whether the user has moved the menu below the death zone for automatic closure
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if oldValueY > scrollView.contentOffset.y && scrollView.contentOffset.y < 43 {
             self.dismiss(animated: true)
         }
         oldValueY = scrollView.contentOffset.y
     }
     
-    fileprivate func scrollToBottom() { /// automatic scroll scrollview to bottom for displaying content
+    fileprivate func scrollToBottom() {
         let bottomOffset = CGPoint(x: 0,
                                    y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom + 12) /// 12 is a safe area zone for correct displaying content
         scrollView.setContentOffset(bottomOffset, animated: true)
