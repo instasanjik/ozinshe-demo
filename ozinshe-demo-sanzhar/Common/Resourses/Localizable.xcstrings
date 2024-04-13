@@ -2071,6 +2071,29 @@
         }
       }
     },
+    "SignUp-PasswordsAreDifferent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passwords are not similar"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Парольдер ұқсас емес"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пароли не совпадают между собой"
+          }
+        }
+      }
+    },
     "SignUp-SignUp" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -386,7 +386,7 @@ private extension SignInViewController {
     }
     
     func openForgotPassword() {
-        SVProgressHUD.showError(withStatus: "This page doesn't exists! We are sorry")
+        SVProgressHUD.showError(withStatus: NSLocalizedString("General-FunctionUnavailableError", comment: ""))
     }
     
     func openSignUp() {

@@ -313,7 +313,7 @@ private extension SignUpViewController {
     
     func signUp() {
         if passwordTextField.text != confirmPasswordTextField.text {
-            SVProgressHUD.showError(withStatus: "Passwords are not similar") // TODO: Localize errors
+            SVProgressHUD.showError(withStatus: NSLocalizedString("SignUp-PasswordsAreDifferent", comment: ""))
             return
         }
         
@@ -329,7 +329,7 @@ private extension SignUpViewController {
                         SVProgressHUD.showError(withStatus: NSLocalizedString("General-UnknownError", comment: ""))
                     }
                 }
-            } else { // MARK: email or password are empty
+            } else { // Email or password are empty
                 SVProgressHUD.showError(withStatus: NSLocalizedString("SignIn-EmailIsEmpty", comment: ""))
             }
         }
