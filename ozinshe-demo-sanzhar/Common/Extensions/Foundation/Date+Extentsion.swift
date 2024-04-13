@@ -7,8 +7,12 @@
 
 import Foundation
 
+/// Extension to Date providing utility properties for date formatting.
 extension Date {
     
+    /// Returns the current date and time in ISO8601 format.
+    ///
+    /// - Note: Requires iOS 15.0 and later.
     static var dateTime: String {
         get {
             if #available(iOS 15.0, *) {
@@ -19,11 +23,11 @@ extension Date {
         }
     }
     
+    /// Returns a string representation of the date in short format (yyyy-MM-dd).
     var shortDate: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: self)
     }
-    
     
 }
