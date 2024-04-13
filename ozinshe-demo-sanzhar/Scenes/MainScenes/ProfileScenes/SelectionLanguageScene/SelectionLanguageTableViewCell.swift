@@ -90,3 +90,13 @@ private extension SelectionLanguageTableViewCell {
     
     
 }
+
+
+extension SelectionLanguageTableViewCell {
+    
+    func configureCell(with language: String) {
+        self.languageNameLabel.text = language
+    }
+    
+    
+}

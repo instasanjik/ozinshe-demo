@@ -271,7 +271,7 @@ extension SelectionLanguageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectionLanguageTableViewCell.ID, for: indexPath) as! SelectionLanguageTableViewCell
-        cell.languageNameLabel.text = StaticData.languages[indexPath.row].0
+        cell.configureCell(with: StaticData.languages[indexPath.row].0) 
         return cell
     }
     
