@@ -346,6 +346,24 @@ class CoreService {
         }
     }
     
+    func changeUserPassword(password: String,
+                            completionHandler: @escaping (_ success: Bool,
+                                                          _ errorMessage: String?) -> Void) {
+        let parameters = [
+            "password" : password,
+        ]
+        
+        AF.request(Endpoints.changePassword, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
+            if response.response?.statusCode == 200 {
+                completionHandler(true, nil)
+                return
+            }
+            
+            completionHandler(false, self.decodeError(response))
+            return
+        }
+    }
+    
     
     
 }
