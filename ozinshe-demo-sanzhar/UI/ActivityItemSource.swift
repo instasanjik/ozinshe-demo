@@ -10,8 +10,13 @@ import LinkPresentation
 
 class ActivityItemSource: NSObject, UIActivityItemSource {
     
+    // MARK: - Internal variables
+    
     var title: String
     var text: String
+    
+    
+    // MARK: - Object Init
     
     init(title: String, text: String) {
         self.title = title
@@ -22,6 +27,8 @@ class ActivityItemSource: NSObject, UIActivityItemSource {
     
 }
 
+
+// MARK: - External functions
 
 extension ActivityItemSource {
     
