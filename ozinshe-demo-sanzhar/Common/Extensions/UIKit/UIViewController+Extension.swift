@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// Extension to UIViewController providing utility methods for managing tab bar, navigation bar, and presenting share pop-up.
 extension UIViewController {
     
     /// Sets the visibility of the tab bar.

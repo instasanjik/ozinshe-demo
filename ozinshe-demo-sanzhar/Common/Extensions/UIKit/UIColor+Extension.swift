@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// Extension to UIColor providing convenience initializer for creating UIColor from hexadecimal string.
 extension UIColor {
     
     /// Initializes a UIColor instance with a hexadecimal string.

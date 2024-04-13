@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// Extension to UILabel providing utility properties for counting lines and checking truncation.
 extension UILabel {
     
     /// Returns the number of lines currently rendered in the label.

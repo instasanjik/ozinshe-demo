@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// Extension to Date providing utility properties for date formatting.
 extension Date {
     
     /// Returns the current date and time in ISO8601 format.

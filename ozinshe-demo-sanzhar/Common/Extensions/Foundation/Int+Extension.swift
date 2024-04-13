@@ -9,6 +9,9 @@ import Foundation
 
 extension Int {
     
+    /// Returns the ordinal representation of the integer.
+    ///
+    /// - Returns: A string representing the ordinal value of the integer.
     func ordinalString() -> String {
         let number = self
         let languageCode: String?

@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// Extension to UIButton providing utility functions for manipulating text, image, and background color.
 extension UIButton {
     
     /// Centers the button's text and image with the specified spacing.

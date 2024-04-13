@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// Extension to UIView providing a method for setting the view's height with optional animation.
 extension UIView {
     
     /// Sets the height of the view to the specified value.

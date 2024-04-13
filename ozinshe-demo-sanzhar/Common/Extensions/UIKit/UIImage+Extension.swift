@@ -7,7 +7,6 @@
 
 import UIKit
 
-/// Extension to UIImage providing utility methods for creating images.
 extension UIImage {
     
     /// Creates a circular image with the specified diameter and color.
