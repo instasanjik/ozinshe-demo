@@ -40,7 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarAppearance.backgroundColor = Style.Colors.gray800
             UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             UITabBar.appearance().standardAppearance = tabBarAppearance
+        } else {
+            // Fallback for earlier versions
+            UINavigationBar.appearance().barTintColor = Style.Colors.background
+            UINavigationBar.appearance().titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor : Style.Colors.label
+            ]
+            UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
+            UITabBar.appearance().barTintColor = Style.Colors.gray800
         }
+
         
         if #available(iOS 15.0, *) {
             UITableView.appearance().sectionHeaderTopPadding = 8
