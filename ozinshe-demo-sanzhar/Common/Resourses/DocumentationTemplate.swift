@@ -9,6 +9,7 @@
 // MARK: - Internal variables
 // MARK: - External variables
 // MARK: - UI Elements
+// MARK: - Overriding internal functions
 // MARK: - View Life Cycle
 // MARK: - UI Setups
 // MARK: - Targets and handlers
