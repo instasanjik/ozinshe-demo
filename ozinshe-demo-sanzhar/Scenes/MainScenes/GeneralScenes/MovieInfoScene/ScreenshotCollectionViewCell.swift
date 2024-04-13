@@ -10,9 +10,14 @@ import SnapKit
 
 class ScreenshotCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "ScreenshotCollectionViewCell"
     
-    lazy var screenshotImageView: UIImageView = {
+    
+    // MARK: - UI Elements
+    
+    private lazy var screenshotImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "previewImageView")
         imageView.contentMode = .scaleAspectFill
@@ -21,10 +26,12 @@ class ScreenshotCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    
+    // MARK: - View Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupScreenshotImageView()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -35,9 +42,15 @@ class ScreenshotCollectionViewCell: UICollectionViewCell {
 }
 
 
-extension ScreenshotCollectionViewCell {
+// MARK: - UI Setups
+
+private extension ScreenshotCollectionViewCell {
     
-    fileprivate func setupScreenshotImageView() {
+    func setupUI() {
+        setupScreenshotImageView()
+    }
+    
+    func setupScreenshotImageView() {
         self.addSubview(screenshotImageView)
         
         screenshotImageView.snp.makeConstraints { make in
@@ -47,6 +60,9 @@ extension ScreenshotCollectionViewCell {
     
     
 }
+
+
+// MARK: - External functions
 
 extension ScreenshotCollectionViewCell {
     

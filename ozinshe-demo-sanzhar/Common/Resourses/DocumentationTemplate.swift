@@ -19,6 +19,6 @@
 // MARK: - Delegates
 
 /*
- SPLASH TEXT
+ SPLASH_TEXT
  
  */

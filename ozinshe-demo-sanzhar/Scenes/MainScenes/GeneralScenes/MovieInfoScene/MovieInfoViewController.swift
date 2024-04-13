@@ -11,22 +11,28 @@ import SkeletonView
 
 class MovieInfoViewController: UIViewController {
     
-    var movie: MovieWithDetails?
-    var screenshots: [Screenshot] = []
-    var similarTVSeries: [MovieWithDetails] = []
+    // MARK: - Internal variables
     
-    let descriptionGradientLayer = CAGradientLayer()
+    private var movie: MovieWithDetails?
+    private var screenshots: [Screenshot] = []
+    private var similarTVSeries: [MovieWithDetails] = []
     
-    var isDescriptionRevealed: Bool = false
-    var isSectionsNeeded: Bool = true
+    private let descriptionGradientLayer = CAGradientLayer()
     
-    lazy var scrollView: UIScrollView = {
+    private var isDescriptionRevealed: Bool = false
+    private var isSectionsNeeded: Bool = true
+    
+    
+    // MARK: - UI Elements
+    
+    // MARK: - General Elements
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isSkeletonable = true
         return scrollView
     }()
     
-    lazy var stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = -32
@@ -35,12 +41,11 @@ class MovieInfoViewController: UIViewController {
     }()
     
     
+    // MARK: - Header Elements
     
+    private lazy var previewImageContainerView = UIView()
     
-    /* MARK: HEADER ELEMENTS */
-    lazy var previewImageContainerView = UIView()
-    
-    lazy var previewImageView: UIImageView = {
+    private lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "previewImageView")
         imageView.contentMode = .scaleAspectFill
@@ -49,14 +54,14 @@ class MovieInfoViewController: UIViewController {
         return imageView
     }()
     
-    lazy var shadowGradientView: UIImageView = {
+    private lazy var shadowGradientView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "gradient")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    lazy var playButton: UIButton = {
+    private lazy var playButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "playButton"), for: .normal)
         button.addTarget(self, action: #selector(watchTapped(_:)), for: .touchUpInside)
@@ -64,14 +69,14 @@ class MovieInfoViewController: UIViewController {
         return button
     }()
     
-    lazy var shareButton: UIButton = {
+    private lazy var shareButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "shareButton"), for: .normal)
         button.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    lazy var shareLabel: UILabel = {
+    private lazy var shareLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Movie-Share", comment: "Бөлісу")
         label.textColor = Style.StaticColors.gray400
@@ -80,7 +85,7 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var saveLabel: UILabel = {
+    private lazy var saveLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Movie-Save", comment: "Тізімге қосу")
         label.textColor = Style.StaticColors.gray400
@@ -89,17 +94,16 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(saveButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
     
+    // MARK: - Body elements
     
-    
-    /* MARK: BODY ELEMENTS */
-    lazy var contentView: UIView = {
+    private lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = Style.Colors.background
         view.clipsToBounds = true
@@ -109,9 +113,9 @@ class MovieInfoViewController: UIViewController {
         return view
     }()
     
-    lazy var movieNameLabel: UILabel = {
+    private lazy var movieNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қызғалдақтар мекені"
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
         label.isSkeletonable = true
@@ -120,9 +124,9 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var shortInfoLabel: UILabel = {
+    private lazy var shortInfoLabel: UILabel = {
         let label = UILabel()
-        label.text = "2020 • Телехакия • 5 сезон, 46 серия, 7 мин."
+        label.text = "SPLASH_TEXT SPLASH_TEXT SPLASH_TEXT"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2
@@ -131,15 +135,15 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var separator1View: UIView = {
+    private lazy var separator1View: UIView = {
         let view = UIView()
         view.backgroundColor = Style.Colors.gray800
         return view
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray200
         label.numberOfLines = 5
@@ -148,7 +152,7 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var moreButton: UIButton = {
+    private lazy var moreButton: UIButton = {
         let button = UIButton()
         button.setTitle(NSLocalizedString("Movie-More", comment: "Толығырақ"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
@@ -158,7 +162,7 @@ class MovieInfoViewController: UIViewController {
         return button
     }()
     
-    lazy var directorLabel: UILabel = {
+    private lazy var directorLabel: UILabel = {
         let label = UILabel()
         label.text = "\(NSLocalizedString("Movie-Director", comment: "Режиссер")):"
         label.font = .systemFont(ofSize: 14, weight: .regular)
@@ -166,16 +170,16 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var directorNameLabel: UILabel = {
+    private lazy var directorNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Бақдәулет Әлімбеков"
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 0
         return label
     }()
     
-    lazy var producerLabel: UILabel = {
+    private lazy var producerLabel: UILabel = {
         let label = UILabel()
         label.text = "\(NSLocalizedString("Movie-Producer", comment: "Продюсер")):"
         label.font = .systemFont(ofSize: 14, weight: .regular)
@@ -183,22 +187,22 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var producerNameLabel: UILabel = {
+    private lazy var producerNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Сандуғаш Кенжебаева"
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 0
         return label
     }()
     
-    lazy var separator2View: UIView = {
+    private lazy var separator2View: UIView = {
         let view = UIView()
         view.backgroundColor = Style.Colors.gray800
         return view
     }()
     
-    lazy var sectionLabel: UILabel = {
+    private lazy var sectionLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Movie-Sections", comment: "Бөлімдер")
         label.font = .systemFont(ofSize: 16, weight: .bold)
@@ -206,7 +210,7 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var sectionButton: UIButton = {
+    private lazy var sectionButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
@@ -217,15 +221,15 @@ class MovieInfoViewController: UIViewController {
         return button
     }()
     
-    lazy var sectionInfoLabel: UILabel = {
+    private lazy var sectionInfoLabel: UILabel = {
         let label = UILabel()
-        label.text = "5 сезон, 46 серия"
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.gray400
         return label
     }()
     
-    lazy var screenshotsLabel: UILabel = {
+    private lazy var screenshotsLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Movie-Screenshots", comment: "Скриншоттар")
         label.font = .systemFont(ofSize: 16, weight: .bold)
@@ -233,7 +237,7 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var screenshotsCollectionView: UICollectionView = {
+    private lazy var screenshotsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         layout.itemSize = CGSizeMake(184, 112)
@@ -253,7 +257,7 @@ class MovieInfoViewController: UIViewController {
         return collectionView
     }()
     
-    lazy var similarSeriesLabel: UILabel = {
+    private lazy var similarSeriesLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Movie-SimilarShows", comment: "Ұқсас телехикаялар")
         label.font = .systemFont(ofSize: 16, weight: .bold)
@@ -261,7 +265,7 @@ class MovieInfoViewController: UIViewController {
         return label
     }()
     
-    lazy var moreSimilarButton: UIButton = {
+    private lazy var moreSimilarButton: UIButton = {
         let button = UIButton()
         button.setTitle(NSLocalizedString("Movie-More", comment: "Барлығы"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
@@ -270,7 +274,7 @@ class MovieInfoViewController: UIViewController {
         return button
     }()
     
-    lazy var similarCollectionView: UICollectionView = {
+    private lazy var similarCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         layout.itemSize = CGSizeMake(112, 219)
@@ -290,9 +294,8 @@ class MovieInfoViewController: UIViewController {
     }()
     
     
+    // MARK: - View Life Cycle
     
-    
-    /* MARK: VIEW CONTROLLER LIFECYCLE */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -315,30 +318,37 @@ class MovieInfoViewController: UIViewController {
 }
 
 
-// MARK: UI Setups
+// MARK: - UI Setups
+
 extension MovieInfoViewController {
     
     func setupUI() {
         view.backgroundColor = Style.Colors.background
         view.isSkeletonable = true
         
-        if #available(iOS 15.0, *) {
-            let navigationBarAppearance = UINavigationBarAppearance()
-            navigationBarAppearance.configureWithTransparentBackground()
-            navigationController?.navigationBar.standardAppearance = navigationBarAppearance
-            navigationController?.navigationBar.compactAppearance = navigationBarAppearance
-            navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-            let backButton = UIBarButtonItem()
-            backButton.title = ""
-            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        }
-        
         setupScrollView()
         setupPreviewImageView()
         setupContentView()
     }
     
-    fileprivate func setupScrollView() {
+    func setupNavigationBar() {
+        if #available(iOS 15.0, *) {
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithTransparentBackground()
+            let navBar = navigationController?.navigationBar
+            navBar?.standardAppearance = navigationBarAppearance
+            navBar?.compactAppearance = navigationBarAppearance
+            navBar?.scrollEdgeAppearance = navigationBarAppearance
+            let backButton = UIBarButtonItem()
+            backButton.title = ""
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        }
+    }
+    
+    
+    // MARK: - General Views Setups
+    
+    func setupScrollView() {
         view.addSubview(scrollView)
         
         scrollView.snp.makeConstraints { make in
@@ -354,9 +364,9 @@ extension MovieInfoViewController {
     }
     
     
+    // MARK: - Header setups
     
-    /* MARK: Header setups */
-    fileprivate func setupPreviewImageView() {
+    func setupPreviewImageView() {
         stackView.addArrangedSubview(previewImageContainerView)
         previewImageContainerView.isSkeletonable = true
         
@@ -378,7 +388,7 @@ extension MovieInfoViewController {
         setupSaveButton()
     }
     
-    fileprivate func setupGradientView() {
+    func setupGradientView() {
         previewImageView.addSubview(shadowGradientView)
         
         shadowGradientView.snp.makeConstraints { make in
@@ -386,7 +396,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupPlayButton() {
+    func setupPlayButton() {
         previewImageView.addSubview(playButton)
         
         playButton.snp.makeConstraints { make in
@@ -396,7 +406,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupShareButton() {
+    func setupShareButton() {
         previewImageView.addSubview(shareButton)
         
         shareButton.snp.makeConstraints { make in
@@ -415,7 +425,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupSaveButton() {
+    func setupSaveButton() {
         previewImageView.addSubview(saveButton)
         
         saveButton.snp.makeConstraints { make in
@@ -435,9 +445,9 @@ extension MovieInfoViewController {
     }
     
     
+    // MARK: - Body setups
     
-    /* MARK: Body setups */
-    fileprivate func setupContentView() {
+    func setupContentView() {
         stackView.addArrangedSubview(contentView)
         
         setupMovieNameLabel()
@@ -466,7 +476,7 @@ extension MovieInfoViewController {
         setupSimilarCollectionView()
     }
     
-    fileprivate func setupMovieNameLabel() {
+    func setupMovieNameLabel() {
         contentView.addSubview(movieNameLabel)
         
         movieNameLabel.snp.makeConstraints { make in
@@ -474,7 +484,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupShortInfoLabel() {
+    func setupShortInfoLabel() {
         contentView.addSubview(shortInfoLabel)
         
         shortInfoLabel.snp.makeConstraints { make in
@@ -483,7 +493,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupSeparator1View() {
+    func setupSeparator1View() {
         contentView.addSubview(separator1View)
         
         separator1View.snp.makeConstraints { make in
@@ -493,7 +503,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupDescriptionTextView() {
+    func setupDescriptionTextView() {
         contentView.addSubview(descriptionLabel)
         
         descriptionLabel.snp.makeConstraints { make in
@@ -510,7 +520,7 @@ extension MovieInfoViewController {
         descriptionLabel.layer.insertSublayer(descriptionGradientLayer, at: 0)
     }
     
-    fileprivate func setupDescriptionConfig() {
+    func setupDescriptionConfig() {
         if descriptionLabel.isTruncated || isDescriptionRevealed {
             moreButton.isHidden = false
             moreButton.snp.updateConstraints { make in
@@ -527,7 +537,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupMoreButton() {
+    func setupMoreButton() {
         contentView.addSubview(moreButton)
         
         moreButton.snp.makeConstraints { make in
@@ -537,7 +547,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupDirectorLabel() {
+    func setupDirectorLabel() {
         contentView.addSubview(directorLabel)
         
         directorLabel.snp.makeConstraints { make in
@@ -546,7 +556,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupDirectorNameLabel() {
+    func setupDirectorNameLabel() {
         contentView.addSubview(directorNameLabel)
         
         directorNameLabel.snp.makeConstraints { make in
@@ -556,7 +566,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupProducerLabel() {
+    func setupProducerLabel() {
         contentView.addSubview(producerLabel)
         
         producerLabel.snp.makeConstraints { make in
@@ -565,7 +575,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupProducerNameLabel() {
+    func setupProducerNameLabel() {
         contentView.addSubview(producerNameLabel)
         
         producerNameLabel.snp.makeConstraints { make in
@@ -575,7 +585,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupSeparator2View() {
+    func setupSeparator2View() {
         contentView.addSubview(separator2View)
         
         separator2View.snp.makeConstraints { make in
@@ -585,7 +595,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupSectionLabel() {
+    func setupSectionLabel() {
         contentView.addSubview(sectionLabel)
         
         sectionLabel.snp.makeConstraints { make in
@@ -594,7 +604,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupSectionButton() {
+    func setupSectionButton() {
         contentView.addSubview(sectionButton)
         
         sectionButton.snp.makeConstraints { make in
@@ -605,7 +615,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupSectionInfoLabel() {
+    func setupSectionInfoLabel() {
         sectionButton.addSubview(sectionInfoLabel)
         
         sectionInfoLabel.snp.makeConstraints { make in
@@ -614,7 +624,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupScreenshotsLabel() {
+    func setupScreenshotsLabel() {
         contentView.addSubview(screenshotsLabel)
         
         screenshotsLabel.snp.makeConstraints { make in
@@ -627,7 +637,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupScreenshotsCollectionView() {
+    func setupScreenshotsCollectionView() {
         contentView.addSubview(screenshotsCollectionView)
         
         screenshotsCollectionView.snp.makeConstraints { make in
@@ -637,7 +647,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupSimilarSeriesLabel() {
+    func setupSimilarSeriesLabel() {
         contentView.addSubview(similarSeriesLabel)
         
         similarSeriesLabel.snp.makeConstraints { make in
@@ -646,7 +656,7 @@ extension MovieInfoViewController {
         }
     }
     
-    fileprivate func setupSimilarCollectionView() {
+    func setupSimilarCollectionView() {
         contentView.addSubview(similarCollectionView)
         
         similarCollectionView.snp.makeConstraints { make in
@@ -659,6 +669,9 @@ extension MovieInfoViewController {
     
     
 }
+
+
+// MARK: - Targets and handlers
 
 extension MovieInfoViewController {
     
@@ -717,36 +730,7 @@ extension MovieInfoViewController {
 }
 
 
-extension MovieInfoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView {
-        case screenshotsCollectionView:
-            return screenshots.count
-        case similarCollectionView:
-            return similarTVSeries.count
-        default:
-            return 0
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch collectionView {
-        case screenshotsCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenshotCollectionViewCell.ID, for: indexPath) as! ScreenshotCollectionViewCell
-            cell.configureCell(screenshot: screenshots[indexPath.row])
-            return cell
-        case similarCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviesSectionCellCollectionViewCell.ID, for: indexPath) as! MoviesSectionCellCollectionViewCell
-            cell.configureCell(movie: similarTVSeries[indexPath.row])
-            return cell
-        default: return UICollectionViewCell()
-        }
-    }
-    
-    
-}
-
+// MARK: - External functions
 
 extension MovieInfoViewController {
     
@@ -846,3 +830,45 @@ extension MovieInfoViewController {
     
 }
 
+
+
+
+
+// MARK: - Delegates
+
+// MARK: UICollectionViewDataSource
+extension MovieInfoViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch collectionView {
+        case screenshotsCollectionView:
+            return screenshots.count
+        case similarCollectionView:
+            return similarTVSeries.count
+        default:
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch collectionView {
+        case screenshotsCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenshotCollectionViewCell.ID, for: indexPath) as! ScreenshotCollectionViewCell
+            cell.configureCell(screenshot: screenshots[indexPath.row])
+            return cell
+        case similarCollectionView:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviesSectionCellCollectionViewCell.ID, for: indexPath) as! MoviesSectionCellCollectionViewCell
+            cell.configureCell(movie: similarTVSeries[indexPath.row])
+            return cell
+        default: return UICollectionViewCell()
+        }
+    }
+    
+    
+}
+
+
+// MARK: UICollectionViewDelegate
+extension MovieInfoViewController: UICollectionViewDelegate {
+    // TODO: Write delegate functions
+}
