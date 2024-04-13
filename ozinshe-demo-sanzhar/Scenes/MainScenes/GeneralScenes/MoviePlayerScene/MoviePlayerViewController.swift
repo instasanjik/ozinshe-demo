@@ -11,37 +11,39 @@ import YoutubePlayerView
 
 class MoviePlayerViewController: UIViewController {
     
-    var movieName: String = ""
-    var movieType: String = "SERIES"
+    // MARK: - Internal variables
     
-    var movieLink: String = ""
-    var seasons: [Season] = []
+    private var movieName: String = ""
+    private var movieType: String = "SERIES"
     
-    var seasonIndex = 0
-    var episodeIndex = 0
+    private var movieLink: String = ""
+    private var seasons: [Season] = []
+    
+    private var seasonIndex = 0
+    private var episodeIndex = 0
     
     private var isButtonVisible = false
     
-    var videoDuration: TimeInterval = 0 {
+    private var videoDuration: TimeInterval = 0 {
         didSet {
             self.totalTimeCodeLabel.text = Float(videoDuration).timeCodeValue
             self.movieTimelineSlider.maximumValue = Float(videoDuration)
         }
     }
-    var currentTime: Float = 0 {
+    private var currentTime: Float = 0 {
         didSet {
             self.currentTimeCodeLabel.text = currentTime.timeCodeValue
             self.movieTimelineSlider.value = currentTime
         }
     }
-    var timeLeft: Int { return Int(videoDuration) - Int(currentTime) }
-    var currentEpisode: Series {
+    private var timeLeft: Int { return Int(videoDuration) - Int(currentTime) }
+    private var currentEpisode: Series {
         guard !seasons.isEmpty else { return Series() }
         return seasons[seasonIndex].videos[episodeIndex]
     }
     
     
-    var isPause: Bool = false {
+    private var isPause: Bool = false {
         didSet {
             let imageName = isPause ? "play.fill" : "pause.fill"
             playButton.setImage(UIImage(systemName: imageName), for: .normal)
@@ -56,6 +58,18 @@ class MoviePlayerViewController: UIViewController {
             }
         }
     }
+    
+    private var overlayTimer: Timer?
+    
+    
+    // MARK: - Overriding internal variables
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    
+    // MARK: - UI Elements
     
     private lazy var playerView: YoutubePlayerView = {
         let view = YoutubePlayerView()
@@ -103,7 +117,7 @@ class MoviePlayerViewController: UIViewController {
         return button
     }()
     
-    lazy var movieNameLabel: UILabel = {
+    private lazy var movieNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.StaticColors.white
@@ -111,7 +125,7 @@ class MoviePlayerViewController: UIViewController {
         return label
     }()
     
-    lazy var episodeLabel: UILabel = {
+    private lazy var episodeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.StaticColors.gray400
@@ -168,7 +182,7 @@ class MoviePlayerViewController: UIViewController {
         return slider
     }()
     
-    lazy var currentTimeCodeLabel: UILabel = {
+    private lazy var currentTimeCodeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.StaticColors.white
@@ -176,7 +190,7 @@ class MoviePlayerViewController: UIViewController {
         return label
     }()
     
-    lazy var totalTimeCodeLabel: UILabel = {
+    private lazy var totalTimeCodeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.StaticColors.white
@@ -196,22 +210,21 @@ class MoviePlayerViewController: UIViewController {
         return button
     }()
     
-    private var overlayTimer: Timer?
     
+    // MARK: - Overriding internal functions
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.landscapeLeft, .landscapeRight]
     }
+    
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         setupGestureRecognizers()
-    }
-    
-    override var shouldAutorotate: Bool {
-        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -230,6 +243,7 @@ class MoviePlayerViewController: UIViewController {
 
 
 // MARK: - UI Setups
+
 private extension MoviePlayerViewController {
     
     func setupUI() {
@@ -372,7 +386,9 @@ private extension MoviePlayerViewController {
     
 }
 
-// MARK: - Targets
+
+// MARK: - Targets and handlers
+
 private extension MoviePlayerViewController {
     
     @objc func playButtonTapped(_ sender: UIButton!) {
@@ -432,10 +448,13 @@ private extension MoviePlayerViewController {
     
 }
 
+
 // MARK: - Internal functions
+
 private extension MoviePlayerViewController {
     
     // MARK: Gesture Recognizers
+    
     func setupGestureRecognizers() {
         playerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playerViewTapped)))
         pauseImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playerViewTapped)))
@@ -443,21 +462,21 @@ private extension MoviePlayerViewController {
     }
     
     @objc func playerViewTapped() {
-        if overlayLayerView.alpha == 0 {
-            showOverlayView()
-        } else {
-            hideOverlayView()
-        }
+        overlayLayerView.alpha == 0 ? showOverlayView() : hideOverlayView()
     }
     
+    
     // MARK: Player data downlading
+    
     func downloadDataForPlayer() {
         playerView.fetchDuration { duration in
             self.videoDuration = (duration ?? 3) - 3
         }
     }
     
+    
     // MARK: Overlay Actions
+    
     func showOverlayView() {
         UIView.animate(withDuration: 0.3) {
             self.overlayLayerView.alpha = 1
@@ -473,6 +492,7 @@ private extension MoviePlayerViewController {
     
     
     // MARK: Overlay Timer
+    
     func startOverlayTimer() {
         resetOverlayTimer()
     }
@@ -489,7 +509,9 @@ private extension MoviePlayerViewController {
         overlayTimer = nil
     }
     
+    
     // MARK: Next episode button settings
+    
     func showNextEpisodeButton() {
         if !isButtonVisible {
             UIView.animate(withDuration: 0.3) {
@@ -514,7 +536,8 @@ private extension MoviePlayerViewController {
 }
 
 
-// MARK: - Public functions
+// MARK: - External functions
+
 extension MoviePlayerViewController {
     
     func configureScene(seasons: [Season] = [], movieName: String, selectedSeason: Int = 0, selectedSeries: Int = 0, movieType: String = "", movieLink: String = "") {
@@ -522,7 +545,6 @@ extension MoviePlayerViewController {
         
         self.movieType = movieType
         self.movieLink = movieLink
-        print("🇺🇦 \(self.movieLink)")
         
         self.seasons = seasons
         self.seasonIndex = selectedSeason
@@ -533,7 +555,9 @@ extension MoviePlayerViewController {
 }
 
 
-// MARK: - Youtube Player Delegate
+// MARK: - Delegates
+
+// MARK: YoutubePlayerViewDelegate
 extension MoviePlayerViewController: YoutubePlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: YoutubePlayerView) {
