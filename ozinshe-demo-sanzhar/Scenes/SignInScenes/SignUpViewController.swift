@@ -320,15 +320,17 @@ private extension SignUpViewController {
         if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
             if email != "" && password != "" {
                 SVProgressHUD.show()
-                AuthService.shared.signUp(email: email, password: password) { success in
-                    if success {
+                AuthService.shared.signUp(email: email, password: password) { statusCode in
+                    if statusCode == 200 {
                         SVProgressHUD.dismiss { self.openMainTabbar() }
+                    } else if statusCode == 401 {
+                        SVProgressHUD.showError(withStatus: NSLocalizedString("Login-IncorrectLoginOrPassword", comment: ""))
                     } else {
-                        SVProgressHUD.showError(withStatus: "Unknown error happened!") // TODO: Localize errors
+                        SVProgressHUD.showError(withStatus: NSLocalizedString("General-UnknownError", comment: ""))
                     }
                 }
             } else { // MARK: email or password are empty
-                SVProgressHUD.showError(withStatus: "Email or password cannot be empty") // TODO: Localize errors
+                SVProgressHUD.showError(withStatus: NSLocalizedString("SignIn-EmailIsEmpty", comment: ""))
             }
         }
     }
