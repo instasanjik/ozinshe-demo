@@ -13,8 +13,6 @@ class CoreService {
     
     static let shared = CoreService()
     
-    typealias CompletionHandler = (_ success: Bool) -> Void
-    
     let headers: HTTPHeaders = [
         "Authorization": "Bearer \(Storage.sharedInstance.accessToken)"
     ]
