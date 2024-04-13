@@ -288,10 +288,10 @@
 				041CF8AF2B8E433C003D2A58 /* OZTextField.swift */,
 				041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */,
 				041CF92A2BB69E33003D2A58 /* OZExpandedView.swift */,
+				04E4A7492BC991D900360C5F /* OZPhoneNumberTextField.swift */,
 				0402B82F2BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift */,
 				0402B8342BC2E2C800E1DB49 /* ActivityItemSource.swift */,
 				0402B83B2BC44A8F00E1DB49 /* GradientView.swift */,
-				04E4A7492BC991D900360C5F /* OZPhoneNumberTextField.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
