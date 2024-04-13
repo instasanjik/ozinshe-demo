@@ -7,8 +7,17 @@
 
 import UIKit
 
+/// Extension to UIColor providing convenience initializer for creating UIColor from hexadecimal string.
 extension UIColor {
     
+    /// Initializes a UIColor instance with a hexadecimal string.
+    ///
+    /// - Parameter hexString: The hexadecimal string representing the color.
+    ///                         Can be either RGB (6 characters), ARGB (8 characters), or short RGB (3 characters) format.
+    ///                         Case-insensitive. Can optionally include a leading '#'.
+    /// - Returns: A UIColor instance representing the color specified by the hexadecimal string.
+    ///
+    /// - Note: If the hexadecimal string is invalid, the initializer defaults to black color.
     convenience init(hex hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
@@ -26,6 +35,5 @@ extension UIColor {
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
-
     
 }
