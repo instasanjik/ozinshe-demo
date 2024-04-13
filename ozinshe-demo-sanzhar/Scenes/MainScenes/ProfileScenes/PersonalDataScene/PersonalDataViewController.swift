@@ -381,7 +381,7 @@ private extension PersonalDataViewController {
                         self.updatePageState()
                     }
                 } else {
-                    SVProgressHUD.showError(withStatus: "Something went wrong, please, try again later") // TODO: Localize
+                    SVProgressHUD.showError(withStatus: NSLocalizedString("General-UnknownError", comment: "")) 
                     Logger.log(.error, errorMessage ?? "")
                 }
             }
