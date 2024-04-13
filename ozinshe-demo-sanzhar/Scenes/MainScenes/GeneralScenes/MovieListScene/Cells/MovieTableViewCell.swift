@@ -29,7 +29,7 @@ class MovieTableViewCell: UITableViewCell {
     
     private lazy var movieNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "SPLASH_TEXT" // TODO: link with backend
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
         return label
@@ -37,7 +37,7 @@ class MovieTableViewCell: UITableViewCell {
     
     private lazy var shortInfoLabel: UILabel = {
         let label = UILabel()
-        label.text = "SPLASH_TEXT" // TODO: link with backend
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         return label

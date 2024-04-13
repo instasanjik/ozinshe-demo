@@ -31,7 +31,7 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қызғалдақтар мекені" // TODO: Link with backend
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.label
         label.isSkeletonable = true
@@ -41,7 +41,7 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "2-бөлім" // TODO: Link with backend
+        label.text = "SPLASH_TEXT" 
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2

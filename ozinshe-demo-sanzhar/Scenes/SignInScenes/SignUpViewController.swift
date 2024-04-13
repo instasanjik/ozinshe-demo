@@ -76,7 +76,7 @@ class SignUpViewController: UIViewController {
     
     private lazy var errorLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem ipsum" // TODO: localize with backend
+        label.text = "SPLASH_TEXT" // TODO: localize with backend
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = Style.Colors.error
         label.textAlignment = .center
