@@ -34,11 +34,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = SignInNavigationViewController()
         }
         
-        
-//        AuthService.login(email: "mail@mail.kz", password: "string") { success in
-//            print(success)
-//        }
-        
         window?.tintColor = Style.Colors.purple500
         window?.makeKeyAndVisible()
         

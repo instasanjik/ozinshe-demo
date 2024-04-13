@@ -382,7 +382,7 @@ private extension PersonalDataViewController {
                     }
                 } else {
                     SVProgressHUD.showError(withStatus: "Something went wrong, please, try again later") // TODO: Localize
-                    print(errorMessage ?? "")
+                    Logger.log(.error, errorMessage ?? "")
                 }
             }
         } else {

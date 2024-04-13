@@ -28,7 +28,7 @@ class CoreService {
         AF.request(Endpoints.getBanners, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
-                print("getBanners JSON: \(json)")
+                Logger.log(.info, "getBanners JSON: \(json)")
                 
                 if let array = json.array {
                     for item in array {
@@ -54,7 +54,7 @@ class CoreService {
         AF.request(Endpoints.userHistory, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
-                print("getKeepWatchingMovies JSON: \(json)")
+                Logger.log(.info, "getKeepWatchingMovies JSON: \(json)")
                 
                 if let array = json.array {
                     for item in array {
@@ -80,7 +80,7 @@ class CoreService {
         AF.request(Endpoints.getGenres, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
-                print("getGenres JSON: \(json)")
+                Logger.log(.info, "getGenres JSON: \(json)")
                 
                 if let array = json.array {
                     for item in array {
@@ -107,7 +107,7 @@ class CoreService {
         AF.request(Endpoints.getAges, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
-                print("getAgeCategories JSON: \(json)")
+                Logger.log(.info, "getAgeCategories JSON: \(json)")
                 
                 if let array = json.array {
                     for item in array {
@@ -134,7 +134,7 @@ class CoreService {
         AF.request(Endpoints.getMoviesCells, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
-                print("getMoviesCells JSON: \(json)")
+                Logger.log(.info, "getMoviesCells JSON: \(json)")
                 
                 if let array = json.array {
                     for item in array {
@@ -161,7 +161,7 @@ class CoreService {
         AF.request(Endpoints.getSeasons + "\(movieID)", method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
-                print("getMovieSeasons JSON: \(json)")
+                Logger.log(.info, "getMovieSeasons JSON: \(json)")
                 
                 if let array = json.array {
                     for item in array {
@@ -187,7 +187,7 @@ class CoreService {
         AF.request(Endpoints.getCategories, method: .get, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
-                print("getAgeCategories JSON: \(json)")
+                Logger.log(.info, "getAgeCategories JSON: \(json)")
                 
                 if let array = json.array {
                     for item in array {

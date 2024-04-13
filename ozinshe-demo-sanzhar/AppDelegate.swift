@@ -7,6 +7,8 @@
 
 import UIKit
 
+var SHOULD_PRINT: Bool = false
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

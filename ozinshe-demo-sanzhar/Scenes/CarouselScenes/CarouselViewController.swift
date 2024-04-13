@@ -147,12 +147,12 @@ private extension CarouselViewController {
         if currentPage + 1 < carouselData.count {
             carouselCollectionView.scrollToItem(at: IndexPath(item: currentPage + 1, section: 0), at: .top, animated: true)
         } else {
-            print("Go to login page")
+            Logger.log(.action, "Go to login page")
         }
     }
     
     @objc func skipTapped(sender: UIButton!) {
-        print("Go to login page")
+        Logger.log(.action, "Go to login page")
     }
     
     

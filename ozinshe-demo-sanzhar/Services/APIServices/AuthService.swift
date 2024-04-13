@@ -25,7 +25,7 @@ class AuthService {
                    encoding: JSONEncoding.default).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
-                print("JSON: \(json)")
+                Logger.log(.info, "JSON: \(json)")
                 if let token = json["accessToken"].string {
                     Storage.sharedInstance.accessToken = token
                     UserDefaults.standard.set(token, forKey: "accessToken")
@@ -50,7 +50,7 @@ class AuthService {
                    encoding: JSONEncoding.default).responseData { response in
             if response.response?.statusCode == 200 {
                 let json = JSON(response.data!)
-                print("JSON: \(json)")
+                Logger.log(.info, "JSON: \(json)")
                 
                 if let token = json["accessToken"].string {
                     Storage.sharedInstance.accessToken = token

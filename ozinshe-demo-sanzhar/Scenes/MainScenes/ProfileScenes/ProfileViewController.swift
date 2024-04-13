@@ -225,7 +225,7 @@ extension ProfileViewController {
         case 1: showChangePasswordViewController()
         case 2: showSelectionLanguageView()
         case 3: showTermsOfUseViewController()
-        default: print(indexPath)
+        default: return
         }
     }
 }

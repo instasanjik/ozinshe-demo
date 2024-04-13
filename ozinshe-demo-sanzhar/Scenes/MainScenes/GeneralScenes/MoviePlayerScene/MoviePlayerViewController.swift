@@ -84,10 +84,10 @@ class MoviePlayerViewController: UIViewController {
         ]
         view.delegate = self
         if movieType == "MOVIE" {
-            print("MOVIE: Trying to play video from youtube. \(movieLink)🔎")
+            Logger.log(.info, "MOVIE: Trying to play video from youtube. \(movieLink)🔎")
             view.loadWithVideoId(movieLink, with: playerVars)
         } else {
-            print("SERIES: Trying to play video from youtube. VideoID: \(currentEpisode.youtubeID)")
+            Logger.log(.info, "SERIES: Trying to play video from youtube. VideoID: \(currentEpisode.youtubeID)")
             view.loadWithVideoId(currentEpisode.youtubeID, with: playerVars)
         }
         return view

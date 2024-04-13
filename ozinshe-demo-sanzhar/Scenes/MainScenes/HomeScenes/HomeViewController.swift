@@ -219,7 +219,8 @@ private extension HomeViewController {
     }
     
     func openMovieListViewController(with content: ContentCategory) {
-        print(content.name)
+        Logger.log(.info, content.name)
+        // TODO: Make age and genres view controller open
     }
     
     

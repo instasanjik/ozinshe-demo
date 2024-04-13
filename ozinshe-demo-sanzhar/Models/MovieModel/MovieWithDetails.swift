@@ -76,8 +76,6 @@ class MovieWithDetails {
         if json["video"].exists() {
             if let temp = json["video"]["link"].string {
                 self.video_link = temp
-                
-                print(self.name + " - " + self.video_link)
             }
         }
         

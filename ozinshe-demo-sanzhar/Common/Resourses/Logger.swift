@@ -13,11 +13,13 @@ enum LogType: String {
     case success
     case action
     case canceled
+    case info
 }
 
 public class OZLogger {
     
-    static func log(_ logType:LogType,_ message:String){
+    static func log(_ logType:LogType, _ message: Any) {
+        guard SHOULD_PRINT else { return }
         switch logType {
         case LogType.error:
             print("\(Date.dateTime) - 📕 Error: \(message)\n")
@@ -29,6 +31,8 @@ public class OZLogger {
             print("\(Date.dateTime) - 📘 Action: \(message)\n")
         case LogType.canceled:
             print("\(Date.dateTime) - 📓 Cancelled: \(message)\n")
+        case LogType.info:
+            print("\(Date.dateTime) - 📓 Info: \(message)\n")
         }
     }
     

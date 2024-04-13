@@ -30,7 +30,6 @@ class KeepWatchingTableViewCell: UITableViewCell {
     private var keepWatchingMovieList: [MovieWithDetails] = [] {
         didSet {
             itemsCount = keepWatchingMovieList.count
-            print(itemsCount)
             contentCollectionView.reloadData()
         }
     }
