@@ -8,11 +8,13 @@
 import UIKit
 import SnapKit
 
-class OZTextFieldView: UIView {
+final class OZTextFieldView: UIView {
     
-    lazy var textField = OZTextField()
+    // MARK: - UI Elements
     
-    lazy var errorLabel: UILabel = {
+    private lazy var textField = OZTextField()
+    
+    private lazy var errorLabel: UILabel = {
         let label = UILabel()
         label.text = "SPLASH_TEXT" // TODO: localize with backend
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -20,22 +22,28 @@ class OZTextFieldView: UIView {
         return label
     }()
     
+    
+    // MARK: - View Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupView()
+        setupUI()
     }
     
     
 }
 
-extension OZTextFieldView {
+
+// MARK: - UI Setups
+
+private extension OZTextFieldView {
     
-    private func setupView() {
+    func setupUI() {
         addSubview(textField)
         
         textField.snp.makeConstraints { make in
@@ -50,7 +58,7 @@ extension OZTextFieldView {
     }
     
     
-    private func setupErrorLabel() {
+    func setupErrorLabel() {
         self.addSubview(errorLabel)
         
         errorLabel.snp.makeConstraints { make in
@@ -63,6 +71,8 @@ extension OZTextFieldView {
     
 }
 
+
+// MARK: - External functions
 
 extension OZTextFieldView {
     
