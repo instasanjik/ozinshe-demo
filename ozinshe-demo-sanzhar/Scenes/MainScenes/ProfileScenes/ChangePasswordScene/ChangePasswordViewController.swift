@@ -7,10 +7,13 @@
 
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 class ChangePasswordViewController: UIViewController {
     
-    lazy var passwordLabel: UILabel = {
+    // MARK: - UI Elements
+    
+    private lazy var passwordLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
@@ -18,56 +21,74 @@ class ChangePasswordViewController: UIViewController {
         return label
     }()
     
-    lazy var passwordTextField: OZTextField = {
+    private lazy var passwordTextField: OZTextField = {
         let textField = OZTextField()
         textField.placeholder = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
         textField.configureTextField(icon: "password", suffixImageName: "eye")
         return textField
     }()
     
-    lazy var repeatPasswordLabel: UILabel = {
+    private lazy var passwordConfirmationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = NSLocalizedString("ChangePassword-RepeatPassword", comment: "Құпия сөз") 
+        label.text = NSLocalizedString("ChangePassword-RepeatPassword", comment: "Құпия сөз")
         return label
     }()
     
-    lazy var repeatPasswordTextField: OZTextField = {
+    private lazy var passwordConfirmationTextField: OZTextField = {
         let textField = OZTextField()
         textField.placeholder = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
         textField.configureTextField(icon: "password", suffixImageName: "eye")
         return textField
     }()
-
+    
+    private lazy var saveButton: OZButton = {
+        let button = OZButton()
+        button.titleText = "Save"
+        button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        addKeyboardObservers()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         setTabBarHidden(false)
     }
     
-
+    
 }
 
 
-extension ChangePasswordViewController {
+// MARK: - UI Setups
+
+private extension ChangePasswordViewController {
     
-    fileprivate func setupUI() {
+    func setupUI() {
         view.backgroundColor = Style.Colors.background
-        
-        navigationItem.title = NSLocalizedString("Profile-ChangePassword", comment: "Құпия сөзді өзгерту")
+        setupNavigationBar()
         
         setupPasswordLabel()
         setupPasswordTextField()
         
-        setupRepeatPasswordLabel()
-        setupRepeatPasswordTextField()
+        setupPasswordConfirmationLabel()
+        setupPasswordConfirmationTextField()
+        
+        setupSaveButton()
     }
     
-    fileprivate func setupPasswordLabel() {
+    func setupNavigationBar() {
+        navigationItem.title = NSLocalizedString("Profile-ChangePassword", comment: "Құпия сөзді өзгерту")
+    }
+    
+    func setupPasswordLabel() {
         view.addSubview(passwordLabel)
         
         passwordLabel.snp.makeConstraints { make in
@@ -76,7 +97,7 @@ extension ChangePasswordViewController {
         }
     }
     
-    fileprivate func setupPasswordTextField() {
+    func setupPasswordTextField() {
         view.addSubview(passwordTextField)
         
         passwordTextField.snp.makeConstraints { make in
@@ -86,22 +107,86 @@ extension ChangePasswordViewController {
         }
     }
     
-    fileprivate func setupRepeatPasswordLabel() {
-        view.addSubview(repeatPasswordLabel)
+    func setupPasswordConfirmationLabel() {
+        view.addSubview(passwordConfirmationLabel)
         
-        repeatPasswordLabel.snp.makeConstraints { make in
+        passwordConfirmationLabel.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).inset(-24)
             make.left.equalToSuperview().inset(24)
         }
     }
     
-    fileprivate func setupRepeatPasswordTextField() {
-        view.addSubview(repeatPasswordTextField)
+    func setupPasswordConfirmationTextField() {
+        view.addSubview(passwordConfirmationTextField)
         
-        repeatPasswordTextField.snp.makeConstraints { make in
-            make.top.equalTo(repeatPasswordLabel.snp.bottom).inset(-8)
+        passwordConfirmationTextField.snp.makeConstraints { make in
+            make.top.equalTo(passwordConfirmationLabel.snp.bottom).inset(-8)
             make.left.right.equalToSuperview().inset(24)
             make.height.equalTo(56)
+        }
+    }
+    
+    func setupSaveButton() {
+        view.addSubview(saveButton)
+        
+        saveButton.snp.makeConstraints { make in
+            make.left.bottom.right.equalTo(view.safeAreaLayoutGuide).inset(24)
+        }
+    }
+    
+    
+}
+
+
+// MARK: - Internal functions
+
+private extension ChangePasswordViewController {
+    
+    func addKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIWindow.keyboardDidShowNotification, object: nil)
+    }
+    
+    
+}
+
+
+// MARK: - Targets
+
+private extension ChangePasswordViewController {
+    
+    @objc func saveButtonTapped() {
+        let password = passwordTextField.text ?? ""
+        let passwordConfirmation = passwordConfirmationTextField.text ?? ""
+        
+        if password != passwordConfirmation {
+            SVProgressHUD.showError(withStatus: "Passwords are not similar!")
+            return
+        } else if password.isEmpty {
+            SVProgressHUD.showError(withStatus: "Password can not be empty")
+            return
+        }
+        
+        SVProgressHUD.show()
+        CoreService.shared.changeUserPassword(password: password) { success, errorMessage in
+            if success {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    SVProgressHUD.showSuccess(withStatus: "New password saved successfully!")
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            } else {
+                SVProgressHUD.showError(withStatus: "Something went wrong. please, try again later")
+            }
+        }
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0 {
+                let height = keyboardSize.height
+                self.saveButton.snp.updateConstraints { make in
+                    make.bottom.equalTo(view.safeAreaLayoutGuide).inset(height)
+                }
+            }
         }
     }
     
