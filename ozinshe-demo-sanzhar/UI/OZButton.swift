@@ -8,8 +8,9 @@
 import UIKit
 import SnapKit
 
-class OZButton: UIButton {
+final class OZButton: UIButton {
     
+    // MARK: - External variables
     var titleText: String? {
         didSet {
             setTitle(titleText, for: .normal)
@@ -18,21 +19,14 @@ class OZButton: UIButton {
         }
     }
     
-
-    override init(frame: CGRect){
-        super.init(frame: frame)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     
+    // MARK: - Overriding internal functions
     override func layoutSubviews() {
         super.layoutSubviews()
         setupUI()
     }
-
+    
+    // MARK: - UI Setups
     func setupUI() {
         clipsToBounds = true
         layer.cornerRadius = 12
@@ -42,4 +36,6 @@ class OZButton: UIButton {
             make.width.equalTo(Screen.width - (24 * 2))
         }
     }
+    
+    
 }
