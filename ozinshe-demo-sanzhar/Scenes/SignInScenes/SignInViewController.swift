@@ -332,11 +332,11 @@ private extension SignInViewController {
     }
     
     @objc func signUpWithAppleTapped(sender: UIButton!) {
-        SVProgressHUD.showError(withStatus: "We are sorry! This options is not working now") // TODO: Localize error
+        SVProgressHUD.showError(withStatus: NSLocalizedString("General-FunctionUnavailableError", comment: ""))
     }
     
     @objc func signUpWithGoogleTapped(sender: UIButton!) {
-        SVProgressHUD.showError(withStatus: "We are sorry! This options is not working now")
+        SVProgressHUD.showError(withStatus: NSLocalizedString("General-FunctionUnavailableError", comment: ""))
     }
     
     
@@ -363,15 +363,17 @@ private extension SignInViewController {
         if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
             if email != "" && password != "" {
                 SVProgressHUD.show()
-                AuthService.shared.login(email: email, password: password) { success in
-                    if success {
+                AuthService.shared.login(email: email, password: password) { statusCode in
+                    if statusCode == 200 {
                         SVProgressHUD.dismiss { self.openMainTabbar() }
+                    } else if statusCode == 401 {
+                        SVProgressHUD.showError(withStatus: NSLocalizedString("Login-IncorrectLoginOrPassword", comment: ""))
                     } else {
-                        SVProgressHUD.showError(withStatus: "Incorrect login or password") // TODO: Localize errors
+                        SVProgressHUD.showError(withStatus: NSLocalizedString("General-UnknownError", comment: ""))
                     }
                 }
             } else { // MARK: email or password are empty
-                SVProgressHUD.showError(withStatus: "Email or password cannot be empty") // TODO: Localize errors
+                SVProgressHUD.showError(withStatus: NSLocalizedString("SignIn-EmailIsEmpty", comment: ""))
             }
         }
     }

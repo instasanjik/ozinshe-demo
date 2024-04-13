@@ -12,7 +12,7 @@ import SwiftyJSON
 class AuthService {
     static let shared = AuthService()
     
-    typealias CompletionHandler = (_ success: Bool) -> Void
+    typealias CompletionHandler = (_ statusCode: Int) -> Void
     
     func login(email: String, password: String, completionHandler: @escaping CompletionHandler) {
         
@@ -29,13 +29,10 @@ class AuthService {
                 if let token = json["accessToken"].string {
                     Storage.sharedInstance.accessToken = token
                     UserDefaults.standard.set(token, forKey: "accessToken")
-                    completionHandler(true)
-                } else {
-                    completionHandler(false)
                 }
-            } else {
-                completionHandler(false)
             }
+            completionHandler(response.response?.statusCode ?? 0)
+            return
         }
     }
     
@@ -55,13 +52,10 @@ class AuthService {
                 if let token = json["accessToken"].string {
                     Storage.sharedInstance.accessToken = token
                     UserDefaults.standard.set(token, forKey: "accessToken")
-                    completionHandler(true)
-                } else {
-                    completionHandler(false)
                 }
-            } else {
-                completionHandler(false)
             }
+            completionHandler(response.response?.statusCode ?? 0)
+            return
         }
     }
     
