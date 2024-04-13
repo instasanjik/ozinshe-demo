@@ -11,17 +11,14 @@ import SkeletonView
 
 class MovieTableViewCell: UITableViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "MovieTableViewCell"
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        backgroundColor = selected ? Style.Colors.gray800 : .clear
-    }
     
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        backgroundColor = highlighted ? Style.Colors.gray800 : .clear
-    }
+    // MARK: - UI Elements
     
-    lazy var previewImageView: UIImageView = {
+    private lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "previewImageView")
         imageView.contentMode = .scaleAspectFill
@@ -30,23 +27,23 @@ class MovieTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    lazy var movieNameLabel: UILabel = {
+    private lazy var movieNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қызғалдақтар мекені" // TODO: link with backend
+        label.text = "SPLASH_TEXT" // TODO: link with backend
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
         return label
     }()
     
-    lazy var shortInfoLabel: UILabel = {
+    private lazy var shortInfoLabel: UILabel = {
         let label = UILabel()
-        label.text = "2020 • Телехакая • Мультфильм" // TODO: link with backend
+        label.text = "SPLASH_TEXT" // TODO: link with backend
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         return label
     }()
     
-    lazy var watchButton: UIButton = {
+    private lazy var watchButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = Style.Colors.gray800
         button.tintColor = Style.Colors.purple400
@@ -66,15 +63,23 @@ class MovieTableViewCell: UITableViewCell {
         return button
     }()
     
+    
+    // MARK: - Overriding internal functions
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        backgroundColor = selected ? Style.Colors.gray800 : .clear
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        backgroundColor = highlighted ? Style.Colors.gray800 : .clear
+    }
+    
+    
+    // MARK: - View Life Cycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        self.backgroundColor = .clear
-        
-        setupPreviewImageView()
-        setupMovieNameLabel()
-        setupShortInfoLabel()
-        setupWatchButton()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -84,9 +89,21 @@ class MovieTableViewCell: UITableViewCell {
 
 }
 
-extension MovieTableViewCell {
+
+// MARK: - UI Setups
+
+private extension MovieTableViewCell {
     
-    fileprivate func setupPreviewImageView() {
+    func setupUI() {
+        self.backgroundColor = .clear
+        
+        setupPreviewImageView()
+        setupMovieNameLabel()
+        setupShortInfoLabel()
+        setupWatchButton()
+    }
+    
+    func setupPreviewImageView() {
         self.addSubview(previewImageView)
         
         previewImageView.snp.makeConstraints { make in
@@ -96,7 +113,7 @@ extension MovieTableViewCell {
         }
     }
     
-    fileprivate func setupMovieNameLabel() {
+    func setupMovieNameLabel() {
         self.addSubview(movieNameLabel)
         
         movieNameLabel.snp.makeConstraints { make in
@@ -105,7 +122,7 @@ extension MovieTableViewCell {
         }
     }
     
-    fileprivate func setupShortInfoLabel() {
+    func setupShortInfoLabel() {
         self.addSubview(shortInfoLabel)
         
         shortInfoLabel.snp.makeConstraints { make in
@@ -115,7 +132,7 @@ extension MovieTableViewCell {
         }
     }
     
-    fileprivate func setupWatchButton() {
+    func setupWatchButton() {
         self.addSubview(watchButton)
         
         watchButton.snp.makeConstraints { make in
@@ -129,6 +146,8 @@ extension MovieTableViewCell {
     
 }
 
+
+// MARK: - External functions
 
 extension MovieTableViewCell {
     
