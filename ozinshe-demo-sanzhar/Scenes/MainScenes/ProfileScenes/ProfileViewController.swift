@@ -86,6 +86,8 @@ private extension ProfileViewController {
     func showPersonalDataViewController() {
         setTabBarHidden(true)
         let vc = PersonalDataViewController()
+        vc.setupController(with: userProfile ?? UserProfile())
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -168,6 +170,16 @@ extension ProfileViewController: LeaveConfirmationViewControllerDelegate {
         } completion: { complete in
             self.blurEffectView.removeFromSuperview()
         }
+    }
+    
+    
+}
+
+// MARK: PersonalDataViewControllerDelegate
+extension ProfileViewController: PersonalDataViewControllerDelegate {
+    
+    func personnalData(profileWasUpdate userProfile: UserProfile) {
+        self.userProfile = userProfile
     }
     
     

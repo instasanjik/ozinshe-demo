@@ -31,7 +31,7 @@
 		041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */; };
 		041CF8B02B8E433C003D2A58 /* OZTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8AF2B8E433C003D2A58 /* OZTextField.swift */; };
 		041CF8B22B9DA043003D2A58 /* OZTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */; };
-		041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B62B9DB2BA003D2A58 /* Date.swift */; };
+		041CF8B72B9DB2BA003D2A58 /* Date+Extentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B62B9DB2BA003D2A58 /* Date+Extentsion.swift */; };
 		041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8B82B9DB312003D2A58 /* Logger.swift */; };
 		041CF8BB2B9DCD77003D2A58 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8BA2B9DCD77003D2A58 /* UIButton+Extension.swift */; };
 		041CF8BD2B9DD42E003D2A58 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */; };
@@ -60,7 +60,6 @@
 		041CF9162BB2B988003D2A58 /* ProfileSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9152BB2B988003D2A58 /* ProfileSectionTableViewCell.swift */; };
 		041CF9182BB3FD19003D2A58 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9172BB3FD19003D2A58 /* ProfileHeaderView.swift */; };
 		041CF91C2BB580F1003D2A58 /* PersonalDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF91B2BB580F1003D2A58 /* PersonalDataViewController.swift */; };
-		041CF9202BB581A4003D2A58 /* PersonalDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF91F2BB581A4003D2A58 /* PersonalDataTableViewCell.swift */; };
 		041CF9232BB58DB7003D2A58 /* SelectionLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9222BB58DB7003D2A58 /* SelectionLanguageViewController.swift */; };
 		041CF9252BB59059003D2A58 /* SelectionLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9242BB59059003D2A58 /* SelectionLanguageTableViewCell.swift */; };
 		041CF9272BB59FFA003D2A58 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9262BB59FFA003D2A58 /* UIViewController+Extension.swift */; };
@@ -86,6 +85,8 @@
 		041CF9622BBB049A003D2A58 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9612BBB049A003D2A58 /* Season.swift */; };
 		04E4A7472BC45DF300360C5F /* MoviesSectionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7452BC45DF300360C5F /* MoviesSectionCellTableViewCell.swift */; };
 		04E4A7482BC45DF300360C5F /* MoviesSectionCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7462BC45DF300360C5F /* MoviesSectionCellCollectionViewCell.swift */; };
+		04E4A74A2BC991D900360C5F /* OZPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7492BC991D900360C5F /* OZPhoneNumberTextField.swift */; };
+		04E4A74E2BCA757200360C5F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A74D2BCA757200360C5F /* String+Extension.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,7 +117,7 @@
 		041CF8AD2B8E22B2003D2A58 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		041CF8AF2B8E433C003D2A58 /* OZTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZTextField.swift; sourceTree = "<group>"; };
 		041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZTextFieldView.swift; sourceTree = "<group>"; };
-		041CF8B62B9DB2BA003D2A58 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		041CF8B62B9DB2BA003D2A58 /* Date+Extentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extentsion.swift"; sourceTree = "<group>"; };
 		041CF8B82B9DB312003D2A58 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		041CF8BA2B9DCD77003D2A58 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		041CF8BC2B9DD42E003D2A58 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +146,6 @@
 		041CF9152BB2B988003D2A58 /* ProfileSectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionTableViewCell.swift; sourceTree = "<group>"; };
 		041CF9172BB3FD19003D2A58 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		041CF91B2BB580F1003D2A58 /* PersonalDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataViewController.swift; sourceTree = "<group>"; };
-		041CF91F2BB581A4003D2A58 /* PersonalDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataTableViewCell.swift; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 1; };
 		041CF9222BB58DB7003D2A58 /* SelectionLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionLanguageViewController.swift; sourceTree = "<group>"; };
 		041CF9242BB59059003D2A58 /* SelectionLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		041CF9262BB59FFA003D2A58 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -171,6 +171,8 @@
 		041CF9612BBB049A003D2A58 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		04E4A7452BC45DF300360C5F /* MoviesSectionCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesSectionCellTableViewCell.swift; sourceTree = "<group>"; };
 		04E4A7462BC45DF300360C5F /* MoviesSectionCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesSectionCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		04E4A7492BC991D900360C5F /* OZPhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPhoneNumberTextField.swift; sourceTree = "<group>"; };
+		04E4A74D2BCA757200360C5F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,6 +291,7 @@
 				0402B82F2BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift */,
 				0402B8342BC2E2C800E1DB49 /* ActivityItemSource.swift */,
 				0402B83B2BC44A8F00E1DB49 /* GradientView.swift */,
+				04E4A7492BC991D900360C5F /* OZPhoneNumberTextField.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -345,9 +348,10 @@
 		041CF8C22B9EF7C9003D2A58 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				041CF8B62B9DB2BA003D2A58 /* Date.swift */,
+				041CF8B62B9DB2BA003D2A58 /* Date+Extentsion.swift */,
 				0402B81E2BBF36CF00E1DB49 /* Int+Extension.swift */,
 				0402B82B2BC0065700E1DB49 /* Float+Extension.swift */,
+				04E4A74D2BCA757200360C5F /* String+Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -502,17 +506,8 @@
 			isa = PBXGroup;
 			children = (
 				041CF91B2BB580F1003D2A58 /* PersonalDataViewController.swift */,
-				041CF91E2BB5817E003D2A58 /* Cells */,
 			);
 			path = PersonalDataScene;
-			sourceTree = "<group>";
-		};
-		041CF91E2BB5817E003D2A58 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				041CF91F2BB581A4003D2A58 /* PersonalDataTableViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		041CF9212BB58D90003D2A58 /* SelectionLanguageScene */ = {
@@ -794,9 +789,9 @@
 				041CF9402BB71E4F003D2A58 /* SearchNavigationViewController.swift in Sources */,
 				041CF91C2BB580F1003D2A58 /* PersonalDataViewController.swift in Sources */,
 				041CF94A2BBAE73B003D2A58 /* AuthService.swift in Sources */,
+				04E4A74A2BC991D900360C5F /* OZPhoneNumberTextField.swift in Sources */,
 				041CF9362BB7196A003D2A58 /* SignInNavigationViewController.swift in Sources */,
 				041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */,
-				041CF9202BB581A4003D2A58 /* PersonalDataTableViewCell.swift in Sources */,
 				041CF8FB2BA30FCA003D2A58 /* MovieInfoViewController.swift in Sources */,
 				041CF9042BA4A227003D2A58 /* ScreenshotCollectionViewCell.swift in Sources */,
 				041CF8BB2B9DCD77003D2A58 /* UIButton+Extension.swift in Sources */,
@@ -828,10 +823,11 @@
 				041CF8D92BA168BF003D2A58 /* HeaderTableViewCell.swift in Sources */,
 				04E4A7482BC45DF300360C5F /* MoviesSectionCellCollectionViewCell.swift in Sources */,
 				0402B82C2BC0065700E1DB49 /* Float+Extension.swift in Sources */,
+				04E4A74E2BCA757200360C5F /* String+Extension.swift in Sources */,
 				041CF9542BBB00E7003D2A58 /* ContentCategory.swift in Sources */,
 				041CF8B92B9DB312003D2A58 /* Logger.swift in Sources */,
 				041CF90D2BAAA9F3003D2A58 /* ContentCategoryCollectionViewCell.swift in Sources */,
-				041CF8B72B9DB2BA003D2A58 /* Date.swift in Sources */,
+				041CF8B72B9DB2BA003D2A58 /* Date+Extentsion.swift in Sources */,
 				041CF9622BBB049A003D2A58 /* Season.swift in Sources */,
 				0402B8302BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				041CF8D42B9EFE86003D2A58 /* ProfileViewController.swift in Sources */,
