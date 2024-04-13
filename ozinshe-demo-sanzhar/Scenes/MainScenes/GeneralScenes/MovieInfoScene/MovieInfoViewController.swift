@@ -326,9 +326,12 @@ extension MovieInfoViewController {
         view.backgroundColor = Style.Colors.background
         view.isSkeletonable = true
         
+        setupNavigationBar()
+        
         setupScrollView()
         setupPreviewImageView()
         setupContentView()
+        
     }
     
     func setupNavigationBar() {
