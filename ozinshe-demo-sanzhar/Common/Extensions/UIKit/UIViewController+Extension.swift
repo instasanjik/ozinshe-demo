@@ -7,15 +7,20 @@
 
 import UIKit
 
-var originalTabBarFrame: CGRect?
-
+/// Extension to UIViewController providing utility methods for managing tab bar, navigation bar, and presenting share pop-up.
 extension UIViewController {
     
+    /// Sets the visibility of the tab bar.
+    ///
+    /// - Parameter hidden: A Boolean value indicating whether the tab bar should be hidden.
     func setTabBarHidden(_ hidden: Bool) {
         self.tabBarController?.tabBar.isHidden = hidden
         self.tabBarController?.tabBar.isTranslucent = hidden
     }
     
+    /// Sets the navigation bar to be hidden and transparent.
+    ///
+    /// - Note: Only available on iOS 15 and later.
     func setNavigationBarHidden() {
         if #available(iOS 15.0, *) {
             let navigationBarAppearance = UINavigationBarAppearance()
@@ -29,6 +34,12 @@ extension UIViewController {
         }
     }
     
+    /// Presents a share pop-up with the specified title, message, and optional image.
+    ///
+    /// - Parameters:
+    ///   - title: The title for the share pop-up.
+    ///   - message: The message to be shared.
+    ///   - image: The optional image to be shared.
     func presentSharePopup(title: String, message: String, image: UIImage? = nil) {
         var itemsToShare: [Any] = [ActivityItemSource(title: title, text: message)]
         
