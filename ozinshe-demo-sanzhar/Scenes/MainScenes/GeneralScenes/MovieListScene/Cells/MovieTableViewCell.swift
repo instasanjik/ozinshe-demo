@@ -53,7 +53,6 @@ class MovieTableViewCell: UITableViewCell {
         button.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
         button.setTitleColor(Style.Colors.purple400, for: .normal)
         
-        
         button.setImage(UIImage(systemName: "play.fill"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         
@@ -138,7 +137,7 @@ private extension MovieTableViewCell {
         watchButton.snp.makeConstraints { make in
             make.top.equalTo(shortInfoLabel.snp.bottom).inset(-24)
             make.left.equalTo(movieNameLabel)
-            make.width.equalTo(80)
+            make.width.greaterThanOrEqualTo(80)
             make.height.equalTo(26)
         }
     }
