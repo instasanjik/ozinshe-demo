@@ -12,7 +12,7 @@ final class OZTextFieldView: UIView {
     
     // MARK: - UI Elements
     
-    private lazy var textField = OZTextField()
+    lazy var textField = OZTextField()
     
     private lazy var errorLabel: UILabel = {
         let label = UILabel()
