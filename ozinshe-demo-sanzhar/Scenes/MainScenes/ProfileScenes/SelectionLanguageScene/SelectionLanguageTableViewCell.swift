@@ -10,22 +10,29 @@ import SnapKit
 
 class SelectionLanguageTableViewCell: UITableViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "SelectionLanguageTableViewCell"
     
-    lazy var languageNameLabel: UILabel = {
+    
+    // MARK: - UI Elements
+    
+    private lazy var languageNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textColor = Style.Colors.label
-        label.text = "English" // TODO: Make it dynamic
         return label
     }()
     
-    lazy var checkImageView: UIImageView = {
+    private lazy var checkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "checkmark.circle.fill")
         imageView.tintColor = Style.Colors.purple300
         return imageView
     }()
+    
+    
+    // MARK: - Overriding internal functions
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {}
     
@@ -37,11 +44,11 @@ class SelectionLanguageTableViewCell: UITableViewCell {
         }
     }
     
+    
+    // MARK: - View Life Cycle
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .clear
-        
-        setupLanguageNameLabel()
     }
     
     
@@ -52,9 +59,17 @@ class SelectionLanguageTableViewCell: UITableViewCell {
     
 }
 
-extension SelectionLanguageTableViewCell {
+
+// MARK: - UI Setups
+
+private extension SelectionLanguageTableViewCell {
     
-    fileprivate func setupLanguageNameLabel() {
+    func setupUI() {
+        self.backgroundColor = .clear
+        setupLanguageNameLabel()
+    }
+    
+    func setupLanguageNameLabel() {
         addSubview(languageNameLabel)
         
         languageNameLabel.snp.makeConstraints { make in
@@ -63,7 +78,7 @@ extension SelectionLanguageTableViewCell {
         }
     }
     
-    fileprivate func setupCheckImageView() {
+    func setupCheckImageView() {
         addSubview(checkImageView)
         
         checkImageView.snp.makeConstraints { make in
