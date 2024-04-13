@@ -7,21 +7,39 @@
 
 import UIKit
 
-class OZPhoneNumberTextField: OZTextField {
+final class OZPhoneNumberTextField: OZTextField {
     
-    // MARK: - Properties
+    // MARK: - Internal variables
     
     private let maxLength = 18
     private var currentPhoneNumber = ""
     private var previousTextFieldContent: String?
     private var previousSelection: UITextRange?
     
+    
+    // MARK: - External variables
+    
     var isValid: Bool {
         return currentPhoneNumber.count == maxLength
     }
     
     
-    // MARK: - Initialization
+    // MARK: - Overriding internal functions
+    
+    override func deleteBackward() {
+        super.deleteBackward()
+        
+        if let lastChar = text?.last, lastChar == " " || lastChar == ")" || lastChar == "(" || lastChar == "-" {
+            text?.removeLast()
+        }
+        
+        if let text = text {
+            currentPhoneNumber = text.filter { $0.isNumber }
+        }
+    }
+    
+    
+    // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,12 +51,13 @@ class OZPhoneNumberTextField: OZTextField {
         commonInit()
     }
     
-    private func commonInit() {
-        addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-    }
     
-    
-    // MARK: - UITextField Delegate
+}
+
+
+// MARK: - Targets and handlers
+
+extension OZPhoneNumberTextField {
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -50,10 +69,7 @@ class OZPhoneNumberTextField: OZTextField {
         }
         
         let filteredText = text.filter { $0.isNumber }
-        // +7 (7XX) XXX-XX-XX
-        // 123456789012345678
-        // 77011231233
-        // 01234567890
+        
         var formattedText = ""
         for (index, char) in filteredText.enumerated() {
             let formatterSubstring: String
@@ -80,16 +96,16 @@ class OZPhoneNumberTextField: OZTextField {
         previousSelection = textField.selectedTextRange
     }
     
-    override func deleteBackward() {
-        super.deleteBackward()
-        
-        if let lastChar = text?.last, lastChar == " " || lastChar == ")" || lastChar == "(" || lastChar == "-" {
-            text?.removeLast()
-        }
-        
-        if let text = text {
-            currentPhoneNumber = text.filter { $0.isNumber }
-        }
+    
+}
+
+
+// MARK: - Internal functions
+
+private extension OZPhoneNumberTextField {
+    
+    func commonInit() {
+        addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     
