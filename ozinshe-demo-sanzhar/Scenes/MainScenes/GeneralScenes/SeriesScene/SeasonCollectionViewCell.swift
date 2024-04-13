@@ -11,16 +11,12 @@ import SkeletonView
 
 class SeasonCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "SeasonCollectionViewCell"
     
     
-    lazy var seasonLabel: UILabel = {
-        let label = UILabel()
-        label.text = "1 сезон"
-        label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = Style.StaticColors.label
-        return label
-    }()
+    // MARK: - Overriding internal variables
     
     override var isSelected: Bool {
         didSet {
@@ -28,13 +24,23 @@ class SeasonCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
+    // MARK: - UI Elements
+    
+    private lazy var seasonLabel: UILabel = {
+        let label = UILabel()
+        label.text = "SPLASH_TEXT"
+        label.font = .systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = Style.StaticColors.label
+        return label
+    }()
+    
+    
+    // MARK: - View Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.backgroundColor = Style.Colors.gray700
-        self.layer.cornerRadius = 8
-        
-        setupSeasonLabel()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -44,9 +50,18 @@ class SeasonCollectionViewCell: UICollectionViewCell {
 }
 
 
-extension SeasonCollectionViewCell {
+// MARK: - UI Setups
+
+private extension SeasonCollectionViewCell {
     
-    fileprivate func setupSeasonLabel() {
+    func setupUI() {
+        self.backgroundColor = Style.Colors.gray700
+        self.layer.cornerRadius = 8
+        
+        setupSeasonLabel()
+    }
+    
+    func setupSeasonLabel() {
         self.addSubview(seasonLabel)
         
         seasonLabel.snp.makeConstraints { make in
@@ -58,10 +73,13 @@ extension SeasonCollectionViewCell {
     
 }
 
+
+// MARK: - External functions
+
 extension SeasonCollectionViewCell {
     
     func configureCell(seasonNumber: Int) {
-        self.seasonLabel.text = "\(seasonNumber.ordinalString()) \(NSLocalizedString("Seasons-Seasons", comment: "Seasons"))"
+        self.seasonLabel.text = "\(seasonNumber) \(NSLocalizedString("Seasons-Seasons", comment: "Seasons"))"
     }
     
     

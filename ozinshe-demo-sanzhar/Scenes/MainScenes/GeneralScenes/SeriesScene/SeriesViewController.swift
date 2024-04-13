@@ -11,19 +11,23 @@ import SkeletonView
 
 class SeriesViewController: UIViewController {
     
-    var movieName: String = ""
-    var seasons: [Season] = [] {
+    // MARK: - Internal variables
+    
+    private var movieName: String = ""
+    private var seasons: [Season] = [] {
         didSet {
             seasonsCollectionView.reloadData()
             seriesTableView.reloadData()
         }
     }
+    private var seasonsCount = 0
+    private var seriesCount = 10
+    private var selectedSeasonIndexPath: IndexPath = IndexPath(item: 0, section: 0)
     
-    var seasonsCount = 0
-    var seriesCount = 10
-    var selectedSeasonIndexPath: IndexPath = IndexPath(item: 0, section: 0)
     
-    lazy var seasonsCollectionView: UICollectionView = {
+    // MARK: - UI Elements
+    
+    private lazy var seasonsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         layout.scrollDirection = .horizontal
@@ -43,7 +47,7 @@ class SeriesViewController: UIViewController {
         return collectionView
     }()
     
-    lazy var seriesTableView: UITableView = {
+    private lazy var seriesTableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,14 +61,13 @@ class SeriesViewController: UIViewController {
         return tableView
     }()
     
+    
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Style.Colors.background
-        view.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
-        
-        setupSeasonsCollectionView()
-        setupSeriesTableView()
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,9 +84,19 @@ class SeriesViewController: UIViewController {
 }
 
 
-extension SeriesViewController {
+// MARK: - UI Setups
+
+private extension SeriesViewController {
     
-    fileprivate func setupSeasonsCollectionView() {
+    func setupUI() {
+        view.backgroundColor = Style.Colors.background
+        view.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
+        
+        setupSeasonsCollectionView()
+        setupSeriesTableView()
+    }
+    
+    func setupSeasonsCollectionView() {
         view.addSubview(seasonsCollectionView)
         
         seasonsCollectionView.snp.makeConstraints { make in
@@ -93,7 +106,7 @@ extension SeriesViewController {
         }
     }
     
-    fileprivate func setupSeriesTableView() {
+    func setupSeriesTableView() {
         view.addSubview(seriesTableView)
         
         seriesTableView.snp.makeConstraints { make in
@@ -105,7 +118,48 @@ extension SeriesViewController {
     
 }
 
+// MARK: - Internal functions
 
+extension SeriesViewController {
+    
+    func openMoviePlayerViewController(selectedSeries: Int) {
+        let vc = MoviePlayerViewController()
+        vc.configureScene(seasons: self.seasons, movieName: self.movieName, selectedSeason: selectedSeasonIndexPath.row, selectedSeries: selectedSeries)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true) {
+            self.setTabBarHidden(true)
+        }
+    }
+    
+    
+}
+
+
+// MARK: - External functions
+
+extension SeriesViewController {
+    
+    func configureScene(movie: MovieWithDetails) {
+        self.movieName = movie.name
+        CoreService.shared.getMovieSeasons(movieID: movie.id) { success, errorMessage, content in
+            if success {
+                self.seasons = content
+                self.view.hideSkeleton()
+            } else {
+                Logger.log(.warning, "\(errorMessage ?? "Error nil")")
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
+    }
+    
+    
+}
+
+
+// MARK: - Delegates
+
+// MARK: UICollectionViewDataSource
 extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -173,39 +227,6 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.openMoviePlayerViewController(selectedSeries: indexPath.row)
-    }
-    
-    
-}
-
-extension SeriesViewController {
-    
-    func configureScene(movie: MovieWithDetails) {
-        self.movieName = movie.name
-        CoreService.shared.getMovieSeasons(movieID: movie.id) { success, errorMessage, content in
-            if success {
-                self.seasons = content
-                self.view.hideSkeleton()
-            } else {
-                Logger.log(.warning, "\(errorMessage ?? "Error nil")")
-                self.navigationController?.popToRootViewController(animated: true)
-            }
-        }
-    }
-    
-    
-}
-
-extension SeriesViewController {
-    
-    func openMoviePlayerViewController(selectedSeries: Int) {
-        let vc = MoviePlayerViewController()
-        vc.configureScene(seasons: self.seasons, movieName: self.movieName, selectedSeason: selectedSeasonIndexPath.row, selectedSeries: selectedSeries)
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true) {
-            self.setTabBarHidden(true)
-        }
     }
     
     

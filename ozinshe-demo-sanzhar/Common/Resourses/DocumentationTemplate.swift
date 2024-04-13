@@ -8,6 +8,7 @@
 // MARK: -
 // MARK: - Internal variables
 // MARK: - External variables
+// MARK: - Overriding internal variables
 // MARK: - UI Elements
 // MARK: - Overriding internal functions
 // MARK: - View Life Cycle
@@ -17,3 +18,7 @@
 // MARK: - External functions
 // MARK: - Delegates
 
+/*
+ SPLASH TEXT
+ 
+ */

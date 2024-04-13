@@ -11,10 +11,14 @@ import SkeletonView
 
 class SeriesTableViewCell: UITableViewCell {
     
+    // MARK: - External variables
+    
     static let ID: String = "SeriesTableViewCell"
     
     
-    lazy var previewImageView: UIImageView = {
+    // MARK: - UI Elements
+    
+    private lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 12
@@ -24,50 +28,50 @@ class SeriesTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    lazy var seriesLabel: UILabel = {
+    private lazy var seriesLabel: UILabel = {
         let label = UILabel()
-        label.text = "1 -ші бөлім"
+        label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.StaticColors.label
         return label
     }()
     
-    lazy var separatorView: UIView = {
+    private lazy var separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = Style.Colors.gray800
         return view
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    
+    
+    // MARK: - View Life Cycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = .none
-        backgroundColor = .clear
-        
-        setupPreviewImageView()
-        setupSeriesLabel()
-        setupSeparatorView()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
     
 }
 
+
+// MARK: - UI Elements
+
 extension SeriesTableViewCell {
     
-    fileprivate func setupPreviewImageView() {
+    func setupUI() {
+        self.selectionStyle = .none
+        self.backgroundColor = .clear
+        
+        setupPreviewImageView()
+        setupSeriesLabel()
+        setupSeparatorView()
+    }
+    
+    func setupPreviewImageView() {
         self.addSubview(previewImageView)
         
         previewImageView.snp.makeConstraints { make in
@@ -77,7 +81,7 @@ extension SeriesTableViewCell {
         }
     }
     
-    fileprivate func setupSeriesLabel() {
+    func setupSeriesLabel() {
         self.addSubview(seriesLabel)
         
         seriesLabel.snp.makeConstraints { make in
@@ -87,7 +91,7 @@ extension SeriesTableViewCell {
         }
     }
     
-    fileprivate func setupSeparatorView() {
+    func setupSeparatorView() {
         self.addSubview(separatorView)
         
         separatorView.snp.makeConstraints { make in
@@ -100,6 +104,9 @@ extension SeriesTableViewCell {
     
     
 }
+
+
+// MARK: - External variables
 
 extension SeriesTableViewCell {
     
