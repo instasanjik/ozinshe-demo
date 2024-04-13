@@ -10,20 +10,23 @@ import SnapKit
 
 class TermsOfUseViewController: UIViewController {
     
-    lazy var textView: UITextView = {
+    // MARK: - UI Elements
+    
+    private lazy var textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .clear
         textView.textColor = Style.Colors.label
         textView.font = .systemFont(ofSize: 14, weight: .semibold)
         textView.text = StaticData.termOfUse
         textView.isEditable = false
-        textView.isSelectable = false
         return textView
     }()
+    
+    
+    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -35,9 +38,11 @@ class TermsOfUseViewController: UIViewController {
 }
 
 
-extension TermsOfUseViewController {
+// MARK: - UI Setups
+
+private extension TermsOfUseViewController {
     
-    fileprivate func setupUI() {
+    func setupUI() {
         navigationItem.title = NSLocalizedString("Profile-TermsOfUse", comment: "Ережелер мен шарттар")
         navigationItem.backButtonTitle = ""
         view.backgroundColor = Style.Colors.background
@@ -45,7 +50,7 @@ extension TermsOfUseViewController {
         setupTextView()
     }
     
-    fileprivate func setupTextView() {
+    func setupTextView() {
         view.addSubview(textView)
         
         textView.snp.makeConstraints { make in
