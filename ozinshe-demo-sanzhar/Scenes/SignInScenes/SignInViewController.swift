@@ -154,7 +154,18 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+    }
+    
+    
+}
+
+
+// MARK: - UI setups
+
+private extension SignInViewController {
+    
+    func setupUI() {
         view.backgroundColor = Style.Colors.background
         
         setupSignUpLabel()
@@ -166,14 +177,6 @@ class SignInViewController: UIViewController {
         setupAppleButton()
         setupOrLabel()
     }
-    
-    
-}
-
-
-// MARK: - UI setups
-
-private extension SignInViewController {
     
     func setupSignUpLabel() {
         view.addSubview(helloLabel)
