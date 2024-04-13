@@ -14,14 +14,20 @@ protocol LeaveConfirmationViewControllerDelegate: AnyObject {
 
 class LeaveConfirmationViewController: UIViewController {
     
-    /* MARK: values */
+    // MARK: - Internal variables
+    
+    private var oldValueY: Double = 0
+    private let SCROLL_VIEW_PADDING_Y: CGFloat = 86
+    
+    
+    // MARK: - External variables
+    
     public var delegate: LeaveConfirmationViewControllerDelegate?
-    fileprivate var oldValueY: Double = 0
-    fileprivate let SCROLL_VIEW_PADDING_Y: CGFloat = 124
     
     
-    /* MARK: UI Elements */
-    lazy var scrollView: UIScrollView = { /// scroll view for soft animation of moving the content
+    // MARK: - UI Elements
+    
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
         scrollView.addSubview(scrollViewContentView)
@@ -37,7 +43,7 @@ class LeaveConfirmationViewController: UIViewController {
         return scrollView
     }()
     
-    lazy var invisibleView: UIView = { /// view for detecting tap out of content view
+    private lazy var invisibleView: UIView = {
         let view = UIView()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -46,9 +52,9 @@ class LeaveConfirmationViewController: UIViewController {
         return view
     }()
     
-    lazy var scrollViewContentView = OZExpandedView() /// view for setup scroll view correctly
+    private lazy var scrollViewContentView = OZExpandedView()
     
-    lazy var contentView: UIView = {
+    private lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = Style.Colors.gray800
         view.layer.cornerRadius = 32
@@ -56,7 +62,7 @@ class LeaveConfirmationViewController: UIViewController {
         return view
     }()
     
-    lazy var browView: UIView = {
+    private lazy var browView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 2.5
         view.clipsToBounds = true
@@ -64,7 +70,7 @@ class LeaveConfirmationViewController: UIViewController {
         return view
     }()
     
-    lazy var leaveLabel: UILabel = {
+    private lazy var leaveLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
@@ -72,15 +78,16 @@ class LeaveConfirmationViewController: UIViewController {
         return label
     }()
     
-    lazy var leaveDescriptionLabel: UILabel = {
+    private lazy var leaveDescriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.text = NSLocalizedString("LeaveAccount-Confirmation", comment: "Сіз шынымен аккаунтыныздан") 
+        label.numberOfLines = 0
         return label
     }()
     
-    lazy var leaveButton: OZButton = {
+    private lazy var leaveButton: OZButton = {
         let button = OZButton()
         button.setTitle(NSLocalizedString("LeaveAccount-Yes", comment: "Иә, шығу"), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -88,7 +95,7 @@ class LeaveConfirmationViewController: UIViewController {
         return button
     }()
     
-    lazy var cancelButton: UIButton = {
+    private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         button.setTitle(NSLocalizedString("LeaveAccount-No", comment: "Жоқ"), for: .normal)
@@ -99,7 +106,8 @@ class LeaveConfirmationViewController: UIViewController {
     }()
     
     
-    /* MARK: View Controller life cycle */
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -118,15 +126,16 @@ class LeaveConfirmationViewController: UIViewController {
 }
 
 
-// MARK: UI Elements
-extension LeaveConfirmationViewController {
+// MARK: - UI Setups
+
+private extension LeaveConfirmationViewController {
     
-    fileprivate func setupUI() {
+    func setupUI() {
         setupScrollView()
         setupContentView()
     }
     
-    fileprivate func setupScrollView() {
+    func setupScrollView() {
         self.view.addSubview(scrollView)
         
         scrollView.snp.makeConstraints { make in
@@ -134,7 +143,7 @@ extension LeaveConfirmationViewController {
         }
     }
     
-    fileprivate func setupContentView() {
+    func setupContentView() {
         
         scrollViewContentView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
@@ -161,7 +170,7 @@ extension LeaveConfirmationViewController {
         setupCancelButton()
     }
     
-    fileprivate func setupBrowView() {
+    func setupBrowView() {
         contentView.addSubview(browView)
         
         browView.snp.makeConstraints { make in
@@ -172,7 +181,7 @@ extension LeaveConfirmationViewController {
         }
     }
     
-    fileprivate func setupLeaveLabel() {
+    func setupLeaveLabel() {
         contentView.addSubview(leaveLabel)
         
         leaveLabel.snp.makeConstraints { make in
@@ -181,7 +190,7 @@ extension LeaveConfirmationViewController {
         }
     }
     
-    fileprivate func setupLeaveDescriptionLabel() {
+    func setupLeaveDescriptionLabel() {
         contentView.addSubview(leaveDescriptionLabel)
         
         leaveDescriptionLabel.snp.makeConstraints { make in
@@ -190,7 +199,7 @@ extension LeaveConfirmationViewController {
         }
     }
     
-    fileprivate func setupLeaveButton() {
+    func setupLeaveButton() {
         contentView.addSubview(leaveButton)
         
         leaveButton.snp.makeConstraints { make in
@@ -200,7 +209,7 @@ extension LeaveConfirmationViewController {
         }
     }
     
-    fileprivate func setupCancelButton() {
+    func setupCancelButton() {
         contentView.addSubview(cancelButton)
         
         cancelButton.snp.makeConstraints { make in
@@ -213,7 +222,9 @@ extension LeaveConfirmationViewController {
     
 }
 
-// MARK: Triggers and handlers
+
+// MARK: - Targets and handlers
+
 extension LeaveConfirmationViewController {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) { /// detect if tap is out of content view for dismissing scene
@@ -242,7 +253,22 @@ extension LeaveConfirmationViewController {
 }
 
 
-// MARK: Scroll View Delegate and functions
+// MARK: - Internal functions
+
+private extension LeaveConfirmationViewController {
+    
+    func scrollToBottom() { /// automatic scroll scrollview to bottom for displaying content
+        let bottomOffset = CGPoint(x: 0,
+                                   y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom + 12) /// 12 is a safe area zone for correct displaying content
+        scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+    
+    
+}
+
+
+// MARK: - Delegates
+// MARK: UIScrollViewDelegate
 extension LeaveConfirmationViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) { /// determine whether the user has moved the menu below the death zone for automatic closure
@@ -250,12 +276,6 @@ extension LeaveConfirmationViewController: UIScrollViewDelegate {
             self.dismiss(animated: true)
         }
         oldValueY = scrollView.contentOffset.y
-    }
-    
-    fileprivate func scrollToBottom() { /// automatic scroll scrollview to bottom for displaying content
-        let bottomOffset = CGPoint(x: 0,
-                                   y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom + 12) /// 12 is a safe area zone for correct displaying content
-        scrollView.setContentOffset(bottomOffset, animated: true)
     }
     
     
