@@ -1565,6 +1565,29 @@
         }
       }
     },
+    "Search-NoResults" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your search returned no results"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сіздің іздеуіңіз нәтиже бермеді"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш поиск не дал никаких результатов"
+          }
+        }
+      }
+    },
     "Search-Search" : {
       "extractionState" : "manual",
       "localizations" : {
