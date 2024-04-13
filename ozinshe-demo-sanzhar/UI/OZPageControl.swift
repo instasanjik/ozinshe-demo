@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OZPageControl: UIView{
+final class OZPageControl: UIView {
     
     // MARK: - External variables
     
