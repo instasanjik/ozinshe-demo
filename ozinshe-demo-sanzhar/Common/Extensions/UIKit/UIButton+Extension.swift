@@ -7,8 +7,12 @@
 
 import UIKit
 
+/// Extension to UIButton providing utility functions for manipulating text, image, and background color.
 extension UIButton {
     
+    /// Centers the button's text and image with the specified spacing.
+    ///
+    /// - Parameter spacing: The amount of spacing between the text and image.
     func centerTextAndImage(spacing: CGFloat) {
         let insetAmount = spacing / 2
         let writingDirection = UIApplication.shared.userInterfaceLayoutDirection
@@ -19,6 +23,11 @@ extension UIButton {
         self.contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
     }
     
+    /// Changes the button's background color to the specified color with animation.
+    ///
+    /// - Parameters:
+    ///   - animationDuration: The duration of the animation.
+    ///   - toColor: The color to which the background should change.
     func changeBackgroundWithAnimation(animationDuration: TimeInterval = 10, toColor: UIColor) {
         let cornerRadius = self.layer.cornerRadius
         
@@ -43,11 +52,12 @@ extension UIButton {
         self.backgroundColor = nil
     }
     
+    /// Stops any ongoing background animation and restores the background color of the button.
+    ///
+    /// - Parameter backgroundColor: The color to set as the background color.
     func stopBackgroundAnimation(backgroundColor: UIColor) {
         self.layer.sublayers?.removeAll { $0 is CAGradientLayer }
         self.backgroundColor = backgroundColor
     }
-    
-    
     
 }
