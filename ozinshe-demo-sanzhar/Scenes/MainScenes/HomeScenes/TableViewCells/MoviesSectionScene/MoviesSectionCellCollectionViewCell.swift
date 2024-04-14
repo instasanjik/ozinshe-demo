@@ -33,7 +33,8 @@ class MoviesSectionCellCollectionViewCell: UICollectionViewCell {
         label.text = "SPLASH_TEXT SPLASH_TEXT"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.label
-        label.numberOfLines = 1 // TODO: When skeleton is stop - make 2 lines
+        label.numberOfLines = 2 
+        label.skeletonTextNumberOfLines = 1
         label.isSkeletonable = true
         label.linesCornerRadius = 2
         return label

@@ -102,7 +102,7 @@ class SearchViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textColor = Style.Colors.label
-        label.text = "📭 \(NSLocalizedString("Search-NoResults", comment: ""))" // TODO: Localize
+        label.text = "📭 \(NSLocalizedString("Search-NoResults", comment: ""))"
         label.textAlignment = .center
         label.isHidden = true
         return label
