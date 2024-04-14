@@ -293,6 +293,11 @@ class MovieInfoViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var imageViewer: OZPhotoGalleryView = {
+        let galleryView = OZPhotoGalleryView()
+        return galleryView
+    }()
+    
     
     // MARK: - View Life Cycle
     
@@ -670,6 +675,17 @@ extension MovieInfoViewController {
         }
     }
     
+    func openGalleryView(at index: Int) {
+        var urlList = [URL]()
+        screenshots.forEach{ urlList.append($0.imageURL!) }
+        imageViewer.configureView(imageLinks: urlList, currentItem: index)
+        view.addSubview(imageViewer)
+        
+        imageViewer.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     
 }
 
@@ -902,7 +918,7 @@ extension MovieInfoViewController: UICollectionViewDelegate {
         if collectionView == similarCollectionView {
             openMovieViewController(with: similarTVSeries[indexPath.row])
         } else {
-            
+            openGalleryView(at: indexPath.row)
         }
     }
     

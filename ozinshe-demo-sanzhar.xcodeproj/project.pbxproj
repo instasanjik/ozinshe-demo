@@ -88,6 +88,8 @@
 		04E4A74A2BC991D900360C5F /* OZPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7492BC991D900360C5F /* OZPhoneNumberTextField.swift */; };
 		04E4A74E2BCA757200360C5F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A74D2BCA757200360C5F /* String+Extension.swift */; };
 		04E4A7502BCAD8B700360C5F /* DocumentationTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A74F2BCAD8B700360C5F /* DocumentationTemplate.swift */; };
+		04E4A7522BCC448200360C5F /* OZPhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7512BCC448200360C5F /* OZPhotoGalleryView.swift */; };
+		04E4A7562BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7552BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +177,8 @@
 		04E4A7492BC991D900360C5F /* OZPhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		04E4A74D2BCA757200360C5F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		04E4A74F2BCAD8B700360C5F /* DocumentationTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationTemplate.swift; sourceTree = "<group>"; };
+		04E4A7512BCC448200360C5F /* OZPhotoGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPhotoGalleryView.swift; sourceTree = "<group>"; };
+		04E4A7552BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPhotoGalleryViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,6 +295,7 @@
 				04E4A7492BC991D900360C5F /* OZPhoneNumberTextField.swift */,
 				041CF8B12B9DA043003D2A58 /* OZTextFieldView.swift */,
 				041CF92A2BB69E33003D2A58 /* OZExpandedView.swift */,
+				04E4A7532BCC466000360C5F /* OZPhotoGalleryView */,
 				0402B82F2BC19C8900E1DB49 /* LeftAlignedCollectionViewFlowLayout.swift */,
 				0402B8342BC2E2C800E1DB49 /* ActivityItemSource.swift */,
 				0402B83B2BC44A8F00E1DB49 /* GradientView.swift */,
@@ -627,6 +632,23 @@
 			path = MoviesSectionScene;
 			sourceTree = "<group>";
 		};
+		04E4A7532BCC466000360C5F /* OZPhotoGalleryView */ = {
+			isa = PBXGroup;
+			children = (
+				04E4A7512BCC448200360C5F /* OZPhotoGalleryView.swift */,
+				04E4A7542BCC466E00360C5F /* Cells */,
+			);
+			path = OZPhotoGalleryView;
+			sourceTree = "<group>";
+		};
+		04E4A7542BCC466E00360C5F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				04E4A7552BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,6 +815,7 @@
 				041CF9402BB71E4F003D2A58 /* SearchNavigationViewController.swift in Sources */,
 				041CF91C2BB580F1003D2A58 /* PersonalDataViewController.swift in Sources */,
 				041CF94A2BBAE73B003D2A58 /* AuthService.swift in Sources */,
+				04E4A7522BCC448200360C5F /* OZPhotoGalleryView.swift in Sources */,
 				04E4A74A2BC991D900360C5F /* OZPhoneNumberTextField.swift in Sources */,
 				041CF9362BB7196A003D2A58 /* SignInNavigationViewController.swift in Sources */,
 				041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */,
@@ -823,6 +846,7 @@
 				041CF94E2BBB0099003D2A58 /* MovieWithDetails.swift in Sources */,
 				041CF8AE2B8E22B2003D2A58 /* SignInViewController.swift in Sources */,
 				041CF9132BAABA31003D2A58 /* MovieTableViewCell.swift in Sources */,
+				04E4A7562BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift in Sources */,
 				0402B8252BBF4FC300E1DB49 /* UIImage+Extension.swift in Sources */,
 				041CF8D92BA168BF003D2A58 /* HeaderTableViewCell.swift in Sources */,
 				04E4A7482BC45DF300360C5F /* MoviesSectionCellCollectionViewCell.swift in Sources */,
