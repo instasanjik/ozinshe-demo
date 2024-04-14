@@ -833,7 +833,18 @@ extension MovieInfoViewController {
 }
 
 
+// MARK: - Internal functions
 
+private extension MovieInfoViewController {
+    
+    func openMovieViewController(with movie: MovieWithDetails) {
+        let vc = MovieInfoViewController()
+        vc.configureScene(content: movie)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+}
 
 
 // MARK: - Delegates
@@ -872,5 +883,10 @@ extension MovieInfoViewController: UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 extension MovieInfoViewController: UICollectionViewDelegate {
-    // TODO: Write delegate functions
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        openMovieViewController(with: similarTVSeries[indexPath.row])
+    }
+    
+    
 }
