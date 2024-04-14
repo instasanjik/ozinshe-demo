@@ -104,6 +104,7 @@ class SearchViewController: UIViewController {
         label.textColor = Style.Colors.label
         label.text = "📭 \(NSLocalizedString("Search-NoResults", comment: ""))"
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.isHidden = true
         return label
     }()
