@@ -62,6 +62,12 @@ private extension MovieListViewController {
         }
     }
     
+    func openMovieViewController(with movie: MovieWithDetails) {
+        let vc = MovieInfoViewController()
+        vc.configureScene(content: movie)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 }
 
@@ -86,6 +92,7 @@ extension MovieListViewController {
 
 
 // MARK: - Delegates
+
 // MARK: UITableViewDataSource
 extension MovieListViewController {
     
@@ -101,6 +108,23 @@ extension MovieListViewController {
             cell.configureCell(content: movieList[indexPath.row])
         }
         return cell
+    }
+    
+    
+}
+
+
+// MARK: UITableViewDelegate
+extension MovieListViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie: MovieWithDetails
+        if let moviesSection = moviesSection {
+            movie = moviesSection.movies[indexPath.row]
+        } else  {
+            movie = movieList[indexPath.row]
+        }
+        openMovieViewController(with: movie)
     }
     
     
