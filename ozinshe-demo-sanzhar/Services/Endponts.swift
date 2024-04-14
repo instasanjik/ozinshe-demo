@@ -33,5 +33,6 @@ public enum Endpoints {
     public static let getProfile = ServerURL.baseURL + "/core/V1/user/profile"
     public static let updateProfile = ServerURL.baseURL + "/core/V1/user/profile/"
     public static let changePassword = ServerURL.baseURL + "/core/V1/user/profile/changePassword"
+    public static let getSimilarMovies = ServerURL.baseURL + "/core/V1/movies/similar/"
     
 }
