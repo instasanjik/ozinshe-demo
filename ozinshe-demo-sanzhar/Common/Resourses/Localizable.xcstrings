@@ -1243,6 +1243,29 @@
         }
       }
     },
+    "MovieInfo-FromItsCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the same category"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сол санаттан"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Из этой же категории"
+          }
+        }
+      }
+    },
     "MovieInfo-Trending" : {
       "extractionState" : "manual",
       "localizations" : {

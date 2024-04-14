@@ -768,7 +768,7 @@ extension MovieInfoViewController {
         }
     }
     
-    public func configureScene(content movie: MovieWithDetails, similarTVSeries: [MovieWithDetails]) {
+    public func configureScene(content movie: MovieWithDetails, similarTVSeries: [MovieWithDetails], opemFromSection: Bool = false) {
         self.movie = movie
         
         previewImageView.kf.setImage(with: URL(string: movie.poster_link))
@@ -793,6 +793,15 @@ extension MovieInfoViewController {
         
         self.similarTVSeries = similarTVSeries
         self.similarCollectionView.reloadData()
+        self.similarSeriesLabel.text = NSLocalizedString("MovieInfo-FromItsCategory", comment: "")
+        
+        CoreService.shared.getSimilarMovies(movieID: movie.id) { success, errorMessage, movieList in
+            if success {
+                self.similarTVSeries.append(contentsOf: movieList)
+                self.similarTVSeries = MovieWithDetails.removeDuplicateElements(movies: similarTVSeries)
+                self.similarCollectionView.reloadData()
+            }
+        }
         
         let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
         saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
@@ -826,7 +835,12 @@ extension MovieInfoViewController {
         let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
         saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
         
-        // TODO: Find similar TV series
+        CoreService.shared.getSimilarMovies(movieID: movie.id) { success, errorMessage, movieList in
+            if success {
+                self.similarTVSeries = movieList
+                self.similarCollectionView.reloadData()
+            }
+        }
     }
     
     
