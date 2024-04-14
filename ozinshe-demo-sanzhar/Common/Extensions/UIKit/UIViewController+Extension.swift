@@ -63,5 +63,10 @@ extension UIViewController {
         present(activityViewController, animated: true, completion: nil)
     }
     
+    @objc func dismissKeyboardFromView(sender: UITapGestureRecognizer?) {
+            let view = sender?.view
+            view?.endEditing(true)
+        }
+    
     
 }

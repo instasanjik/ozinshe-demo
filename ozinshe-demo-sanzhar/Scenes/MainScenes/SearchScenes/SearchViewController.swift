@@ -116,14 +116,20 @@ class SearchViewController: UIViewController {
         return indicator
     }()
     
+    private lazy var tap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardFromView))
+        tap.cancelsTouchesInView = false
+        return tap
+    }()
+    
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         downloadData()
+        setupGestureGRecognizers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,6 +161,10 @@ private extension SearchViewController {
         updateSearchState()
         setupNoResultsLabel()
         setupActivityIndicatorView()
+    }
+    
+    func setupGestureGRecognizers() {
+        view.addGestureRecognizer(tap)
     }
     
     func setupSearchTextField() {
