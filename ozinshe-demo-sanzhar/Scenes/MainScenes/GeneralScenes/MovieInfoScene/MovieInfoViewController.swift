@@ -899,7 +899,11 @@ extension MovieInfoViewController: UICollectionViewDataSource {
 extension MovieInfoViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        openMovieViewController(with: similarTVSeries[indexPath.row])
+        if collectionView == similarCollectionView {
+            openMovieViewController(with: similarTVSeries[indexPath.row])
+        } else {
+            
+        }
     }
     
     
