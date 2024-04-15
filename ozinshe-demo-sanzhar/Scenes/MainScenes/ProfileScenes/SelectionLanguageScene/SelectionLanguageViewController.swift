@@ -96,7 +96,9 @@ class SelectionLanguageViewController: UIViewController {
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Languages-Restart".localized(),
                                       style: .destructive,
-                                      handler: { _ in self.changeLanguage(to: StaticData.languages[self.selectedLanguageIndexPath?.row ?? 0].1)}))
+                                      handler: { _ in
+            LanguageManager.changeLanguage(to: LanguageManager.languages[self.selectedLanguageIndexPath?.row ?? 0])
+        }))
         alert.addAction(UIAlertAction(title: "Languages-Cancel".localized(),
                                       style: .cancel,
                                       handler: { _ in
@@ -208,7 +210,6 @@ private extension SelectionLanguageViewController {
     func changeLanguage(to: String) {
         UserDefaults.standard.set([to], forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()
-        SceneDelegate.keyWindow?.rootViewController = MainTabBarController()
     }
     
     
@@ -234,18 +235,12 @@ private extension SelectionLanguageViewController {
 extension SelectionLanguageViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let code = StaticData.languages[indexPath.row].1
+        let code = LanguageManager.languages[indexPath.row].systemCode
         
-        if #available(iOS 16, *) {
-            if Locale.current.language.languageCode?.identifier == code {
-                cell.setSelected(true, animated: true)
-                lastSelectedRow = indexPath
-            }
-        } else {
-            if Locale.current.languageCode == code {
-                cell.setSelected(true, animated: true)
-                lastSelectedRow = indexPath
-            }
+        
+        if LanguageManager.currentLanguageSystemCode == code {
+            cell.setSelected(true, animated: true)
+            lastSelectedRow = indexPath
         }
     }
     
@@ -271,7 +266,7 @@ extension SelectionLanguageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelectionLanguageTableViewCell.ID, for: indexPath) as! SelectionLanguageTableViewCell
-        cell.configureCell(with: StaticData.languages[indexPath.row].0) 
+        cell.configureCell(withLanguageName: LanguageManager.languages[indexPath.row].displayName)
         return cell
     }
     

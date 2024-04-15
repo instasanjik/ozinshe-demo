@@ -24,27 +24,6 @@ struct StaticData {
         ("Profile-DarkMode".localized(), .switchOnly)
     ]
     
-    static let languages: [(String, String)] = [
-        ("Қазақша", "kk"),
-        ("Русский", "ru"),
-        ("English", "en")
-    ]
-    
-    static func getLanguageName() -> String {
-        for (name, code) in StaticData.languages {
-            if #available(iOS 16, *) {
-                if Locale.current.language.languageCode?.identifier == code {
-                    return name
-                }
-            } else {
-                if Locale.current.languageCode == code {
-                    return name
-                }
-            }
-        }
-        return "English"
-    }
-    
     static let personalDataCell: [String] = ["PersonalData-name", "PersonalData-birhdayDate", "PersonalData-phoneNumber"]
     
     static let termOfUse: String = """

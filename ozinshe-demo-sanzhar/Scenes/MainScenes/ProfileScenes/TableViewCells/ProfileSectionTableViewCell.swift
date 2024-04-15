@@ -182,7 +182,7 @@ extension ProfileSectionTableViewCell {
     }
     
     func setupCellOptionText() {
-        self.optionNameLabel.text = StaticData.getLanguageName()
+        self.optionNameLabel.text = LanguageManager.currentLanguageDisplayName
     }
     
     

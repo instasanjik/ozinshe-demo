@@ -89,6 +89,7 @@
 		04E4A7502BCAD8B700360C5F /* DocumentationTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A74F2BCAD8B700360C5F /* DocumentationTemplate.swift */; };
 		04E4A7522BCC448200360C5F /* OZPhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7512BCC448200360C5F /* OZPhotoGalleryView.swift */; };
 		04E4A7562BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7552BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift */; };
+		04E4A7582BCDA20D00360C5F /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7572BCDA20D00360C5F /* LanguageManager.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +178,7 @@
 		04E4A74F2BCAD8B700360C5F /* DocumentationTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationTemplate.swift; sourceTree = "<group>"; };
 		04E4A7512BCC448200360C5F /* OZPhotoGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPhotoGalleryView.swift; sourceTree = "<group>"; };
 		04E4A7552BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPhotoGalleryViewCollectionViewCell.swift; sourceTree = "<group>"; };
+		04E4A7572BCDA20D00360C5F /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,6 +327,7 @@
 			children = (
 				041CF8ED2BA1E84A003D2A58 /* StaticData.swift */,
 				041CF9382BB71AE1003D2A58 /* Storage.swift */,
+				04E4A7572BCDA20D00360C5F /* LanguageManager.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				041CF9112BAAB9A0003D2A58 /* MovieListViewController.swift in Sources */,
 				041CF95C2BBB0464003D2A58 /* MoviesSection.swift in Sources */,
 				041CF87E2B8CB33F003D2A58 /* SceneDelegate.swift in Sources */,
+				04E4A7582BCDA20D00360C5F /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

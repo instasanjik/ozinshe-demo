@@ -80,6 +80,12 @@ private extension HomeViewController {
         view.backgroundColor = Style.Colors.background
         
         setupTableView()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.languageChanged), name: Notification.Name("OZLanguageChanged"), object: nil)
+
+    }
+    
+    @objc func languageChanged() {
+        print(123)
     }
     
     func setupTableView() {

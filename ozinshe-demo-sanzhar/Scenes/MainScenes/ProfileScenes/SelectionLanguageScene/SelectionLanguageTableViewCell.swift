@@ -95,8 +95,8 @@ private extension SelectionLanguageTableViewCell {
 
 extension SelectionLanguageTableViewCell {
     
-    func configureCell(with language: String) {
-        self.languageNameLabel.text = language
+    func configureCell(withLanguageName languageName: String) {
+        self.languageNameLabel.text = languageName
     }
     
     
