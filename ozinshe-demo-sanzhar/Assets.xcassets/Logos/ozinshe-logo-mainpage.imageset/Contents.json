@@ -1,6 +1,16 @@
 {
   "images" : [
     {
+      "filename" : "Frame 13599.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
       "filename" : "Frame 13594.svg",
       "idiom" : "universal"
     }

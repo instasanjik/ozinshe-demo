@@ -30,7 +30,7 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 14, weight: .semibold)
-        label.textColor = Style.Colors.label
+        label.textColor = Style.StaticColors.label
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
