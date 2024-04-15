@@ -15,6 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    static var keyWindow: UIWindow? {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let keyWindow = windowScene?.windows.first
+        return keyWindow
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -71,6 +77,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    static func restartApp(){
+        AppDelegate.setupNavigationBarsColors()
+        SceneDelegate.keyWindow?.rootViewController = MainTabBarController()
+    }
 }
 

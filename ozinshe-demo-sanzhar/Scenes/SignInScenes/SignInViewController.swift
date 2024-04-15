@@ -15,7 +15,7 @@ class SignInViewController: UIViewController {
     
     private lazy var helloLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("SignIn-Hello", comment: "Сәлем")
+        label.text = "SignIn-Hello".localized()
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.white
         return label
@@ -23,7 +23,7 @@ class SignInViewController: UIViewController {
     
     private lazy var helloDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("SignIn-Description", comment: "Аккаунтқа кіріңіз")
+        label.text = "SignIn-Description".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = Style.Colors.gray400
         return label
@@ -41,13 +41,13 @@ class SignInViewController: UIViewController {
     
     private lazy var emailTextFieldView: OZTextFieldView = {
         let textFieldView = OZTextFieldView()
-        textFieldView.textField.placeholder = NSLocalizedString("SignIn-YourEmail", comment: "Сіздің email")
+            textFieldView.textField.placeholder = "SignIn-YourEmail".localized()
         return textFieldView
     }()
     
     private lazy var passwordLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
+        label.text = "SignIn-YourPassword".localized()
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.white
         return label
@@ -55,13 +55,13 @@ class SignInViewController: UIViewController {
     
     private lazy var passwordTextField: OZTextField = {
         let textField = OZTextField()
-        textField.placeholder = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
+        textField.placeholder = "SignIn-YourPassword".localized()
         return textField
     }()
     
     private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
-        button.setTitle(NSLocalizedString("SignIn-ForgotPassword", comment: "Құпия сөзді ұмыттыңыз ба?"), for: .normal)
+        button.setTitle("SignIn-ForgotPassword".localized(), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         button.setTitleColor(Style.Colors.purple300, for: .normal)
         button.contentHorizontalAlignment = .right
@@ -71,7 +71,7 @@ class SignInViewController: UIViewController {
     
     private lazy var loginButton: OZButton = {
         let button = OZButton()
-        button.setTitle(NSLocalizedString("SignIn-Join", comment: "Кіру"), for: .normal)
+        button.setTitle("SignIn-Join".localized(), for: .normal)
         button.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return button
     }()
@@ -79,7 +79,7 @@ class SignInViewController: UIViewController {
     private lazy var haveNoAccountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = NSLocalizedString("SignIn-HaveNoAccount", comment: "Аккаунтыныз жоқ па?")
+        label.text = "SignIn-HaveNoAccount".localized()
         label.textColor = Style.Colors.white
         return label
     }()
@@ -87,7 +87,7 @@ class SignInViewController: UIViewController {
     private lazy var signUpLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = NSLocalizedString("SignIn-SignUp", comment: "Тіркелу")
+        label.text = "SignIn-SignUp".localized()
         label.textColor = Style.Colors.purple300
         return label
     }()
@@ -109,7 +109,7 @@ class SignInViewController: UIViewController {
     private lazy var googleSignInButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
-        button.setTitle(NSLocalizedString("SignIn-Google", comment: "Google-мен тіркеліңіз"), for: .normal)
+        button.setTitle("SignIn-Google".localized(), for: .normal)
         button.setImage(UIImage(named: "google-logo"), for: .normal)
         
         button.backgroundColor = Style.Colors.gray600
@@ -126,7 +126,7 @@ class SignInViewController: UIViewController {
     private lazy var appleSignInButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
-        button.setTitle(NSLocalizedString("SignIn-AppleID", comment: "Apple ID-мен тіркеліңіз"), for: .normal)
+        button.setTitle("SignIn-AppleID".localized(), for: .normal)
         button.setImage(UIImage(named: "apple-logo"), for: .normal)
         
         button.backgroundColor = Style.Colors.gray600
@@ -144,7 +144,7 @@ class SignInViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        label.text = NSLocalizedString("SignIn-or", comment: "Немесе")
+        label.text = "SignIn-or".localized()
         label.textColor = Style.Colors.gray400
         return label
     }()
@@ -353,11 +353,11 @@ private extension SignInViewController {
     }
     
     @objc func signUpWithAppleTapped(sender: UIButton!) {
-        SVProgressHUD.showError(withStatus: NSLocalizedString("General-FunctionUnavailableError", comment: ""))
+        SVProgressHUD.showError(withStatus: "General-FunctionUnavailableError".localized())
     }
     
     @objc func signUpWithGoogleTapped(sender: UIButton!) {
-        SVProgressHUD.showError(withStatus: NSLocalizedString("General-FunctionUnavailableError", comment: ""))
+        SVProgressHUD.showError(withStatus: "General-FunctionUnavailableError".localized())
     }
     
     
@@ -388,13 +388,13 @@ private extension SignInViewController {
                     if statusCode == 200 {
                         SVProgressHUD.dismiss { self.openMainTabbar() }
                     } else if statusCode == 401 {
-                        SVProgressHUD.showError(withStatus: NSLocalizedString("Login-IncorrectLoginOrPassword", comment: ""))
+                        SVProgressHUD.showError(withStatus: "Login-IncorrectLoginOrPassword".localized())
                     } else {
-                        SVProgressHUD.showError(withStatus: NSLocalizedString("General-UnknownError", comment: ""))
+                        SVProgressHUD.showError(withStatus: "General-UnknownError".localized())
                     }
                 }
             } else { // MARK: email or password are empty
-                SVProgressHUD.showError(withStatus: NSLocalizedString("SignIn-EmailIsEmpty", comment: ""))
+                SVProgressHUD.showError(withStatus: "SignIn-EmailIsEmpty".localized())
             }
         }
     }
@@ -407,7 +407,7 @@ private extension SignInViewController {
     }
     
     func openForgotPassword() {
-        SVProgressHUD.showError(withStatus: NSLocalizedString("General-FunctionUnavailableError", comment: ""))
+        SVProgressHUD.showError(withStatus: "General-FunctionUnavailableError".localized())
     }
     
     func openSignUp() {

@@ -84,7 +84,7 @@ private extension FavoritesViewController {
     func setupUI() {
         view.backgroundColor = Style.Colors.background
         
-        navigationItem.title = NSLocalizedString("Favorites-Title", comment: "Избранное")
+        navigationItem.title = "Favorites-Title".localized()
         tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.ID)
         
         setupErrorLabel()

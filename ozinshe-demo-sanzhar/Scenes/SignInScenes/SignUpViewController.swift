@@ -16,7 +16,7 @@ class SignUpViewController: UIViewController {
     
     private lazy var signUpLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("SignUp-SignUp", comment: "Сәлем")
+        label.text = "SignUp-SignUp".localized()
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.white
         return label
@@ -24,7 +24,7 @@ class SignUpViewController: UIViewController {
     
     private lazy var signUpDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("SignUp-Description", comment: "Аккаунтқа кіріңіз")
+        label.text = "SignUp-Description".localized()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = Style.Colors.gray400
         return label
@@ -42,13 +42,13 @@ class SignUpViewController: UIViewController {
     
     private lazy var emailTextFieldView: OZTextFieldView = {
         let textFieldView = OZTextFieldView()
-        textFieldView.textField.placeholder = NSLocalizedString("SignIn-YourEmail", comment: "Сіздің email")
+        textFieldView.textField.placeholder = "SignIn-YourEmail".localized()
         return textFieldView
     }()
     
     private lazy var passwordLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
+        label.text = "SignIn-YourPassword".localized()
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.white
         return label
@@ -56,13 +56,13 @@ class SignUpViewController: UIViewController {
     
     private lazy var passwordTextField: OZTextField = {
         let textField = OZTextField()
-        textField.placeholder = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
+        textField.placeholder = "SignIn-YourPassword".localized()
         return textField
     }()
     
     private lazy var confirmPasswordLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("SignUp-PasswordAgain", comment: "Құпия сөзді қайталаңыз") //localize
+        label.text =  "SignUp-PasswordAgain".localized()
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.white
         return label
@@ -70,7 +70,7 @@ class SignUpViewController: UIViewController {
     
     private lazy var confirmPasswordTextField: OZTextField = {
         let textField = OZTextField()
-        textField.placeholder = NSLocalizedString("SignIn-Password", comment: "Сіздің құпия сөзіңіз")
+        textField.placeholder =  "SignIn-Password".localized()
         return textField
     }()
     
@@ -85,7 +85,7 @@ class SignUpViewController: UIViewController {
     
     private lazy var signUpButton: OZButton = {
         let button = OZButton()
-        button.setTitle(NSLocalizedString("SignUp-SignUp", comment: "Кіру"), for: .normal)
+        button.setTitle("SignUp-SignUp".localized(), for: .normal)
         button.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
         return button
     }()
@@ -93,7 +93,7 @@ class SignUpViewController: UIViewController {
     private lazy var haveAnAccountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = NSLocalizedString("SignUp-DoUHaveAnAccount?", comment: "Аккаунтыныз жоқ па?")
+        label.text = "SignUp-DoUHaveAnAccount?".localized()
         label.textColor = Style.Colors.white
         return label
     }()
@@ -101,7 +101,7 @@ class SignUpViewController: UIViewController {
     private lazy var loginLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = NSLocalizedString("SignUp-Login", comment: "Тіркелу")
+        label.text = "SignUp-Login".localized()
         label.textColor = Style.Colors.purple300
         return label
     }()
@@ -324,7 +324,7 @@ private extension SignUpViewController {
     
     func signUp() {
         if passwordTextField.text != confirmPasswordTextField.text {
-            SVProgressHUD.showError(withStatus: NSLocalizedString("SignUp-PasswordsAreDifferent", comment: ""))
+            SVProgressHUD.showError(withStatus: "SignUp-PasswordsAreDifferent".localized())
             return
         }
         
@@ -335,15 +335,15 @@ private extension SignUpViewController {
                     if statusCode == 200 {
                         SVProgressHUD.dismiss { self.openMainTabbar() }
                     } else if statusCode == 401 {
-                        SVProgressHUD.showError(withStatus: NSLocalizedString("Login-IncorrectLoginOrPassword", comment: ""))
+                        SVProgressHUD.showError(withStatus: "Login-IncorrectLoginOrPassword".localized())
                     } else if statusCode == 400 {
-                        SVProgressHUD.showError(withStatus: "\(NSLocalizedString("General-IncorrectFormat", comment: "")) \n Status code: \(statusCode)")
+                        SVProgressHUD.showError(withStatus: "\("General-IncorrectFormat".localized()) \n Status code: \(statusCode)")
                     } else {
-                        SVProgressHUD.showError(withStatus: "\(NSLocalizedString("General-UnknownError", comment: "")) \(statusCode)")
+                        SVProgressHUD.showError(withStatus: "\("General-UnknownError".localized()) \(statusCode)")
                     }
                 }
             } else { // Email or password are empty
-                SVProgressHUD.showError(withStatus: NSLocalizedString("SignIn-EmailIsEmpty", comment: ""))
+                SVProgressHUD.showError(withStatus: "SignIn-EmailIsEmpty".localized())
             }
         }
     }

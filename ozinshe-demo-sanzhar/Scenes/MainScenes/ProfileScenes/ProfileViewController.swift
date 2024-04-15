@@ -10,13 +10,18 @@ import SnapKit
 
 class ProfileViewController: UITableViewController {
     
-    // MARK: - UI Elements
+    // MARK: - External variables
     
     var userProfile: UserProfile? {
         didSet {
             headerView.updateEmail(with: userProfile?.email)
         }
     }
+    
+    
+    // MARK: Internal variables
+    
+    var switchControlIsON = true
     
     
     // MARK: - UI Elements
@@ -28,6 +33,20 @@ class ProfileViewController: UITableViewController {
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return blurEffectView
+    }()
+    
+    private lazy var warningAlert: UIAlertController = {
+        let alert = UIAlertController(title: "Languages-Warning".localized(),
+                                      message: "ChangeTheme-Warning".localized(),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .destructive,
+                                      handler: { _ in self.changeThemeTapped()}))
+        alert.addAction(UIAlertAction(title: "Languages-Cancel".localized(),
+                                      style: .cancel,
+                                      handler: { _ in
+        }))
+        return alert
     }()
     
     
@@ -56,7 +75,7 @@ private extension ProfileViewController {
     }
     
     func settingNavigationBar() {
-        navigationItem.title = NSLocalizedString("Profile-Profile", comment: "Профиль")
+        navigationItem.title = "Profile-Profile".localized()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), style: .plain, target: self, action: #selector(leaveTapped))
         navigationItem.rightBarButtonItem?.tintColor = Style.Colors.error
     }
@@ -122,6 +141,13 @@ private extension ProfileViewController {
     
     @objc func leaveTapped() {
         showLeaveConfirmationViewController()
+    }
+    
+    func changeThemeTapped() {
+        let preference = UserDefaults.standard.bool(forKey: "isOSThemeLight")
+        SceneDelegate.keyWindow?.overrideUserInterfaceStyle = preference ? .dark : .light
+        UserDefaults.standard.setValue(!switchControlIsON, forKey: "isOSThemeLight")
+        SceneDelegate.restartApp()
     }
     
     
@@ -195,12 +221,15 @@ extension ProfileViewController {
         if indexPath.row == 2 {
             cell.setupCellOptionText()
         }
+        cell.delegate = self
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return StaticData.profileSettings.count
     }
+    
+    
 }
 
 
@@ -228,4 +257,18 @@ extension ProfileViewController {
         default: return
         }
     }
+    
+    
+}
+
+
+// MARK: ProfileSectionTableViewCellDelegate
+extension ProfileViewController: ProfileSectionTableViewCellDelegate {
+    
+    func presentThemeChangingWarning(switchControlIsON: Bool) {
+        self.switchControlIsON = switchControlIsON
+        self.present(warningAlert, animated: true, completion: nil)
+    }
+    
+    
 }

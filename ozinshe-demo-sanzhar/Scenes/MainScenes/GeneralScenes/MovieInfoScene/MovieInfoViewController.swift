@@ -78,7 +78,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var shareLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Movie-Share", comment: "Бөлісу")
+        label.text = "Movie-Share".localized()
         label.textColor = Style.StaticColors.gray400
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.isUserInteractionEnabled = false
@@ -87,7 +87,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var saveLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Movie-Save", comment: "Тізімге қосу")
+        label.text = "Movie-Save".localized()
         label.textColor = Style.StaticColors.gray400
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.isUserInteractionEnabled = false
@@ -154,7 +154,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.setTitle(NSLocalizedString("Movie-More", comment: "Толығырақ"), for: .normal)
+        button.setTitle("Movie-More".localized(), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(Style.StaticColors.purple300, for: .normal)
         button.contentVerticalAlignment = .top
@@ -164,7 +164,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var directorLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(NSLocalizedString("Movie-Director", comment: "Режиссер")):"
+        label.text = "\("Movie-Director".localized()):"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray600
         return label
@@ -181,7 +181,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var producerLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(NSLocalizedString("Movie-Producer", comment: "Продюсер")):"
+        label.text = "\("Movie-Producer".localized()):"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray600
         return label
@@ -204,7 +204,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var sectionLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Movie-Sections", comment: "Бөлімдер")
+        label.text = "Movie-Sections".localized()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
         return label
@@ -231,7 +231,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var screenshotsLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Movie-Screenshots", comment: "Скриншоттар")
+        label.text = "Movie-Screenshots".localized()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
         return label
@@ -259,7 +259,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var similarSeriesLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("Movie-SimilarShows", comment: "Ұқсас телехикаялар")
+        label.text = "Movie-SimilarShows".localized()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
         return label
@@ -267,7 +267,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var moreSimilarButton: UIButton = {
         let button = UIButton()
-        button.setTitle(NSLocalizedString("Movie-More", comment: "Барлығы"), for: .normal)
+        button.setTitle("Movie-More".localized(), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(Style.StaticColors.purple300, for: .normal)
         button.contentVerticalAlignment = .top
@@ -699,13 +699,13 @@ extension MovieInfoViewController {
             UIView.transition(with: descriptionLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
                 self.descriptionLabel.numberOfLines = 0
             })
-            self.moreButton.setTitle(NSLocalizedString("Movie-Hide", comment: "Жасыру"), for: .normal)
+            self.moreButton.setTitle("Movie-Hide".localized(), for: .normal)
             self.descriptionGradientLayer.isHidden = true
         } else { // shop short
             UIView.transition(with: descriptionLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
                 self.descriptionLabel.numberOfLines = 4
             })
-            self.moreButton.setTitle(NSLocalizedString("Movie-More", comment: "Толығырақ"), for: .normal)
+            self.moreButton.setTitle("Movie-More".localized(), for: .normal)
             descriptionGradientLayer.isHidden = false
         }
         isDescriptionRevealed.toggle()
@@ -809,7 +809,7 @@ extension MovieInfoViewController {
         
         self.similarTVSeries = similarTVSeries
         self.similarCollectionView.reloadData()
-        self.similarSeriesLabel.text = NSLocalizedString("MovieInfo-FromItsCategory", comment: "")
+        self.similarSeriesLabel.text = "MovieInfo-FromItsCategory".localized()
         
         CoreService.shared.getSimilarMovies(movieID: movie.id) { success, errorMessage, movieList in
             if success {

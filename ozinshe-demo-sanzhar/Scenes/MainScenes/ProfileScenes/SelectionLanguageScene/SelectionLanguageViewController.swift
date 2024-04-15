@@ -76,7 +76,7 @@ class SelectionLanguageViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = NSLocalizedString("Profile-Language", comment: "Тіл") 
+        label.text = "Profile-Language".localized()
         return label
     }()
 
@@ -91,13 +91,13 @@ class SelectionLanguageViewController: UIViewController {
     }()
     
     private lazy var warningAlert: UIAlertController = {
-        let alert = UIAlertController(title: NSLocalizedString("Languages-Warning", comment: "Warning"),
-                                      message: NSLocalizedString("Lanuages-WarningDescription", comment: "Please restart your app to change language completely"),
+        let alert = UIAlertController(title: "Languages-Warning".localized(),
+                                      message: "Lanuages-WarningDescription".localized(),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Restart", comment: "Restart"),
+        alert.addAction(UIAlertAction(title: "Languages-Restart".localized(),
                                       style: .destructive,
                                       handler: { _ in self.changeLanguage(to: StaticData.languages[self.selectedLanguageIndexPath?.row ?? 0].1)}))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Languages-Cancel", comment: "Cancel"),
+        alert.addAction(UIAlertAction(title: "Languages-Cancel".localized(),
                                       style: .cancel,
                                       handler: { _ in
             self.tableView.selectRow(at: self.lastSelectedRow, animated: true, scrollPosition: .middle)
@@ -208,7 +208,7 @@ private extension SelectionLanguageViewController {
     func changeLanguage(to: String) {
         UserDefaults.standard.set([to], forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()
-        exit(0)
+        SceneDelegate.keyWindow?.rootViewController = MainTabBarController()
     }
     
     

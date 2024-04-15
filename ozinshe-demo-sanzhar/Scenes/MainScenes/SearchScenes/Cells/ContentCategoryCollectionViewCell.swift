@@ -29,7 +29,7 @@ class ContentCategoryCollectionViewCell: UICollectionViewCell {
     private lazy var contentCategoryLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = Style.StaticColors.label
+        label.textColor = Style.Colors.label
         return label
     }()
     

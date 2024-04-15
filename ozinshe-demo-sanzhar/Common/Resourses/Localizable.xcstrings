@@ -231,6 +231,29 @@
         }
       }
     },
+    "ChangeTheme-Warning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To successfully change the theme of the application, please restart the application"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Қолданба тақырыбын сәтті өзгерту үшін қолданбаны қайта жүктеңіз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для успешной смены темы приложения, пожалуйста, перезагрузите приложение"
+          }
+        }
+      }
+    },
     "ContentCategories-Anime" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -854,6 +877,7 @@
     },
     "Languages-Cancel" : {
       "comment" : "Cancel",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -877,6 +901,7 @@
     },
     "Languages-Restart" : {
       "comment" : "Restart",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -900,6 +925,7 @@
     },
     "Languages-Warning" : {
       "comment" : "Warning",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -923,6 +949,7 @@
     },
     "Lanuages-WarningDescription" : {
       "comment" : "Please restart your app to change language completely",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -969,6 +996,7 @@
     },
     "LeaveAccount-No" : {
       "comment" : "Жоқ",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1682,6 +1710,7 @@
     },
     "Seasons-Seasons" : {
       "comment" : "Seasons",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

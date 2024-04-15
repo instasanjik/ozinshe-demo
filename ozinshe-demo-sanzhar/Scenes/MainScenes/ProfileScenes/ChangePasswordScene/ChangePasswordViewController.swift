@@ -17,13 +17,13 @@ class ChangePasswordViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = NSLocalizedString("ChangePassword-NewPassword", comment: "Құпия сөз")
+        label.text = "ChangePassword-NewPassword".localized()
         return label
     }()
     
     private lazy var passwordTextField: OZTextField = {
         let textField = OZTextField()
-        textField.placeholder = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
+        textField.placeholder = "SignIn-YourPassword".localized()
         textField.configureTextField(icon: "password", suffixImageName: "eye")
         return textField
     }()
@@ -32,13 +32,13 @@ class ChangePasswordViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = NSLocalizedString("ChangePassword-RepeatPassword", comment: "Құпия сөз")
+        label.text = "ChangePassword-RepeatPassword".localized()
         return label
     }()
     
     private lazy var passwordConfirmationTextField: OZTextField = {
         let textField = OZTextField()
-        textField.placeholder = NSLocalizedString("SignIn-YourPassword", comment: "Сіздің құпия сөзіңіз")
+        textField.placeholder = "SignIn-YourPassword".localized()
         textField.configureTextField(icon: "password", suffixImageName: "eye")
         return textField
     }()
@@ -85,7 +85,7 @@ private extension ChangePasswordViewController {
     }
     
     func setupNavigationBar() {
-        navigationItem.title = NSLocalizedString("Profile-ChangePassword", comment: "Құпия сөзді өзгерту")
+        navigationItem.title = "Profile-ChangePassword".localized()
     }
     
     func setupPasswordLabel() {

@@ -49,7 +49,7 @@ class MovieTableViewCell: UITableViewCell {
         button.tintColor = Style.Colors.purple400
         button.layer.cornerRadius = 8
         
-        button.setTitle(NSLocalizedString("Movie-Watch", comment: "Қарау"), for: .normal)
+        button.setTitle("Movie-Watch".localized(), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
         button.setTitleColor(Style.Colors.purple400, for: .normal)
         

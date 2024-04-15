@@ -40,7 +40,7 @@ class KeepWatchingTableViewCell: UITableViewCell {
     
     private lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("KeepWatching-KeepWatching", comment: "Қарауды жалғастырыңыз")
+        label.text = "KeepWatching-KeepWatching".localized()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
         label.isSkeletonable = true

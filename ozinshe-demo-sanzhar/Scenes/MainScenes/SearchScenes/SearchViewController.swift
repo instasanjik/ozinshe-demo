@@ -43,7 +43,7 @@ class SearchViewController: UIViewController {
     
     private lazy var searchTextField: OZTextField = {
         let textField = OZTextField()
-        textField.placeholder = NSLocalizedString("Search-Search", comment: "Іздеу")
+        textField.placeholder = "Search-Search".localized()
         textField.padding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         textField.normalBorderColor = UIColor.clear.cgColor
         let _ = textField.resignFirstResponder()
@@ -63,7 +63,7 @@ class SearchViewController: UIViewController {
     
     private lazy var categoriesLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("General-Categories", comment: "Санаттар")
+        label.text = "General-Categories".localized()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
         return label
@@ -102,7 +102,7 @@ class SearchViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textColor = Style.Colors.label
-        label.text = "📭 \(NSLocalizedString("Search-NoResults", comment: ""))"
+        label.text = "📭 \("Search-NoResults".localized())"
         label.textAlignment = .center
         label.numberOfLines = 0
         label.isHidden = true

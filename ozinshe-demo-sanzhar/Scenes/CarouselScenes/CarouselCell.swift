@@ -23,7 +23,7 @@ class CarouselCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = NSLocalizedString("carouselWelcomeText", comment: "ÖZINŞE-ге қош келдің!")
+        label.text = "carouselWelcomeText".localized()
         label.isUserInteractionEnabled = false
         return label
     }()
@@ -111,7 +111,7 @@ extension CarouselCell {
     
     public func configureCell(with itemName: String) {
         imageView.image = UIImage(named: itemName)
-        descriptionLabel.text = NSLocalizedString(itemName, comment: "Описание Cell карусели")
+        descriptionLabel.text = itemName.localized()
     }
     
     

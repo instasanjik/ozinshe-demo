@@ -17,12 +17,11 @@ enum CellType {
 struct StaticData {
     
     static let profileSettings: [(String, CellType)] = [
-        (NSLocalizedString("Profile-PersonalData", comment: "Жеке деректер"), .labelAndChevron),
-        (NSLocalizedString("Profile-ChangePassword", comment: "Құпия сөзді өзгерту"), .chevronOnly),
-        (NSLocalizedString("Profile-Language", comment: "Тіл"), .labelAndChevron),
-        (NSLocalizedString("Profile-TermsOfUse", comment: "Ережелер менÏ шарттар"), .chevronOnly),
-        (NSLocalizedString("Profile-Notifications", comment: "Хабарландырулар"), .switchOnly),
-        (NSLocalizedString("Profile-DarkMode", comment: "Қараңғы режим"), .switchOnly)
+        ("Profile-PersonalData".localized(), .labelAndChevron),
+        ("Profile-ChangePassword".localized(), .chevronOnly),
+        ("Profile-Language".localized(), .labelAndChevron),
+        ("Profile-TermsOfUse".localized(), .chevronOnly),
+        ("Profile-DarkMode".localized(), .switchOnly)
     ]
     
     static let languages: [(String, String)] = [

@@ -129,7 +129,7 @@ class MoviePlayerViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.StaticColors.gray400
-        label.text = "\(currentEpisode.number.ordinalString()) \(NSLocalizedString("Series-episode", comment: ""))"
+        label.text = "\(currentEpisode.number.ordinalString()) \("Series-episode".localized())"
         label.isHidden = movieType == "MOVIE"
         return label
     }()

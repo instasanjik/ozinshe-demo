@@ -79,7 +79,7 @@ private extension SeasonCollectionViewCell {
 extension SeasonCollectionViewCell {
     
     func configureCell(seasonNumber: Int) {
-        self.seasonLabel.text = "\(seasonNumber) \(NSLocalizedString("Seasons-Seasons", comment: "Seasons"))"
+        self.seasonLabel.text = "\(seasonNumber) \("Seasons-Seasons".localized())"
     }
     
     

@@ -39,7 +39,7 @@ class PersonalDataViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.gray400
-        label.text = NSLocalizedString("PersonalData-name", comment: "")
+        label.text = "PersonalData-name".localized()
         return label
     }()
     
@@ -64,7 +64,7 @@ class PersonalDataViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.gray400
-        label.text = NSLocalizedString("PersonalData-phoneNumber", comment: "")
+        label.text = "PersonalData-phoneNumber".localized()
         return label
     }()
     
@@ -89,7 +89,7 @@ class PersonalDataViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.gray400
-        label.text = NSLocalizedString("PersonalData-birhdayDate", comment: "")
+        label.text = "PersonalData-birhdayDate".localized()
         return label
     }()
     
@@ -98,7 +98,7 @@ class PersonalDataViewController: UIViewController {
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = Style.Colors.label
         if userProfile.birthDate.isEmpty {
-            label.text = NSLocalizedString("PersonalData-NoData", comment: "")
+            label.text = "PersonalData-NoData".localized()
         } else {
             label.text = userProfile.birthDate.beautifulDateDisplay()
         }
@@ -296,7 +296,7 @@ private extension PersonalDataViewController {
     
     func getDisplayValue(for text: String) -> String {
         if text.isEmpty {
-            return NSLocalizedString("PersonalData-NoData", comment: "")
+            return "PersonalData-NoData".localized()
         }
         return text
     }
@@ -334,7 +334,7 @@ private extension PersonalDataViewController {
         nameValueLabel.text = getDisplayValue(for: userProfile.name)
         phoneNumberValueLabel.text = getDisplayValue(for: userProfile.phoneNumber)
         if userProfile.birthDate.isEmpty {
-            birthdayDateValueLabel.text = NSLocalizedString("PersonalData-NoData", comment: "")
+            birthdayDateValueLabel.text = "PersonalData-NoData".localized()
         } else {
             birthdayDateValueLabel.text = userProfile.birthDate.beautifulDateDisplay()
         }
@@ -381,7 +381,7 @@ private extension PersonalDataViewController {
                         self.updatePageState()
                     }
                 } else {
-                    SVProgressHUD.showError(withStatus: NSLocalizedString("General-UnknownError", comment: "")) 
+                    SVProgressHUD.showError(withStatus: "General-UnknownError".localized()) 
                     Logger.log(.error, errorMessage ?? "")
                 }
             }

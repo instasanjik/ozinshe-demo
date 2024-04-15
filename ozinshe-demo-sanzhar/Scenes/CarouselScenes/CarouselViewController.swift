@@ -16,9 +16,9 @@ class CarouselViewController: UIViewController {
         didSet {
             pageControl.currentpage = currentPage
             if currentPage == carouselData.count - 1 {
-                continueButton.titleText = NSLocalizedString("carouselEndButtonText", comment: "Әрі қарай")
+                continueButton.titleText = "carouselEndButtonText".localized()
             } else {
-                continueButton.titleText = NSLocalizedString("carouselContinueButtonText", comment: "Әрі қарай")
+                continueButton.titleText = "carouselContinueButtonText".localized()
             }
         }
     }
@@ -53,13 +53,13 @@ class CarouselViewController: UIViewController {
     private lazy var continueButton: OZButton = {
         let button = OZButton()
         button.addTarget(self, action: #selector(nextTapped), for: .touchUpInside)
-        button.titleText = NSLocalizedString("carouselContinueButtonText", comment: "Әрі қарай")
+        button.titleText = "carouselContinueButtonText".localized()
         return button
     }()
     
     private lazy var skipButton: UIButton = {
         let button = UIButton()
-        button.setTitle(NSLocalizedString("carouselSkipButton", comment: "Өткізу"), for: .normal)
+        button.setTitle("carouselSkipButton".localized(), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         

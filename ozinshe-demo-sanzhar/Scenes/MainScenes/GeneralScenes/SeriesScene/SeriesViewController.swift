@@ -187,9 +187,9 @@ extension SeriesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel(frame: CGRect.zero)
         if !seasons.isEmpty {
-            label.text = "\(seasons[indexPath.row].number.ordinalString()) \(NSLocalizedString("Seasons-Seasons", comment: "Seasons"))"
+            label.text = "\(seasons[indexPath.row].number.ordinalString()) \("Seasons-Seasons".localized())"
         } else {
-            label.text = "1 \(NSLocalizedString("Seasons-Seasons", comment: "Seasons"))"
+            label.text = "1 \("Seasons-Seasons".localized())"
         }
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.sizeToFit()

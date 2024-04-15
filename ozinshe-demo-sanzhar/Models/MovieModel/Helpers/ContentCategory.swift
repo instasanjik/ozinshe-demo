@@ -21,7 +21,7 @@ class ContentCategory {
         self.previewURL = previewURL
         
         if isAgeCategory {
-            self.name += " \(NSLocalizedString("Age-yo", comment: ""))"
+            self.name += " \("Age-yo".localized())"
         }
     }
     

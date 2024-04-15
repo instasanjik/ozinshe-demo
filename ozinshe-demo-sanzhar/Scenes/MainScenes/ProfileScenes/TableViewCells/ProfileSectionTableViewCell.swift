@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol ProfileSectionTableViewCellDelegate {
+    func presentThemeChangingWarning(switchControlIsON: Bool)
+}
+
 class ProfileSectionTableViewCell: UITableViewCell {
     
     // MARK: - External variables
@@ -24,14 +28,16 @@ class ProfileSectionTableViewCell: UITableViewCell {
             nameLabel.text = cellData.0
             switch cellData.1 {
             case .labelAndChevron:
-                setupUI(cellType: cellData.1, optionValue: NSLocalizedString("General-Edit", comment: "Өңдеу"))
+                setupUI(cellType: cellData.1, optionValue: "General-Edit".localized())
             case .chevronOnly:
                 setupUI(cellType: cellData.1)
             case .switchOnly:
-                setupUI(cellType: cellData.1, isOn: true)
+                setupUI(cellType: cellData.1)
             }
         }
     }
+    
+    var delegate: ProfileSectionTableViewCellDelegate?
     
     
     // MARK: - UI Elements
@@ -40,7 +46,7 @@ class ProfileSectionTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textColor = Style.Colors.gray200
-        label.text = NSLocalizedString("Profile-PersonalData", comment: "Жеке деректер")
+        label.text = "Profile-PersonalData".localized()
         return label
     }()
     
@@ -48,7 +54,7 @@ class ProfileSectionTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.gray400
-        label.text = NSLocalizedString("General-Edit", comment: "Өңдеу")
+        label.text = "General-Edit".localized()
         return label
     }()
     
@@ -63,6 +69,7 @@ class ProfileSectionTableViewCell: UITableViewCell {
         let switchControl = UISwitch()
         switchControl.onTintColor = Style.Colors.purple300
         switchControl.isOn = true
+        switchControl.addTarget(self, action: #selector(switchControlValueChanged), for: .valueChanged)
         return switchControl
     }()
     
@@ -111,7 +118,7 @@ private extension ProfileSectionTableViewCell {
             setupChevron()
         case .switchOnly:
             setupSwitch()
-            switchControl.isOn = isOn
+            switchControl.isOn = !UserDefaults.standard.bool(forKey: "isOSThemeLight")
         }
     }
     
@@ -154,6 +161,18 @@ private extension ProfileSectionTableViewCell {
     
     
 }
+
+
+extension ProfileSectionTableViewCell {
+    
+    @objc func switchControlValueChanged() {
+        delegate?.presentThemeChangingWarning(switchControlIsON: switchControl.isOn)
+    }
+    
+    
+}
+
+
 
 
 extension ProfileSectionTableViewCell {

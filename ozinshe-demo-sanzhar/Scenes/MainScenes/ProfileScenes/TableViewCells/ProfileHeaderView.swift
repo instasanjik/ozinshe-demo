@@ -24,7 +24,7 @@ class ProfileHeaderView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = NSLocalizedString("Profile-MyProfile", comment: "Менің профилім")
+        label.text = "Profile-MyProfile".localized()
         return label
     }()
     

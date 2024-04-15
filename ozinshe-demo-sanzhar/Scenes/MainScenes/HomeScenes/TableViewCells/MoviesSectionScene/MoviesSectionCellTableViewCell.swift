@@ -42,7 +42,7 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
     
     private lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("GalleryList-TVProgram", comment: "Тв-бағдарлама және реалити-шоу")
+        label.text = "GalleryList-TVProgram".localized()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
         label.isSkeletonable = true
@@ -52,7 +52,7 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
     
     private lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.setTitle(NSLocalizedString("Movie-More", comment: "Барлыгы"), for: .normal)
+        button.setTitle("Movie-More".localized(), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(Style.StaticColors.purple300, for: .normal)
         button.contentVerticalAlignment = .top
