@@ -149,6 +149,12 @@ class SignInViewController: UIViewController {
         return label
     }()
     
+    private lazy var tap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardFromView))
+        tap.cancelsTouchesInView = false
+        return tap
+    }()
+    
     
     // MARK: - View Life Cycle
     
@@ -177,6 +183,7 @@ private extension SignInViewController {
     
     func setupUI() {
         view.backgroundColor = Style.Colors.background
+        setupGestureRecognizers()
         
         setupSignUpLabel()
         setupSignUpBodyLabel()
@@ -186,6 +193,10 @@ private extension SignInViewController {
         setupGoogleButton()
         setupAppleButton()
         setupOrLabel()
+    }
+    
+    func setupGestureRecognizers() {
+        view.addGestureRecognizer(tap)
     }
     
     func setupSignUpLabel() {
