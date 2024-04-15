@@ -70,7 +70,6 @@
 		041CF9342BB70777003D2A58 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9332BB70777003D2A58 /* TermsOfUseViewController.swift */; };
 		041CF9362BB7196A003D2A58 /* SignInNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9352BB7196A003D2A58 /* SignInNavigationViewController.swift */; };
 		041CF9392BB71AE1003D2A58 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9382BB71AE1003D2A58 /* Storage.swift */; };
-		041CF93C2BB71D95003D2A58 /* CarouselNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF93B2BB71D95003D2A58 /* CarouselNavigationViewController.swift */; };
 		041CF93E2BB71E33003D2A58 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF93D2BB71E33003D2A58 /* HomeNavigationViewController.swift */; };
 		041CF9402BB71E4F003D2A58 /* SearchNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF93F2BB71E4F003D2A58 /* SearchNavigationViewController.swift */; };
 		041CF9442BB71E96003D2A58 /* FavoritesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF9432BB71E96003D2A58 /* FavoritesNavigationViewController.swift */; };
@@ -159,7 +158,6 @@
 		041CF9332BB70777003D2A58 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		041CF9352BB7196A003D2A58 /* SignInNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInNavigationViewController.swift; sourceTree = "<group>"; };
 		041CF9382BB71AE1003D2A58 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		041CF93B2BB71D95003D2A58 /* CarouselNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselNavigationViewController.swift; sourceTree = "<group>"; };
 		041CF93D2BB71E33003D2A58 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		041CF93F2BB71E4F003D2A58 /* SearchNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationViewController.swift; sourceTree = "<group>"; };
 		041CF9432BB71E96003D2A58 /* FavoritesNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationViewController.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 		041CF8A02B8DD2BB003D2A58 /* CarouselScenes */ = {
 			isa = PBXGroup;
 			children = (
-				041CF93B2BB71D95003D2A58 /* CarouselNavigationViewController.swift */,
 				041CF87F2B8CB33F003D2A58 /* CarouselViewController.swift */,
 				041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */,
 			);
@@ -784,7 +781,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E4A7472BC45DF300360C5F /* MoviesSectionCellTableViewCell.swift in Sources */,
-				041CF93C2BB71D95003D2A58 /* CarouselNavigationViewController.swift in Sources */,
 				041CF9292BB5D12F003D2A58 /* ProfileNavigationViewController.swift in Sources */,
 				041CF8DD2BA1A698003D2A58 /* MovieBannerCollectionViewCell.swift in Sources */,
 				041CF8EE2BA1E84A003D2A58 /* StaticData.swift in Sources */,

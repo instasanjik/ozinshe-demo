@@ -79,6 +79,10 @@ class CarouselViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     
 }
 
@@ -89,6 +93,7 @@ private extension CarouselViewController {
     
     func setupUI() {
         view.backgroundColor = Style.Colors.background
+        
         setupCarousel()
         setupContinueButton()
         setupPageControl()
@@ -135,6 +140,17 @@ private extension CarouselViewController {
         }
     }
     
+    func configureCollectionView() {
+        let carouselLayout = UICollectionViewFlowLayout()
+        carouselLayout.scrollDirection = .horizontal
+        carouselLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        carouselLayout.sectionInset = .zero
+        carouselLayout.minimumInteritemSpacing = 0
+        carouselLayout.minimumLineSpacing = 0
+        carouselCollectionView.collectionViewLayout = carouselLayout
+        carouselCollectionView.reloadData()
+    }
+    
     
 }
 
@@ -147,12 +163,12 @@ private extension CarouselViewController {
         if currentPage + 1 < carouselData.count {
             carouselCollectionView.scrollToItem(at: IndexPath(item: currentPage + 1, section: 0), at: .top, animated: true)
         } else {
-            Logger.log(.action, "Go to login page")
+            openLoginPage()
         }
     }
     
     @objc func skipTapped(sender: UIButton!) {
-        Logger.log(.action, "Go to login page")
+        openLoginPage()
     }
     
     
@@ -172,15 +188,11 @@ private extension CarouselViewController {
         return currentPage
     }
     
-    func configureCollectionView() {
-        let carouselLayout = UICollectionViewFlowLayout()
-        carouselLayout.scrollDirection = .horizontal
-        carouselLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        carouselLayout.sectionInset = .zero
-        carouselLayout.minimumInteritemSpacing = 0
-        carouselLayout.minimumLineSpacing = 0
-        carouselCollectionView.collectionViewLayout = carouselLayout
-        carouselCollectionView.reloadData()
+    func openLoginPage() {
+        let vc = SignInNavigationViewController()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     

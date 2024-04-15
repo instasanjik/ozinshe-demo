@@ -13,7 +13,9 @@ class SignInNavigationViewController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupController()
+        markAsViewed()
     }
     
     
@@ -27,6 +29,18 @@ extension SignInNavigationViewController {
     func setupController() {
         self.viewControllers = [SignInViewController()]
         self.topViewController?.extendedLayoutIncludesOpaqueBars = false
+    }
+    
+    
+}
+
+
+// MARK: - Internal functions
+
+private extension SignInNavigationViewController {
+    
+    func markAsViewed() {
+        UserDefaults.standard.setValue(true, forKey: "carouselViewed")
     }
     
     

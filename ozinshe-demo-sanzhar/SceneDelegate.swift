@@ -29,7 +29,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             Storage.sharedInstance.accessToken = accessToken
             window?.rootViewController = MainTabBarController()
         } else {
-            window?.rootViewController = SignInNavigationViewController()
+            let firstTime = !UserDefaults.standard.bool(forKey: "carouselViewed")
+            if firstTime {
+                window?.rootViewController = CarouselViewController()
+            } else {
+                window?.rootViewController = SignInNavigationViewController()
+            }
         }
         
         window?.tintColor = Style.Colors.purple500

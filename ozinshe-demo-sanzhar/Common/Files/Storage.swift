@@ -10,6 +10,8 @@ import Foundation
 class Storage {
     public var accessToken: String = ""
     
+    public var isFirstTime: Bool = false
+    
     static let sharedInstance = Storage()
 }
 
