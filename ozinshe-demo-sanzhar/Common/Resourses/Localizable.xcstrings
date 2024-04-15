@@ -576,6 +576,29 @@
         }
       }
     },
+    "General-IncorrectFormat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrect format for login or password! Pleas, check it and try again"
+          }
+        },
+        "kk-KZ" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Логин немесе пароль үшін қате формат! Өтінемін, оны тексеріп, қайталап көріңіз"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неверный формат ввода логина или пароля! Пожалуйста, проверьте его и повторите попытку"
+          }
+        }
+      }
+    },
     "General-UnknownError" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -16,24 +16,13 @@ class HomeViewController: UIViewController {
     private var keepWatchingMoviesList: [MovieWithDetails] = []
     private var genresList: [ContentCategory] = []
     private var agesList: [ContentCategory] = []
+    private var isMoviesSectionsListEditing = false
     private var moviesSectionsList: [MoviesSection] = [] {
         didSet {
-            moviesSectionsList.insert(MoviesSection(), at: 0) // instead of header
-            moviesSectionsList.insert(MoviesSection(), at: 1) // instead of keep watching
-            if moviesSectionsList.count >= 2 {
-                genresSectionPositionInTableView = 4
-                moviesSectionsList.insert(MoviesSection(), at: 4) // instead of genres
-                agesSectionPositionInTableView = 5
-                moviesSectionsList.insert(MoviesSection(), at: 5) // instead of age categories
-            }
-            if moviesSectionsList.count >= 5 {
-                moviesSectionsList.remove(at: 5) // removing old object of age categories
-                agesSectionPositionInTableView = 8
-                moviesSectionsList.insert(MoviesSection(), at: 8) // instead of age categories
-            }
+            insertStaticSections()
         }
     }
-    private var numberOfSectionsInTableView = 4
+    private var numberOfSectionsInTableView = 3
     private var genresSectionPositionInTableView = 2
     private var agesSectionPositionInTableView = 27
     
@@ -50,7 +39,7 @@ class HomeViewController: UIViewController {
         
         tableView.register(HeaderTableViewCell.self,
                            forCellReuseIdentifier: HeaderTableViewCell.ID)
-        tableView.register(KeepWatchingTableViewCell.self, 
+        tableView.register(KeepWatchingTableViewCell.self,
                            forCellReuseIdentifier: KeepWatchingTableViewCell.ID)
         tableView.register(MoviesSectionCellTableViewCell.self,
                            forCellReuseIdentifier: MoviesSectionCellTableViewCell.ID)
@@ -74,7 +63,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -212,7 +201,7 @@ private extension HomeViewController {
     func openMovieViewController(with movie: MovieWithDetails) {
         let vc = MovieInfoViewController()
         
-
+        
         vc.configureScene(content: movie,
                           similarTVSeries: movie.findSimilarTVSeries(moviesSectionsList: moviesSectionsList))
         self.navigationController?.pushViewController(vc, animated: true)
@@ -231,6 +220,51 @@ private extension HomeViewController {
         return cell
     }
     
+    func insertStaticSections() {
+        guard !isMoviesSectionsListEditing else { return }
+        isMoviesSectionsListEditing = true
+        
+        let cleanMoviesSections = moviesSectionsList
+        var cleanMoviesSectionsIndex = 0
+        var formattedSections = [MoviesSection]()
+        
+        formattedSections.append(MoviesSection()) // instead of header
+        
+        if !keepWatchingMoviesList.isEmpty {
+            formattedSections.append(MoviesSection()) // instead of keep watching
+            numberOfSectionsInTableView += 1
+        }
+        
+        while cleanMoviesSectionsIndex != 2 && cleanMoviesSectionsIndex < cleanMoviesSections.count {
+            formattedSections.append(cleanMoviesSections[cleanMoviesSectionsIndex]) // adding movies sections for spacing
+            cleanMoviesSectionsIndex += 1
+        }
+        
+        formattedSections.append(MoviesSection()) // instead of genres
+        genresSectionPositionInTableView = formattedSections.count - 1
+        
+        formattedSections.append(MoviesSection()) // instead of ages
+        agesSectionPositionInTableView = formattedSections.count - 1
+        
+        
+        while cleanMoviesSectionsIndex != 5 && cleanMoviesSectionsIndex < cleanMoviesSections.count {
+            formattedSections.append(cleanMoviesSections[cleanMoviesSectionsIndex]) // adding movies sections for spacing
+            cleanMoviesSectionsIndex += 1
+        }
+        
+        formattedSections.remove(at: agesSectionPositionInTableView)
+        formattedSections.append(MoviesSection()) // instead of ages
+        agesSectionPositionInTableView = formattedSections.count - 1
+        
+        while cleanMoviesSectionsIndex < cleanMoviesSections.count {
+            formattedSections.append(cleanMoviesSections[cleanMoviesSectionsIndex]) // adding movies sections for spacing
+            cleanMoviesSectionsIndex += 1
+        }
+        
+        moviesSectionsList = formattedSections
+        isMoviesSectionsListEditing = false
+    }
+    
     
     
 }
@@ -245,7 +279,11 @@ extension HomeViewController: UITableViewDelegate {
         case 0:
             return 308
         case 1:
-            return 194
+            if keepWatchingMoviesList.isEmpty {
+                return 259
+            } else {
+                return 194
+            }
         case genresSectionPositionInTableView, agesSectionPositionInTableView:
             return 150
         default:
@@ -268,7 +306,7 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return numberOfSectionsInTableView
+        return moviesSectionsList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -285,10 +323,19 @@ extension HomeViewController: UITableViewDataSource {
             return cell
             
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: KeepWatchingTableViewCell.ID, for: indexPath) as! KeepWatchingTableViewCell
-            cell.configureCell(keepWatchingMoviesList)
-            cell.delegate = self
-            return cell
+            if !keepWatchingMoviesList.isEmpty {
+                let cell = tableView.dequeueReusableCell(withIdentifier: KeepWatchingTableViewCell.ID, for: indexPath) as! KeepWatchingTableViewCell
+                cell.configureCell(keepWatchingMoviesList)
+                cell.delegate = self
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID, for: indexPath) as! MoviesSectionCellTableViewCell
+                if !moviesSectionsList.isEmpty {
+                    cell.configureCell(moviesSectionsList[indexPath.section])
+                    cell.delegate = self
+                }
+                return cell
+            }
             
         case genresSectionPositionInTableView:
             return genresAndAgesSectionCell(for: tableView, indexPath: indexPath, content: genresList)

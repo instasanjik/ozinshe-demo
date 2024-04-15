@@ -336,8 +336,10 @@ private extension SignUpViewController {
                         SVProgressHUD.dismiss { self.openMainTabbar() }
                     } else if statusCode == 401 {
                         SVProgressHUD.showError(withStatus: NSLocalizedString("Login-IncorrectLoginOrPassword", comment: ""))
+                    } else if statusCode == 400 {
+                        SVProgressHUD.showError(withStatus: "\(NSLocalizedString("General-IncorrectFormat", comment: "")) \n Status code: \(statusCode)")
                     } else {
-                        SVProgressHUD.showError(withStatus: NSLocalizedString("General-UnknownError", comment: ""))
+                        SVProgressHUD.showError(withStatus: "\(NSLocalizedString("General-UnknownError", comment: "")) \(statusCode)")
                     }
                 }
             } else { // Email or password are empty
