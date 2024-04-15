@@ -109,7 +109,7 @@ class CoreService {
                 
                 if let array = json.array {
                     for item in array {
-                        if let ageCategory = ContentCategory(json: item) {
+                        if let ageCategory = ContentCategory(json: item, isAgeCategory: true) {
                             ageCategoriesList.append(ageCategory)
                         }
                     }
