@@ -3,7 +3,7 @@
 //  ozinshe-demo-sanzhar
 //
 //  Created by Sanzhar Koshkarbayev on 14.04.2024.
-//
+// TODO: Add marks
 
 import UIKit
 import Kingfisher
