@@ -205,8 +205,11 @@ private extension HomeViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func openMovieListViewController(with content: ContentCategory) {
+    func openMovieListViewController(with contentCategory: ContentCategory) {
         Logger.log(.info, content.name)
+        let vc = MovieListViewController()
+        vc.configureScene(contentCategory: contentCategory)
+        self.navigationController?.pushViewController(vc, animated: true)
         // TODO: Make age and genres view controller open
     }
     

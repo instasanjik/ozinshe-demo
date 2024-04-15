@@ -18,6 +18,13 @@ class CoreService {
     ]
     
     
+    enum CategoryType {
+        case ageCategory
+        case genreCategory
+        case movieCategory
+    }
+    
+    
     func getBanners(completionHandler: @escaping (_ success: Bool,
                                                   _ errorMessage: String?,
                                                   [MovieBanner]) -> Void) {
@@ -205,14 +212,21 @@ class CoreService {
     }
     
     func getMovieListFromCategory(categoryID: Int,
+                                  categoryType: CategoryType,
                                   completionHandler: @escaping (_ success: Bool,
                                                                 _ errorMessage: String?,
                                                                 [MovieWithDetails]) -> Void) {
         var movieList: [MovieWithDetails] = []
         
-        let parameters = [
-            "categoryId" : categoryID
-        ]
+        let parameters: [String : Int]
+        switch categoryType {
+        case .ageCategory:
+            parameters = [ "categoryAgeId" : categoryID ]
+        case .genreCategory:
+            parameters = [ "genreId" : categoryID ]
+        case .movieCategory:
+            parameters = [ "categoryId" : categoryID ]
+        }
         
         AF.request(Endpoints.getMovieList, method: .get, parameters: parameters, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {

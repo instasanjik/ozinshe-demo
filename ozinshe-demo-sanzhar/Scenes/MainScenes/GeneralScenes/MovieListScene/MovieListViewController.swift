@@ -16,6 +16,7 @@ class MovieListViewController: UITableViewController {
     private var category: MovieCategory?
     private var movieList: [MovieWithDetails] = []
     private var moviesSection: MoviesSection?
+    private var movieContentCategory: ContentCategory?
     
     
     // MARK: - View Life Cycle
@@ -55,10 +56,17 @@ private extension MovieListViewController {
 private extension MovieListViewController {
     
     func downloadMovieList() {
-        guard let category = category else { return }
-        CoreService.shared.getMovieListFromCategory(categoryID: category.id) { success, errorMessage, movieList in
-            self.movieList = movieList
-            self.tableView.reloadData()
+        if let category = category {
+            CoreService.shared.getMovieListFromCategory(categoryID: category.id, categoryType: .movieCategory) { success, errorMessage, movieList in
+                self.movieList = movieList
+                self.tableView.reloadData()
+            }
+        } else if let contentCategory = movieContentCategory {
+            CoreService.shared.getMovieListFromCategory(categoryID: contentCategory.id, 
+                                                        categoryType: contentCategory.isAgeCategory ? .ageCategory : .genreCategory) { success, errorMessage, movieList in
+                self.movieList = movieList
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -84,6 +92,12 @@ extension MovieListViewController {
     func configureScene(category: MovieCategory) {
         self.category = category
         self.title = category.name
+        downloadMovieList()
+    }
+    
+    func configureScene(contentCategory: ContentCategory) {
+        self.movieContentCategory = contentCategory
+        self.title = contentCategory.name
         downloadMovieList()
     }
     
