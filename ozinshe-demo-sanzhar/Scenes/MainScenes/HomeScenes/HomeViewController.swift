@@ -22,7 +22,6 @@ class HomeViewController: UIViewController {
             insertStaticSections()
         }
     }
-    private var numberOfSectionsInTableView = 3
     private var genresSectionPositionInTableView = 2
     private var agesSectionPositionInTableView = 27
     
@@ -112,7 +111,6 @@ private extension HomeViewController {
             }
             if success {
                 self.moviesSectionsList = moviesSectionsList
-                self.numberOfSectionsInTableView += moviesSectionsList.count
             } else {
                 // Handle error
             }
@@ -232,7 +230,6 @@ private extension HomeViewController {
         
         if !keepWatchingMoviesList.isEmpty {
             formattedSections.append(MoviesSection()) // instead of keep watching
-            numberOfSectionsInTableView += 1
         }
         
         while cleanMoviesSectionsIndex != 2 && cleanMoviesSectionsIndex < cleanMoviesSections.count {
