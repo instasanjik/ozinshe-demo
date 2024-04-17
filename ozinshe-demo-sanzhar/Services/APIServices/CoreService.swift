@@ -219,13 +219,11 @@ class CoreService {
         var movieList: [MovieWithDetails] = []
         
         let parameters: [String : Int]
+        
         switch categoryType {
-        case .ageCategory:
-            parameters = [ "categoryAgeId" : categoryID ]
-        case .genreCategory:
-            parameters = [ "genreId" : categoryID ]
-        case .movieCategory:
-            parameters = [ "categoryId" : categoryID ]
+        case .ageCategory:      parameters = ["categoryAgeId" : categoryID]
+        case .genreCategory:    parameters = ["genreId" : categoryID]
+        case .movieCategory:    parameters = ["categoryId" : categoryID]
         }
         
         AF.request(Endpoints.getMovieList, method: .get, parameters: parameters, headers: headers).responseData { response in
@@ -306,9 +304,7 @@ class CoreService {
                                                         _ errorMessage: String?) -> Void) {
         let method: HTTPMethod = makeFavorite ? .post : .delete
         
-        let parameters = [
-            "movieId" : movieId
-        ]
+        let parameters = ["movieId" : movieId]
         
         AF.request(Endpoints.setMovieFavorite, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
             if response.response?.statusCode == 200 || response.response?.statusCode == 201 {
@@ -361,9 +357,7 @@ class CoreService {
     func changeUserPassword(password: String,
                             completionHandler: @escaping (_ success: Bool,
                                                           _ errorMessage: String?) -> Void) {
-        let parameters = [
-            "password" : password,
-        ]
+        let parameters = ["password" : password]
         
         AF.request(Endpoints.changePassword, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { response in
             if response.response?.statusCode == 200 {
@@ -404,9 +398,12 @@ class CoreService {
     
 }
 
+
+// MARK: - Internal fcuntions
+
 extension CoreService {
     
-    fileprivate func decodeError(_ response: AFDataResponse<Data>) -> String {
+    private func decodeError(_ response: AFDataResponse<Data>) -> String {
         var resultString = ""
         if let data = response.data {
             resultString = String(data: data, encoding: .utf8)!

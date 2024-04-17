@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 
 class AuthService {
+    
     static let shared = AuthService()
     
     typealias CompletionHandler = (_ statusCode: Int) -> Void
