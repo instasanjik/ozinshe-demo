@@ -26,9 +26,9 @@ final class OZLanguage {
 final class OZLanguageManager {
     
     let languages: [OZLanguage] = [
+        OZLanguage(displayName: "English", systemCode: "en"),
         OZLanguage(displayName: "Қазақша", systemCode: "kk"),
         OZLanguage(displayName: "Русский", systemCode: "ru"),
-        OZLanguage(displayName: "English", systemCode: "en")
     ]
     
     var appleCurrentLanguageCode: String {
@@ -78,8 +78,6 @@ final class OZLanguageManager {
             }
         }
     }
-    
-    var localizationQueue: DispatchGroup = DispatchGroup()
     
     
 }

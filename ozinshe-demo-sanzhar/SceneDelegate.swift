@@ -37,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             let firstTime = !UserDefaults.standard.bool(forKey: "carouselViewed")
             if firstTime {
+                LanguageManager.changeLanguage(to: LanguageManager.languages.first!)
                 window?.rootViewController = CarouselViewController()
             } else {
                 window?.rootViewController = SignInNavigationViewController()
@@ -80,6 +81,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     static func restartApp(){
         AppDelegate.setupNavigationBarsColors()
         SceneDelegate.keyWindow?.rootViewController = MainTabBarController()
+        if let tabBarController = SceneDelegate.keyWindow?.rootViewController as? MainTabBarController {
+            tabBarController.selectedIndex = 3
+        }
     }
+    
+    
 }
 

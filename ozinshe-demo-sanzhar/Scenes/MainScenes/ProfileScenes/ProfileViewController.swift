@@ -54,20 +54,6 @@ class ProfileViewController: UITableViewController {
         return blurEffectView
     }()
     
-    private lazy var warningAlert: UIAlertController = {
-        let alert = UIAlertController(title: "Languages-Warning".localized(),
-                                      message: "ChangeTheme-Warning".localized(),
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK",
-                                      style: .destructive,
-                                      handler: { _ in self.changeThemeTapped()}))
-        alert.addAction(UIAlertAction(title: "Languages-Cancel".localized(),
-                                      style: .cancel,
-                                      handler: { _ in
-        }))
-        return alert
-    }()
-    
     
     // MARK: - View Life Cycle
     
@@ -306,7 +292,7 @@ extension ProfileViewController: ProfileSectionTableViewCellDelegate {
     
     func presentThemeChangingWarning(switchControlIsON: Bool) {
         self.switchControlIsON = switchControlIsON
-        self.present(warningAlert, animated: true, completion: nil)
+        self.changeThemeTapped()
     }
     
     
