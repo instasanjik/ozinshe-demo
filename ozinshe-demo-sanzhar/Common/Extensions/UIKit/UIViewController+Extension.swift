@@ -63,10 +63,13 @@ extension UIViewController {
         present(activityViewController, animated: true, completion: nil)
     }
     
+    /// Dismisses the keyboard when tapped outside of the keyboard area.
+    ///
+    /// - Parameter sender: The gesture recognizer that triggers the dismissal.
     @objc func dismissKeyboardFromView(sender: UITapGestureRecognizer?) {
             let view = sender?.view
             view?.endEditing(true)
-        }
+    }
     
     
 }

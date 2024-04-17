@@ -22,10 +22,13 @@ extension String {
         return displayFormatter.string(from: date)
     }
     
+    /// Localizes the string using the provided language or the system's current language if not specified.
+    ///
+    /// - Parameter language: The language code to use for localization (e.g., "en", "fr").
+    /// - Returns: The localized string.
     func localized(language: String? = nil) -> String {
         return LanguageManager.localized(key: self)
     }
-    
     
     
 }
