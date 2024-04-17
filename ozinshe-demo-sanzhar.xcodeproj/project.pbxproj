@@ -90,6 +90,9 @@
 		04E4A7522BCC448200360C5F /* OZPhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7512BCC448200360C5F /* OZPhotoGalleryView.swift */; };
 		04E4A7562BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7552BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift */; };
 		04E4A7582BCDA20D00360C5F /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A7572BCDA20D00360C5F /* LanguageManager.swift */; };
+		04E4A75A2BCDADAD00360C5F /* LocalizableJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E4A7592BCDADAD00360C5F /* LocalizableJSON.json */; };
+		04E4A75C2BCDB08E00360C5F /* OZLocalizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A75B2BCDB08E00360C5F /* OZLocalizedLabel.swift */; };
+		04E4A75E2BCDB09C00360C5F /* OZLocalizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A75D2BCDB09C00360C5F /* OZLocalizedButton.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +182,9 @@
 		04E4A7512BCC448200360C5F /* OZPhotoGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPhotoGalleryView.swift; sourceTree = "<group>"; };
 		04E4A7552BCC468000360C5F /* OZPhotoGalleryViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPhotoGalleryViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		04E4A7572BCDA20D00360C5F /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		04E4A7592BCDADAD00360C5F /* LocalizableJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalizableJSON.json; sourceTree = "<group>"; };
+		04E4A75B2BCDB08E00360C5F /* OZLocalizedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZLocalizedLabel.swift; sourceTree = "<group>"; };
+		04E4A75D2BCDB09C00360C5F /* OZLocalizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZLocalizedButton.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +294,8 @@
 		041CF8A52B8E0093003D2A58 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				04E4A75B2BCDB08E00360C5F /* OZLocalizedLabel.swift */,
+				04E4A75D2BCDB09C00360C5F /* OZLocalizedButton.swift */,
 				041CF8A62B8E00F2003D2A58 /* OZButton.swift */,
 				041CF8AA2B8E1734003D2A58 /* OZPageControl.swift */,
 				041CF8AF2B8E433C003D2A58 /* OZTextField.swift */,
@@ -335,6 +343,7 @@
 		041CF8C02B9EF7A1003D2A58 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				04E4A7592BCDADAD00360C5F /* LocalizableJSON.json */,
 				041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */,
 				041CF89C2B8DC0D9003D2A58 /* Style.swift */,
 				041CF8A32B8DF7B4003D2A58 /* Screen.swift */,
@@ -728,6 +737,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E4A75A2BCDADAD00360C5F /* LocalizableJSON.json in Resources */,
 				041CF8882B8CB340003D2A58 /* LaunchScreen.storyboard in Resources */,
 				041CF8852B8CB340003D2A58 /* Assets.xcassets in Resources */,
 				041CF89F2B8DC0E9003D2A58 /* Localizable.xcstrings in Resources */,
@@ -797,6 +807,7 @@
 				0402B82E2BC1985500E1DB49 /* MovieCategory.swift in Sources */,
 				041CF89D2B8DC0D9003D2A58 /* Style.swift in Sources */,
 				041CF9162BB2B988003D2A58 /* ProfileSectionTableViewCell.swift in Sources */,
+				04E4A75C2BCDB08E00360C5F /* OZLocalizedLabel.swift in Sources */,
 				041CF9312BB7014C003D2A58 /* ChangePasswordViewController.swift in Sources */,
 				04E4A7502BCAD8B700360C5F /* DocumentationTemplate.swift in Sources */,
 				041CF9342BB70777003D2A58 /* TermsOfUseViewController.swift in Sources */,
@@ -826,6 +837,7 @@
 				041CF9482BBAE305003D2A58 /* Endponts.swift in Sources */,
 				0402B81F2BBF36CF00E1DB49 /* Int+Extension.swift in Sources */,
 				041CF9232BB58DB7003D2A58 /* SelectionLanguageViewController.swift in Sources */,
+				04E4A75E2BCDB09C00360C5F /* OZLocalizedButton.swift in Sources */,
 				041CF89A2B8DC0D1003D2A58 /* UIColor+Extension.swift in Sources */,
 				041CF93E2BB71E33003D2A58 /* HomeNavigationViewController.swift in Sources */,
 				041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */,

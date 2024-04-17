@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 
 final class OZLanguage {
@@ -24,18 +25,20 @@ final class OZLanguage {
 
 final class OZLanguageManager {
     
-    private var currentLanguageCode: String = ""
-    
     let languages: [OZLanguage] = [
         OZLanguage(displayName: "Қазақша", systemCode: "kk"),
         OZLanguage(displayName: "Русский", systemCode: "ru"),
         OZLanguage(displayName: "English", systemCode: "en")
     ]
     
+    var appleCurrentLanguageCode: String {
+        return UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String ?? ""
+    }
+    
     var currentLanguageDisplayName: String {
         for language in languages {
             if #available(iOS 16, *) {
-                if Locale.current.language.languageCode?.identifier == language.systemCode {
+                if appleCurrentLanguageCode == language.systemCode {
                     return language.displayName
                 }
             } else {
@@ -49,11 +52,34 @@ final class OZLanguageManager {
     
     var currentLanguageSystemCode: String {
         if #available(iOS 16, *) {
-            return Locale.current.language.languageCode?.identifier ?? "en"
+            return appleCurrentLanguageCode
         } else {
             return Locale.current.languageCode ?? "en"
         }
     }
+    
+    var localizedJSON: JSON? = nil
+    
+    var LocalizedFile: JSON {
+        if let localizedJSON = localizedJSON {
+            return localizedJSON
+        } else {
+            if let path = Bundle.main.path(forResource: "LocalizableJSON", ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                    let json = try JSON(data: data)
+                    localizedJSON = json
+                    return json
+                } catch _ {
+                    return JSON()
+                }
+            } else {
+                return JSON()
+            }
+        }
+    }
+    
+    var localizationQueue: DispatchGroup = DispatchGroup()
     
     
 }
@@ -61,9 +87,13 @@ final class OZLanguageManager {
 
 extension OZLanguageManager {
     
-    func changeLanguage(to: OZLanguage) {
-        
+    func changeLanguage(to language: OZLanguage) {
+        UserDefaults.standard.set([language.systemCode], forKey: "AppleLanguages")
         NotificationCenter.default.post(name: Notification.Name("OZLanguageChanged"), object: nil)
+    }
+    
+    func localized(key: String) -> String {
+        return LanguageManager.LocalizedFile["strings"][key]["localizations"][currentLanguageSystemCode]["stringUnit"]["value"].stringValue
     }
     
     

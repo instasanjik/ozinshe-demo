@@ -18,7 +18,6 @@ class SelectionLanguageViewController: UIViewController {
     // MARK: - Internal variables
     private var oldValueY: Double = 0
     private var lastSelectedRow: IndexPath?
-    private var selectedLanguageIndexPath: IndexPath?
     private let SCROLL_VIEW_PADDING_Y: CGFloat = 86
     
     
@@ -88,23 +87,6 @@ class SelectionLanguageViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.separatorColor = Style.Colors.gray700
         return tableView
-    }()
-    
-    private lazy var warningAlert: UIAlertController = {
-        let alert = UIAlertController(title: "Languages-Warning".localized(),
-                                      message: "Lanuages-WarningDescription".localized(),
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Languages-Restart".localized(),
-                                      style: .destructive,
-                                      handler: { _ in
-            LanguageManager.changeLanguage(to: LanguageManager.languages[self.selectedLanguageIndexPath?.row ?? 0])
-        }))
-        alert.addAction(UIAlertAction(title: "Languages-Cancel".localized(),
-                                      style: .cancel,
-                                      handler: { _ in
-            self.tableView.selectRow(at: self.lastSelectedRow, animated: true, scrollPosition: .middle)
-        }))
-        return alert
     }()
     
     
@@ -203,19 +185,8 @@ private extension SelectionLanguageViewController {
 }
 
 
-// MARK: - Internal functions
-
-private extension SelectionLanguageViewController {
-    
-    func changeLanguage(to: String) {
-        UserDefaults.standard.set([to], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
-    }
-    
-    
-}
-
 // MARK: - Targets and handlers
+
 private extension SelectionLanguageViewController {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) { /// detect if tap is out of content view for dismissing scene
@@ -249,8 +220,7 @@ extension SelectionLanguageViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedLanguageIndexPath = indexPath
-        self.present(warningAlert, animated: true, completion: nil)
+        LanguageManager.changeLanguage(to: LanguageManager.languages[indexPath.row])
     }
     
     

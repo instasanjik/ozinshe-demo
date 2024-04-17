@@ -22,6 +22,17 @@ class ProfileViewController: UITableViewController {
     // MARK: Internal variables
     
     var switchControlIsON = true
+    var profileSettings: [(String, CellType)] {
+        get {
+            return [
+                ("Profile-PersonalData".localized(), .labelAndChevron),
+                ("Profile-ChangePassword".localized(), .chevronOnly),
+                ("Profile-Language".localized(), .labelAndChevron),
+                ("Profile-TermsOfUse".localized(), .chevronOnly),
+                ("Profile-DarkMode".localized(), .switchOnly)
+            ]
+        }
+    }
     
     
     // MARK: - UI Elements
@@ -69,9 +80,14 @@ private extension ProfileViewController {
     func setupUI() {
         self.view.backgroundColor = Style.Colors.background
         settingNavigationBar()
+        addObservers()
         
         tableView.register(ProfileSectionTableViewCell.self,
                            forCellReuseIdentifier: ProfileSectionTableViewCell.ID)
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.localizePage), name: Notification.Name("OZLanguageChanged"), object: nil)
     }
     
     func settingNavigationBar() {
@@ -150,6 +166,17 @@ private extension ProfileViewController {
         SceneDelegate.restartApp()
     }
     
+    @objc func localizePage() {
+        for index in tableView.visibleCells.indices {
+            if let cell = tableView.visibleCells[index] as? ProfileSectionTableViewCell {
+                cell.setupCellData(cellData: profileSettings[index])
+                if index == 2 {
+                    cell.setupCellOptionText()
+                }
+            }
+        }
+    }
+    
     
 }
 
@@ -217,7 +244,7 @@ extension ProfileViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileSectionTableViewCell.ID, for: indexPath) as! ProfileSectionTableViewCell
-        cell.setupCellData(cellData: StaticData.profileSettings[indexPath.row])
+        cell.setupCellData(cellData: profileSettings[indexPath.row])
         if indexPath.row == 2 {
             cell.setupCellOptionText()
         }
@@ -226,7 +253,7 @@ extension ProfileViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StaticData.profileSettings.count
+        return profileSettings.count
     }
     
     

@@ -16,14 +16,6 @@ enum CellType {
 
 struct StaticData {
     
-    static let profileSettings: [(String, CellType)] = [
-        ("Profile-PersonalData".localized(), .labelAndChevron),
-        ("Profile-ChangePassword".localized(), .chevronOnly),
-        ("Profile-Language".localized(), .labelAndChevron),
-        ("Profile-TermsOfUse".localized(), .chevronOnly),
-        ("Profile-DarkMode".localized(), .switchOnly)
-    ]
-    
     static let personalDataCell: [String] = ["PersonalData-name", "PersonalData-birhdayDate", "PersonalData-phoneNumber"]
     
     static let termOfUse: String = """

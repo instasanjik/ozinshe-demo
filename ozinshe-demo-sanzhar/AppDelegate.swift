@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 15.0, *) {
             UITableView.appearance().sectionHeaderTopPadding = 8
         }
+        
+        print(LanguageManager.LocalizedFile["strings"]["SignIn-Description"]["localizations"]["kk-KZ"]["stringUnit"]["value"])
         return true
     }
 
