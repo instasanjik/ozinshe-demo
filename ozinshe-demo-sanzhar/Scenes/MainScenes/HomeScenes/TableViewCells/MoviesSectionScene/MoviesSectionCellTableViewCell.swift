@@ -165,6 +165,11 @@ extension MoviesSectionCellTableViewCell {
         self.moviesSection = moviesSection
     }
     
+    func localizeCell() {
+        self.chapterTitleLabel.text = "GalleryList-TVProgram".localized()
+        self.moreButton.setTitle("Movie-More".localized(), for: .normal)
+    }
+    
     func showSkeletonWithAnimation() {
         self.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
     }

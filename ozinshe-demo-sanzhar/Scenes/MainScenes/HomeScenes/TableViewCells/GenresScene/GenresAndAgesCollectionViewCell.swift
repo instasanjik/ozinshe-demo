@@ -16,6 +16,11 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
     static let ID: String = "GenresAndAgesCollectionViewCell"
     
     
+    // MARK: - Internal variables
+    
+    private var contentCategory: ContentCategory?
+    
+    
     // MARK: - UI Elements
     
     private lazy var previewImageView: UIImageView = {
@@ -97,8 +102,21 @@ extension GenresAndAgesCollectionViewCell {
 extension GenresAndAgesCollectionViewCell{
     
     func configureCell(card: ContentCategory) {
+        self.contentCategory = card
         self.previewImageView.kf.setImage(with: card.previewURL)
-        self.nameLabel.text = card.name
+        
+        if card.isAgeCategory {
+            self.nameLabel.text = "\(card.name) " + "\("Age-yo".localized())"
+        } else {
+            self.nameLabel.text = card.name
+        }
+    }
+    
+    func localizeCell() {
+        guard let contentCategory = contentCategory else { return }
+        if contentCategory.isAgeCategory {
+            nameLabel.text = "\(contentCategory.name) " + " \("Age-yo".localized())"
+        }
     }
     
     

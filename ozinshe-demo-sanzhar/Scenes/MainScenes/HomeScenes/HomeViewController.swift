@@ -78,12 +78,13 @@ private extension HomeViewController {
     
     func setupUI() {
         view.backgroundColor = Style.Colors.background
+        addObservers()
         
         setupTableView()
     }
     
-    @objc func languageChanged() {
-        print(123)
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.localizePage), name: Notification.Name("OZLanguageChanged"), object: nil)
     }
     
     func setupTableView() {
@@ -94,6 +95,28 @@ private extension HomeViewController {
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+    }
+    
+    
+}
+
+
+// MARK: - Targets
+
+private extension HomeViewController {
+    
+    @objc func localizePage() {
+        mainTableView.visibleCells.forEach { cell in
+            if let cell = cell as? KeepWatchingTableViewCell {
+                cell.localizeCell()
+            } else if let cell = cell as? MoviesSectionCellTableViewCell {
+                cell.localizeCell()
+            } else if let cell = cell as? GenresAndAgesSectionTableViewCell {
+                cell.localizeCell()
+            }
+        }
+        
+        mainTableView.reloadData()
     }
     
     
@@ -220,6 +243,7 @@ private extension HomeViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: GenresAndAgesSectionTableViewCell.ID, for: indexPath) as! GenresAndAgesSectionTableViewCell
         cell.configureCell(content: content)
         cell.delegate = self
+        cell.localizeCell()
         return cell
     }
     
@@ -328,12 +352,14 @@ extension HomeViewController: UITableViewDataSource {
             if !keepWatchingMoviesList.isEmpty {
                 let cell = tableView.dequeueReusableCell(withIdentifier: KeepWatchingTableViewCell.ID, for: indexPath) as! KeepWatchingTableViewCell
                 cell.configureCell(keepWatchingMoviesList)
+                cell.localizeCell()
                 cell.delegate = self
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID, for: indexPath) as! MoviesSectionCellTableViewCell
                 if !moviesSectionsList.isEmpty {
                     cell.configureCell(moviesSectionsList[indexPath.section])
+                    cell.localizeCell()
                     cell.delegate = self
                 }
                 return cell
@@ -349,6 +375,7 @@ extension HomeViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: MoviesSectionCellTableViewCell.ID, for: indexPath) as! MoviesSectionCellTableViewCell
             if !moviesSectionsList.isEmpty {
                 cell.configureCell(moviesSectionsList[indexPath.section])
+                cell.localizeCell()
                 cell.delegate = self
             }
             return cell

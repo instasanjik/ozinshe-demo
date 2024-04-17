@@ -127,6 +127,10 @@ extension KeepWatchingTableViewCell {
         self.keepWatchingMovieList = keepWatchingMovieList
     }
     
+    func localizeCell() {
+        self.chapterTitleLabel.text = "KeepWatching-KeepWatching".localized()
+    }
+    
     func showSkeletonWithAnimation() {
         self.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
     }

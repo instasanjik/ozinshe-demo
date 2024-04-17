@@ -19,10 +19,7 @@ class ContentCategory {
         self.id = id
         self.name = name
         self.previewURL = previewURL
-        
-        if isAgeCategory {
-            self.name += " \("Age-yo".localized())"
-        }
+        self.isAgeCategory = isAgeCategory
     }
     
     convenience init?(json: JSON, isAgeCategory: Bool = false) {

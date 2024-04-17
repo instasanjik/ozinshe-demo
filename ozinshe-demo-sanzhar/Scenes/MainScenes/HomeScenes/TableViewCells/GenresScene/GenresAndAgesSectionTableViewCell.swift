@@ -123,6 +123,17 @@ extension GenresAndAgesSectionTableViewCell {
         self.content = content
     }
     
+    func localizeCell() {
+        self.chapterTitleLabel.text = "MovieInfo-Trending".localized()
+        self.contentCollectionView.reloadData()
+        
+        self.contentCollectionView.visibleCells.forEach { cell in
+            if let cell = cell as? GenresAndAgesCollectionViewCell {
+                cell.localizeCell()
+            }
+        }
+    }
+    
     
 }
 
