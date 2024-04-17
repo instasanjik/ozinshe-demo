@@ -150,9 +150,9 @@ private extension PersonalDataViewController {
     }
     
     func setupNavigationBar() {
-        self.title = "Personal data"
+        self.title = "PersonalData-Title".localized()
         
-        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+        let editButton = UIBarButtonItem(title: "General-Edit".localized(), style: .plain, target: self, action: #selector(editTapped))
         navigationItem.rightBarButtonItems = [editButton]
     }
     
@@ -326,7 +326,7 @@ private extension PersonalDataViewController {
             setupBirthdayDateLabel()
             setupBirthdayDateValueLabel()
         }
-        navigationItem.rightBarButtonItems?.first?.title = isDataEditing ? "Save" : "Edit"
+        navigationItem.rightBarButtonItems?.first?.title = isDataEditing ? "General-Save".localized() : "General-Edit".localized()
     }
     
     func updateUserProfileData() {

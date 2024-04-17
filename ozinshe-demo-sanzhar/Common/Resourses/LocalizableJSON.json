@@ -1,2220 +1,489 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Age-yo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "y.o."
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "жас"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "лет"
-          }
+    "strings" : {
+        "Age-yo": {
+            "en": "y.o.",
+            "ru": "лет",
+            "kz": "жас"
+        },
+        "carouselContinueButtonText": {
+            "en": "Next",
+            "ru": "Далее",
+            "kz": "Келесі"
+        },
+        "carouselEndButtonText": {
+            "en": "Let's start!",
+            "ru": "Начнем!",
+            "kz": "Әрі қарай"
+        },
+        "carouselItem-1": {
+            "en": "Movies, TV series, sitcoms, animation projects, TV programs and reality shows, anime and much more",
+            "ru": "Фильмы, сериалы, ситкомы, анимационные проекты, телепрограммы и реалити-шоу, аниме и многое другое",
+            "kz": "Фильмдер, телехикаялар, ситкомдар, анимациялық жобалар, телебағдарламалар мен реалити-шоулар, аниме және тағы басқалары"
+        },
+        "carouselItem-2": {
+            "en": "Look from any device\nWatch your favorite movie from your phone, tablet, laptop without additional payment",
+            "ru": "Смотрите с любого устройства\nСмотрите свой любимый фильм со своего телефона, планшета, ноутбука без дополнительной оплаты",
+            "kz": "Кез келген құрылғыдан қара \nСүйікті фильміңді  қосымша төлемсіз телефоннан, планшеттен, ноутбуктан қара"
+        },
+        "carouselItem-3": {
+            "en": "Registration is easy. Register now and get the movie you want",
+            "ru": "Зарегистрироваться очень просто. Зарегистрируйтесь прямо сейчас и получите желаемый фильм",
+            "kz": "Тіркелу оңай. Қазір тіркел де қалаған фильміңе қол жеткіз"
+        },
+        "carouselSkipButton": {
+            "en": "Skip",
+            "ru": "Пропустить",
+            "kz": "Өткізу"
+        },
+        "carouselWelcomeText": {
+            "en": "Welcome to ÖZINŞE!",
+            "ru": "Добро пожаловать в ÖZINŞE!",
+            "kz": "ÖZINŞE-ге қош келдің!"
+        },
+        "ChangePassword-NewPassword": {
+            "en": "New password",
+            "ru": "Новый пароль",
+            "kz": "Жаңа пароль"
+        },
+        "ChangePassword-RepeatPassword": {
+            "en": "Repeat new password",
+            "ru": "Повторите новый пароль",
+            "kz": "Жаңа құпия сөзді қайталаңыз"
+        },
+        "ChangeTheme-Warning": {
+            "en": "To successfully change the theme of the application, please restart the application",
+            "ru": "Для успешной смены темы приложения, пожалуйста, перезагрузите приложение",
+            "kz": "Қолданба тақырыбын сәтті өзгерту үшін қолданбаны қайта жүктеңіз"
+        },
+        "ContentCategories-Anime": {
+            "en": "Anime",
+            "ru": "Аниме",
+            "kz": "Аниме"
+        },
+        "ContentCategories-Cartoons": {
+            "en": "Cartoons",
+            "ru": "Мультфильмы",
+            "kz": "Мультсериал"
+        },
+        "ContentCategories-CartoonSeries": {
+            "en": "CartoonSeries",
+            "ru": "Мультсериалы",
+            "kz": "Мультфильм"
+        },
+        "ContentCategories-Documentary": {
+            "en": "Documentary movies",
+            "ru": "Документальные фильмы",
+            "kz": "Деректі фильм"
+        },
+        "ContentCategories-FeatureMovies": {
+            "en": "Feature Movies",
+            "ru": "Художественный фильмы",
+            "kz": "Көркем фильм"
+        },
+        "ContentCategories-Foreign": {
+            "en": "Foreign films",
+            "ru": "Зарубежные фильмы",
+            "kz": "Шетел фильмдері"
+        },
+        "ContentCategories-Music": {
+            "en": "Music",
+            "ru": "Музыка",
+            "kz": "Музыка"
+        },
+        "ContentCategories-Series": {
+            "en": "Series",
+            "ru": "Сериалы",
+            "kz": "Телехикая"
+        },
+        "ContentCategories-Sitkom": {
+            "en": "Sitkom",
+            "ru": "Ситком",
+            "kz": "Ситком"
+        },
+        "ContentCategories-TVShow": {
+            "en": "TV program and reality show",
+            "ru": "ТВ-программы и реалити-шоу",
+            "kz": "Тв-бағдарлама және реалити-шоу"
+        },
+        "Favorites-Title": {
+            "en": "Favorites",
+            "ru": "Избранное",
+            "kz": "Таңдаулылар"
+        },
+        "GalleryList-TVProgram": {
+            "en": "TV program and reality show",
+            "ru": "ТВ-программы и реалити-шоу",
+            "kz": "Тв-бағдарлама және реалити-шоу"
+        },
+        "General-Categories": {
+            "en": "Categories",
+            "ru": "Категории",
+            "kz": "Санаттар"
+        },
+        "General-Edit": {
+            "en": "Edit",
+            "ru": "Изменить",
+            "kz": "Өңдеу"
+        },
+        "General-FunctionUnavailableError": {
+            "en": "We are sorry! This options is not working now",
+            "ru": "Приносим свои извинения! Эта опция сейчас не работает",
+            "kz": "Кешіріңіз! Бұл опциялар қазір жұмыс істемейді"
+        },
+        "General-IncorrectFormat": {
+            "en": "Incorrect format for login or password! Pleas, check it and try again",
+            "ru": "Неверный формат ввода логина или пароля! Пожалуйста, проверьте его и повторите попытку",
+            "kz": "Логин немесе пароль үшін қате формат! Өтінемін, оны тексеріп, қайталап көріңіз"
+        },
+        "General-UnknownError": {
+            "en": "An unknown error has occurred! Please try again later!",
+            "ru": "Произошла неизвестная ошибка! Пожалуйста, попробуйте позже!",
+            "kz": "Белгісіз қате болды! Өтінемін, кейінірек көріңіз!"
+        },
+        "Genres-Adventure": {
+            "en": "Adventure",
+            "ru": "Приключения",
+            "kz": "Шытырман оқиғалы"
+        },
+        "Genres-Comedy": {
+            "en": "Comedy",
+            "ru": "Комении",
+            "kz": "Комедиялар"
+        },
+        "Genres-Entertainment": {
+            "en": "Entertainment",
+            "ru": "Развлечения",
+            "kz": "Ойын-сауық"
+        },
+        "Genres-Family": {
+            "en": "Family",
+            "ru": "Семья",
+            "kz": "Отбасымен көретіндер"
+        },
+        "Genres-Fantasy": {
+            "en": "Fantasy",
+            "ru": "Фэнтези",
+            "kz": "Ғылыми фантастика және фэнтези"
+        },
+        "Genres-Musically": {
+            "en": "Musically",
+            "ru": "Музыка",
+            "kz": "Музыкалық"
+        },
+        "Genres-Science": {
+            "en": "Science",
+            "ru": "Научные",
+            "kz": "Ғылыми-танымдық"
+        },
+        "Genres-Short": {
+            "en": "Short",
+            "ru": "Короткометражные",
+            "kz": "Қысқаметрлі"
+        },
+        "Genres-Sport": {
+            "en": "Sport",
+            "ru": "Спорт",
+            "kz": "Спорттық"
+        },
+        "KeepWatching-KeepWatching": {
+            "en": "Keep watching",
+            "ru": "Продолжить просмотр",
+            "kz": "Көруді жалғастырыңыз"
+        },
+        "Languages-Cancel": {
+            "en": "Cancel",
+            "ru": "Отменить",
+            "kz": "Болдырмау"
+        },
+        "Languages-Restart": {
+            "en": "Restart",
+            "ru": "Перезагрузить",
+            "kz": "Қайта қосу"
+        },
+        "Languages-Warning": {
+            "en": "Warning",
+            "ru": "Внимание",
+            "kz": "Ескерту"
+        },
+        "Lanuages-WarningDescription": {
+            "en": "Please restart your app to change language completely",
+            "ru": "Пожалуйста, перезапустите ваше приложение, чтобы полностью сменить язык",
+            "kz": "Тілді толығымен өзгерту үшін қолданбаны қайта іске қосыңыз"
+        },
+        "LeaveAccount-Confirmation": {
+            "en": "Do you really want to log out of your account?",
+            "ru": "Вы действительно хотите выйти из аккаунта?",
+            "kz": "Сіз шынымен есептік жазбаңыздан шыққыңыз келе ме?"
+        },
+        "LeaveAccount-No": {
+            "en": "No",
+            "ru": "Нет",
+            "kz": "Жоқ"
+        },
+        "LeaveAccount-Yes": {
+            "en": "Yes. leave",
+            "ru": "Да, выйти",
+            "kz": "Иә, шығу"
+        },
+        "Login-IncorrectLoginOrPassword": {
+            "en": "Incorrect login or password",
+            "ru": "Неверный логин или пароль",
+            "kz": "Логин немесе құпия сөз дұрыс емес"
+        },
+        "Movie-Director": {
+            "en": "Director",
+            "ru": "Режисер",
+            "kz": "Режиссер"
+        },
+        "Movie-Hide": {
+            "en": "Hide",
+            "ru": "Скрыть",
+            "kz": "Жасыру"
+        },
+        "Movie-More": {
+            "en": "More",
+            "ru": "Больше",
+            "kz": "Толығырақ"
+        },
+        "Movie-Producer": {
+            "en": "Producer",
+            "ru": "Продюсер",
+            "kz": "Продюсер"
+        },
+        "General-Save": {
+            "en": "Save",
+            "ru": "Сохранить",
+            "kz": "Сақтау"
+        },
+        "Movie-Screenshots": {
+            "en": "Screenshots",
+            "ru": "Скриншоты",
+            "kz": "Скриншоттар"
+        },
+        "Movie-Sections": {
+            "en": "Sections",
+            "ru": "Секции",
+            "kz": "Бөлімдер"
+        },
+        "Movie-Share": {
+            "en": "Share",
+            "ru": "Поделиться",
+            "kz": "Бөлісу"
+        },
+        "Movie-SimilarShows": {
+            "en": "Similar TV series",
+            "ru": "Похожие сериалы",
+            "kz": "Ұқсас телехикаялар"
+        },
+        "Movie-Watch": {
+            "en": "Watch",
+            "ru": "Посмотреть",
+            "kz": "Қарау"
+        },
+        "MovieInfo-FromItsCategory": {
+            "en": "From the same category",
+            "ru": "Из этой же категории",
+            "kz": "Сол санаттан"
+        },
+        "MovieInfo-Trending": {
+            "en": "Trending ones",
+            "ru": "В тренде",
+            "kz": "Трендтер"
+        },
+        "PersonalData-birhdayDate": {
+            "en": "Birthday date",
+            "ru": "Дата рождения",
+            "kz": "Туған күні"
+        },
+        "PersonalData-name": {
+            "en": "Name",
+            "ru": "Имя",
+            "kz": "Сіздің атыңыз"
+        },
+        "PersonalData-NoData": {
+            "en": "Empty",
+            "ru": "Пусто",
+            "kz": "Бос"
+        },
+        "PersonalData-phoneNumber": {
+            "en": "Phone number",
+            "ru": "Номер телефона",
+            "kz": "Телефон нөмірі"
+        },
+        "Profile-ChangePassword": {
+            "en": "Change password",
+            "ru": "Изменить пароль",
+            "kz": "Құпия сөзді өзгерту"
+        },
+        "Profile-DarkMode": {
+            "en": "Dark mode",
+            "ru": "Ночной режим",
+            "kz": "Қараңғы режим"
+        },
+        "Profile-Language": {
+            "en": "Language",
+            "ru": "Язык",
+            "kz": "Тіл"
+        },
+        "Profile-Leave": {
+            "en": "Leave",
+            "ru": "Выйти",
+            "kz": "Шығу"
+        },
+        "Profile-MyProfile": {
+            "en": "My profile",
+            "ru": "Мой профиль",
+            "kz": "Менің профилім"
+        },
+        "Profile-Notifications": {
+            "en": "Notifications",
+            "ru": "Уведомления",
+            "kz": "Хабарламалар"
+        },
+        "Profile-PersonalData": {
+            "en": "Personal data",
+            "ru": "Персональные данные",
+            "kz": "Жеке деректер"
+        },
+        "Profile-Profile": {
+            "en": "Profile",
+            "ru": "Профиль",
+            "kz": "Профиль"
+        },
+        "Profile-TermsOfUse": {
+            "en": "Terms of Use",
+            "ru": "Условия использования",
+            "kz": "Ережелер мен шарттар"
+        },
+        "Search-NoResults": {
+            "en": "Your search returned no results",
+            "ru": "Ваш поиск не дал никаких результатов",
+            "kz": "Сіздің іздеуіңіз нәтиже бермеді"
+        },
+        "Search-Search": {
+            "en": "Search",
+            "ru": "Поиск",
+            "kz": "Іздеу"
+        },
+        "Seasons-episode": {
+            "en": "episode",
+            "ru": "эпизод",
+            "kz": "эпизод"
+        },
+        "Seasons-Seasons": {
+            "en": "season",
+            "ru": "сезон",
+            "kz": "маусым"
+        },
+        "Series-episode": {
+            "en": "episode",
+            "ru": "серия",
+            "kz": "серия"
+        },
+        "SignIn-AppleID": {
+            "en": "Sign up with your Apple ID",
+            "ru": "Войти с Apple ID",
+            "kz": "Apple ID-мен тіркеліңіз"
+        },
+        "SignIn-Description": {
+            "en": "Log in into your account",
+            "ru": "Войдите в ваш аккаунт",
+            "kz": "Аккаунтқа кіріңіз"
+        },
+        "SignIn-EmailIsEmpty": {
+            "en": "Email or password cannot be empty",
+            "ru": "Адрес электронной почты или пароль не могут быть пустыми",
+            "kz": "Электрондық пошта немесе құпия сөз бос болуы мүмкін емес"
+        },
+        "SignIn-ForgotPassword": {
+            "en": "Forgot your password?",
+            "ru": "Забыли пароль?",
+            "kz": "Құпия сөзді ұмыттыңыз ба?"
+        },
+        "SignIn-Google": {
+            "en": "Sign up with your Google",
+            "ru": "Войти с Google",
+            "kz": "Google-мен тіркеліңіз"
+        },
+        "SignIn-HaveNoAccount": {
+            "en": "Have no account?",
+            "ru": "Нет аккаунта?",
+            "kz": "Аккаунтыныз жоқ па? "
+        },
+        "SignIn-Hello": {
+            "en": "Hello",
+            "ru": "Привет!",
+            "kz": "Сәлем"
+        },
+        "SignIn-Join": {
+            "en": "Join",
+            "ru": "Войти",
+            "kz": "Кіру"
+        },
+        "SignIn-or": {
+            "en": "Or try it",
+            "ru": "Или",
+            "kz": "Немесе"
+        },
+        "SignIn-Password": {
+            "en": "Password",
+            "ru": "Пароль",
+            "kz": "Құпия сөз"
+        },
+        "SignIn-SignUp": {
+            "en": "Sign Up!",
+            "ru": "Зарегистрироваться!",
+            "kz": "Тіркелу"
+        },
+        "SignIn-WrongFormat": {
+            "en": "Wrong format",
+            "ru": "Неверный формат",
+            "kz": "Қате формат"
+        },
+        "SignIn-YourEmail": {
+            "en": "Your email",
+            "ru": "Ваш email",
+            "kz": "Сіздің email"
+        },
+        "SignIn-YourPassword": {
+            "en": "Your password",
+            "ru": "Ваш пароль",
+            "kz": "Сіздің құпия сөзіңіз"
+        },
+        "SignUp-Description": {
+            "en": "Fill in the data",
+            "ru": "Заполните форму",
+            "kz": "Деректерді толтырыңыз"
+        },
+        "SignUp-DoUHaveAnAccount?": {
+            "en": "Already have an account?",
+            "ru": "Уже есть аккаунт?",
+            "kz": "Сізде аккаунт бар ма?"
+        },
+        "SignUp-Login": {
+            "en": "Login",
+            "ru": "Войти",
+            "kz": "Кіру"
+        },
+        "SignUp-PasswordAgain": {
+            "en": "Repeat the password",
+            "ru": "Повторите пароль",
+            "kz": "Құпия сөзді қайталаңыз"
+        },
+        "SignUp-PasswordsAreDifferent": {
+            "en": "Passwords are not similar",
+            "ru": "Пароли не совпадают между собой",
+            "kz": "Парольдер ұқсас емес"
+        },
+        "SignUp-SignUp": {
+            "en": "Sign Up",
+            "ru": "Зарегистрироваться",
+            "kz": "Тіркелу"
+        },
+        "PersonalData-Title": {
+            "en": "Personal Data",
+            "ru": "Персональные данные",
+            "kz": "Дербес деректер"
         }
-      }
-    },
-    "carouselContinueButtonText" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Next"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Келесі"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Далее"
-          }
-        }
-      }
-    },
-    "carouselEndButtonText" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Let's start!"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Әрі қарай"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Начнем!"
-          }
-        }
-      }
-    },
-    "carouselItem-1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Movies, TV series, sitcoms, animation projects, TV programs and reality shows, anime and much more"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Фильмдер, телехикаялар, ситкомдар, анимациялық жобалар, телебағдарламалар мен реалити-шоулар, аниме және тағы басқалары"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Фильмы, сериалы, ситкомы, анимационные проекты, телепрограммы и реалити-шоу, аниме и многое другое"
-          }
-        }
-      }
-    },
-    "carouselItem-2" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Look from any device\nWatch your favorite movie from your phone, tablet, laptop without additional payment"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Кез келген құрылғыдан қара \nСүйікті фильміңді  қосымша төлемсіз телефоннан, планшеттен, ноутбуктан қара"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Смотрите с любого устройства\nСмотрите свой любимый фильм со своего телефона, планшета, ноутбука без дополнительной оплаты"
-          }
-        }
-      }
-    },
-    "carouselItem-3" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Registration is easy. Register now and get the movie you want"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тіркелу оңай. Қазір тіркел де қалаған фильміңе қол жеткіз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Зарегистрироваться очень просто. Зарегистрируйтесь прямо сейчас и получите желаемый фильм"
-          }
-        }
-      }
-    },
-    "carouselSkipButton" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Skip"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Өткізу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пропустить"
-          }
-        }
-      }
-    },
-    "carouselWelcomeText" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Welcome to ÖZINŞE!"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ÖZINŞE-ге қош келдің!"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Добро пожаловать в ÖZINŞE!"
-          }
-        }
-      }
-    },
-    "ChangePassword-NewPassword" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New password"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Жаңа пароль"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Новый пароль"
-          }
-        }
-      }
-    },
-    "ChangePassword-RepeatPassword" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Repeat new password"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Жаңа құпия сөзді қайталаңыз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Повторите новый пароль"
-          }
-        }
-      }
-    },
-    "ChangeTheme-Warning" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To successfully change the theme of the application, please restart the application"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Қолданба тақырыбын сәтті өзгерту үшін қолданбаны қайта жүктеңіз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Для успешной смены темы приложения, пожалуйста, перезагрузите приложение"
-          }
-        }
-      }
-    },
-    "ContentCategories-Anime" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Anime"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Аниме"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Аниме"
-          }
-        }
-      }
-    },
-    "ContentCategories-Cartoons" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cartoons"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мультсериал"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мультфильмы"
-          }
-        }
-      }
-    },
-    "ContentCategories-CartoonSeries" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CartoonSeries"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мультфильм"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мультсериалы"
-          }
-        }
-      }
-    },
-    "ContentCategories-Documentary" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Documentary movies"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Деректі фильм"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Документальные фильмы"
-          }
-        }
-      }
-    },
-    "ContentCategories-FeatureMovies" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Feature Movies"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Көркем фильм"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Художественный фильмы"
-          }
-        }
-      }
-    },
-    "ContentCategories-Foreign" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Foreign films"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Шетел фильмдері"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Зарубежные фильмы"
-          }
-        }
-      }
-    },
-    "ContentCategories-Music" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Music"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Музыка"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Музыка"
-          }
-        }
-      }
-    },
-    "ContentCategories-Series" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Series"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Телехикая"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сериалы"
-          }
-        }
-      }
-    },
-    "ContentCategories-Sitkom" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sitkom"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ситком"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ситком"
-          }
-        }
-      }
-    },
-    "ContentCategories-TVShow" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TV program and reality show"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тв-бағдарлама және реалити-шоу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ТВ-программы и реалити-шоу"
-          }
-        }
-      }
-    },
-    "Favorites-Title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Favorites"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Таңдаулылар"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Избранное"
-          }
-        }
-      }
-    },
-    "GalleryList-TVProgram" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TV program and reality show"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тв-бағдарлама және реалити-шоу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ТВ-программы и реалити-шоу"
-          }
-        }
-      }
-    },
-    "General-Categories" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categories"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Санаттар"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Категории"
-          }
-        }
-      }
-    },
-    "General-Edit" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Өңдеу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Изменить"
-          }
-        }
-      }
-    },
-    "General-FunctionUnavailableError" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We are sorry! This options is not working now"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Кешіріңіз! Бұл опциялар қазір жұмыс істемейді"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Приносим свои извинения! Эта опция сейчас не работает"
-          }
-        }
-      }
-    },
-    "General-IncorrectFormat" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Incorrect format for login or password! Pleas, check it and try again"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Логин немесе пароль үшін қате формат! Өтінемін, оны тексеріп, қайталап көріңіз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Неверный формат ввода логина или пароля! Пожалуйста, проверьте его и повторите попытку"
-          }
-        }
-      }
-    },
-    "General-UnknownError" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "An unknown error has occurred! Please try again later!"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Белгісіз қате болды! Өтінемін, кейінірек көріңіз!"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Произошла неизвестная ошибка! Пожалуйста, попробуйте позже!"
-          }
-        }
-      }
-    },
-    "Genres-Adventure" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adventure"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Шытырман оқиғалы"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Приключения"
-          }
-        }
-      }
-    },
-    "Genres-Comedy" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comedy"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Комедиялар"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Комении"
-          }
-        }
-      }
-    },
-    "Genres-Entertainment" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entertainment"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ойын-сауық"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Развлечения"
-          }
-        }
-      }
-    },
-    "Genres-Family" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Family"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отбасымен көретіндер"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Семья"
-          }
-        }
-      }
-    },
-    "Genres-Fantasy" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fantasy"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ғылыми фантастика және фэнтези"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Фэнтези"
-          }
-        }
-      }
-    },
-    "Genres-Musically" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Musically"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Музыкалық"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Музыка"
-          }
-        }
-      }
-    },
-    "Genres-Science" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Science"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ғылыми-танымдық"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Научные"
-          }
-        }
-      }
-    },
-    "Genres-Short" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Short"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Қысқаметрлі"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Короткометражные"
-          }
-        }
-      }
-    },
-    "Genres-Sport" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sport"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Спорттық"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Спорт"
-          }
-        }
-      }
-    },
-    "KeepWatching-KeepWatching" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keep watching"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Көруді жалғастырыңыз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Продолжить просмотр"
-          }
-        }
-      }
-    },
-    "Languages-Cancel" : {
-      "comment" : "Cancel",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Болдырмау"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отменить"
-          }
-        }
-      }
-    },
-    "Languages-Restart" : {
-      "comment" : "Restart",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restart"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Қайта қосу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перезагрузить"
-          }
-        }
-      }
-    },
-    "Languages-Warning" : {
-      "comment" : "Warning",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warning"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ескерту"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Внимание"
-          }
-        }
-      }
-    },
-    "Lanuages-WarningDescription" : {
-      "comment" : "Please restart your app to change language completely",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please restart your app to change language completely"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тілді толығымен өзгерту үшін қолданбаны қайта іске қосыңыз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пожалуйста, перезапустите ваше приложение, чтобы полностью сменить язык"
-          }
-        }
-      }
-    },
-    "LeaveAccount-Confirmation" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Do you really want to log out of your account?"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сіз шынымен есептік жазбаңыздан шыққыңыз келе ме?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вы действительно хотите выйти из аккаунта?"
-          }
-        }
-      }
-    },
-    "LeaveAccount-No" : {
-      "comment" : "Жоқ",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Жоқ"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нет"
-          }
-        }
-      }
-    },
-    "LeaveAccount-Yes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yes. leave"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Иә, шығу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Да, выйти"
-          }
-        }
-      }
-    },
-    "Login-IncorrectLoginOrPassword" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Incorrect login or password"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Логин немесе құпия сөз дұрыс емес"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Неверный логин или пароль"
-          }
-        }
-      }
-    },
-    "Movie-Director" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Director"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Режиссер"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Режисер"
-          }
-        }
-      }
-    },
-    "Movie-Hide" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hide"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Жасыру"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Скрыть"
-          }
-        }
-      }
-    },
-    "Movie-More" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "More"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Толығырақ"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Больше"
-          }
-        }
-      }
-    },
-    "Movie-Producer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Producer"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Продюсер"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Продюсер"
-          }
-        }
-      }
-    },
-    "Movie-Save" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сақтау"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сохранить"
-          }
-        }
-      }
-    },
-    "Movie-Screenshots" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Screenshots"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Скриншоттар"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Скриншоты"
-          }
-        }
-      }
-    },
-    "Movie-Sections" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sections"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Бөлімдер"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Секции"
-          }
-        }
-      }
-    },
-    "Movie-Share" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Share"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Бөлісу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поделиться"
-          }
-        }
-      }
-    },
-    "Movie-SimilarShows" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Similar TV series"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ұқсас телехикаялар"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Похожие сериалы"
-          }
-        }
-      }
-    },
-    "Movie-Watch" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Watch"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Қарау"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Посмотреть"
-          }
-        }
-      }
-    },
-    "MovieInfo-FromItsCategory" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "From the same category"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сол санаттан"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Из этой же категории"
-          }
-        }
-      }
-    },
-    "MovieInfo-Trending" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trending ones"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Трендтер"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "В тренде"
-          }
-        }
-      }
-    },
-    "PersonalData-birhdayDate" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Birthday date"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Туған күні"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Дата рождения"
-          }
-        }
-      }
-    },
-    "PersonalData-name" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Name"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сіздің атыңыз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Имя"
-          }
-        }
-      }
-    },
-    "PersonalData-NoData" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Empty"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Бос"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пусто"
-          }
-        }
-      }
-    },
-    "PersonalData-phoneNumber" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Phone number"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Телефон нөмірі"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Номер телефона"
-          }
-        }
-      }
-    },
-    "Profile-ChangePassword" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change password"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Құпия сөзді өзгерту"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Изменить пароль"
-          }
-        }
-      }
-    },
-    "Profile-DarkMode" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dark mode"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Қараңғы режим"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ночной режим"
-          }
-        }
-      }
-    },
-    "Profile-Language" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Language"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тіл"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Язык"
-          }
-        }
-      }
-    },
-    "Profile-Leave" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Leave"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Шығу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выйти"
-          }
-        }
-      }
-    },
-    "Profile-MyProfile" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "My profile"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Менің профилім"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мой профиль"
-          }
-        }
-      }
-    },
-    "Profile-Notifications" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notifications"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Хабарламалар"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Уведомления"
-          }
-        }
-      }
-    },
-    "Profile-PersonalData" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personal data"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Жеке деректер"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Персональные данные"
-          }
-        }
-      }
-    },
-    "Profile-Profile" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Profile"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Профиль"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Профиль"
-          }
-        }
-      }
-    },
-    "Profile-TermsOfUse" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Terms of Use"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ережелер мен шарттар"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Условия использования"
-          }
-        }
-      }
-    },
-    "Search-NoResults" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your search returned no results"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сіздің іздеуіңіз нәтиже бермеді"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ваш поиск не дал никаких результатов"
-          }
-        }
-      }
-    },
-    "Search-Search" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Іздеу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поиск"
-          }
-        }
-      }
-    },
-    "Seasons-episode" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "episode"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "эпизод"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "эпизод"
-          }
-        }
-      }
-    },
-    "Seasons-Seasons" : {
-      "comment" : "Seasons",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "season"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "маусым"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "сезон"
-          }
-        }
-      }
-    },
-    "Series-episode" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "episode"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "серия"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "серия"
-          }
-        }
-      }
-    },
-    "SignIn-AppleID" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sign up with your Apple ID"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple ID-мен тіркеліңіз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Войти с Apple ID"
-          }
-        }
-      }
-    },
-    "SignIn-Description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Log in into your account"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Аккаунтқа кіріңіз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Войдите в ваш аккаунт"
-          }
-        }
-      }
-    },
-    "SignIn-EmailIsEmpty" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Email or password cannot be empty"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Электрондық пошта немесе құпия сөз бос болуы мүмкін емес"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Адрес электронной почты или пароль не могут быть пустыми"
-          }
-        }
-      }
-    },
-    "SignIn-ForgotPassword" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forgot your password?"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Құпия сөзді ұмыттыңыз ба?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Забыли пароль?"
-          }
-        }
-      }
-    },
-    "SignIn-Google" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sign up with your Google"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Google-мен тіркеліңіз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Войти с Google"
-          }
-        }
-      }
-    },
-    "SignIn-HaveNoAccount" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Have no account?"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Аккаунтыныз жоқ па? "
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нет аккаунта?"
-          }
-        }
-      }
-    },
-    "SignIn-Hello" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hello"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сәлем"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Привет!"
-          }
-        }
-      }
-    },
-    "SignIn-Join" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Join"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Кіру"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Войти"
-          }
-        }
-      }
-    },
-    "SignIn-or" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Or try it"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Немесе"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Или"
-          }
-        }
-      }
-    },
-    "SignIn-Password" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Password"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Құпия сөз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пароль"
-          }
-        }
-      }
-    },
-    "SignIn-SignUp" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sign Up!"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тіркелу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Зарегистрироваться!"
-          }
-        }
-      }
-    },
-    "SignIn-WrongFormat" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wrong format"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Қате формат"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Неверный формат"
-          }
-        }
-      }
-    },
-    "SignIn-YourEmail" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your email"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сіздің email"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ваш email"
-          }
-        }
-      }
-    },
-    "SignIn-YourPassword" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your password"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сіздің құпия сөзіңіз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ваш пароль"
-          }
-        }
-      }
-    },
-    "SignUp-Description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fill in the data"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Деректерді толтырыңыз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Заполните форму"
-          }
-        }
-      }
-    },
-    "SignUp-DoUHaveAnAccount?" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Already have an account?"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сізде аккаунт бар ма?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Уже есть аккаунт?"
-          }
-        }
-      }
-    },
-    "SignUp-Login" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Login"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Кіру"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Войти"
-          }
-        }
-      }
-    },
-    "SignUp-PasswordAgain" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Repeat the password"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Құпия сөзді қайталаңыз"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Повторите пароль"
-          }
-        }
-      }
-    },
-    "SignUp-PasswordsAreDifferent" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Passwords are not similar"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Парольдер ұқсас емес"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пароли не совпадают между собой"
-          }
-        }
-      }
-    },
-    "SignUp-SignUp" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sign Up"
-          }
-        },
-        "kk-KZ" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тіркелу"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Зарегистрироваться"
-          }
-        }
-      }
     }
-  },
-  "version" : "1.0"
 }

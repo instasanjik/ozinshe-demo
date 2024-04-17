@@ -23,7 +23,6 @@
 		041CF8882B8CB340003D2A58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041CF8862B8CB340003D2A58 /* LaunchScreen.storyboard */; };
 		041CF89A2B8DC0D1003D2A58 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8992B8DC0D1003D2A58 /* UIColor+Extension.swift */; };
 		041CF89D2B8DC0D9003D2A58 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF89C2B8DC0D9003D2A58 /* Style.swift */; };
-		041CF89F2B8DC0E9003D2A58 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */; };
 		041CF8A22B8DD2D9003D2A58 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */; };
 		041CF8A42B8DF7B4003D2A58 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8A32B8DF7B4003D2A58 /* Screen.swift */; };
 		041CF8A72B8E00F2003D2A58 /* OZButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041CF8A62B8E00F2003D2A58 /* OZButton.swift */; };
@@ -115,7 +114,6 @@
 		041CF8892B8CB340003D2A58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		041CF8992B8DC0D1003D2A58 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		041CF89C2B8DC0D9003D2A58 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = "ozinshe-demo-sanzhar/Common/Resourses/Localizable.xcstrings"; sourceTree = SOURCE_ROOT; };
 		041CF8A12B8DD2D9003D2A58 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		041CF8A32B8DF7B4003D2A58 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		041CF8A62B8E00F2003D2A58 /* OZButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZButton.swift; sourceTree = "<group>"; };
@@ -344,7 +342,6 @@
 			isa = PBXGroup;
 			children = (
 				04E4A7592BCDADAD00360C5F /* LocalizableJSON.json */,
-				041CF89E2B8DC0E9003D2A58 /* Localizable.xcstrings */,
 				041CF89C2B8DC0D9003D2A58 /* Style.swift */,
 				041CF8A32B8DF7B4003D2A58 /* Screen.swift */,
 				041CF8B82B9DB312003D2A58 /* Logger.swift */,
@@ -740,7 +737,6 @@
 				04E4A75A2BCDADAD00360C5F /* LocalizableJSON.json in Resources */,
 				041CF8882B8CB340003D2A58 /* LaunchScreen.storyboard in Resources */,
 				041CF8852B8CB340003D2A58 /* Assets.xcassets in Resources */,
-				041CF89F2B8DC0E9003D2A58 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,52 @@
+{
+    "sourceLanguage" : "en",
+    "strings" : {
+        "Age-yo" : {
+            "extractionState" : "manual",
+            "localizations" : {
+                "en" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "y.o."
+                    }
+                },
+                "kk-KZ" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "жас"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "лет"
+                    }
+                }
+            }
+        },
+        "carouselContinueButtonText" : {
+            "extractionState" : "manual",
+            "localizations" : {
+                "en" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Next"
+                    }
+                },
+                "kk-KZ" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Келесі"
+                    }
+                },
+                "ru" : {
+                    "stringUnit" : {
+                        "state" : "translated",
+                        "value" : "Далее"
+                    }
+                }
+            }
+        },
+        ...
+    }
+}

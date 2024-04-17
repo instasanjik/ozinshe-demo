@@ -167,6 +167,10 @@ private extension ProfileViewController {
     }
     
     @objc func localizePage() {
+        self.navigationItem.title = "Profile-Profile".localized()
+        if let header = tableView.headerView(forSection: 0) as? ProfileHeaderView {
+            header.localizeData()
+        }
         for index in tableView.visibleCells.indices {
             if let cell = tableView.visibleCells[index] as? ProfileSectionTableViewCell {
                 cell.setupCellData(cellData: profileSettings[index])

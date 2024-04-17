@@ -87,7 +87,7 @@ class MovieInfoViewController: UIViewController {
     
     private lazy var saveLabel: UILabel = {
         let label = UILabel()
-        label.text = "Movie-Save".localized()
+        label.text = "General-Save".localized()
         label.textColor = Style.StaticColors.gray400
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.isUserInteractionEnabled = false

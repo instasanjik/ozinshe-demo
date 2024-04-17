@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView  {
     
     // MARK: - UI Elements
     
@@ -38,11 +38,16 @@ class ProfileHeaderView: UIView {
     
     
     // MARK: - View Life Cycle
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         setupUI()
     }
+
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        setupUI()
+//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -102,6 +107,10 @@ extension ProfileHeaderView {
     
     func updateEmail(with email: String?) {
         emailLabel.text = email ?? ""
+    }
+    
+    func localizeData() {
+        self.myProfileLabel.text = "Profile-MyProfile".localized()
     }
     
     

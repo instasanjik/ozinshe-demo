@@ -93,7 +93,7 @@ extension OZLanguageManager {
     }
     
     func localized(key: String) -> String {
-        return LanguageManager.LocalizedFile["strings"][key]["localizations"][currentLanguageSystemCode]["stringUnit"]["value"].stringValue
+        return LanguageManager.LocalizedFile["strings"][key][currentLanguageSystemCode].stringValue
     }
     
     
