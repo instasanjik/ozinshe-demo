@@ -8,14 +8,6 @@
 import Foundation
 import SwiftyJSON
 
-enum HomeTableViewCellType {
-    case mainBanner
-    case mainMovie
-    case userHistory
-    case genre
-    case ageCategory
-}
-
 final class MoviesSection {
     
     var categoryId = 0
