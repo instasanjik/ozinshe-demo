@@ -156,5 +156,9 @@ extension MovieTableViewCell {
         self.shortInfoLabel.text = movie.shortInfo
     }
     
+    func localizeCell() {
+        self.watchButton.setTitle("Movie-Watch".localized(), for: .normal)
+    }
+    
     
 }

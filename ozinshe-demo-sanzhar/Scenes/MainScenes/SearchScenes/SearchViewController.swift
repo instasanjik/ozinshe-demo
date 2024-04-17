@@ -152,6 +152,7 @@ private extension SearchViewController {
     
     func setupUI() {
         view.backgroundColor = Style.Colors.background
+        addObservers()
         
         setupSearchTextField()
         setupSearchButton()
@@ -161,6 +162,10 @@ private extension SearchViewController {
         updateSearchState()
         setupNoResultsLabel()
         setupActivityIndicatorView()
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.localizePage), name: Notification.Name("OZLanguageChanged"), object: nil)
     }
     
     func setupGestureGRecognizers() {
@@ -301,6 +306,19 @@ private extension SearchViewController {
         searchTimer?.invalidate()
         
         searchTimer = Timer.scheduledTimer(timeInterval: searchDelay, target: self, selector: #selector(sendSearchRequest(_:)), userInfo: nil, repeats: false)
+    }
+    
+    @objc func localizePage() {
+        self.navigationItem.title = "Search-Search".localized()
+        searchTextField.placeholder = "Search-Search".localized()
+        categoriesLabel.text = "General-Categories".localized()
+        noDataLabel.text = "📭 \("Search-NoResults".localized())"
+        
+        for index in searchResultTableView.visibleCells.indices {
+            if let cell = searchResultTableView.visibleCells[index] as? MovieTableViewCell {
+                cell.localizeCell()
+            }
+        }
     }
     
     

@@ -175,7 +175,7 @@ extension FavoritesViewController {
         lookOutButton.setTitle("Favorites-LookButton".localized(), for: .normal)
         for index in tableView.visibleCells.indices {
             if let cell = tableView.visibleCells[index] as? MovieTableViewCell {
-                cell.configureCell(content: movieList[index])
+                cell.localizeCell()
             }
         }
     }
