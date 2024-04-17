@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-class MovieCategory {
+final class MovieCategory {
     
     var id: Int
     var name: String
@@ -25,4 +25,6 @@ class MovieCategory {
         }
         self.init(id: id, name: name)
     }
+    
+    
 }

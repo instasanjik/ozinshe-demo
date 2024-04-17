@@ -8,35 +8,12 @@
 import Foundation
 import SwiftyJSON
 
-
-class Series {
-    
-    var id = 0
-    var youtubeID = ""
-    var previewLink = ""
-    var number = 0
-    
-    init() { }
-    
-    init(json: JSON) {
-        if let temp = json["id"].int        { self.id = temp }
-        if let temp = json["number"].int    { self.number = temp }
-        if let temp = json["link"].string   {
-            self.previewLink = "https://img.youtube.com/vi/\(temp)/hqdefault.jpg"
-            self.youtubeID = temp
-        }
-    }
-    
-    
-}
-
-
-class Season {
+final class Season {
     
     var id = 0
     var movieId = 0
     var number = 0
-    var videos: [Series] = []
+    var videos: [Episode] = []
     
     init(json: JSON) {
         if let temp = json["id"].int        { self.id = temp }
@@ -45,7 +22,7 @@ class Season {
         
         if let array = json["videos"].array {
             for item in array {
-                let video = Series(json: item)
+                let video = Episode(json: item)
                 videos.append(video)
             }
         }

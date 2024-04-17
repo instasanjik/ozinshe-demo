@@ -92,6 +92,7 @@
 		04E4A75A2BCDADAD00360C5F /* LocalizableJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E4A7592BCDADAD00360C5F /* LocalizableJSON.json */; };
 		04E4A75C2BCDB08E00360C5F /* OZLocalizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A75B2BCDB08E00360C5F /* OZLocalizedLabel.swift */; };
 		04E4A75E2BCDB09C00360C5F /* OZLocalizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A75D2BCDB09C00360C5F /* OZLocalizedButton.swift */; };
+		04E4A7602BD0236400360C5F /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A75F2BD0236400360C5F /* Episode.swift */; };
 		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +184,7 @@
 		04E4A7592BCDADAD00360C5F /* LocalizableJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LocalizableJSON.json; sourceTree = "<group>"; };
 		04E4A75B2BCDB08E00360C5F /* OZLocalizedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZLocalizedLabel.swift; sourceTree = "<group>"; };
 		04E4A75D2BCDB09C00360C5F /* OZLocalizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZLocalizedButton.swift; sourceTree = "<group>"; };
+		04E4A75F2BD0236400360C5F /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
 		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -624,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				041CF95E2BBB047C003D2A58 /* MovieBanner.swift */,
+				04E4A75F2BD0236400360C5F /* Episode.swift */,
 				041CF9612BBB049A003D2A58 /* Season.swift */,
 			);
 			path = Helpers;
@@ -823,6 +826,7 @@
 				041CF94A2BBAE73B003D2A58 /* AuthService.swift in Sources */,
 				04E4A7522BCC448200360C5F /* OZPhotoGalleryView.swift in Sources */,
 				04E4A74A2BC991D900360C5F /* OZPhoneNumberTextField.swift in Sources */,
+				04E4A7602BD0236400360C5F /* Episode.swift in Sources */,
 				041CF9362BB7196A003D2A58 /* SignInNavigationViewController.swift in Sources */,
 				041CF8E22BA1D210003D2A58 /* KeepWatchingTableViewCell.swift in Sources */,
 				041CF8FB2BA30FCA003D2A58 /* MovieInfoViewController.swift in Sources */,

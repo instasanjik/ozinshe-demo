@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-class ContentCategory {
+final class ContentCategory {
     
     var id: Int
     var name: String

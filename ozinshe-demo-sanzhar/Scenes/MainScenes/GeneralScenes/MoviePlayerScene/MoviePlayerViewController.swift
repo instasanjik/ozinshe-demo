@@ -37,8 +37,8 @@ class MoviePlayerViewController: UIViewController {
         }
     }
     private var timeLeft: Int { return Int(videoDuration) - Int(currentTime) }
-    private var currentEpisode: Series {
-        guard !seasons.isEmpty else { return Series() }
+    private var currentEpisode: Episode {
+        guard !seasons.isEmpty else { return Episode() }
         return seasons[seasonIndex].videos[episodeIndex]
     }
     

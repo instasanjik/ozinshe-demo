@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-class MovieWithDetails {
+final class MovieWithDetails {
     var id: Int = 0
     
     var isFavorite: Bool = false

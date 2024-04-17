@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-class Screenshot {
+final class Screenshot {
     
     var id: Int
     var imageURL: URL?
