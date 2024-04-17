@@ -19,20 +19,23 @@ enum LogType: String {
 public class OZLogger {
     
     static func log(_ logType:LogType, _ message: Any) {
-        guard SHOULD_PRINT else { return }
         switch logType {
+        case LogType.info:
+            guard SHOULD_PRINT else { return }
+            print("\(Date.dateTime) - 📓 Info: \(message)\n")
         case LogType.error:
             print("\(Date.dateTime) - 📕 Error: \(message)\n")
         case LogType.warning:
             print("\(Date.dateTime) - 📙 Warning: \(message)\n")
         case LogType.success:
+            guard SHOULD_PRINT else { return }
             print("\(Date.dateTime) - 📗 Success: \(message)\n")
         case LogType.action:
+            guard SHOULD_PRINT else { return }
             print("\(Date.dateTime) - 📘 Action: \(message)\n")
         case LogType.canceled:
+            guard SHOULD_PRINT else { return }
             print("\(Date.dateTime) - 📓 Cancelled: \(message)\n")
-        case LogType.info:
-            print("\(Date.dateTime) - 📓 Info: \(message)\n")
         }
     }
     

@@ -8,6 +8,14 @@
 import UIKit
 import SnapKit
 
+// MARK: - CellType
+enum CellType {
+    case labelAndChevron
+    case chevronOnly
+    case switchOnly
+}
+
+
 class ProfileViewController: UITableViewController {
     
     // MARK: - External variables
@@ -19,7 +27,7 @@ class ProfileViewController: UITableViewController {
     }
     
     
-    // MARK: Internal variables
+    // MARK: - Internal variables
     
     var switchControlIsON = true
     var profileSettings: [(String, CellType)] {
