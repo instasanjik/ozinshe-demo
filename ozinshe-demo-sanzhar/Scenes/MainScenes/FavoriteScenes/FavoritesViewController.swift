@@ -26,7 +26,7 @@ class FavoritesViewController: UITableViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.textColor = Style.Colors.label
-        label.text = "🙊 Oops... there is nothing!"
+        label.text = "Favorites-ErrorTitle".localized()
         label.textAlignment = .center
         label.numberOfLines = 0
         label.isHidden = true
@@ -37,7 +37,7 @@ class FavoritesViewController: UITableViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.label
-        label.text = "But you can fill it by adding sany movie to favorites!"
+        label.text = "Favorites-ErrorBody".localized()
         label.textAlignment = .center
         label.numberOfLines = 0
         label.isHidden = true
@@ -51,7 +51,7 @@ class FavoritesViewController: UITableViewController {
         button.layer.cornerRadius = 8
         button.isHidden = true
         
-        button.setTitle("Look out!", for: .normal)
+        button.setTitle("Favorites-LookButton".localized(), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 12, weight: .bold)
         button.setTitleColor(Style.Colors.purple400, for: .normal)
         
@@ -83,13 +83,22 @@ private extension FavoritesViewController {
     
     func setupUI() {
         view.backgroundColor = Style.Colors.background
+        addObservers()
         
-        navigationItem.title = "Favorites-Title".localized()
-        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.ID)
+        settingNavigationBar()
         
         setupErrorLabel()
         setupErrorBodyLabel()
         setupLookOutButton()
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.localizePage), name: Notification.Name("OZLanguageChanged"), object: nil)
+    }
+    
+    func settingNavigationBar() {
+        navigationItem.title = "Favorites-Title".localized()
+        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.ID)
     }
     
     func setupErrorLabel() {
@@ -157,6 +166,18 @@ extension FavoritesViewController {
     
     @objc func lookOutButtonTapped() {
         openHomeViewController()
+    }
+    
+    @objc func localizePage() {
+        self.navigationItem.title = "Favorites-Title".localized()
+        errorLabel.text = "Favorites-ErrorTitle".localized()
+        errorBodyLabel.text = "Favorites-ErrorBody".localized()
+        lookOutButton.setTitle("Favorites-LookButton".localized(), for: .normal)
+        for index in tableView.visibleCells.indices {
+            if let cell = tableView.visibleCells[index] as? MovieTableViewCell {
+                cell.configureCell(content: movieList[index])
+            }
+        }
     }
     
     
