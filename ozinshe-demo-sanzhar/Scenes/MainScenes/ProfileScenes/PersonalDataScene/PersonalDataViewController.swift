@@ -304,9 +304,16 @@ private extension PersonalDataViewController {
     func updatePageState() {
         isDataEditing.toggle()
         if isDataEditing {
+            if nameValueLabel.text != "PersonalData-NoData".localized() {
+                nameTextField.text = nameValueLabel.text
+            }
+            nameTextField.text = nameValueLabel.text
             nameValueLabel.removeFromSuperview()
             setupNameTextField()
             
+            if phoneNumberValueLabel.text != "PersonalData-NoData".localized() {
+                phoneNumberTextField.text = phoneNumberValueLabel.text
+            }
             phoneNumberValueLabel.removeFromSuperview()
             setupPhoneNumberLabel()
             setupPhoneNumberTextField()
