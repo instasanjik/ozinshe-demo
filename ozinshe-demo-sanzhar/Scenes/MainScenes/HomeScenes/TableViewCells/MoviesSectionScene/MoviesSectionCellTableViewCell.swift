@@ -42,7 +42,6 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
     
     private lazy var chapterTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "GalleryList-TVProgram".localized()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
         label.isSkeletonable = true
@@ -107,7 +106,6 @@ private extension MoviesSectionCellTableViewCell {
         self.selectionStyle = .none
         
         setupChapterTitleLabel()
-        setupMoreButton()
         setupContentCollectionView()
     }
     
@@ -166,7 +164,6 @@ extension MoviesSectionCellTableViewCell {
     }
     
     func localizeCell() {
-        self.chapterTitleLabel.text = "GalleryList-TVProgram".localized()
         self.moreButton.setTitle("Movie-More".localized(), for: .normal)
     }
     
@@ -176,6 +173,7 @@ extension MoviesSectionCellTableViewCell {
     
     func hideSkeletonAnimation() {
         self.hideSkeleton()
+        setupMoreButton()
     }
     
     
@@ -207,9 +205,7 @@ extension MoviesSectionCellTableViewCell: UICollectionViewDataSource {
 extension MoviesSectionCellTableViewCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView.cellForItem(at: indexPath) is MoviesSectionCellCollectionViewCell {
-            delegate?.moviesSectionCell(didTapMovie: moviesSection.movies[indexPath.row])
-        }
+        delegate?.moviesSectionCell(didTapMovie: moviesSection.movies[indexPath.row])
     }
     
     

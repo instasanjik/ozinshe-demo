@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import SkeletonView
 import Kingfisher
 
 class KeepWatchingCollectionViewCell: UICollectionViewCell {
@@ -25,7 +24,6 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.isSkeletonable = true
         return imageView
     }()
     
@@ -34,8 +32,6 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         label.text = "SPLASH_TEXT"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.label
-        label.isSkeletonable = true
-        label.linesCornerRadius = 2
         return label
     }()
     
@@ -45,9 +41,6 @@ class KeepWatchingCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2
-        label.isSkeletonable = true
-        label.linesCornerRadius = 2
-        label.skeletonTextNumberOfLines = 1
         return label
     }()
     

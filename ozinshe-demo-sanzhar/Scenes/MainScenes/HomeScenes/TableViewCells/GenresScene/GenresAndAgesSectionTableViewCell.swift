@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 // MARK: - Protocol: GenresAndAgesSectionTableViewCellDelegate
 
 protocol GenresAndAgesSectionTableViewCellDelegate {
@@ -164,9 +163,7 @@ extension GenresAndAgesSectionTableViewCell: UICollectionViewDataSource {
 extension GenresAndAgesSectionTableViewCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView.cellForItem(at: indexPath) is GenresAndAgesCollectionViewCell {
-            delegate?.genresAndAgesSection(didTapSection: content[indexPath.row])
-        }
+        delegate?.genresAndAgesSection(didTapSection: content[indexPath.row])
     }
     
     

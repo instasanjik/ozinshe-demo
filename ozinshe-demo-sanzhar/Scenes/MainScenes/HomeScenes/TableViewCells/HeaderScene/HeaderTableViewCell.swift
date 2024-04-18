@@ -86,9 +86,11 @@ private extension HeaderTableViewCell {
     func setupUI() {
         self.backgroundColor = .clear
         self.isSkeletonable = true
+        self.contentView.isSkeletonable = true
         
         setupLogoImageView()
         setupMovieBannerCollectionView()
+        contentView.startSkeletonAnimation()
     }
     
     func setupLogoImageView() {
@@ -160,9 +162,7 @@ extension HeaderTableViewCell: UICollectionViewDataSource {
 extension HeaderTableViewCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView.cellForItem(at: indexPath) is MovieBannerCollectionViewCell {
-            delegate?.headerCell(didTapMovie: bannerList[indexPath.row].movie)
-        }
+        delegate?.headerCell(didTapMovie: bannerList[indexPath.row].movie)
     }
     
     

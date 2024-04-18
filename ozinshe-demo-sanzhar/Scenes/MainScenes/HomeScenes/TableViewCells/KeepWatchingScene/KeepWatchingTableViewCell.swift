@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import SkeletonView
 
 
 // MARK: - Protocol: KeepWatchingTableViewCellDelegate
@@ -43,8 +42,6 @@ class KeepWatchingTableViewCell: UITableViewCell {
         label.text = "KeepWatching-KeepWatching".localized()
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = Style.Colors.label
-        label.isSkeletonable = true
-        label.skeletonCornerRadius = 6
         return label
     }()
     
@@ -60,7 +57,6 @@ class KeepWatchingTableViewCell: UITableViewCell {
         
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
-        collectionView.isSkeletonable = true
         
         collectionView.register(KeepWatchingCollectionViewCell.self,
                                 forCellWithReuseIdentifier: KeepWatchingCollectionViewCell.ID)
@@ -89,7 +85,6 @@ private extension KeepWatchingTableViewCell {
     
     func setupUI() {
         self.backgroundColor = .clear
-        self.isSkeletonable = true
         self.selectionStyle = .none
         
         setupChapterTitleLabel()
@@ -131,14 +126,6 @@ extension KeepWatchingTableViewCell {
         self.chapterTitleLabel.text = "KeepWatching-KeepWatching".localized()
     }
     
-    func showSkeletonWithAnimation() {
-        self.showAnimatedGradientSkeleton(animation: DEFAULT_ANIMATION)
-    }
-    
-    func hideSkeletonAnimation() {
-        self.hideSkeleton()
-    }
-    
     
 }
 
@@ -168,9 +155,7 @@ extension KeepWatchingTableViewCell: UICollectionViewDataSource {
 extension KeepWatchingTableViewCell: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? KeepWatchingCollectionViewCell {
-            delegate?.keepWatching(didTapMovie: keepWatchingMovieList[indexPath.row])
-        }
+        delegate?.keepWatching(didTapMovie: keepWatchingMovieList[indexPath.row])
     }
     
     

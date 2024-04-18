@@ -30,7 +30,6 @@ class MoviesSectionCellCollectionViewCell: UICollectionViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "SPLASH_TEXT SPLASH_TEXT"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = Style.Colors.label
         label.numberOfLines = 2 
@@ -42,7 +41,6 @@ class MoviesSectionCellCollectionViewCell: UICollectionViewCell {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "SPLASH_TEXT" 
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2

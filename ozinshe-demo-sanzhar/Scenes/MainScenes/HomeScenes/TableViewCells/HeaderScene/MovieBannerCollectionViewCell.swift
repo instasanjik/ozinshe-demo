@@ -21,15 +21,15 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
     
     private lazy var previewImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 12
-        imageView.layer.masksToBounds = true
         imageView.isSkeletonable = true
+        imageView.layer.cornerRadius = 12
+        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Қызғалдақтар мекені"
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = Style.Colors.label
         label.isSkeletonable = true
@@ -42,12 +42,12 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
         view.backgroundColor = Style.StaticColors.purple500
         view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
+        view.isHiddenWhenSkeletonIsActive = true
         return view
     }()
     
     private lazy var typeNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Телехикая"
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = Style.StaticColors.label
         return label
@@ -55,13 +55,11 @@ class MovieBannerCollectionViewCell: UICollectionViewCell {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
         label.numberOfLines = 2
         label.isSkeletonable = true
-        label.linesCornerRadius = 2
-        label.skeletonTextNumberOfLines = 1
+        label.isHiddenWhenSkeletonIsActive = true
         return label
     }()
     
@@ -89,8 +87,7 @@ private extension MovieBannerCollectionViewCell {
         setupPreviewImageView()
         setupNameLabel()
         setupDescriptionLabel()
-        setupTypeName()
-        
+    
         self.isSkeletonable = true
     }
     
@@ -149,6 +146,7 @@ extension MovieBannerCollectionViewCell {
         previewImageView.kf.setImage(with: URL(string: movieBanner.link))
         nameLabel.text = movieBanner.movie.name
         descriptionLabel.text = movieBanner.movie.description
+        setupTypeName()
         if let type = movieBanner.movie.categories.first?.name {
             self.typeNameLabel.text = type
         } else {

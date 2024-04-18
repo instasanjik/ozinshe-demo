@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 import Kingfisher
 
 class GenresAndAgesCollectionViewCell: UICollectionViewCell {
@@ -28,6 +29,7 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(named: "previewImageView")
         imageView.layer.cornerRadius = 8
         imageView.layer.masksToBounds = true
+        imageView.isSkeletonable = true
         return imageView
     }()
     
@@ -38,6 +40,7 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
         label.textColor = Style.StaticColors.label
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.isSkeletonable = true
         return label
     }()
     
@@ -46,6 +49,7 @@ class GenresAndAgesCollectionViewCell: UICollectionViewCell {
         label.text = "SPLASH_TEXT" 
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = Style.Colors.gray400
+        label.isSkeletonable = true
         return label
         
     }()
@@ -73,6 +77,8 @@ extension GenresAndAgesCollectionViewCell {
     func setupUI() {
         setupPreviewImageView()
         setupNameLabel()
+        
+        self.isSkeletonable = true
     }
     
     func setupPreviewImageView() {

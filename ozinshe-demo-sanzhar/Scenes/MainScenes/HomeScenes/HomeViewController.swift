@@ -53,14 +53,21 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
-        downloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [self] in
+//            showTableViewCellsSkeleton()
+            downloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        showTableViewCellsSkeleton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -198,27 +205,25 @@ private extension HomeViewController {
     }
     
     func showTableViewCellsSkeleton() {
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
-            cell.showSkeletonWithAnimation()
-        }
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? KeepWatchingTableViewCell {
-            cell.showSkeletonWithAnimation()
-        }
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? MoviesSectionCellTableViewCell {
-            cell.showSkeletonWithAnimation()
+        mainTableView.visibleCells.forEach { cell in
+            if let cell = cell as? HeaderTableViewCell {
+                cell.showSkeletonWithAnimation()
+            }
+            if let cell = cell as? MoviesSectionCellTableViewCell {
+                cell.showSkeletonWithAnimation()
+            }
         }
         mainTableView.isScrollEnabled = false
     }
     
     func hideTableViewCellsSkeleton() {
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HeaderTableViewCell {
-            cell.hideSkeletonAnimation()
-        }
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? KeepWatchingTableViewCell {
-            cell.hideSkeletonAnimation()
-        }
-        if let cell = mainTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? MoviesSectionCellTableViewCell {
-            cell.hideSkeletonAnimation()
+        mainTableView.visibleCells.forEach { cell in
+            if let cell = cell as? HeaderTableViewCell {
+                cell.hideSkeletonAnimation()
+            }
+            if let cell = cell as? MoviesSectionCellTableViewCell {
+                cell.hideSkeletonAnimation()
+            }
         }
         mainTableView.isScrollEnabled = true
     }
@@ -332,6 +337,9 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if moviesSectionsList.count == 0 {
+            return 2
+        }
         return moviesSectionsList.count
     }
     
@@ -343,8 +351,10 @@ extension HomeViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.ID, for: indexPath) as! HeaderTableViewCell
+            if !bannersList.isEmpty {
+                cell.configureCell(bannersList)
+            }
             cell.selectionStyle = .none
-            cell.configureCell(bannersList)
             cell.delegate = self
             return cell
             
