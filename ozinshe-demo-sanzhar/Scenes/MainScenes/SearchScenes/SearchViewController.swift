@@ -150,6 +150,7 @@ private extension SearchViewController {
         self.navigationItem.title = "Search-Search".localized()
         
         addObservers()
+        settingTabbar()
         
         setupSearchTextField()
         setupSearchButton()
@@ -169,6 +170,10 @@ private extension SearchViewController {
     
     func setupGestureGRecognizers() {
         view.addGestureRecognizer(tap)
+    }
+    
+    func settingTabbar() {
+        self.tabBarController?.delegate = self
     }
     
     func setupSearchTextField() {
@@ -384,6 +389,10 @@ extension SearchViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
     
 }
 
@@ -394,6 +403,23 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    
+}
+
+
+// MARK: UITabBarControllerDelegate
+extension SearchViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        if tabBarController.selectedIndex == 1 {
+            searchTextField.text = ""
+            searchTimer?.invalidate()
+            searchResultMovieList = []
+            updateSearchState()
+        }
     }
     
     

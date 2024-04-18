@@ -92,7 +92,7 @@
 		04E4A7602BD0236400360C5F /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E4A75F2BD0236400360C5F /* Episode.swift */; };
 		04E84F3B2BD13AC900F2401A /* OZPoorNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E84F3A2BD13AC900F2401A /* OZPoorNetworkView.swift */; };
 		04E84F3D2BD1435F00F2401A /* InternetConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E84F3C2BD1435F00F2401A /* InternetConnectionManager.swift */; };
-		4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */; };
+		B5DB06BABCCDE716894D6D9A /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6569B92CA8997C23640B9014 /* Pods_ozinshe_demo_sanzhar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -183,9 +183,9 @@
 		04E4A75F2BD0236400360C5F /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		04E84F3A2BD13AC900F2401A /* OZPoorNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OZPoorNetworkView.swift; sourceTree = "<group>"; };
 		04E84F3C2BD1435F00F2401A /* InternetConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionManager.swift; sourceTree = "<group>"; };
-		9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
-		B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
-		D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		252412E44665C50BD121891F /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.debug.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.debug.xcconfig"; sourceTree = "<group>"; };
+		6569B92CA8997C23640B9014 /* Pods_ozinshe_demo_sanzhar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ozinshe_demo_sanzhar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFE6CDCB922B92FAB1CE46F9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ozinshe-demo-sanzhar.release.xcconfig"; path = "Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E36E06A940AEF4DED4D5885 /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */,
+				B5DB06BABCCDE716894D6D9A /* Pods_ozinshe_demo_sanzhar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +241,7 @@
 				041CF87A2B8CB33F003D2A58 /* ozinshe-demo-sanzhar */,
 				041CF8792B8CB33F003D2A58 /* Products */,
 				F7C42A24DE7DDB949213309F /* Pods */,
-				5FC9CEC952E7F0CF13D08A22 /* Frameworks */,
+				6194E0F98BF4995D3FA49353 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -655,10 +655,10 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		5FC9CEC952E7F0CF13D08A22 /* Frameworks */ = {
+		6194E0F98BF4995D3FA49353 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D8010A3BEE7B59114DA5A385 /* Pods_ozinshe_demo_sanzhar.framework */,
+				6569B92CA8997C23640B9014 /* Pods_ozinshe_demo_sanzhar.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -666,8 +666,8 @@
 		F7C42A24DE7DDB949213309F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */,
-				B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */,
+				252412E44665C50BD121891F /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */,
+				FFE6CDCB922B92FAB1CE46F9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -679,11 +679,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 041CF88C2B8CB340003D2A58 /* Build configuration list for PBXNativeTarget "ozinshe-demo-sanzhar" */;
 			buildPhases = (
-				AFA7659EF2E43E0CC75AC1A4 /* [CP] Check Pods Manifest.lock */,
+				387C1C3B9809D895996F0242 /* [CP] Check Pods Manifest.lock */,
 				041CF8742B8CB33F003D2A58 /* Sources */,
 				041CF8752B8CB33F003D2A58 /* Frameworks */,
 				041CF8762B8CB33F003D2A58 /* Resources */,
-				3533118502E113FD9CB79373 /* [CP] Embed Pods Frameworks */,
+				C253214300434E3CBB62951B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -743,24 +743,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3533118502E113FD9CB79373 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AFA7659EF2E43E0CC75AC1A4 /* [CP] Check Pods Manifest.lock */ = {
+		387C1C3B9809D895996F0242 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -780,6 +763,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C253214300434E3CBB62951B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ozinshe-demo-sanzhar/Pods-ozinshe-demo-sanzhar-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1009,7 +1009,7 @@
 		};
 		041CF88D2B8CB340003D2A58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9EAAE6065F463FB9FAE00738 /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */;
+			baseConfigurationReference = 252412E44665C50BD121891F /* Pods-ozinshe-demo-sanzhar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1040,7 +1040,7 @@
 		};
 		041CF88E2B8CB340003D2A58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B96DE1D9B39017AC4B9D0DC9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */;
+			baseConfigurationReference = FFE6CDCB922B92FAB1CE46F9 /* Pods-ozinshe-demo-sanzhar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
