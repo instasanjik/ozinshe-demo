@@ -85,6 +85,7 @@ private extension HeaderTableViewCell {
     
     func setupUI() {
         self.backgroundColor = .clear
+        self.selectionStyle = .none
         self.isSkeletonable = true
         self.contentView.isSkeletonable = true
         

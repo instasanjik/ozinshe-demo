@@ -392,7 +392,6 @@ extension HomeViewController: UITableViewDataSource {
             if !bannersList.isEmpty {
                 cell.configureCell(bannersList)
             }
-            cell.selectionStyle = .none
             cell.delegate = self
             return cell
             
