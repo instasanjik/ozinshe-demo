@@ -139,6 +139,7 @@ extension MovieListViewController {
             movie = movieList[indexPath.row]
         }
         openMovieViewController(with: movie)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
