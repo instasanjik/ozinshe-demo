@@ -853,10 +853,21 @@ extension MovieInfoViewController {
         let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
         saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
         
-        CoreService.shared.getSimilarMovies(movieID: movie.id) { success, errorMessage, movieList in
+        CoreService.shared.getSimilarMovies(movieID: movie.id) { [self] success, errorMessage, movieList in
             if success {
-                self.similarTVSeries = movieList
-                self.similarCollectionView.reloadData()
+                if movieList.isEmpty {
+                    similarSeriesLabel.isHidden = true
+                    similarCollectionView.isHidden = true
+                    screenshotsCollectionView.snp.remakeConstraints { make in
+                        make.top.equalTo(screenshotsLabel.snp.bottom).inset(-16)
+                        make.left.right.equalToSuperview()
+                        make.height.equalTo(112)
+                        make.bottom.equalToSuperview().inset(24)
+                    }
+                } else {
+                    similarTVSeries = movieList
+                    similarCollectionView.reloadData()
+                }
             }
         }
     }
