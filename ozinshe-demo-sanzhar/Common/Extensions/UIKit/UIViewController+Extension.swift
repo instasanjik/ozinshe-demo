@@ -6,16 +6,38 @@
 //
 
 import UIKit
+private var isTabBarHidden = false
 
 extension UIViewController {
     
     /// Sets the visibility of the tab bar.
     ///
     /// - Parameter hidden: A Boolean value indicating whether the tab bar should be hidden.
+
     func setTabBarHidden(_ hidden: Bool) {
-        self.tabBarController?.tabBar.isHidden = hidden
-        self.tabBarController?.tabBar.isTranslucent = hidden
+        guard hidden != isTabBarHidden else { return } 
+        
+        if hidden {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+                if let tabBarFrame = self.tabBarController?.tabBar.frame {
+                    self.tabBarController?.tabBar.frame.origin.y = self.navigationController?.view.frame.maxY ?? 0 - tabBarFrame.height
+                }
+                self.navigationController?.view.layoutIfNeeded()
+            }
+        } else {
+            self.tabBarController?.tabBar.isHidden = false
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+                if let tabBarFrame = self.tabBarController?.tabBar.frame {
+                    self.tabBarController?.tabBar.frame.origin.y = (self.navigationController?.view.frame.maxY ?? 0) - tabBarFrame.height
+                }
+                self.navigationController?.view.layoutIfNeeded()
+            } completion: { _ in
+                self.tabBarController?.tabBar.isHidden = hidden
+            }
+        }
+        isTabBarHidden = hidden
     }
+
     
     /// Sets the navigation bar to be hidden and transparent.
     ///

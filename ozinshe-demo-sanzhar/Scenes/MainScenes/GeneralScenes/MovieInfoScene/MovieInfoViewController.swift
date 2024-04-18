@@ -312,10 +312,12 @@ class MovieInfoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setTabBarHidden(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         setTabBarHidden(false)
     }
     
