@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 // MARK: - CellType
 enum CellType {
@@ -64,6 +65,12 @@ class ProfileViewController: UITableViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if userProfile == nil {
+            downloadData()
+        }
+    }
+    
 }
 
 
@@ -113,20 +120,28 @@ private extension ProfileViewController {
     }
     
     func showPersonalDataViewController() {
-        setTabBarHidden(true)
-        let vc = PersonalDataViewController()
-        vc.setupController(with: userProfile ?? UserProfile())
-        vc.delegate = self
-        navigationController?.pushViewController(vc, animated: true)
+        if let userProfile = userProfile {
+            setTabBarHidden(true)
+            let vc = PersonalDataViewController()
+            vc.setupController(with: userProfile)
+            vc.delegate = self
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            SVProgressHUD.showError(withStatus: "General-UnknownError".localized())
+        }
     }
     
     func showLeaveConfirmationViewController() {
-        setupBlurEffectView()
-        setTabBarHidden(true)
-        let vc = LeaveConfirmationViewController()
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.delegate = self
-        self.present(vc, animated: true, completion: nil)
+        if let userProfile = userProfile {
+            setupBlurEffectView()
+            setTabBarHidden(true)
+            let vc = LeaveConfirmationViewController()
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.delegate = self
+            self.present(vc, animated: true, completion: nil)
+        } else {
+            SVProgressHUD.showError(withStatus: "General-UnknownError".localized())
+        }
     }
     
     func showChangePasswordViewController() {

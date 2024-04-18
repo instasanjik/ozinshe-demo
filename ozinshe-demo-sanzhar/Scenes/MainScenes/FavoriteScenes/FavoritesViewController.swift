@@ -13,6 +13,12 @@ class FavoritesViewController: UITableViewController {
     
     // MARK: - UI Elements
     
+    private lazy var poorNetworkView: OZPoorNetworkView = {
+        let view = OZPoorNetworkView()
+        view.delegate = self
+        return view
+    }()
+    
     private var movieList: [MovieWithDetails] = [] {
         didSet {
             let shouldShow = !movieList.isEmpty
@@ -67,11 +73,12 @@ class FavoritesViewController: UITableViewController {
         super.viewDidLoad()
         
         setupUI()
-        downloadFavoritesList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        super.viewWillAppear(animated)
+        
+        downloadFavoritesList()
     }
     
 }
@@ -131,6 +138,15 @@ private extension FavoritesViewController {
         }
     }
     
+    func setupPoorNetworkView() {
+        self.view.addSubview(poorNetworkView)
+        
+        poorNetworkView.snp.makeConstraints { make in
+            make.left.right.height.equalToSuperview()
+            make.top.equalTo(view.snp.bottom)
+        }
+    }
+    
     
 }
 
@@ -140,6 +156,12 @@ private extension FavoritesViewController {
 private extension FavoritesViewController {
     
     func downloadFavoritesList() {
+        if !InternetConnectionManager.isConnectedToNetwork() {
+            setupPoorNetworkView()
+            return
+        } else {
+            poorNetworkView.removeFromSuperview()
+        }
         CoreService.shared.getFavorites { success, errorMessage, favoritesList in
             self.movieList = favoritesList
             self.tableView.reloadData()
@@ -213,3 +235,15 @@ extension FavoritesViewController {
     
     
 }
+
+
+// MARK: OZPoorNetworkViewDelegate
+extension FavoritesViewController: OZPoorNetworkViewDelegate {
+    
+    func poorNetworkTryAgainTapped() {
+        downloadFavoritesList()
+    }
+    
+    
+}
+

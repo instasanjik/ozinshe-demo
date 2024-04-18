@@ -9,7 +9,7 @@ import UIKit
 import SkeletonView
 import SVProgressHUD
 
-let DEFAULT_ANIMATION = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .topLeftBottomRight)
+var DEFAULT_ANIMATION = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .topLeftBottomRight)
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -84,6 +84,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let tabBarController = SceneDelegate.keyWindow?.rootViewController as? MainTabBarController {
             tabBarController.selectedIndex = 3
         }
+        
+        SkeletonAppearance.default.gradient = SkeletonGradient(colors: [Style.Colors.gray800, Style.Colors.background, Style.Colors.gray800])
     }
     
     

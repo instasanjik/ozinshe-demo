@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import SkeletonView
 
 class SearchViewController: UIViewController {
     
@@ -15,7 +14,6 @@ class SearchViewController: UIViewController {
     
     private var categories: [MovieCategory] = [] {
         didSet {
-            self.categoriesCount = categories.count
             self.categoriesCollectionView.reloadData()
         }
     }
@@ -36,7 +34,6 @@ class SearchViewController: UIViewController {
             }
         }
     }
-    private var categoriesCount = 10
     
     
     // MARK: - UI Elements
@@ -46,6 +43,7 @@ class SearchViewController: UIViewController {
         textField.placeholder = "Search-Search".localized()
         textField.padding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         textField.normalBorderColor = UIColor.clear.cgColor
+        textField.delegate = self
         let _ = textField.resignFirstResponder()
         textField.backgroundColor = Style.Colors.gray800
         textField.addTarget(self, action: #selector(searchTextFieldValueChanged(_:)), for: .editingChanged)
@@ -94,7 +92,6 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
-        tableView.isSkeletonable = true
         return tableView
     }()
     
@@ -134,12 +131,10 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        if categories.isEmpty {
+            downloadData()
+        }
     }
     
     
@@ -152,12 +147,16 @@ private extension SearchViewController {
     
     func setupUI() {
         view.backgroundColor = Style.Colors.background
+        self.navigationItem.title = "Search-Search".localized()
+        
         addObservers()
         
         setupSearchTextField()
         setupSearchButton()
+        
         setupCategoriesLabel()
         setupCategoriesCollectionView()
+        
         setupSearchResultTableView()
         updateSearchState()
         setupNoResultsLabel()
@@ -331,7 +330,7 @@ private extension SearchViewController {
 extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoriesCount
+        return categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -352,25 +351,6 @@ extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         openCategorieMovieListViewController(category: categories[indexPath.row])
         collectionView.deselectItem(at: indexPath, animated: true)
-    }
-    
-    
-}
-
-
-// MARK: CollectionViewDelegateFlowLayout
-extension SearchViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let label = UILabel(frame: CGRect.zero)
-        if categories.isEmpty {
-            label.text = "SPLASH_TEXT"
-        } else {
-            label.text = categories[indexPath.row].name
-        }
-        label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.sizeToFit()
-        return CGSize(width: label.frame.width + (16 * 2), height: 34)
     }
     
     
@@ -402,6 +382,18 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.openMovieViewController(with: searchResultMovieList[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+}
+
+
+// MARK: UITextFieldDelegate
+extension SearchViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     

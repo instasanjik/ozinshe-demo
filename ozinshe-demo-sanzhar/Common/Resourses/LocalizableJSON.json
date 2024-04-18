@@ -499,6 +499,21 @@
             "en": "Look out!",
             "ru": "Поехали!",
             "kz": "Сақтан!"
+        },
+        "PoorNetwork-Title": {
+            "en": "Connect to the Internet",
+            "ru": "Подключитесь к Интернету",
+            "kz": "Интернетке қосылыңыз"
+        },
+        "PoorNetwork-Body": {
+            "en": "You're offline. Check your connection",
+            "ru": "Ваше устройство не имеет подлкючения к интернету",
+            "kz": "Сіздің құрылғыңызда интернет байланысы жоқ"
+        },
+        "PoorNetwork-TryAgain": {
+            "en": "Tap ro retry",
+            "ru": "Повторить попытку",
+            "kz": "Қайталап көріңіз"
         }
     }
 }

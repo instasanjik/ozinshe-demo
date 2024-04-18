@@ -38,13 +38,7 @@ class ContentCategoryCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.backgroundColor = Style.Colors.gray700
-        self.layer.cornerRadius = 8
-        self.layer.borderWidth = 1
-        self.layer.borderColor = Style.Colors.gray700.cgColor
-        
-        setupContentCategoryLabel()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -58,6 +52,15 @@ class ContentCategoryCollectionViewCell: UICollectionViewCell {
 // MARK: - UI Setups
 
 private extension ContentCategoryCollectionViewCell {
+    
+    func setupUI() {
+        self.backgroundColor = Style.Colors.gray700
+        self.layer.cornerRadius = 8
+        self.layer.borderWidth = 1
+        self.layer.borderColor = Style.Colors.gray700.cgColor
+        
+        setupContentCategoryLabel()
+    }
     
     func setupContentCategoryLabel() {
         self.addSubview(contentCategoryLabel)

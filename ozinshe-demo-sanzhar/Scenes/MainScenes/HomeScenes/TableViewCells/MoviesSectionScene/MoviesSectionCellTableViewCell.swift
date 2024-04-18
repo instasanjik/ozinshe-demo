@@ -51,7 +51,6 @@ class MoviesSectionCellTableViewCell: UITableViewCell {
     
     private lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Movie-More".localized(), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         button.setTitleColor(Style.StaticColors.purple300, for: .normal)
         button.contentVerticalAlignment = .top
@@ -106,6 +105,7 @@ private extension MoviesSectionCellTableViewCell {
         self.selectionStyle = .none
         
         setupChapterTitleLabel()
+        setupMoreButton()
         setupContentCollectionView()
     }
     
@@ -173,7 +173,6 @@ extension MoviesSectionCellTableViewCell {
     
     func hideSkeletonAnimation() {
         self.hideSkeleton()
-        setupMoreButton()
     }
     
     

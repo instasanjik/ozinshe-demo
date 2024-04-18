@@ -28,6 +28,12 @@ class HomeViewController: UIViewController {
     
     // MARK: - UI Elements
     
+    private lazy var poorNetworkView: OZPoorNetworkView = {
+        let view = OZPoorNetworkView()
+        view.delegate = self
+        return view
+    }()
+    
     private lazy var mainTableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -55,7 +61,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [self] in
-//            showTableViewCellsSkeleton()
             downloadData()
         }
     }
@@ -63,11 +68,13 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        if poorNetworkView.superview != nil {
+            downloadData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        showTableViewCellsSkeleton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,6 +95,7 @@ private extension HomeViewController {
         addObservers()
         
         setupTableView()
+        setupPoorNetworkView()
     }
     
     func addObservers() {
@@ -101,6 +109,14 @@ private extension HomeViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
+        }
+    }
+    
+    func setupPoorNetworkView() {
+        self.view.addSubview(poorNetworkView)
+        
+        poorNetworkView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
@@ -135,6 +151,13 @@ private extension HomeViewController {
 private extension HomeViewController {
     
     func downloadData() {
+        if !InternetConnectionManager.isConnectedToNetwork() {
+            setupPoorNetworkView()
+            return
+        } else {
+            poorNetworkView.removeFromSuperview()
+        }
+        
         showTableViewCellsSkeleton()
         let dispatchGroup = DispatchGroup()
         
@@ -301,8 +324,8 @@ private extension HomeViewController {
 }
 
 
-// MARK: - TableViewDelegate
-
+// MARK: - Delegates
+// MARK: TableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -332,8 +355,7 @@ extension HomeViewController: UITableViewDelegate {
 }
 
 
-// MARK: - TableViewDataSource
-
+// MARK: TableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -441,6 +463,17 @@ extension HomeViewController: GenresAndAgesSectionTableViewCellDelegate {
     
     func genresAndAgesSection(didTapSection section: ContentCategory) {
         self.openMovieListViewController(with: section)
+    }
+    
+    
+}
+
+
+// MARK: OZPoorNetworkViewDelegate
+extension HomeViewController: OZPoorNetworkViewDelegate {
+    
+    func poorNetworkTryAgainTapped() {
+        downloadData()
     }
     
     
