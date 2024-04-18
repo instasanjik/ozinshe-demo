@@ -48,6 +48,8 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.showsVerticalScrollIndicator = false
+        
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         
