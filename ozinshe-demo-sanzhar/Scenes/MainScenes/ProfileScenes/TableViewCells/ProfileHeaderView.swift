@@ -24,7 +24,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView  {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = Style.Colors.label
-        label.text = "Profile-MyProfile".localized()
         return label
     }()
     
@@ -32,7 +31,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView  {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = Style.Colors.gray400
-        label.text = "ali@gmail.com"
         return label
     }()
     
