@@ -21,10 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppDelegate.setupNavigationBarsColors()
         
         if #available(iOS 15.0, *) {
-            UITableView.appearance().sectionHeaderTopPadding = 8
+            UITableView.appearance().sectionHeaderTopPadding = 0
         }
         
-        print(LanguageManager.LocalizedFile["strings"]["SignIn-Description"]["localizations"]["kk-KZ"]["stringUnit"]["value"])
         return true
     }
 

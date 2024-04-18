@@ -23,7 +23,7 @@ class ProfileViewController: UITableViewController {
     
     var userProfile: UserProfile? {
         didSet {
-            headerView.updateEmail(with: userProfile?.email)
+            headerView.updateData(name: userProfile?.name, email: userProfile?.email)
         }
     }
     

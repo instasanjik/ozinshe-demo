@@ -101,7 +101,8 @@ private extension ProfileHeaderView {
 
 extension ProfileHeaderView {
     
-    func updateEmail(with email: String?) {
+    func updateData(name: String?, email: String?) {
+        myProfileLabel.text = name ?? "Profile-MyProfile".localized()
         emailLabel.text = email ?? ""
     }
     

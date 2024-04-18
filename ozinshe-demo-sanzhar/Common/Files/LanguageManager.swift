@@ -32,7 +32,7 @@ final class OZLanguageManager {
     ]
     
     var appleCurrentLanguageCode: String {
-        return UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String ?? ""
+        return UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String ?? "en"
     }
     
     var currentLanguageDisplayName: String {
