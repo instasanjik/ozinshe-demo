@@ -105,8 +105,11 @@ private extension ProfileViewController {
             make.top.bottom.right.left.equalTo(view)
         }
         
-        UIView.animate(withDuration: 0.3) { [self] in
-            blurEffectView.alpha = 1
+        view.layoutSubviews()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            UIView.animate(withDuration: 0.3) {
+                self.blurEffectView.alpha = 1
+            }
         }
     }
     
