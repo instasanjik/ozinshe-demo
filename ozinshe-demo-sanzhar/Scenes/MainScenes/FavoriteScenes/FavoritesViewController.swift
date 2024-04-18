@@ -62,7 +62,6 @@ class FavoritesViewController: UITableViewController {
         button.setTitleColor(Style.Colors.purple400, for: .normal)
         
         button.addTarget(self, action: #selector(lookOutButtonTapped), for: .touchUpInside)
-        
         return button
     }()
 
@@ -93,6 +92,7 @@ private extension FavoritesViewController {
         addObservers()
         
         settingNavigationBar()
+        settingRefreshControl()
         
         setupErrorLabel()
         setupErrorBodyLabel()
@@ -106,6 +106,12 @@ private extension FavoritesViewController {
     func settingNavigationBar() {
         navigationItem.title = "Favorites-Title".localized()
         tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.ID)
+    }
+    
+    func settingRefreshControl() {
+        tableView.refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "PullToRefresh".localized())
+        refreshControl?.addTarget(self, action: #selector(self.refreshPage), for: .valueChanged)
     }
     
     func setupErrorLabel() {
@@ -165,6 +171,7 @@ private extension FavoritesViewController {
         CoreService.shared.getFavorites { success, errorMessage, favoritesList in
             self.movieList = favoritesList
             self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -200,6 +207,10 @@ extension FavoritesViewController {
                 cell.localizeCell()
             }
         }
+    }
+    
+    @objc func refreshPage() {
+        downloadFavoritesList()
     }
     
     
