@@ -132,7 +132,7 @@ private extension ProfileViewController {
     }
     
     func showLeaveConfirmationViewController() {
-        if let userProfile = userProfile {
+        if userProfile != nil {
             setupBlurEffectView()
             setTabBarHidden(true)
             let vc = LeaveConfirmationViewController()
