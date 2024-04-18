@@ -1,5 +1,3 @@
-# ÖZINŞE Mobile Application
-
 <div align="center">
   <img src="readme-assets/logo.png" alt="logo" width="200" height="auto" />
   <h1>ÖZINŞE iOS Application by Sanzhar Koshakarbayev</h1>
@@ -8,20 +6,20 @@
   
   
 # 📔 Table of Contents
-- [Feautures](#-Feautures)
-- [About the Project](#-About-the-Project)
-  * [Screenshots](#-Screenshots)
-  * [Used Pods](#-Pods)
-- [Getting Started](#-Getting-Started)
-  * [Run Locally](#-Run-Locally)
-- [Contributors](#-Author)
-- [License](#-License)
+- [Feautures](#-feautures)
+- [About the Project](#-about-the-project)
+  * [Screenshots](#-screenshots)
+  * [Used Pods](#-pods)
+- [Getting Started](#-getting-started)
+  * [Run Locally](#-run-locally)
+- [Contributors](#-author)
+- [License](#-license)
 
 <br/> 
 
->>📣 **IMPORTANT!** 
->>
->>Read the [Run Locally](#-Run-Locally) section to correct run the project
+>📣 **IMPORTANT!** 
+>
+>Read the [Run Locally](#-Run-Locally) section to correct run the project
 
 
   
@@ -43,14 +41,12 @@
 ### 📷 Screenshots
 
 <div> 
-  <img src="readme-assets/screenshots/screenshot-1.PNG" alt="main-page"/>
-  <img src="readme-assets/screenshots/screenshot-2.PNG" alt="movie-info-page"/>
-  <img src="readme-assets/screenshots/screenshot-3.PNG" alt="movie-player"/>
-  <img src="readme-assets/screenshots/screenshot-4.PNG" alt="movie-list-page"/>
-  <img src="readme-assets/screenshots/screenshot-5.PNG" alt="profile-page"/>
-  <img src="readme-assets/screenshots/screenshot-6.PNG" alt="search-page"/>
-  <img src="readme-assets/screenshots/screenshot-7.PNG" alt="leave-confirmation-page"/>
-  <img src="readme-assets/screenshots/screenshot-8.PNG" alt="login-page"/>
+  <img width="32%" src="readme-assets/screenshots/screenshot-1.PNG" alt="main-page"/>
+  <img width="32%" src="readme-assets/screenshots/screenshot-2.PNG" alt="movie-info-page"/>
+  <img width="32%" src="readme-assets/screenshots/screenshot-4.PNG" alt="movie-list-page"/>
+  <img width="32%" src="readme-assets/screenshots/screenshot-5.PNG" alt="profile-page"/>
+  <img width="32%" src="readme-assets/screenshots/screenshot-6.PNG" alt="search-page"/>
+  <img width="32%" src="readme-assets/screenshots/screenshot-8.PNG" alt="login-page"/>
 </div>
 
 <br/> 
@@ -75,7 +71,8 @@
 Welcome to ÖZINŞE iOS, your gateway to a world of captivating Kazakh series and movies. Follow these simple steps to get started with the app:
 
 
-<!-- Run Locally -->
+<br/> 
+
 ### 🛠 Run Locally
 
 #### 1️⃣ Download Xcode
@@ -95,7 +92,7 @@ pod install
 
 #### 5️⃣ Set iOS Deployment Target to (>13.0)
 Join to the Pods file (step 1) and select all targets (step 2), then, look for "iOS Deployment Target" and set it to 13.0 in all pods
-<img src="readme-assets/screenshots/launch-1" alt="Pods setting instruction"/>
+<img width="80%" src="readme-assets/screenshots/launch-1.png" alt="Pods setting instruction"/>
 
 
 #### 6️⃣ !!! Reconfigure YoutubePlayerView
@@ -117,7 +114,7 @@ Run the project on any device with iOS >13.0 and enjoy it!
 [Sanzhar Koshkarbayev](https://t.me/koshkarbayev)
 
 
-
+<br/> 
 
 
 ## 👮‍♂️ License
