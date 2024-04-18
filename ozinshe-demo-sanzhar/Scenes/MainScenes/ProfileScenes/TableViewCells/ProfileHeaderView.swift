@@ -58,6 +58,7 @@ private extension ProfileHeaderView {
     
     func setupUI() {
         self.backgroundColor = Style.Colors.gray800
+        self.contentView.backgroundColor = Style.Colors.gray800
         
         setupAvatarImageView()
         setupMyProfileLabel()
