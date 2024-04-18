@@ -34,8 +34,17 @@ class HomeViewController: UIViewController {
         return view
     }()
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "PullToRefresh".localized())
+        refreshControl.addTarget(self, action: #selector(self.refreshPage), for: .valueChanged)
+        return refreshControl
+    }()
+    
     private lazy var mainTableView: UITableView = {
         let tableView = UITableView()
+        tableView.addSubview(refreshControl)
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -142,6 +151,10 @@ private extension HomeViewController {
         mainTableView.reloadData()
     }
     
+    @objc func refreshPage() {
+        downloadData()
+    }
+    
     
 }
 
@@ -222,6 +235,7 @@ private extension HomeViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
+            self.refreshControl.endRefreshing()
             self.hideTableViewCellsSkeleton()
             self.mainTableView.reloadData()
         }
