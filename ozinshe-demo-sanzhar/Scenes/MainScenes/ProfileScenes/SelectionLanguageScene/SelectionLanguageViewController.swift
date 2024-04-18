@@ -17,7 +17,6 @@ class SelectionLanguageViewController: UIViewController {
     
     // MARK: - Internal variables
     private var oldValueY: Double = 0
-    private var lastSelectedRow: IndexPath?
     private let SCROLL_VIEW_PADDING_Y: CGFloat = 86
     
     
@@ -201,6 +200,7 @@ private extension SelectionLanguageViewController {
 }
 
 
+
 // MARK: - Delegates
 // MARK: UITableViewDelegate
 extension SelectionLanguageViewController: UITableViewDelegate {
@@ -211,7 +211,7 @@ extension SelectionLanguageViewController: UITableViewDelegate {
         
         if LanguageManager.currentLanguageSystemCode == code {
             cell.setSelected(true, animated: true)
-            lastSelectedRow = indexPath
+            tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
         }
     }
     
