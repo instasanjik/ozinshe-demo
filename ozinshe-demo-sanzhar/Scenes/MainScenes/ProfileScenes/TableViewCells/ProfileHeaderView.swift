@@ -100,7 +100,7 @@ private extension ProfileHeaderView {
 extension ProfileHeaderView {
     
     func updateData(name: String?, email: String?) {
-        myProfileLabel.text = name ?? "Profile-MyProfile".localized()
+        myProfileLabel.text = (name ?? "").isEmpty ? "Profile-MyProfile".localized() : name
         emailLabel.text = email ?? ""
     }
     
