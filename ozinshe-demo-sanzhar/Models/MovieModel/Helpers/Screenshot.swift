@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-final class Screenshot {
+struct Screenshot {
     
     var id: Int
     var imageURL: URL?
@@ -18,7 +18,7 @@ final class Screenshot {
         self.imageURL = imageURL
     }
     
-    convenience init?(json: JSON) {
+    init?(json: JSON) {
         guard let id = json["id"].int,
               let url = json["link"].string else {
             return nil

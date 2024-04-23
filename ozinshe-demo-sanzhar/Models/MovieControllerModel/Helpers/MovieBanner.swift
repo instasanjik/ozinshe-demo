@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-final class MovieBanner {
+struct MovieBanner {
     
     var id = 0
     var link = ""

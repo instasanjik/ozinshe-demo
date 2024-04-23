@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-final class MoviesSection {
+struct MoviesSection {
     
     var categoryId = 0
     var categoryName = ""

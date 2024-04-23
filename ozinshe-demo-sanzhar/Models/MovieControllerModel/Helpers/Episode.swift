@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-final class Episode {
+struct Episode {
     
     var id = 0
     var youtubeID = ""

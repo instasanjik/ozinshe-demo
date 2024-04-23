@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-final class Season {
+struct Season {
     
     var id = 0
     var movieId = 0

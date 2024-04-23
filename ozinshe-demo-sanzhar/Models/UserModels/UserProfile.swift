@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-final class UserProfile {
+struct UserProfile {
     
     var id: Int = 0
     var email: String = ""

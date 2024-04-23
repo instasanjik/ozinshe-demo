@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-final class MovieCategory {
+struct MovieCategory {
     
     var id: Int
     var name: String
@@ -18,7 +18,7 @@ final class MovieCategory {
         self.name = name
     }
     
-    convenience init?(json: JSON) {
+    init?(json: JSON) {
         guard let id = json["id"].int,
               let name = json["name"].string else {
             return nil

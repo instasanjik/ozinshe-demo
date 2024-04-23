@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-final class ContentCategory {
+struct ContentCategory {
     
     var id: Int
     var name: String
@@ -22,7 +22,7 @@ final class ContentCategory {
         self.isAgeCategory = isAgeCategory
     }
     
-    convenience init?(json: JSON, isAgeCategory: Bool = false) {
+    init?(json: JSON, isAgeCategory: Bool = false) {
         guard let id = json["id"].int,
               let name = json["name"].string else {
             return nil
