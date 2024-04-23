@@ -200,6 +200,20 @@ private extension SelectionLanguageViewController {
 }
 
 
+// MARK: - Internal functions
+
+private extension SelectionLanguageViewController {
+    
+    func scrollToBottom() {
+        let bottomOffset = CGPoint(x: 0,
+                                   y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom + 12) /// 12 is a safe area zone for correct displaying content
+        scrollView.setContentOffset(bottomOffset, animated: true)
+    }
+    
+
+}
+
+
 
 // MARK: - Delegates
 // MARK: UITableViewDelegate
@@ -252,12 +266,6 @@ extension SelectionLanguageViewController: UIScrollViewDelegate {
             self.dismiss(animated: true)
         }
         oldValueY = scrollView.contentOffset.y
-    }
-    
-    fileprivate func scrollToBottom() {
-        let bottomOffset = CGPoint(x: 0,
-                                   y: scrollView.contentSize.height - scrollView.bounds.height + scrollView.adjustedContentInset.bottom + 12) /// 12 is a safe area zone for correct displaying content
-        scrollView.setContentOffset(bottomOffset, animated: true)
     }
     
     
