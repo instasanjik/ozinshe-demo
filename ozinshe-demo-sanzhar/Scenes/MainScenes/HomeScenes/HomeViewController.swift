@@ -177,60 +177,60 @@ private extension HomeViewController {
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        CoreService.shared.getMoviesCells { success, errorMessage, moviesSectionsList in
+        CoreService.shared.getMoviesCells { [weak self] success, errorMessage, moviesSectionsList in
             defer {
                 dispatchGroup.leave()
             }
             if success {
-                self.moviesSectionsList = moviesSectionsList
+                self?.moviesSectionsList = moviesSectionsList
             } else {
                 // Handle error
             }
         }
         
         dispatchGroup.enter()
-        CoreService.shared.getBanners { success, errorMessage, bannersList in
+        CoreService.shared.getBanners { [weak self] success, errorMessage, bannersList in
             defer {
                 dispatchGroup.leave()
             }
             if success {
-                self.bannersList = bannersList
+                self?.bannersList = bannersList
             } else {
                 // Handle error
             }
         }
         
         dispatchGroup.enter()
-        CoreService.shared.getKeepWatchingMovies { success, errorMessage, keepWatchingMovieLists in
+        CoreService.shared.getKeepWatchingMovies { [weak self] success, errorMessage, keepWatchingMovieLists in
             defer {
                 dispatchGroup.leave()
             }
             if success {
-                self.keepWatchingMoviesList = keepWatchingMovieLists
+                self?.keepWatchingMoviesList = keepWatchingMovieLists
             } else {
                 // Handle error
             }
         }
         
         dispatchGroup.enter()
-        CoreService.shared.getGenres { success, errorMessage, genresList in
+        CoreService.shared.getGenres { [weak self] success, errorMessage, genresList in
             defer {
                 dispatchGroup.leave()
             }
             if success {
-                self.genresList = genresList
+                self?.genresList = genresList
             } else {
                 // Handle error
             }
         }
         
         dispatchGroup.enter()
-        CoreService.shared.getAgeCategories { success, errorMessage, ageCaregoriesList in
+        CoreService.shared.getAgeCategories { [weak self] success, errorMessage, ageCaregoriesList in
             defer {
                 dispatchGroup.leave()
             }
             if success {
-                self.agesList = ageCaregoriesList
+                self?.agesList = ageCaregoriesList
             } else {
                 // Handle error
             }

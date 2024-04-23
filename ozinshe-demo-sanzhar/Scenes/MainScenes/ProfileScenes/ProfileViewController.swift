@@ -202,8 +202,8 @@ private extension ProfileViewController {
 private extension ProfileViewController {
     
     func downloadData() {
-        CoreService.shared.getProfileData { success, errorMessage, profile in
-            self.userProfile = profile
+        CoreService.shared.getProfileData { [weak self] success, errorMessage, profile in
+            self?.userProfile = profile
         }
     }
     

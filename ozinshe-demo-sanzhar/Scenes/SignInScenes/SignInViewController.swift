@@ -384,9 +384,9 @@ private extension SignInViewController {
         if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
             if email != "" && password != "" {
                 SVProgressHUD.show()
-                AuthService.shared.login(email: email, password: password) { statusCode in
+                AuthService.shared.login(email: email, password: password) { [weak self] statusCode in
                     if statusCode == 200 {
-                        SVProgressHUD.dismiss { self.openMainTabbar() }
+                        SVProgressHUD.dismiss { self?.openMainTabbar() }
                     } else if statusCode == 401 {
                         SVProgressHUD.showError(withStatus: "Login-IncorrectLoginOrPassword".localized())
                     } else {

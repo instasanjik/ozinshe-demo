@@ -380,12 +380,12 @@ private extension PersonalDataViewController {
                                              email: userProfile.email
             )
             SVProgressHUD.show(withStatus: "Uploading")
-            CoreService.shared.updateProfileData(userProfile: updatedProfile) { success, errorMessage in
+            CoreService.shared.updateProfileData(userProfile: updatedProfile) { [weak self] success, errorMessage in
                 if success {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         SVProgressHUD.showSuccess(withStatus: "Success")
-                        self.userProfile = updatedProfile
-                        self.updatePageState()
+                        self?.userProfile = updatedProfile
+                        self?.updatePageState()
                     }
                 } else {
                     SVProgressHUD.showError(withStatus: "General-UnknownError".localized()) 

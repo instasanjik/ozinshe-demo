@@ -142,13 +142,13 @@ extension SeriesViewController {
     
     func configureScene(movie: MovieWithDetails) {
         self.movieName = movie.name
-        CoreService.shared.getMovieSeasons(movieID: movie.id) { success, errorMessage, content in
+        CoreService.shared.getMovieSeasons(movieID: movie.id) { [weak self] success, errorMessage, content in
             if success {
-                self.seasons = content
-                self.view.hideSkeleton()
+                self?.seasons = content
+                self?.view.hideSkeleton()
             } else {
                 Logger.log(.warning, "\(errorMessage ?? "Error nil")")
-                self.navigationController?.popToRootViewController(animated: true)
+                self?.navigationController?.popToRootViewController(animated: true)
             }
         }
     }

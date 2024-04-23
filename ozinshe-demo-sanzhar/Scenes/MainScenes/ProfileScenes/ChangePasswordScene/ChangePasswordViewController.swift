@@ -167,11 +167,11 @@ private extension ChangePasswordViewController {
         }
         
         SVProgressHUD.show()
-        CoreService.shared.changeUserPassword(password: password) { success, errorMessage in
+        CoreService.shared.changeUserPassword(password: password) { [weak self] success, errorMessage in
             if success {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     SVProgressHUD.showSuccess(withStatus: "New password saved successfully!")
-                    self.navigationController?.popToRootViewController(animated: true)
+                    self?.navigationController?.popToRootViewController(animated: true)
                 }
             } else {
                 SVProgressHUD.showError(withStatus: "Something went wrong. please, try again later")

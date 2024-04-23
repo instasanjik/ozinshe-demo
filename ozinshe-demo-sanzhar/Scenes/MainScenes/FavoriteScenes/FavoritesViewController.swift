@@ -168,10 +168,10 @@ private extension FavoritesViewController {
         } else {
             poorNetworkView.removeFromSuperview()
         }
-        CoreService.shared.getFavorites { success, errorMessage, favoritesList in
-            self.movieList = favoritesList
-            self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
+        CoreService.shared.getFavorites { [weak self] success, errorMessage, favoritesList in
+            self?.movieList = favoritesList
+            self?.tableView.reloadData()
+            self?.refreshControl?.endRefreshing()
         }
     }
     

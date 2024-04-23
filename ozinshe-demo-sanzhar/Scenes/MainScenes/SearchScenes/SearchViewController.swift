@@ -251,8 +251,8 @@ private extension SearchViewController {
 private extension SearchViewController {
     
     func downloadData() {
-        CoreService.shared.getCategories { success, errorMessage, categories in
-            self.categories = categories
+        CoreService.shared.getCategories { [weak self] success, errorMessage, categories in
+            self?.categories = categories
         }
     }
     
@@ -274,12 +274,12 @@ private extension SearchViewController {
             return
         }
         
-        CoreService.shared.searchByMovieName(movieName: searchText) { [self] success, errorMessage, resultList in
-            self.searchResultMovieList = resultList
-            self.noDataLabel.isHidden = searchTextField.text?.isEmpty ?? true || !searchResultMovieList.isEmpty
+        CoreService.shared.searchByMovieName(movieName: searchText) { [weak self] success, errorMessage, resultList in
+            self?.searchResultMovieList = resultList
+            self?.noDataLabel.isHidden = self?.searchTextField.text?.isEmpty ?? true || !(self?.searchResultMovieList.isEmpty ?? true)
             
-            self.searchResultTableView.reloadData()
-            self.isLoading = false
+            self?.searchResultTableView.reloadData()
+            self?.isLoading = false
         }
     }
     

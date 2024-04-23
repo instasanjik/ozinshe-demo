@@ -734,10 +734,10 @@ extension MovieInfoViewController {
     @objc func saveButtonTapped(_ sender: UIButton) {
         guard let movie = movie else { return }
         
-        CoreService.shared.setMovieFavorite(movieId: movie.id, makeFavorite: !movie.isFavorite) { success, errorMessage in
+        CoreService.shared.setMovieFavorite(movieId: movie.id, makeFavorite: !movie.isFavorite) { [weak self] success, errorMessage in
             movie.isFavorite.toggle()
             let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
-            self.saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
+            self?.saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
         }
     }
     
@@ -813,11 +813,11 @@ extension MovieInfoViewController {
         self.similarCollectionView.reloadData()
         self.similarSeriesLabel.text = "MovieInfo-FromItsCategory".localized()
         
-        CoreService.shared.getSimilarMovies(movieID: movie.id) { success, errorMessage, movieList in
+        CoreService.shared.getSimilarMovies(movieID: movie.id) { [weak self] success, errorMessage, movieList in
             if success {
-                self.similarTVSeries.append(contentsOf: movieList)
-                self.similarTVSeries = MovieWithDetails.removeDuplicateElements(movies: similarTVSeries)
-                self.similarCollectionView.reloadData()
+                self?.similarTVSeries.append(contentsOf: movieList)
+                self?.similarTVSeries = MovieWithDetails.removeDuplicateElements(movies: similarTVSeries)
+                self?.similarCollectionView.reloadData()
             }
         }
         
@@ -853,20 +853,20 @@ extension MovieInfoViewController {
         let saveButtonImage = movie.isFavorite ? "saveButtonOn" : "saveButton"
         saveButton.setImage(UIImage(named: saveButtonImage), for: .normal)
         
-        CoreService.shared.getSimilarMovies(movieID: movie.id) { [self] success, errorMessage, movieList in
+        CoreService.shared.getSimilarMovies(movieID: movie.id) { [weak self] success, errorMessage, movieList in
             if success {
                 if movieList.isEmpty {
-                    similarSeriesLabel.isHidden = true
-                    similarCollectionView.isHidden = true
-                    screenshotsCollectionView.snp.remakeConstraints { make in
-                        make.top.equalTo(screenshotsLabel.snp.bottom).inset(-16)
+                    self?.similarSeriesLabel.isHidden = true
+                    self?.similarCollectionView.isHidden = true
+                    self?.screenshotsCollectionView.snp.remakeConstraints { make in
+                        make.top.equalTo(self?.screenshotsLabel.snp.bottom ?? 0).inset(-16)
                         make.left.right.equalToSuperview()
                         make.height.equalTo(112)
                         make.bottom.equalToSuperview().inset(24)
                     }
                 } else {
-                    similarTVSeries = movieList
-                    similarCollectionView.reloadData()
+                    self?.similarTVSeries = movieList
+                    self?.similarCollectionView.reloadData()
                 }
             }
         }

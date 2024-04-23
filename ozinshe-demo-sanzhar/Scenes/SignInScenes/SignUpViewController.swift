@@ -331,9 +331,9 @@ private extension SignUpViewController {
         if let email = emailTextFieldView.textField.text, let password = passwordTextField.text {
             if email != "" && password != "" {
                 SVProgressHUD.show()
-                AuthService.shared.signUp(email: email, password: password) { statusCode in
+                AuthService.shared.signUp(email: email, password: password) { [weak self] statusCode in
                     if statusCode == 200 {
-                        SVProgressHUD.dismiss { self.openMainTabbar() }
+                        SVProgressHUD.dismiss { self?.openMainTabbar() }
                     } else if statusCode == 401 {
                         SVProgressHUD.showError(withStatus: "Login-IncorrectLoginOrPassword".localized())
                     } else if statusCode == 400 {

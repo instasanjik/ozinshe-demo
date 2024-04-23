@@ -57,15 +57,15 @@ private extension MovieListViewController {
     
     func downloadMovieList() {
         if let category = category {
-            CoreService.shared.getMovieListFromCategory(categoryID: category.id, categoryType: .movieCategory) { success, errorMessage, movieList in
-                self.movieList = movieList
-                self.tableView.reloadData()
+            CoreService.shared.getMovieListFromCategory(categoryID: category.id, categoryType: .movieCategory) { [weak self] success, errorMessage, movieList in
+                self?.movieList = movieList
+                self?.tableView.reloadData()
             }
         } else if let contentCategory = movieContentCategory {
             CoreService.shared.getMovieListFromCategory(categoryID: contentCategory.id, 
-                                                        categoryType: contentCategory.isAgeCategory ? .ageCategory : .genreCategory) { success, errorMessage, movieList in
-                self.movieList = movieList
-                self.tableView.reloadData()
+                                                        categoryType: contentCategory.isAgeCategory ? .ageCategory : .genreCategory) { [weak self] success, errorMessage, movieList in
+                self?.movieList = movieList
+                self?.tableView.reloadData()
             }
         }
     }
